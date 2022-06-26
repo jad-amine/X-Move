@@ -4,6 +4,6 @@ const usersMiddleware = require('../middlewares/usersMiddleware')
 
 const router = express.Router();
 
-router.get("/", usersMiddleware.greet);
+router.get("/", usersMiddleware.login);
 
 module.exports = router;

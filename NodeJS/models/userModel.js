@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  sport: {
+  sports: {
     type: [String],
   },
   location: {

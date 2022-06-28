@@ -13,8 +13,15 @@ app.use(express.json());
 // Routes
 const usersRoutes = require("./routes/usersRoutes");
 
-app.listen(3000, () => {
-  console.log("listening to port 3000");
-});
+// Connect to db
+mongoose
+  .connect(process.env.DB_CONNECT)
+  .then(() => {
+    app.listen(process.env.PORT, () => {
+      console.log("connected to db & listening to port 4000");
+    });
+  })
+  .catch((err) => console.log(err));
 
+// APIs
 app.use("/api/users", usersRoutes);

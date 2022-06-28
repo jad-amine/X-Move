@@ -23,7 +23,7 @@ const register = async (req, res) => {
 };
 
 // Login User
-const login = async (req, res, next) => {
+const login = async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
     return res.status(401).json({ message: "Invalid Credentials" });
@@ -33,20 +33,29 @@ const login = async (req, res, next) => {
     return res.status(401).json({ message: "Invalid Credentials" });
   }
   var token = jwt.sign(
-    { _id: user._id, name: user.name, email: user.email },
+    {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      type: user.admin,
+      sports: user.sports,
+    },
     process.env.TOKEN_SECRET
   );
   console.log(user, "logged in");
   res.status(200).json(token);
 };
 
+// Auth User
 const authUser = (req, res, next) => {
   token = req.headers.authorization.split(" ")[1];
   jwt.verify(token, process.env.TOKEN_SECRET, function (err, decoded) {
-    if (err) res.json({ err });
-    console.log(decoded);
-    res.json(decoded);
-    // check what to do next
+    if (err) {
+      res.status(401).json({ err });
+    } else {
+      req.user = decoded;
+      next();
+    }
   });
 };
 

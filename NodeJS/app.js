@@ -5,12 +5,13 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 // console.log(process.env.S3_BUCKET);
 
-// Import Routes
-const usersRoutes = require("./routes/usersRoutes");
-
+// Expres app
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Import Routes
+const usersRoutes = require("./routes/usersRoutes");
 
 app.listen(3000, () => {
   console.log("listening to port 3000");

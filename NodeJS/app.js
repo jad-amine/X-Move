@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Import Routes
+// Routes
 const usersRoutes = require("./routes/usersRoutes");
 
 app.listen(3000, () => {

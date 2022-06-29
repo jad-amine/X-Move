@@ -16,7 +16,4 @@ router.post("/addSport", authUser, addSport);
 // Remove Sport
 router.post("/removeSport", authUser, removeSport);
 
-// Get all users
-// router.get("/", admin, getAllUsers);
-
 module.exports = router;

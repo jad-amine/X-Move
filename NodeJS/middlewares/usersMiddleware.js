@@ -54,7 +54,7 @@ const authUser = (req, res, next) => {
   token = req.headers.authorization.split(" ")[1];
   jwt.verify(token, process.env.TOKEN_SECRET, function (err, decoded) {
     if (err) {
-      res.status(401).json({ err });
+      res.status(401).json({ error: err, message: "Unauthenticated user" });
     } else {
       req.user = decoded;
       next();

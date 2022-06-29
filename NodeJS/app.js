@@ -12,16 +12,18 @@ app.use(express.json());
 
 // Routes
 const usersRoutes = require("./routes/usersRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 
 // Connect to db
 mongoose
   .connect(process.env.DB_CONNECT)
   .then(() => {
     app.listen(process.env.PORT, () => {
-      console.log("connected to db & listening to port 4000");
+      console.log("Connected to db & listening to port " + process.env.PORT);
     });
   })
-  .catch((err) => console.log(err));
+  .catch((err) => console.log("Failed to connect to MongoDB", err));
 
 // APIs
 app.use("/api/users", usersRoutes);
+app.use("/api/admin", adminRoutes);

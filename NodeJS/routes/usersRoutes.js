@@ -1,7 +1,7 @@
 //Express ROUTER
 const express = require("express");
 const { register, login, authUser } = require("../middlewares/usersMiddleware");
-const { addSport } = require("../controllers/usersController");
+const { addSport, removeSport } = require("../controllers/usersController");
 
 const router = express.Router();
 
@@ -12,7 +12,9 @@ router.post("/login", login);
 router.post("/register", register);
 
 // Add Sport
-router.post("/sport", authUser, addSport);
+router.post("/addSport", authUser, addSport);
+// Remove Sport
+router.post("/removeSport", authUser, removeSport);
 
 // Get all users
 // router.get("/", admin, getAllUsers);

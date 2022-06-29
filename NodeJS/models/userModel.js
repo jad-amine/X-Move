@@ -15,6 +15,14 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    age: {
+      type: Number,
+      required: true,
+    },
+    gender: {
+      type: String,
+      required: true,
+    },
     admin: {
       type: Number,
       required: true,
@@ -25,6 +33,12 @@ const userSchema = new mongoose.Schema(
     location: {
       type: [Number],
     },
+    friends: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   { timestamps: true }
 );

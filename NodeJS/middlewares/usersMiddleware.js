@@ -39,6 +39,7 @@ const login = async (req, res) => {
       email: user.email,
       type: user.admin,
       sports: user.sports,
+      friends: user.friends,
     },
     process.env.TOKEN_SECRET
   );

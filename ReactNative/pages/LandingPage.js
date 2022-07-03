@@ -5,7 +5,7 @@ import { global } from "../styles/globalStyles";
 import landingPageImage from "../assets/signUp.png";
 import { useFonts, Fondamento_400Regular } from "@expo-google-fonts/fondamento";
 
-const LandingPage = () => {
+const LandingPage = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
     Fondamento_400Regular,
   });
@@ -15,7 +15,7 @@ const LandingPage = () => {
   }
 
   return (
-    <>
+    <View style={global.container}>
       <ImageBackground
         source={landingPageImage}
         resizeMode="cover"
@@ -26,7 +26,10 @@ const LandingPage = () => {
           <Text>-move</Text>
         </Text>
         <View style={global.landingPageButtons}>
-          <TouchableOpacity style={[global.loginButton, global.butt]}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("back")}
+            style={[global.loginButton, global.butt]}
+          >
             <Text style={global.loginText}>Login</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[global.registerButton, global.butt]}>
@@ -34,7 +37,7 @@ const LandingPage = () => {
           </TouchableOpacity>
         </View>
       </ImageBackground>
-    </>
+    </View>
   );
 };
 

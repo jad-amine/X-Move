@@ -16,7 +16,7 @@ export const global = StyleSheet.create({
     justifyContent: "space-around",
   },
   XMOVE: {
-    fontSize: 60,
+    fontSize: 80,
     color: "white",
     marginBottom: 330,
     fontFamily: "Fondamento_400Regular",
@@ -26,20 +26,20 @@ export const global = StyleSheet.create({
   },
   loginButton: {
     backgroundColor: "white",
-    marginRight: 30,
-    paddingVertical: 20,
-    paddingHorizontal: 40,
+    marginRight: 20,
+    paddingVertical: 15,
+    paddingHorizontal: 50,
+    borderColor: "#333",
+    borderWidth: 1,
   },
   registerButton: {
     backgroundColor: "#FF4D00",
-    marginLeft: 30,
-    paddingVertical: 20,
-    paddingHorizontal: 40,
+    marginLeft: 20,
+    paddingVertical: 15,
+    paddingHorizontal: 50,
   },
   butt: {
     borderRadius: 10,
-    borderColor: "#333",
-    borderWidth: 1,
   },
   loginText: {
     fontWeight: "bold",
@@ -53,5 +53,10 @@ export const global = StyleSheet.create({
   styledX: {
     fontSize: 70,
     color: "#FF4D00",
+  },
+  // login Page
+  loginHead: {
+    color: "#FF4D00",
+    fontSize: 40,
   },
 });

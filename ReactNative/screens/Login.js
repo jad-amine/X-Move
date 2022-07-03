@@ -1,5 +1,5 @@
 // Utilities
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import loginImage from "../assets/loginImage.png";
 import {
   Alert,
@@ -13,8 +13,10 @@ import {
 } from "react-native";
 import * as SecureStore from "expo-secure-store";
 import { global } from "../styles/globalStyles";
+import { UserContext } from "../contexts/UserContext";
 
 const Login = ({ navigation }) => {
+  const { setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -33,8 +35,7 @@ const Login = ({ navigation }) => {
         return;
       }
       await SecureStore.setItemAsync("token", json);
-      const blood = await SecureStore.getItemAsync("token");
-      console.log(blood);
+      await setUser(json);
       navigation.navigate("Landing Page");
     } catch (err) {
       console.log(err.message, "Something wrong with the request");

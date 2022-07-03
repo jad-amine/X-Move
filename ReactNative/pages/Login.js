@@ -14,7 +14,7 @@ import {
 import * as SecureStore from "expo-secure-store";
 import { global } from "../styles/globalStyles";
 
-const Login = () => {
+const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -33,8 +33,9 @@ const Login = () => {
         return;
       }
       await SecureStore.setItemAsync("token", json);
-      let token = await SecureStore.getItemAsync("token");
-      console.log("your token is" + token);
+      const blood = await SecureStore.getItemAsync("token");
+      console.log(blood);
+      navigation.navigate("Landing Page");
     } catch (err) {
       console.log(err.message, "Something wrong with the request");
     }

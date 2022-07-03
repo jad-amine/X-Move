@@ -30,10 +30,10 @@ const LandingPage = ({ navigation }) => {
             onPress={() => navigation.navigate("back")}
             style={[global.loginButton, global.butt]}
           >
-            <Text style={global.loginText}>Login</Text>
+            <Text style={global.loginText}>LOG IN</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[global.registerButton, global.butt]}>
-            <Text style={global.registerText}>Register</Text>
+            <Text style={global.registerText}>REGISTER</Text>
           </TouchableOpacity>
         </View>
       </ImageBackground>

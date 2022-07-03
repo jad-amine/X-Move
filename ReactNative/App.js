@@ -7,7 +7,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // Screens
 import LandingPage from "./pages/LandingPage";
-import { global } from "./styles/globalStyles";
 import Login from "./pages/Login";
 
 const stack = createNativeStackNavigator();

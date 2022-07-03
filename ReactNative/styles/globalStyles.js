@@ -7,6 +7,7 @@ export const global = StyleSheet.create({
     padding: 0,
     margin: 0,
   },
+
   // Landing Page
   backgroundImage: {
     width: "100%",
@@ -15,9 +16,10 @@ export const global = StyleSheet.create({
     justifyContent: "space-around",
   },
   XMOVE: {
-    fontSize: 50,
+    fontSize: 60,
     color: "white",
     marginBottom: 330,
+    fontFamily: "Fondamento_400Regular",
   },
   landingPageButtons: {
     flexDirection: "row",
@@ -41,9 +43,15 @@ export const global = StyleSheet.create({
   },
   loginText: {
     fontWeight: "bold",
+    fontSize: 20,
   },
   registerText: {
     fontWeight: "bold",
     color: "white",
+    fontSize: 20,
+  },
+  styledX: {
+    fontSize: 70,
+    color: "#FF4D00",
   },
 });

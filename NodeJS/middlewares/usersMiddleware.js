@@ -58,7 +58,9 @@ const authUser = (req, res, next) => {
       res.status(401).json({ error: err, message: "Unauthenticated user" });
     } else {
       req.user = decoded;
-      next();
+      req.body.mission
+        ? res.json({ status: "Verified", user: decoded })
+        : next();
     }
   });
 };

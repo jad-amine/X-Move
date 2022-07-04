@@ -9,7 +9,6 @@ import { UserContext } from "./contexts/UserContext";
 import LandingPage from "./screens/LandingPage";
 import Login from "./screens/Login";
 import { useEffect, useState } from "react";
-import Home from "./screens/Home";
 import { Text } from "react-native";
 
 const stack = createNativeStackNavigator();
@@ -22,6 +21,9 @@ export default function App() {
     const authUser = async () => {
       try {
         let token = await SecureStore.getItemAsync("token");
+        if (!token) {
+          return;
+        }
         const response = await fetch("http://10.0.2.2:4000/api/users/getData", {
           method: "POST",
           headers: {
@@ -35,7 +37,7 @@ export default function App() {
           setUser(null);
           return;
         } else {
-          setUser(null);
+          setUser({ info: json.user, token: token });
           return;
         }
       } catch (err) {
@@ -68,9 +70,9 @@ export default function App() {
     );
   } else {
     return (
-      <>
+      <UserContext.Provider value={{ setUser }}>
         <Text>{JSON.stringify(user)}</Text>
-      </>
+      </UserContext.Provider>
     );
   }
 }

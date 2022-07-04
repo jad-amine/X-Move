@@ -1,6 +1,7 @@
 const User = require("../models/userModel");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+var jwt = require("jsonwebtoken");
 
 // Login User
 const login = async (req, res) => {
@@ -24,7 +25,17 @@ const login = async (req, res) => {
     process.env.TOKEN_SECRET
   );
   console.log(user, "logged in");
-  res.status(200).json(token);
+  res.status(200).json({
+    token: token,
+    user: {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      type: user.admin,
+      sports: user.sports,
+      friends: user.friends,
+    },
+  });
 };
 
 // Register User

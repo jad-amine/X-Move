@@ -34,8 +34,8 @@ const Login = ({ navigation }) => {
         Alert.alert(json.message, "Incorrect email or password !");
         return;
       }
-      await SecureStore.setItemAsync("token", json);
-      await setUser(json);
+      await SecureStore.setItemAsync("token", json.token);
+      await setUser({ info: json.user, token: json.token });
       navigation.navigate("Landing Page");
     } catch (err) {
       console.log(err.message, "Something wrong with the request");

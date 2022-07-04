@@ -4,12 +4,13 @@ import * as SecureStore from "expo-secure-store";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { UserContext } from "./contexts/UserContext";
+import { Text } from "react-native";
+import { useEffect, useState } from "react";
 
 // Screens
-import LandingPage from "./screens/LandingPage";
 import Login from "./screens/Login";
-import { useEffect, useState } from "react";
-import { Text } from "react-native";
+import LandingPage from "./screens/LandingPage";
+import Register from "./screens/Register";
 
 const stack = createNativeStackNavigator();
 
@@ -37,7 +38,8 @@ export default function App() {
           setUser(null);
           return;
         } else {
-          setUser({ info: json.user, token: token });
+          setUser(null);
+          // setUser({ info: json.user, token: token });
           return;
         }
       } catch (err) {
@@ -59,8 +61,13 @@ export default function App() {
               options={{ headerShown: false }}
             />
             <stack.Screen
-              name="back"
+              name="Login"
               component={Login}
+              options={{ headerTransparent: true }}
+            />
+            <stack.Screen
+              name="Register"
+              component={Register}
               options={{ headerTransparent: true }}
             />
           </stack.Navigator>

@@ -15,32 +15,11 @@ import * as SecureStore from "expo-secure-store";
 import { global } from "../styles/globalStyles";
 import { UserContext } from "../contexts/UserContext";
 
-const Login = ({ navigation }) => {
+const Register = ({ navigation }) => {
   const { setUser } = useContext(UserContext);
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleLogin = async () => {
-    try {
-      const response = await fetch("http://10.0.2.2:4000/api/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: email, password: password }),
-      });
-      const json = await response.json();
-      if (json.message === "Invalid Credentials") {
-        Alert.alert(json.message, "Incorrect email or password !");
-        return;
-      }
-      await SecureStore.setItemAsync("token", json.token);
-      await setUser({ info: json.user, token: json.token });
-      navigation.navigate("Landing Page");
-    } catch (err) {
-      console.log(err.message, "Something wrong with the request");
-    }
-  };
 
   return (
     <TouchableWithoutFeedback
@@ -54,34 +33,41 @@ const Login = ({ navigation }) => {
           resizeMode="cover"
           style={global.loginBackgroundImage}
         >
-          <Text style={global.loginHead}>Login</Text>
+          <Text style={global.registerHead}>Register</Text>
+          <Text style={global.loginLabel}>Name:</Text>
+          <TextInput
+            onChangeText={(val) => {
+              setName(val);
+            }}
+            style={global.registerInput}
+          />
           <Text style={global.loginLabel}>Email:</Text>
           <TextInput
             onChangeText={(val) => {
               setEmail(val);
             }}
-            style={global.loginInput}
+            style={global.registerInput}
           />
           <Text style={global.loginLabel}>Password:</Text>
           <TextInput
             onChangeText={(val) => {
               setPassword(val);
             }}
-            style={global.loginInput}
+            style={global.registerInput}
           />
-          <TouchableOpacity onPress={handleLogin} style={global.login}>
-            <Text style={[global.loginText, { color: "white" }]}>LOG IN</Text>
+          <TouchableOpacity onPress={handleRegister} style={global.login}>
+            <Text style={[global.loginText, { color: "white" }]}>Register</Text>
           </TouchableOpacity>
           <Text style={global.alreadyUser}>
-            Don't have an account?
+            Alreday have an account?
             <Text
               onPress={() => {
-                navigation.navigate("Register");
+                navigation.navigate("Login");
               }}
               style={{ color: "#FF4D00" }}
             >
               {"  "}
-              Sign Up
+              Sign In
             </Text>
           </Text>
         </ImageBackground>
@@ -90,4 +76,4 @@ const Login = ({ navigation }) => {
   );
 };
 
-export default Login;
+export default Register;

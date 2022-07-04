@@ -3,7 +3,6 @@ import { StyleSheet } from "react-native";
 export const global = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     padding: 0,
     margin: 0,
   },
@@ -59,7 +58,7 @@ export const global = StyleSheet.create({
     color: "#FF4D00",
     fontSize: 40,
     marginTop: 100,
-    marginBottom: 100,
+    marginBottom: 70,
   },
   loginBackgroundImage: {
     width: "100%",
@@ -88,6 +87,30 @@ export const global = StyleSheet.create({
     alignSelf: "flex-start",
     marginLeft: 60,
     fontSize: 16,
+    color: "gray",
+  },
+
+  // Register Page
+  registerHead: {
+    color: "#FF4D00",
+    fontSize: 40,
+    marginTop: 100,
+    marginBottom: 50,
+  },
+  registerInput: {
+    width: 300,
+    borderColor: "gray",
+    borderWidth: 1,
+    marginBottom: 20,
+    height: 50,
+    borderRadius: 10,
+    paddingLeft: 20,
+    backgroundColor: "white",
+  },
+  alreadyUser: {
+    marginTop: 10,
+    alignContent: "center",
+    justifyContent: "center",
     color: "gray",
   },
 });

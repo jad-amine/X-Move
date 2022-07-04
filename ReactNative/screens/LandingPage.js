@@ -27,12 +27,16 @@ const LandingPage = ({ navigation }) => {
         </Text>
         <View style={global.landingPageButtons}>
           <TouchableOpacity
-            onPress={() => navigation.navigate("back")}
+            onPress={() => navigation.navigate("Login")}
             style={[global.loginButton, global.butt]}
           >
             <Text style={global.loginText}>LOG IN</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[global.registerButton, global.butt]}>
+
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Register")}
+            style={[global.registerButton, global.butt]}
+          >
             <Text style={global.registerText}>REGISTER</Text>
           </TouchableOpacity>
         </View>

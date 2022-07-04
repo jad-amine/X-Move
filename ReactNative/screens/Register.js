@@ -21,6 +21,32 @@ const Register = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleRegister = async () => {
+    try {
+      if (!name || !email || !password) {
+        Alert.alert("Please add all fields !");
+        return;
+      }
+      const response = await fetch("http://10.0.2.2:4000/api/users/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: name, email: email, password: password }),
+      });
+      const json = await response.json();
+      if (json.message === "User already exists !") {
+        Alert.alert(json.message, "Choose another email address !");
+        return;
+      }
+      await SecureStore.setItemAsync("token", json.token);
+      await setUser({ info: json.user, token: json.token });
+      // navigation.navigate("Landing Page");
+    } catch (err) {
+      console.log(err.message, "Something wrong with the request");
+    }
+  };
+
   return (
     <TouchableWithoutFeedback
       onPress={() => {

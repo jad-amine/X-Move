@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import Login from "./screens/Login";
 import LandingPage from "./screens/LandingPage";
 import Register from "./screens/Register";
+import Home from "./screens/LoggedIn/Home";
 
 const stack = createNativeStackNavigator();
 
@@ -38,8 +39,7 @@ export default function App() {
           setUser(null);
           return;
         } else {
-          setUser(null);
-          // setUser({ info: json.user, token: token });
+          setUser({ info: json.user, token: token });
           return;
         }
       } catch (err) {
@@ -77,8 +77,10 @@ export default function App() {
     );
   } else {
     return (
-      <UserContext.Provider value={{ setUser }}>
-        <Text>{JSON.stringify(user)}</Text>
+      <UserContext.Provider value={{ user, setUser }}>
+        <NavigationContainer>
+          <Home />
+        </NavigationContainer>
       </UserContext.Provider>
     );
   }

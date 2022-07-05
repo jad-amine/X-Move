@@ -10,6 +10,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Welcome from "./Welcome";
 import Messages from "./Messages";
 import Profile from "./Profile";
+import Map from "./Map";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,6 +32,8 @@ const Home = () => {
             iconName = "home";
           } else if (route.name === "Messages") {
             iconName = "chat";
+          } else if (route.name === "Map") {
+            iconName = "location-pin";
           } else if (route.name === "Profile") {
             iconName = "user";
             return <AntDesign name={iconName} size={30} color={color} />;
@@ -40,6 +43,7 @@ const Home = () => {
       })}
     >
       <Tab.Screen name="Welcome" component={Welcome} />
+      <Tab.Screen name="Map" component={Map} />
       <Tab.Screen name="Messages" component={Messages} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>

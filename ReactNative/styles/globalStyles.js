@@ -113,4 +113,17 @@ export const global = StyleSheet.create({
     justifyContent: "center",
     color: "gray",
   },
+  // Welcome Page
+  welcomeContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+  sportsCategories: {
+    margin: 22,
+    borderWidth: 1,
+    borderColor: "red",
+    width: 160,
+    height: 160,
+    borderRadius: 20,
+  },
 });

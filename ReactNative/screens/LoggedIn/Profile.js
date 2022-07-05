@@ -4,7 +4,14 @@ import { UserContext } from "../../contexts/UserContext";
 
 const Profile = () => {
   const { user } = useContext(UserContext);
-  return <Text>Profile</Text>;
+  const info = JSON.stringify(user);
+  return (
+    <>
+      <Text>{user.info.name}</Text>
+      <Text>{user.info.email}</Text>
+      <Text>{user.info.sports}</Text>
+    </>
+  );
 };
 
 export default Profile;

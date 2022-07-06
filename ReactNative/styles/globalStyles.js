@@ -120,10 +120,17 @@ export const global = StyleSheet.create({
   },
   sportsCategories: {
     margin: 22,
+    marginBottom: 10,
     borderWidth: 1,
     borderColor: "red",
     width: 160,
     height: 160,
     borderRadius: 20,
+    alignItems: "center",
+    backgroundColor: "#ddd",
+    justifyContent: "center",
+  },
+  sportsContainer: {
+    alignItems: "center",
   },
 });

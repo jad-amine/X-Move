@@ -5,6 +5,7 @@ import React from "react";
 import Main from "./Main";
 import Ball from "./Sports/Ball";
 import Cycling from "./Sports/Cycling";
+import Entertainments from "./Sports/Entertainments";
 import Fitness from "./Sports/Fitness";
 import Water from "./Sports/Water";
 import Winter from "./Sports/Winter";
@@ -43,6 +44,11 @@ const Welcome = () => {
         options={{ headerTitle: "Ball Sports", headerTitleAlign: "center" }}
         name="Ball"
         component={Ball}
+      />
+      <Stack.Screen
+        options={{ headerTitle: "Entertainments", headerTitleAlign: "center" }}
+        name="Entertainments"
+        component={Entertainments}
       />
     </Stack.Navigator>
   );

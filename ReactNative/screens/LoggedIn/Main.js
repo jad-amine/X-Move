@@ -6,7 +6,7 @@ import { global } from "../../styles/globalStyles";
 const Main = () => {
   return (
     <ScrollView>
-      <View>
+      <View style={{ marginBottom: 70 }}>
         <View style={global.welcomeContainer}>
           <SportContainer
             name="Fitness"
@@ -26,8 +26,8 @@ const Main = () => {
             library="FontAwesome5"
           />
           <SportContainer
-            name="Flexibility"
-            icon="yoga"
+            name="Entertainments"
+            icon=""
             library="MaterialCommunityIcons"
           />
         </View>

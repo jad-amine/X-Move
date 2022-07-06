@@ -133,4 +133,21 @@ export const global = StyleSheet.create({
   sportsContainer: {
     alignItems: "center",
   },
+  // Sports Screens
+  sportLayout: {
+    marginLeft: 30,
+    marginTop: 50,
+    width: 300,
+    height: 50,
+    borderRadius: 10,
+    backgroundColor: "#eee",
+    flexDirection: "row",
+    paddingLeft: 20,
+    alignItems: "center",
+    borderBottomWidth: 1,
+    borderBottomColor: "gray",
+  },
+  sportType: {
+    fontSize: 18,
+  },
 });

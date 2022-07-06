@@ -5,6 +5,7 @@ import React from "react";
 import Main from "./Main";
 import Cycling from "./Sports/Cycling";
 import Fitness from "./Sports/Fitness";
+import Water from "./Sports/Water";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +26,11 @@ const Welcome = () => {
         options={{ headerTitleAlign: "center" }}
         name="Cycling"
         component={Cycling}
+      />
+      <Stack.Screen
+        options={{ headerTitle: "Water Sports", headerTitleAlign: "center" }}
+        name="Water"
+        component={Water}
       />
     </Stack.Navigator>
   );

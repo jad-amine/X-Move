@@ -8,24 +8,24 @@ const Fitness = () => {
   return (
     <ScrollView>
       <TouchableOpacity style={global.sportLayout}>
-        <FontAwesome5 name="running" size={24} color="black" />
-        <Text style={{ marginLeft: 30 }}>Run</Text>
+        <FontAwesome5 name="running" size={30} color="black" />
+        <Text style={global.iconGap}>Run</Text>
       </TouchableOpacity>
       <TouchableOpacity style={global.sportLayout}>
-        <FontAwesome5 name="hiking" size={24} color="black" />
-        <Text style={{ marginLeft: 30 }}>Hike</Text>
+        <FontAwesome5 name="hiking" size={30} color="black" />
+        <Text style={global.iconGap}>Hike</Text>
       </TouchableOpacity>
       <TouchableOpacity style={global.sportLayout}>
-        <FontAwesome5 name="dumbbell" size={24} color="black" />
-        <Text style={{ marginLeft: 30 }}>Gym</Text>
+        <FontAwesome5 name="dumbbell" size={30} color="black" />
+        <Text style={global.iconGap}>Gym</Text>
       </TouchableOpacity>
       <TouchableOpacity style={global.sportLayout}>
-        <MaterialCommunityIcons name="dance-ballroom" size={24} color="black" />
-        <Text style={{ marginLeft: 30 }}>Dance</Text>
+        <MaterialCommunityIcons name="dance-ballroom" size={30} color="black" />
+        <Text style={global.iconGap}>Dance</Text>
       </TouchableOpacity>
       <TouchableOpacity style={global.sportLayout}>
-        <MaterialCommunityIcons name="yoga" size={24} color="black" />
-        <Text style={{ marginLeft: 30 }}>Yoga</Text>
+        <MaterialCommunityIcons name="yoga" size={30} color="black" />
+        <Text style={global.iconGap}>Yoga</Text>
       </TouchableOpacity>
     </ScrollView>
   );

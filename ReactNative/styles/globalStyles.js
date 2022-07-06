@@ -154,4 +154,7 @@ export const global = StyleSheet.create({
     width: 25,
     height: 25,
   },
+  iconGap: {
+    marginLeft: 30,
+  },
 });

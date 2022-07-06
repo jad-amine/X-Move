@@ -8,20 +8,20 @@ const Winter = () => {
   return (
     <ScrollView style={{ marginBottom: 50 }}>
       <TouchableOpacity style={global.sportLayout}>
-        <FontAwesome5 name="skiing" size={24} color="black" />
-        <Text style={{ marginLeft: 30 }}>Ski</Text>
+        <FontAwesome5 name="skiing" size={30} color="black" />
+        <Text style={global.iconGap}>Ski</Text>
       </TouchableOpacity>
       <TouchableOpacity style={global.sportLayout}>
-        <FontAwesome5 name="snowboarding" size={24} color="black" />
-        <Text style={{ marginLeft: 30 }}>Snowboard</Text>
+        <FontAwesome5 name="snowboarding" size={30} color="black" />
+        <Text style={global.iconGap}>Snowboard</Text>
       </TouchableOpacity>
       <TouchableOpacity style={global.sportLayout}>
-        <FontAwesome5 name="skating" size={24} color="black" />
-        <Text style={{ marginLeft: 30 }}>Ice-Skate</Text>
+        <FontAwesome5 name="skating" size={30} color="black" />
+        <Text style={global.iconGap}>Ice-Skate</Text>
       </TouchableOpacity>
       <TouchableOpacity style={global.sportLayout}>
-        <MaterialCommunityIcons name="snowmobile" size={24} color="black" />
-        <Text style={{ marginLeft: 30 }}>Ski-Doo</Text>
+        <MaterialCommunityIcons name="snowmobile" size={30} color="black" />
+        <Text style={global.iconGap}>Ski-Doo</Text>
       </TouchableOpacity>
     </ScrollView>
   );

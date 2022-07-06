@@ -13,28 +13,28 @@ const Winter = () => {
   return (
     <ScrollView style={{ marginBottom: 50 }}>
       <TouchableOpacity style={global.sportLayout}>
-        <Ionicons name="football" size={24} color="black" />
-        <Text style={{ marginLeft: 30 }}>Football</Text>
+        <Ionicons name="football" size={30} color="black" />
+        <Text style={global.iconGap}>Football</Text>
       </TouchableOpacity>
       <TouchableOpacity style={global.sportLayout}>
-        <Ionicons name="basketball" size={24} color="black" />
-        <Text style={{ marginLeft: 30 }}>Basketball</Text>
+        <Ionicons name="basketball" size={30} color="black" />
+        <Text style={global.iconGap}>Basketball</Text>
       </TouchableOpacity>
       <TouchableOpacity style={global.sportLayout}>
-        <FontAwesome5 name="volleyball-ball" size={24} color="black" />
-        <Text style={{ marginLeft: 30 }}>Volleyball</Text>
+        <FontAwesome5 name="volleyball-ball" size={30} color="black" />
+        <Text style={global.iconGap}>Volleyball</Text>
       </TouchableOpacity>
       <TouchableOpacity style={global.sportLayout}>
-        <Ionicons name="american-football" size={24} color="black" />
-        <Text style={{ marginLeft: 30 }}>Rugby</Text>
+        <Ionicons name="american-football" size={30} color="black" />
+        <Text style={global.iconGap}>Rugby</Text>
       </TouchableOpacity>
       <TouchableOpacity style={global.sportLayout}>
-        <Image source={PingPong} style={{ width: 25, height: 25 }} />
-        <Text style={{ marginLeft: 30 }}>Ping-Pong</Text>
+        <Image source={PingPong} style={{ width: 30, height: 30 }} />
+        <Text style={global.iconGap}>Ping-Pong</Text>
       </TouchableOpacity>
       <TouchableOpacity style={global.sportLayout}>
         <Image source={Tennis} style={global.sportIcon} />
-        <Text style={{ marginLeft: 30 }}>Tennis</Text>
+        <Text style={global.iconGap}>Tennis</Text>
       </TouchableOpacity>
     </ScrollView>
   );

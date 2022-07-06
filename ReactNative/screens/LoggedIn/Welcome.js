@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // Pages
 import React from "react";
 import Main from "./Main";
+import Cycling from "./Sports/Cycling";
 import Fitness from "./Sports/Fitness";
 
 const Stack = createNativeStackNavigator();
@@ -19,6 +20,11 @@ const Welcome = () => {
         options={{ headerTitleAlign: "center" }}
         name="Fitness"
         component={Fitness}
+      />
+      <Stack.Screen
+        options={{ headerTitleAlign: "center" }}
+        name="Cycling"
+        component={Cycling}
       />
     </Stack.Navigator>
   );

@@ -1,23 +1,22 @@
 // Utilities
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+// Pages
 import React from "react";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { global } from "../../styles/globalStyles";
-import SportContainer from "../../components/SportContainer";
+import Main from "./Main";
+import Sport from "./Sport";
+
+const Stack = createNativeStackNavigator();
 
 const Welcome = () => {
   return (
-    <ScrollView>
-      <View>
-        <View style={global.welcomeContainer}>
-          <SportContainer icon="dumbbell" library="MaterialCommunityIcons" />
-          <SportContainer icon="bicycle" library="FontAwesome" />
-          <SportContainer icon="surfing" library="MaterialCommunityIcons" />
-          <SportContainer icon="skiing" library="FontAwesome5" />
-          <SportContainer icon="baseball-ball" library="FontAwesome5" />
-          <SportContainer icon="yoga" library="MaterialCommunityIcons" />
-        </View>
-      </View>
-    </ScrollView>
+    <Stack.Navigator screenOptions={{ headerBackTitleVisible: false }}>
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Main"
+        component={Main}
+      />
+      <Stack.Screen name="Sport" component={Sport} />
+    </Stack.Navigator>
   );
 };
 

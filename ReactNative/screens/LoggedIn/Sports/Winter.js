@@ -1,10 +1,8 @@
 import React from "react";
-import { View, Text, TouchableOpacity, ScrollView, Image } from "react-native";
+import { Text, TouchableOpacity, ScrollView, Image } from "react-native";
 import { global } from "../../../styles/globalStyles";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
-import diving from "../../../assets/Diving.png";
 
 const Winter = () => {
   return (
@@ -19,7 +17,7 @@ const Winter = () => {
       </TouchableOpacity>
       <TouchableOpacity style={global.sportLayout}>
         <FontAwesome5 name="skating" size={24} color="black" />
-        <Text style={{ marginLeft: 30 }}>Ice-Skating</Text>
+        <Text style={{ marginLeft: 30 }}>Ice-Skate</Text>
       </TouchableOpacity>
       <TouchableOpacity style={global.sportLayout}>
         <MaterialCommunityIcons name="snowmobile" size={24} color="black" />

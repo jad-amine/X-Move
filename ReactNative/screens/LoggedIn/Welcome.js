@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // Pages
 import React from "react";
 import Main from "./Main";
+import Ball from "./Sports/Ball";
 import Cycling from "./Sports/Cycling";
 import Fitness from "./Sports/Fitness";
 import Water from "./Sports/Water";
@@ -37,6 +38,11 @@ const Welcome = () => {
         options={{ headerTitle: "Winter Sports", headerTitleAlign: "center" }}
         name="Winter"
         component={Winter}
+      />
+      <Stack.Screen
+        options={{ headerTitle: "Ball Sports", headerTitleAlign: "center" }}
+        name="Ball"
+        component={Ball}
       />
     </Stack.Navigator>
   );

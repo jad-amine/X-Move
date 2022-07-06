@@ -150,4 +150,8 @@ export const global = StyleSheet.create({
   sportType: {
     fontSize: 18,
   },
+  sportIcon: {
+    width: 25,
+    height: 25,
+  },
 });

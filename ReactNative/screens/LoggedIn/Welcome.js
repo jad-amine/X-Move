@@ -52,7 +52,7 @@ const Welcome = () => {
         component={Entertainments}
       />
       <Stack.Screen
-        options={{ headerTitle: "Sport Users", headerTitleAlign: "center" }}
+        options={{ headerTitle: "Players", headerTitleAlign: "center" }}
         name="SportUsers"
         component={SportUsers}
       />

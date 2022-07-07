@@ -157,4 +157,11 @@ export const global = StyleSheet.create({
   iconGap: {
     marginLeft: 30,
   },
+  // Players Page
+  playerCard: {
+    margin: 20,
+    backgroundColor: "#ddd",
+    borderRadius: 20,
+    padding: 10,
+  },
 });

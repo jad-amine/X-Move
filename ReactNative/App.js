@@ -26,14 +26,17 @@ export default function App() {
         if (!token) {
           return;
         }
-        const response = await fetch("http://10.0.2.2:4000/api/users/getData", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ mission: "Auth User" }),
-        });
+        const response = await fetch(
+          "http://10.0.2.2:4000/api/users/getUserData",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ mission: "Auth User" }),
+          }
+        );
         const json = await response.json();
         if (json.status !== "Verified") {
           setUser(null);

@@ -1,6 +1,6 @@
 // Utilities
 import React, { useContext, useState } from "react";
-import loginImage from "../assets/loginImage.png";
+import loginImage from "../../assets/loginImage.png";
 import {
   Alert,
   ImageBackground,
@@ -12,36 +12,31 @@ import {
   View,
 } from "react-native";
 import * as SecureStore from "expo-secure-store";
-import { global } from "../styles/globalStyles";
-import { UserContext } from "../contexts/UserContext";
+import { global } from "../../styles/globalStyles";
+import { UserContext } from "../../contexts/UserContext";
 
-const Register = ({ navigation }) => {
+const Login = ({ navigation }) => {
   const { setUser } = useContext(UserContext);
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = async () => {
+  const handleLogin = async () => {
     try {
-      if (!name || !email || !password) {
-        Alert.alert("Please add all fields !");
-        return;
-      }
-      const response = await fetch("http://10.0.2.2:4000/api/users/register", {
+      const response = await fetch("http://10.0.2.2:4000/api/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name: name, email: email, password: password }),
+        body: JSON.stringify({ email: email, password: password }),
       });
       const json = await response.json();
-      if (json.message === "User already exists !") {
-        Alert.alert(json.message, "Choose another email address !");
+      if (json.message === "Invalid Credentials") {
+        Alert.alert(json.message, "Incorrect email or password !");
         return;
       }
       await SecureStore.setItemAsync("token", json.token);
       await setUser({ info: json.user, token: json.token });
-      // navigation.navigate("Landing Page");
+      navigation.navigate("Landing Page");
     } catch (err) {
       console.log(err.message, "Something wrong with the request");
     }
@@ -59,20 +54,13 @@ const Register = ({ navigation }) => {
           resizeMode="cover"
           style={global.loginBackgroundImage}
         >
-          <Text style={global.registerHead}>Register</Text>
-          <Text style={global.loginLabel}>Name:</Text>
-          <TextInput
-            onChangeText={(val) => {
-              setName(val);
-            }}
-            style={global.registerInput}
-          />
+          <Text style={global.loginHead}>Login</Text>
           <Text style={global.loginLabel}>Email:</Text>
           <TextInput
             onChangeText={(val) => {
               setEmail(val);
             }}
-            style={global.registerInput}
+            style={global.loginInput}
           />
           <Text style={global.loginLabel}>Password:</Text>
           <TextInput
@@ -80,21 +68,21 @@ const Register = ({ navigation }) => {
             onChangeText={(val) => {
               setPassword(val);
             }}
-            style={global.registerInput}
+            style={global.loginInput}
           />
-          <TouchableOpacity onPress={handleRegister} style={global.login}>
-            <Text style={[global.loginText, { color: "white" }]}>Register</Text>
+          <TouchableOpacity onPress={handleLogin} style={global.login}>
+            <Text style={[global.loginText, { color: "white" }]}>LOG IN</Text>
           </TouchableOpacity>
           <Text style={global.alreadyUser}>
-            Alreday have an account?
+            Don't have an account?
             <Text
               onPress={() => {
-                navigation.navigate("Login");
+                navigation.navigate("Register");
               }}
               style={{ color: "#FF4D00" }}
             >
               {"  "}
-              Sign In
+              Sign Up
             </Text>
           </Text>
         </ImageBackground>
@@ -103,4 +91,4 @@ const Register = ({ navigation }) => {
   );
 };
 
-export default Register;
+export default Login;

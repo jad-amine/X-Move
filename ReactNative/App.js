@@ -4,13 +4,14 @@ import * as SecureStore from "expo-secure-store";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { UserContext } from "./contexts/UserContext";
-import { Text } from "react-native";
 import { useEffect, useState } from "react";
 
 // Screens
-import Login from "./screens/Login";
-import LandingPage from "./screens/LandingPage";
-import Register from "./screens/Register";
+import Login from "./screens/NotLoggedIN/Login";
+import LandingPage from "./screens/NotLoggedIN/LandingPage";
+import Register from "./screens/NotLoggedIN/Register";
+import DrawerNavigator from "./screens/LoggedIn/DrawerNavigator";
+import { Text } from "react-native";
 import Home from "./screens/LoggedIn/Home";
 
 const stack = createNativeStackNavigator();
@@ -82,7 +83,7 @@ export default function App() {
     return (
       <UserContext.Provider value={{ user, setUser }}>
         <NavigationContainer>
-          <Home />
+          <DrawerNavigator />
         </NavigationContainer>
       </UserContext.Provider>
     );

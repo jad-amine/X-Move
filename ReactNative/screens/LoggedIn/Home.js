@@ -18,11 +18,12 @@ const Home = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
+        headerShown: false,
         headerTitleAlign: "center",
         headerStyle: { backgroundColor: "#FF4D00" },
         tabBarStyle: { position: "absolute" },
         tabBarActiveBackgroundColor: "#eee",
-        tabBarShowLabel: false,
+        // tabBarShowLabel: false,
         headerTitle: "X-move",
         tabBarActiveTintColor: "#FF4D00",
         tabBarInactiveTintColor: "gray",

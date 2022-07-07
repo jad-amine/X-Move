@@ -32,6 +32,7 @@ const SportUsers = ({ route }) => {
 
   return (
     <View>
+      <Text> {sport} Players </Text>
       {users &&
         users.map((user, index) => (
           <View key={index} style={global.playerCard}>

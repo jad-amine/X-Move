@@ -6,7 +6,6 @@ import PingPong from "../../../assets/PingPong.png";
 import Tennis from "../../../assets/Tennis.png";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import SportUsers from "./SportUsers";
 
 const Winter = () => {
   const navigation = useNavigation();

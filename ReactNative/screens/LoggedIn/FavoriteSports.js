@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, ScrollView, TouchableOpacity, Image, View } from "react-native";
 import { global } from "../../styles/globalStyles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -10,21 +10,28 @@ import Tennis from "../../assets/Tennis.png";
 import diving from "../../assets/Diving.png";
 
 const FavoriteSports = () => {
-  const [ball, setBall] = useState(false);
+  const [ball, setBall] = useState(true);
   const [water, setWater] = useState(false);
   const [cycling, setCycling] = useState(false);
   const [fitness, setFitness] = useState(false);
   const [winter, setWinter] = useState(false);
   const [entertainments, setEntertainments] = useState(false);
+
   return (
     <ScrollView>
+      {/* <MaterialCommunityIcons name="arrow-down-drop-circle-outline" size={24} color="black" /> */}
+      {/* ==========Ball Sports========== */}
       <TouchableOpacity
         onPress={() => setBall(!ball)}
         style={global.sportSection}
       >
         <Text style={global.sportSectionText}>Ball Sports</Text>
         <MaterialCommunityIcons
-          name="arrow-up-drop-circle-outline"
+          name={
+            ball
+              ? "arrow-up-drop-circle-outline"
+              : "arrow-down-drop-circle-outline"
+          }
           size={24}
           color="black"
         />
@@ -76,7 +83,22 @@ const FavoriteSports = () => {
         </>
       )}
 
-      <Text style={global.sportSection}>Water Sports</Text>
+      {/* ===========Water Sports=========== */}
+      <TouchableOpacity
+        onPress={() => setWater(!water)}
+        style={global.sportSection}
+      >
+        <Text style={global.sportSectionText}>Water Sports</Text>
+        <MaterialCommunityIcons
+          name={
+            water
+              ? "arrow-up-drop-circle-outline"
+              : "arrow-down-drop-circle-outline"
+          }
+          size={24}
+          color="black"
+        />
+      </TouchableOpacity>
       {water && (
         <>
           <TouchableOpacity
@@ -128,7 +150,22 @@ const FavoriteSports = () => {
         </>
       )}
 
-      <Text style={global.sportSection}>Cycling</Text>
+      {/* ==========Cycling Sports========== */}
+      <TouchableOpacity
+        onPress={() => setCycling(!cycling)}
+        style={global.sportSection}
+      >
+        <Text style={global.sportSectionText}>Cycling Sports</Text>
+        <MaterialCommunityIcons
+          name={
+            cycling
+              ? "arrow-up-drop-circle-outline"
+              : "arrow-down-drop-circle-outline"
+          }
+          size={24}
+          color="black"
+        />
+      </TouchableOpacity>
       {cycling && (
         <>
           <TouchableOpacity
@@ -170,7 +207,22 @@ const FavoriteSports = () => {
         </>
       )}
 
-      <Text style={global.sportSection}>Fitness Sports</Text>
+      {/* ==========Fitness Sports========== */}
+      <TouchableOpacity
+        onPress={() => setFitness(!fitness)}
+        style={global.sportSection}
+      >
+        <Text style={global.sportSectionText}>Fitness Sports</Text>
+        <MaterialCommunityIcons
+          name={
+            fitness
+              ? "arrow-up-drop-circle-outline"
+              : "arrow-down-drop-circle-outline"
+          }
+          size={24}
+          color="black"
+        />
+      </TouchableOpacity>
       {fitness && (
         <>
           <TouchableOpacity
@@ -215,7 +267,22 @@ const FavoriteSports = () => {
         </>
       )}
 
-      <Text style={global.sportSection}>Winter Sports</Text>
+      {/* ==========Winter Sports========== */}
+      <TouchableOpacity
+        onPress={() => setWinter(!winter)}
+        style={global.sportSection}
+      >
+        <Text style={global.sportSectionText}>Winter Sports</Text>
+        <MaterialCommunityIcons
+          name={
+            winter
+              ? "arrow-up-drop-circle-outline"
+              : "arrow-down-drop-circle-outline"
+          }
+          size={24}
+          color="black"
+        />
+      </TouchableOpacity>
       {winter && (
         <>
           <TouchableOpacity
@@ -249,7 +316,22 @@ const FavoriteSports = () => {
         </>
       )}
 
-      <Text style={global.sportSection}>Entertainments Sports</Text>
+      {/* ==========Entertainments Sports========== */}
+      <TouchableOpacity
+        onPress={() => setEntertainments(!entertainments)}
+        style={global.sportSection}
+      >
+        <Text style={global.sportSectionText}>Entertainments Sports</Text>
+        <MaterialCommunityIcons
+          name={
+            entertainments
+              ? "arrow-up-drop-circle-outline"
+              : "arrow-down-drop-circle-outline"
+          }
+          size={24}
+          color="black"
+        />
+      </TouchableOpacity>
       {entertainments && (
         <>
           <TouchableOpacity

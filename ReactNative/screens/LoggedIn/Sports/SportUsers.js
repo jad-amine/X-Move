@@ -28,7 +28,7 @@ const SportUsers = ({ route }) => {
     };
     fetchUsers();
     console.log("hi");
-  }, [sport]);
+  }, []);
 
   return (
     <View>

@@ -164,4 +164,19 @@ export const global = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
   },
+
+  // Profile Screen
+  profilePic: {
+    height: 100,
+    width: 100,
+    borderRadius: 50,
+    backgroundColor: "#ddd",
+    alignItems: "flex-end",
+    justifyContent: "flex-end",
+    margin: 10,
+  },
+  profileHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
 });

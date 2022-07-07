@@ -1,7 +1,10 @@
 import React, { useContext } from "react";
-import { Button, Text, View } from "react-native";
+import { Button, Image, Text, TouchableOpacity, View } from "react-native";
 import { UserContext } from "../../contexts/UserContext";
 import * as ImagePicker from "expo-image-picker";
+import { Entypo } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
+import { global } from "../../styles/globalStyles";
 
 const Profile = () => {
   const { user } = useContext(UserContext);
@@ -16,8 +19,21 @@ const Profile = () => {
     });
   };
   return (
-    <View>
-      <Button title="Pick an image from camera roll" onPress={pickImage} />
+    <View style={global.profileHeader}>
+      <TouchableOpacity style={global.profilePic} onPress={pickImage}>
+        <FontAwesome
+          style={{ alignSelf: "center" }}
+          name="user"
+          size={50}
+          color="gray"
+        />
+        <Entypo
+          style={{ padding: 5, borderRadius: 20 }}
+          name="camera"
+          size={24}
+          color="black"
+        />
+      </TouchableOpacity>
       <Text>{user.info.name}</Text>
       <Text>{user.info.email}</Text>
       <Text>{user.info.sports}</Text>

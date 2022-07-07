@@ -50,10 +50,37 @@ const register = async (req, res) => {
       process.env.TOKEN_SECRET
     );
     console.log(user, "signed up");
-    res.status(200).json(token);
+    res.status(200).json({
+      token: token,
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        type: user.admin,
+        sports: user.sports,
+        friends: user.friends,
+      },
+    });
   } catch (err) {
     console.log(err.message);
-    res.status(401).json({ error: err.message });
+    res
+      .status(401)
+      .json({ error: err.message, message: "User already exists !" });
+  }
+};
+
+// Fetch Users with similar sport interest
+const fetchSimilarUsers = async (req, res) => {
+  // res.json({ sport: sport, name: req.user.name });
+  try {
+    const sport = req.params.sport;
+    const users = await User.find({ sports: sport });
+    if (!users) {
+      return res.json("No users found");
+    }
+    return res.json(users);
+  } catch (err) {
+    console.log("Wrong query", err);
   }
 };
 
@@ -91,4 +118,4 @@ const removeSport = async (req, res) => {
   res.json(user);
 };
 
-module.exports = { addSport, removeSport, login, register };
+module.exports = { addSport, removeSport, login, register, fetchSimilarUsers };

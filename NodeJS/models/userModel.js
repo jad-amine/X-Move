@@ -17,11 +17,11 @@ const userSchema = new mongoose.Schema(
     },
     age: {
       type: Number,
-      required: true,
+      // required: true,
     },
     gender: {
       type: String,
-      required: true,
+      // required: true,
     },
     admin: {
       type: Number,

@@ -6,6 +6,7 @@ const {
   removeSport,
   login,
   register,
+  fetchSimilarUsers,
 } = require("../controllers/usersController");
 
 const router = express.Router();
@@ -17,7 +18,10 @@ router.post("/login", login);
 router.post("/register", register);
 
 // Auth user on App Launch
-router.post("/getData", authUser);
+router.post("/getUserData", authUser);
+
+// Get users with similar sport interest
+router.get("/getSimilarUsers/:sport", authUser, fetchSimilarUsers);
 
 // Add Sport
 router.post("/addSport", authUser, addSport);

@@ -179,4 +179,29 @@ export const global = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  // Favorite Sports Drawer Screen
+  sportSection: {
+    marginHorizontal: 30,
+    marginTop: 20,
+    marginBottom: 20,
+    padding: 10,
+    borderBottomColor: "#ccc",
+    borderBottomWidth: 1,
+    justifyContent: "space-between",
+    flexDirection: "row",
+  },
+  sportSectionText: {
+    fontWeight: "bold",
+    fontSize: 22,
+  },
+  sportTab: {
+    marginLeft: 30,
+    marginTop: 8,
+    width: 300,
+    height: 50,
+    borderRadius: 10,
+    flexDirection: "row",
+    paddingLeft: 20,
+    alignItems: "center",
+  },
 });

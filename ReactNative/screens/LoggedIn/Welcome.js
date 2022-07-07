@@ -7,6 +7,7 @@ import Ball from "./Sports/Ball";
 import Cycling from "./Sports/Cycling";
 import Entertainments from "./Sports/Entertainments";
 import Fitness from "./Sports/Fitness";
+import SportUsers from "./Sports/SportUsers";
 import Water from "./Sports/Water";
 import Winter from "./Sports/Winter";
 
@@ -49,6 +50,11 @@ const Welcome = () => {
         options={{ headerTitle: "Entertainments", headerTitleAlign: "center" }}
         name="Entertainments"
         component={Entertainments}
+      />
+      <Stack.Screen
+        options={{ headerTitle: "Sport Users", headerTitleAlign: "center" }}
+        name="SportUsers"
+        component={SportUsers}
       />
     </Stack.Navigator>
   );

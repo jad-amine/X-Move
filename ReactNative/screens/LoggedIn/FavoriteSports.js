@@ -1,25 +1,87 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Text, ScrollView, TouchableOpacity, Image, View } from "react-native";
 import { global } from "../../styles/globalStyles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
-import PingPong from "../../assets/PingPong.png";
-import Tennis from "../../assets/Tennis.png";
-import diving from "../../assets/Diving.png";
+
+import { AntDesign } from "@expo/vector-icons";
+import { UserContext } from "../../contexts/UserContext";
+import FavoriteSport from "../../components/FavoriteSport";
 
 const FavoriteSports = () => {
-  const [ball, setBall] = useState(true);
+  const { user, setUser } = useContext(UserContext);
+  const [fitness, setFitness] = useState(true);
+  const [ball, setBall] = useState(false);
   const [water, setWater] = useState(false);
   const [cycling, setCycling] = useState(false);
-  const [fitness, setFitness] = useState(false);
   const [winter, setWinter] = useState(false);
   const [entertainments, setEntertainments] = useState(false);
 
   return (
     <ScrollView>
-      {/* <MaterialCommunityIcons name="arrow-down-drop-circle-outline" size={24} color="black" /> */}
+      <Text>{JSON.stringify(user.info)}</Text>
+      {/* ==========Fitness Sports========== */}
+      <TouchableOpacity
+        onPress={() => setFitness(!fitness)}
+        style={global.sportSection}
+      >
+        <Text style={global.sportSectionText}>Fitness Sports</Text>
+        <MaterialCommunityIcons
+          name={
+            fitness
+              ? "arrow-up-drop-circle-outline"
+              : "arrow-down-drop-circle-outline"
+          }
+          size={30}
+          color="black"
+        />
+      </TouchableOpacity>
+      {fitness && (
+        <>
+          <FavoriteSport
+            name="Run"
+            iconName="running"
+            iconLibrary="FontAwesome5"
+          />
+          <FavoriteSport
+            name="Hike"
+            iconName="hiking"
+            iconLibrary="FontAwesome5"
+          />
+          <FavoriteSport
+            name="Gym"
+            iconName="dumbbell"
+            iconLibrary="FontAwesome5"
+          />
+          <FavoriteSport
+            name="Dance"
+            iconName="dance-ballroom"
+            iconLibrary="MaterialCommunityIcons"
+          />
+
+          <TouchableOpacity
+            onPress={() => navigateToSport("Gym")}
+            style={global.sportTab}
+          >
+            <MaterialCommunityIcons
+              name="dance-ballroom"
+              size={30}
+              color="black"
+            />
+            <Text style={global.iconGap}>Dance</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigateToSport("Yoga")}
+            style={global.sportTab}
+          >
+            <MaterialCommunityIcons name="yoga" size={30} color="black" />
+            <Text style={global.iconGap}>Yoga</Text>
+          </TouchableOpacity>
+        </>
+      )}
+
       {/* ==========Ball Sports========== */}
       <TouchableOpacity
         onPress={() => setBall(!ball)}
@@ -32,54 +94,35 @@ const FavoriteSports = () => {
               ? "arrow-up-drop-circle-outline"
               : "arrow-down-drop-circle-outline"
           }
-          size={24}
+          size={30}
           color="black"
         />
       </TouchableOpacity>
       {ball && (
         <>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Football")}
-            style={global.sportTab}
-          >
-            <Ionicons name="football" size={30} color="black" />
-            <Text style={global.iconGap}>Football</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Basketball")}
-            style={global.sportTab}
-          >
-            <Ionicons name="basketball" size={30} color="black" />
-            <Text style={global.iconGap}>Basketball</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Volleyball")}
-            style={global.sportTab}
-          >
-            <FontAwesome5 name="volleyball-ball" size={30} color="black" />
-            <Text style={global.iconGap}>Volleyball</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Rugby")}
-            style={global.sportTab}
-          >
-            <Ionicons name="american-football" size={30} color="black" />
-            <Text style={global.iconGap}>Rugby</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Ping-Pong")}
-            style={global.sportTab}
-          >
-            <Image source={PingPong} style={{ width: 30, height: 30 }} />
-            <Text style={global.iconGap}>Ping-Pong</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Tennis")}
-            style={global.sportTab}
-          >
-            <Image source={Tennis} style={global.sportIcon} />
-            <Text style={global.iconGap}>Tennis</Text>
-          </TouchableOpacity>
+          <FavoriteSport
+            name="Football"
+            iconName="football"
+            iconLibrary="Ionicons"
+          />
+          <FavoriteSport
+            name="Basketball"
+            iconName="basketball"
+            iconLibrary="Ionicons"
+          />
+          <FavoriteSport
+            name="Volleyball"
+            iconName="volleyball-ball"
+            iconLibrary="FontAwesome5"
+          />
+          <FavoriteSport
+            name="Rugby"
+            iconName="american-football"
+            iconLibrary="Ionicons"
+          />
+          <FavoriteSport name="Ping-Pong" image="PingPong" />
+
+          <FavoriteSport name="Tennis" image="Tennis" />
         </>
       )}
 
@@ -95,7 +138,7 @@ const FavoriteSports = () => {
               ? "arrow-up-drop-circle-outline"
               : "arrow-down-drop-circle-outline"
           }
-          size={24}
+          size={30}
           color="black"
         />
       </TouchableOpacity>
@@ -126,13 +169,9 @@ const FavoriteSports = () => {
             />
             <Text style={global.iconGap}>KiteSurf</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Diving")}
-            style={global.sportTab}
-          >
-            <Image style={{ width: 30, height: 27 }} source={diving} />
-            <Text style={global.iconGap}>Scuba-diving</Text>
-          </TouchableOpacity>
+
+          <FavoriteSport name="Scuba-diving" image="diving" />
+
           <TouchableOpacity
             onPress={() => navigateToSport("Sail")}
             style={global.sportTab}
@@ -203,66 +242,6 @@ const FavoriteSports = () => {
               color="black"
             />
             <Text style={global.iconGap}>Rollerskate</Text>
-          </TouchableOpacity>
-        </>
-      )}
-
-      {/* ==========Fitness Sports========== */}
-      <TouchableOpacity
-        onPress={() => setFitness(!fitness)}
-        style={global.sportSection}
-      >
-        <Text style={global.sportSectionText}>Fitness Sports</Text>
-        <MaterialCommunityIcons
-          name={
-            fitness
-              ? "arrow-up-drop-circle-outline"
-              : "arrow-down-drop-circle-outline"
-          }
-          size={24}
-          color="black"
-        />
-      </TouchableOpacity>
-      {fitness && (
-        <>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Run")}
-            style={global.sportTab}
-          >
-            <FontAwesome5 name="running" size={30} color="black" />
-            <Text style={global.iconGap}>Run</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Hike")}
-            style={global.sportTab}
-          >
-            <FontAwesome5 name="hiking" size={30} color="black" />
-            <Text style={global.iconGap}>Hike</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Gym")}
-            style={global.sportTab}
-          >
-            <FontAwesome5 name="dumbbell" size={30} color="black" />
-            <Text style={global.iconGap}>Gym</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Gym")}
-            style={global.sportTab}
-          >
-            <MaterialCommunityIcons
-              name="dance-ballroom"
-              size={30}
-              color="black"
-            />
-            <Text style={global.iconGap}>Dance</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Yoga")}
-            style={global.sportTab}
-          >
-            <MaterialCommunityIcons name="yoga" size={30} color="black" />
-            <Text style={global.iconGap}>Yoga</Text>
           </TouchableOpacity>
         </>
       )}

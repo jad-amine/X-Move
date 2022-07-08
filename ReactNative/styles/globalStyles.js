@@ -203,5 +203,6 @@ export const global = StyleSheet.create({
     flexDirection: "row",
     paddingLeft: 20,
     alignItems: "center",
+    justifyContent: "space-between",
   },
 });

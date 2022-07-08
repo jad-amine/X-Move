@@ -27,11 +27,11 @@ const FavoriteSport = ({ name, iconName, iconLibrary, image }) => {
           <Image source={Tennis} style={{ width: 30, height: 30 }} />
         ) : image === "diving" ? (
           <Image source={diving} style={{ width: 30, height: 30 }} />
-        ) : (
-          (iconLibrary = "MaterialCommunityIcons" ? (
-            <MaterialCommunityIcons name={iconName} size={30} color="black" />
-          ) : null)
-        )}
+        ) : iconLibrary === "MaterialCommunityIcons" ? (
+          <MaterialCommunityIcons name={iconName} size={30} color="black" />
+        ) : iconLibrary === "MaterialIcons" ? (
+          <MaterialIcons name={iconName} size={30} color="black" />
+        ) : null}
         <Text style={global.iconGap}>{name}</Text>
       </View>
       <AntDesign name="heart" size={24} color="red" />

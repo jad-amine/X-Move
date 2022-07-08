@@ -60,25 +60,11 @@ const FavoriteSports = () => {
             iconName="dance-ballroom"
             iconLibrary="MaterialCommunityIcons"
           />
-
-          <TouchableOpacity
-            onPress={() => navigateToSport("Gym")}
-            style={global.sportTab}
-          >
-            <MaterialCommunityIcons
-              name="dance-ballroom"
-              size={30}
-              color="black"
-            />
-            <Text style={global.iconGap}>Dance</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Yoga")}
-            style={global.sportTab}
-          >
-            <MaterialCommunityIcons name="yoga" size={30} color="black" />
-            <Text style={global.iconGap}>Yoga</Text>
-          </TouchableOpacity>
+          <FavoriteSport
+            name="Yoga"
+            iconName="yoga"
+            iconLibrary="MaterialCommunityIcons"
+          />
         </>
       )}
 
@@ -121,7 +107,6 @@ const FavoriteSports = () => {
             iconLibrary="Ionicons"
           />
           <FavoriteSport name="Ping-Pong" image="PingPong" />
-
           <FavoriteSport name="Tennis" image="Tennis" />
         </>
       )}
@@ -144,48 +129,35 @@ const FavoriteSports = () => {
       </TouchableOpacity>
       {water && (
         <>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Swim")}
-            style={global.sportTab}
-          >
-            <FontAwesome5 name="swimmer" size={30} color="black" />
-            <Text style={global.iconGap}>Swim</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Surf")}
-            style={global.sportTab}
-          >
-            <MaterialCommunityIcons name="surfing" size={30} color="black" />
-            <Text style={global.iconGap}>Surf</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Kitesurf")}
-            style={global.sportTab}
-          >
-            <MaterialCommunityIcons
-              name="kitesurfing"
-              size={30}
-              color="black"
-            />
-            <Text style={global.iconGap}>KiteSurf</Text>
-          </TouchableOpacity>
+          <FavoriteSport
+            name="Swim"
+            iconName="swimmer"
+            iconLibrary="FontAwesome5"
+          />
+
+          <FavoriteSport
+            name="Surf"
+            iconName="surfing"
+            iconLibrary="MaterialCommunityIcons"
+          />
+          <FavoriteSport
+            name="KiteSurf"
+            iconName="kitesurfing"
+            iconLibrary="MaterialCommunityIcons"
+          />
 
           <FavoriteSport name="Scuba-diving" image="diving" />
 
-          <TouchableOpacity
-            onPress={() => navigateToSport("Sail")}
-            style={global.sportTab}
-          >
-            <MaterialCommunityIcons name="sail-boat" size={30} color="black" />
-            <Text style={global.iconGap}>Sail</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Kayak")}
-            style={global.sportTab}
-          >
-            <MaterialCommunityIcons name="kayaking" size={30} color="black" />
-            <Text style={global.iconGap}>Kayak</Text>
-          </TouchableOpacity>
+          <FavoriteSport
+            name="Sail"
+            iconName="sail-boat"
+            iconLibrary="MaterialCommunityIcons"
+          />
+          <FavoriteSport
+            name="Kayak"
+            iconName="kayaking"
+            iconLibrary="MaterialCommunityIcons"
+          />
         </>
       )}
 
@@ -207,42 +179,29 @@ const FavoriteSports = () => {
       </TouchableOpacity>
       {cycling && (
         <>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Road Bike")}
-            style={global.sportTab}
-          >
-            <MaterialCommunityIcons name="bike-fast" size={30} color="black" />
-            <Text style={global.iconGap}>Road bike</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("E-Bike")}
-            style={global.sportTab}
-          >
-            <MaterialIcons name="electric-bike" size={30} color="black" />
-            <Text style={global.iconGap}>E-Bike</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("SkateBoard")}
-            style={global.sportTab}
-          >
-            <MaterialCommunityIcons
-              name="skateboarding"
-              size={30}
-              color="black"
-            />
-            <Text style={global.iconGap}>SkateBoard</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Rollerskate")}
-            style={global.sportTab}
-          >
-            <MaterialCommunityIcons
-              name="roller-skate"
-              size={30}
-              color="black"
-            />
-            <Text style={global.iconGap}>Rollerskate</Text>
-          </TouchableOpacity>
+          <FavoriteSport
+            name="Road bike"
+            iconName="bike-fast"
+            iconLibrary="MaterialCommunityIcons"
+          />
+
+          <FavoriteSport
+            name="E-Bike"
+            iconName="electric-bike"
+            iconLibrary="MaterialIcons"
+          />
+
+          <FavoriteSport
+            name="SkateBoard"
+            iconName="skateboarding"
+            iconLibrary="MaterialCommunityIcons"
+          />
+
+          <FavoriteSport
+            name="Rollerskate"
+            iconName="roller-skate"
+            iconLibrary="MaterialCommunityIcons"
+          />
         </>
       )}
 
@@ -264,34 +223,29 @@ const FavoriteSports = () => {
       </TouchableOpacity>
       {winter && (
         <>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Ski")}
-            style={global.sportTab}
-          >
-            <FontAwesome5 name="skiing" size={30} color="black" />
-            <Text style={global.iconGap}>Ski</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Snowboard")}
-            style={global.sportTab}
-          >
-            <FontAwesome5 name="snowboarding" size={30} color="black" />
-            <Text style={global.iconGap}>Snowboard</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Iceskate")}
-            style={global.sportTab}
-          >
-            <FontAwesome5 name="skating" size={30} color="black" />
-            <Text style={global.iconGap}>Ice-Skate</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Skidoo")}
-            style={global.sportTab}
-          >
-            <MaterialCommunityIcons name="snowmobile" size={30} color="black" />
-            <Text style={global.iconGap}>Ski-Doo</Text>
-          </TouchableOpacity>
+          <FavoriteSport
+            name="Ski"
+            iconName="skiing"
+            iconLibrary="FontAwesome5"
+          />
+
+          <FavoriteSport
+            name="Snowboard"
+            iconName="snowboarding"
+            iconLibrary="FontAwesome5"
+          />
+
+          <FavoriteSport
+            name="Ice-Skate"
+            iconName="skating"
+            iconLibrary="FontAwesome5"
+          />
+
+          <FavoriteSport
+            name="Ski-Doo"
+            iconName="snowmobile"
+            iconLibrary="MaterialCommunityIcons"
+          />
         </>
       )}
 
@@ -313,60 +267,40 @@ const FavoriteSports = () => {
       </TouchableOpacity>
       {entertainments && (
         <>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Chess")}
-            style={global.sportTab}
-          >
-            <FontAwesome5 name="chess" size={30} color="black" />
-            <Text style={global.iconGap}>Chess</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Cards")}
-            style={global.sportTab}
-          >
-            <MaterialCommunityIcons
-              name="cards-playing-club-multiple"
-              size={30}
-              color="black"
-            />
-            <Text style={global.iconGap}>Cards</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Billiard")}
-            style={global.sportTab}
-          >
-            <MaterialCommunityIcons name="billiards" size={30} color="black" />
-            <Text style={global.iconGap}>Billiard</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Babyfoot")}
-            style={global.sportTab}
-          >
-            <MaterialCommunityIcons
-              name="table-picnic"
-              size={30}
-              color="black"
-            />
-            <Text style={global.iconGap}>Babyfoot</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Bowling")}
-            style={global.sportTab}
-          >
-            <FontAwesome5 name="bowling-ball" size={30} color="black" />
-            <Text style={global.iconGap}>Bowling</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigateToSport("Domino")}
-            style={global.sportTab}
-          >
-            <MaterialCommunityIcons
-              name="roller-skate"
-              size={30}
-              color="black"
-            />
-            <Text style={global.iconGap}>Domino</Text>
-          </TouchableOpacity>
+          <FavoriteSport
+            name="Chess"
+            iconName="chess"
+            iconLibrary="FontAwesome5"
+          />
+
+          <FavoriteSport
+            name="Bowling"
+            iconName="bowling-ball"
+            iconLibrary="FontAwesome5"
+          />
+          <FavoriteSport
+            name="Billiard"
+            iconName="billiards"
+            iconLibrary="MaterialCommunityIcons"
+          />
+
+          <FavoriteSport
+            name="Babyfoot"
+            iconName="table-picnic"
+            iconLibrary="MaterialCommunityIcons"
+          />
+
+          <FavoriteSport
+            name="Cards"
+            iconName="cards-playing-club-multiple"
+            iconLibrary="MaterialCommunityIcons"
+          />
+
+          <FavoriteSport
+            name="Risk"
+            iconName="asterisk"
+            iconLibrary="FontAwesome5"
+          />
         </>
       )}
     </ScrollView>

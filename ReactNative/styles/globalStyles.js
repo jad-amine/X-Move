@@ -155,7 +155,8 @@ export const global = StyleSheet.create({
     height: 25,
   },
   iconGap: {
-    marginLeft: 30,
+    marginLeft: 35,
+    fontSize: 17,
   },
   // Players Page
   playerCard: {

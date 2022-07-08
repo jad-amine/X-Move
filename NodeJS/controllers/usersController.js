@@ -98,7 +98,7 @@ const addSport = async (req, res) => {
     $push: { sports: sport },
   });
   console.log(req.user.name);
-  res.json(user);
+  res.json("Success Sports Added: " + sport);
 };
 
 // Remove use favorite sport
@@ -115,7 +115,7 @@ const removeSport = async (req, res) => {
     $pull: { sports: sport },
   });
   console.log(req.user.name);
-  res.json(user);
+  res.json("Success Sports Removed: " + sport);
 };
 
 module.exports = { addSport, removeSport, login, register, fetchSimilarUsers };

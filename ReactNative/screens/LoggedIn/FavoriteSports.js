@@ -2,16 +2,13 @@ import React, { useContext, useState } from "react";
 import { Text, ScrollView, TouchableOpacity, Image, View } from "react-native";
 import { global } from "../../styles/globalStyles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
 
-import { AntDesign } from "@expo/vector-icons";
 import { UserContext } from "../../contexts/UserContext";
 import FavoriteSport from "../../components/FavoriteSport";
 
 const FavoriteSports = () => {
   const { user, setUser } = useContext(UserContext);
+  const sports = user.info.sports;
   const [fitness, setFitness] = useState(true);
   const [ball, setBall] = useState(false);
   const [water, setWater] = useState(false);
@@ -21,7 +18,10 @@ const FavoriteSports = () => {
 
   return (
     <ScrollView>
-      <Text>{JSON.stringify(user.info)}</Text>
+      <Text>{JSON.stringify(user.info.sports)}</Text>
+      <Text>{JSON.stringify(user.token)}</Text>
+      {/* <Text>{JSON.stringify(sports.includes("Football"))}</Text> */}
+
       {/* ==========Fitness Sports========== */}
       <TouchableOpacity
         onPress={() => setFitness(!fitness)}

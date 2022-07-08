@@ -11,8 +11,6 @@ import Login from "./screens/NotLoggedIN/Login";
 import LandingPage from "./screens/NotLoggedIN/LandingPage";
 import Register from "./screens/NotLoggedIN/Register";
 import DrawerNavigator from "./screens/LoggedIn/DrawerNavigator";
-import { Text } from "react-native";
-import Home from "./screens/LoggedIn/Home";
 
 const stack = createNativeStackNavigator();
 

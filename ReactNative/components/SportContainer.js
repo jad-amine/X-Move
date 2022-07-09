@@ -1,17 +1,7 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  ImageBackground,
-} from "react-native";
+import { Text, TouchableOpacity, ImageBackground } from "react-native";
 import React from "react";
 import { global } from "../styles/globalStyles";
-import { FontAwesome } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import Entert from "../assets/Entertainment.png";
 import Cycling from "../assets/Cycling-Background.png";
 import Fitness from "../assets/Fitness-Background.png";
 import Water from "../assets/Water-Background.png";

@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableOpacity, ScrollView, Image } from "react-native";
+import { Text, TouchableOpacity, ScrollView } from "react-native";
 import { global } from "../../../styles/globalStyles";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";

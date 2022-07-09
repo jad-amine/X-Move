@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Button, Image, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { UserContext } from "../../contexts/UserContext";
 import * as ImagePicker from "expo-image-picker";
 import { Entypo } from "@expo/vector-icons";

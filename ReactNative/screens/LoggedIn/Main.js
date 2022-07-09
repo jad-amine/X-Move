@@ -1,7 +1,6 @@
 import { View, ScrollView } from "react-native";
 import React from "react";
 import SportContainer from "../../components/SportContainer";
-import { global } from "../../styles/globalStyles";
 
 const Main = () => {
   return (

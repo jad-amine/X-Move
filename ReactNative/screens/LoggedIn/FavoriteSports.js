@@ -18,10 +18,6 @@ const FavoriteSports = () => {
 
   return (
     <ScrollView>
-      <Text>{JSON.stringify(user.info.sports)}</Text>
-      <Text>{JSON.stringify(user.token)}</Text>
-      {/* <Text>{JSON.stringify(sports.includes("Football"))}</Text> */}
-
       {/* ==========Fitness Sports========== */}
       <TouchableOpacity
         onPress={() => setFitness(!fitness)}

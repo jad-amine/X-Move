@@ -2,8 +2,8 @@ import { Text, TouchableOpacity, ImageBackground } from "react-native";
 import React from "react";
 import { global } from "../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
-import Cycling from "../assets/Cycling-Background.png";
 import Fitness from "../assets/Fitness-Background.png";
+import Cycling from "../assets/Cycling-Background.png";
 import Water from "../assets/Water-Background.png";
 import Winter from "../assets/Winter-Background.png";
 import Entertainment from "../assets/Entertainment-Background.png";
@@ -33,8 +33,15 @@ const SportContainer = ({ name }) => {
             : ""
         }
       >
-        <Text style={{ color: "white", fontSize: 30, fontWeight: "bold" }}>
-          {name} Sport
+        <Text
+          style={{
+            marginLeft: 10,
+            color: "white",
+            fontSize: 27,
+            fontWeight: "bold",
+          }}
+        >
+          {name} Sports
         </Text>
       </ImageBackground>
     </TouchableOpacity>

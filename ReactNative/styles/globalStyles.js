@@ -139,8 +139,8 @@ export const global = StyleSheet.create({
   sportImage: {
     width: "101%",
     height: 200,
-    // borderBottomColor: "tomato",
-    // borderBottomWidth: 0,
+    borderBottomColor: "black",
+    borderBottomWidth: 0,
     justifyContent: "flex-end",
   },
   sportIcon: {

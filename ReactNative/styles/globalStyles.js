@@ -114,24 +114,10 @@ export const global = StyleSheet.create({
     color: "gray",
   },
   // Welcome Page
-  welcomeContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
   sportsCategories: {
-    margin: 22,
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: "red",
-    width: 160,
     height: 160,
-    borderRadius: 20,
-    alignItems: "center",
-    backgroundColor: "#ddd",
-    justifyContent: "center",
-  },
-  sportsContainer: {
-    alignItems: "center",
+    flexDirection: "row",
+    flex: 1,
   },
   // Sports Screens
   sportLayout: {
@@ -149,6 +135,13 @@ export const global = StyleSheet.create({
   },
   sportType: {
     fontSize: 18,
+  },
+  sportImage: {
+    width: "101%",
+    height: 200,
+    // borderBottomColor: "tomato",
+    // borderBottomWidth: 0,
+    justifyContent: "flex-end",
   },
   sportIcon: {
     width: 25,

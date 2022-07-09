@@ -47,8 +47,8 @@ const Welcome = () => {
         component={Ball}
       />
       <Stack.Screen
-        options={{ headerTitle: "Entertainments", headerTitleAlign: "center" }}
-        name="Entertainments"
+        options={{ headerTitle: "Entertainment", headerTitleAlign: "center" }}
+        name="Entertainment"
         component={Entertainments}
       />
       <Stack.Screen

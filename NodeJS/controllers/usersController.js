@@ -2,6 +2,7 @@ const User = require("../models/userModel");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 var jwt = require("jsonwebtoken");
+const fs = require("fs");
 
 // Login User
 const login = async (req, res) => {
@@ -101,7 +102,18 @@ const addSport = async (req, res) => {
   res.json("Success Sports Added: " + sport);
 };
 
-// Remove use favorite sport
+// Add Profile Picture
+const addProfilePicture = async (req, res) => {
+  try {
+    const buffer = Buffer.from(req.body.base64.base64);
+    fs.writeFileSync(`profilePictures/${req.user.email}.txt`, buffer);
+    res.json("saved");
+  } catch (err) {
+    res.json("Error: Image not saved !");
+  }
+};
+
+// Remove user favorite sport
 const removeSport = async (req, res) => {
   if (!req.body.sport) {
     return res.status(401).json({ message: "Please select a sport" });
@@ -118,4 +130,11 @@ const removeSport = async (req, res) => {
   res.json("Success Sports Removed: " + sport);
 };
 
-module.exports = { addSport, removeSport, login, register, fetchSimilarUsers };
+module.exports = {
+  addSport,
+  removeSport,
+  login,
+  register,
+  fetchSimilarUsers,
+  addProfilePicture,
+};

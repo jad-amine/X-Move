@@ -7,6 +7,7 @@ const {
   login,
   register,
   fetchSimilarUsers,
+  addProfilePicture,
 } = require("../controllers/usersController");
 
 const router = express.Router();
@@ -22,6 +23,9 @@ router.post("/getUserData", authUser);
 
 // Get users with similar sport interest
 router.get("/getSimilarUsers/:sport", authUser, fetchSimilarUsers);
+
+// Add Profile Picture
+router.post("/addProfilePicture", authUser, addProfilePicture);
 
 // Add Sport
 router.post("/addSport", authUser, addSport);

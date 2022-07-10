@@ -1,20 +1,17 @@
-// import { createDrawerNavigator } from "@react-navigation/drawer";
-// const Drawer = createDrawerNavigator();
-
 // Utilities
 import React from "react";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // Screens
-import Welcome from "./Welcome";
-import Messages from "./Messages";
-import Profile from "./Profile";
-import Map from "./Map";
+import Map from "../Map";
+import Profile from "../Profile";
+import Messages from "../Messages";
+import StackNavigator from "./StackNavigator";
 
 const Tab = createBottomTabNavigator();
 
-const Home = () => {
+const BottomTab = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -29,7 +26,7 @@ const Home = () => {
         tabBarInactiveTintColor: "gray",
         tabBarIcon: ({ color }) => {
           let iconName;
-          if (route.name === "Welcome") {
+          if (route.name === "StackNavigator") {
             iconName = "home";
           } else if (route.name === "Messages") {
             iconName = "chat";
@@ -43,7 +40,7 @@ const Home = () => {
         },
       })}
     >
-      <Tab.Screen name="Welcome" component={Welcome} />
+      <Tab.Screen name="StackNavigator" component={StackNavigator} />
       <Tab.Screen name="Map" component={Map} />
       <Tab.Screen name="Messages" component={Messages} />
       <Tab.Screen name="Profile" component={Profile} />
@@ -51,4 +48,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default BottomTab;

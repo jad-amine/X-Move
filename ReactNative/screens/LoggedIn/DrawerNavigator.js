@@ -1,17 +1,17 @@
 import React from "react";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import Home from "./Home";
 import { Image } from "react-native";
-import FavoriteSports from "./FavoriteSports";
 import logo from "../../assets/logo.png";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+// Screens
+import BottomTab from "./Home/BottomTab";
+import FavoriteSports from "./FavoriteSports";
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
   return (
-    // <Text>Drawer</Text>
     <Drawer.Navigator
-      initialRouteName="Home"
+      initialRouteName="BottomTab"
       screenOptions={{
         drawerType: "back",
         headerTitle: "X-Move",
@@ -32,7 +32,7 @@ const DrawerNavigator = () => {
         headerTitleStyle: { fontSize: 30 },
       }}
     >
-      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="BottomTab" component={BottomTab} />
       <Drawer.Screen name="Favorite Sports" component={FavoriteSports} />
     </Drawer.Navigator>
   );

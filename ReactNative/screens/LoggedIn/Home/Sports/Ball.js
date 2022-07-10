@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, TouchableOpacity, ScrollView, Image } from "react-native";
-import { global } from "../../../styles/globalStyles";
+import { global } from "../../../../styles/globalStyles";
 import { FontAwesome5 } from "@expo/vector-icons";
-import PingPong from "../../../assets/PingPong.png";
-import Tennis from "../../../assets/Tennis.png";
+import PingPong from "../../../../assets/PingPong.png";
+import Tennis from "../../../../assets/Tennis.png";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 

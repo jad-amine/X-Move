@@ -1,8 +1,8 @@
 // Utilities
+import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // Pages
-import React from "react";
-import Main from "./Main";
+import Home from "./Home";
 import Ball from "./Sports/Ball";
 import Cycling from "./Sports/Cycling";
 import Entertainments from "./Sports/Entertainments";
@@ -13,13 +13,13 @@ import Winter from "./Sports/Winter";
 
 const Stack = createNativeStackNavigator();
 
-const Welcome = () => {
+const StackNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{ headerBackTitleVisible: false }}>
       <Stack.Screen
         options={{ headerShown: false }}
-        name="Main"
-        component={Main}
+        name="Home"
+        component={Home}
       />
       <Stack.Screen
         options={{ headerTitleAlign: "center" }}
@@ -60,4 +60,4 @@ const Welcome = () => {
   );
 };
 
-export default Welcome;
+export default StackNavigator;

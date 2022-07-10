@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../../contexts/UserContext";
-import { global } from "../../../styles/globalStyles";
+import { UserContext } from "../../../../contexts/UserContext";
+import { global } from "../../../../styles/globalStyles";
 
 const SportUsers = ({ route }) => {
   const [users, setUsers] = useState(null);

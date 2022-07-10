@@ -1,8 +1,8 @@
-import { View, ScrollView, Text } from "react-native";
 import React from "react";
-import SportContainer from "../../components/SportContainer";
+import { View, ScrollView, Text } from "react-native";
+import SportContainer from "../../../components/SportContainer";
 
-const Main = () => {
+const Home = () => {
   return (
     <ScrollView>
       <View style={{ marginBottom: 50 }}>
@@ -27,4 +27,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Home;

@@ -1,5 +1,5 @@
-import { Text, TouchableOpacity, ImageBackground } from "react-native";
 import React from "react";
+import { Text, TouchableOpacity, ImageBackground } from "react-native";
 import { global } from "../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
 import Fitness from "../assets/Fitness-Background.png";

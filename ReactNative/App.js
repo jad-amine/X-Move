@@ -92,7 +92,7 @@ export default function App() {
               options={{ headerTransparent: true }}
             />
           </stack.Navigator>
-          <StatusBar style="auto" />
+          <StatusBar hidden={true} />
         </NavigationContainer>
       </UserContext.Provider>
     );

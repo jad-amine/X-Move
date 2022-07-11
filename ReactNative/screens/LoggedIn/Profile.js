@@ -74,24 +74,72 @@ const Profile = () => {
         ) : (
           <UploadProfilePic pickImage={pickImage} />
         )}
-        <View style={{ flexDirection: "column", marginLeft: 20 }}>
-          <Text>{user.info.name}</Text>
-          <Text>{user.info.email}</Text>
-          <Text>{user.info.sports}</Text>
+        <View
+          style={{
+            flexDirection: "column",
+            marginLeft: 40,
+          }}
+        >
+          <Text style={{ fontSize: 40, marginBottom: 15 }}>
+            {user.info.name}
+          </Text>
+          <Text style={{ color: "gray", fontSize: 20 }}>{user.info.email}</Text>
         </View>
       </View>
+      <View style={{ padding: 20 }}>
+        <Text
+          style={{
+            textDecorationLine: "underline",
+            color: "gray",
+            fontSize: 20,
+            marginVertical: 20,
+          }}
+        >
+          About
+        </Text>
+        <Text
+          style={{
+            fontSize: 18,
+          }}
+        >
+          I like doing Parkour and Freerunning
+        </Text>
+        <Text
+          style={{
+            textDecorationLine: "underline",
+            color: "gray",
+            fontSize: 20,
+            marginVertical: 20,
+          }}
+        >
+          Favorite Sports
+        </Text>
+        <View style={{ flexWrap: "wrap", flexDirection: "row" }}>
+          {user.info.sports.map((sport, index) => (
+            <Text
+              key={index}
+              style={{
+                margin: 8,
+                fontSize: 18,
+              }}
+            >
+              {sport + "  "} /
+            </Text>
+          ))}
+        </View>
 
-      <Button
-        title="Sign Out"
-        onPress={() => {
-          try {
-            SecureStore.setItemAsync("token", "");
-            setUser(null);
-          } catch (err) {
-            Alert.alert("Unable to logout ");
-          }
-        }}
-      />
+        <Button
+          title="Sign Out"
+          onPress={() => {
+            try {
+              SecureStore.setItemAsync("token", "");
+              setUser(null);
+            } catch (err) {
+              Alert.alert("Unable to logout ");
+            }
+          }}
+        />
+      </View>
     </View>
   );
 };

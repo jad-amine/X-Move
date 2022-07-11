@@ -98,7 +98,18 @@ const fetchSimilarUsers = async (req, res) => {
     if (!users) {
       return res.json("No users found");
     }
-    return res.json(users);
+    let finalUsers = [];
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].pictureURL) {
+        const profilepic = fs.readFileSync(`${users[i].pictureURL}`, {
+          encoding: "utf8",
+          flag: "r",
+        });
+        finalUsers.push({ ...users[i]._doc, picture: profilepic });
+      }
+    }
+    console.log(finalUsers[0]);
+    return res.json(finalUsers);
   } catch (err) {
     console.log("Wrong query", err);
   }

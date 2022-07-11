@@ -26,17 +26,36 @@ const login = async (req, res) => {
     process.env.TOKEN_SECRET
   );
   console.log(user, "logged in");
-  res.status(200).json({
-    token: token,
-    user: {
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      type: user.admin,
-      sports: user.sports,
-      friends: user.friends,
-    },
-  });
+  if (user.pictureURL) {
+    const profilepic = fs.readFileSync(`${user.pictureURL}`, {
+      encoding: "utf8",
+      flag: "r",
+    });
+    res.status(200).json({
+      token: token,
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        type: user.admin,
+        sports: user.sports,
+        friends: user.friends,
+        picture: profilepic,
+      },
+    });
+  } else {
+    res.status(200).json({
+      token: token,
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        type: user.admin,
+        sports: user.sports,
+        friends: user.friends,
+      },
+    });
+  }
 };
 
 // Register User
@@ -105,8 +124,11 @@ const addSport = async (req, res) => {
 // Add Profile Picture
 const addProfilePicture = async (req, res) => {
   try {
-    const buffer = Buffer.from(req.body.base64.base64);
+    const buffer = Buffer.from(req.body.base64);
     fs.writeFileSync(`profilePictures/${req.user.email}.txt`, buffer);
+    const user = await User.findByIdAndUpdate(req.user._id, {
+      pictureURL: `profilePictures/${req.user.email}.txt`,
+    });
     res.json("saved");
   } catch (err) {
     res.json("Error: Image not saved !");

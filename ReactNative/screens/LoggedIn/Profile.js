@@ -9,10 +9,9 @@ import {
 } from "react-native";
 import { UserContext } from "../../contexts/UserContext";
 import * as ImagePicker from "expo-image-picker";
-import { Entypo } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
 import { global } from "../../styles/globalStyles";
 import * as SecureStore from "expo-secure-store";
+import UploadProfilePic from "../../components/UploadProfilePic";
 
 const Profile = () => {
   const { user, setUser } = useContext(UserContext);
@@ -52,31 +51,28 @@ const Profile = () => {
     }
   };
 
+  const changeProfilePic = () => {
+    Alert.alert("Profile Picture", "Change Profile Picture ?", [
+      {
+        text: "Cancel",
+        onPress: () => {},
+      },
+      { text: "Yes", onPress: pickImage },
+    ]);
+  };
+
   return (
     <View>
       <View style={global.profileHeader}>
         {user.info.picture ? (
-          <TouchableOpacity>
+          <TouchableOpacity onPress={changeProfilePic}>
             <Image
               source={{ uri: `data:image/gif;base64,${user.info.picture}` }}
               style={{ height: 200, width: 200 }}
             />
           </TouchableOpacity>
         ) : (
-          <TouchableOpacity style={global.profilePic} onPress={pickImage}>
-            <FontAwesome
-              style={{ alignSelf: "center" }}
-              name="user"
-              size={50}
-              color="gray"
-            />
-            <Entypo
-              style={{ padding: 5, borderRadius: 20 }}
-              name="camera"
-              size={24}
-              color="black"
-            />
-          </TouchableOpacity>
+          <UploadProfilePic pickImage={pickImage} />
         )}
         <View style={{ flexDirection: "column", marginLeft: 20 }}>
           <Text>{user.info.name}</Text>

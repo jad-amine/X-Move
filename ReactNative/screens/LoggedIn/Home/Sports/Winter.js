@@ -9,7 +9,7 @@ const Winter = () => {
   const navigation = useNavigation();
 
   const navigateToSport = (sport) => {
-    navigation.navigate("SportUsers", sport);
+    navigation.navigate("Players", sport);
   };
   return (
     <ScrollView style={{ marginBottom: 50 }}>

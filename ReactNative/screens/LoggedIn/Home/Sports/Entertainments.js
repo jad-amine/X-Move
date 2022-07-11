@@ -9,7 +9,7 @@ const Entertainments = () => {
   const navigation = useNavigation();
 
   const navigateToSport = (sport) => {
-    navigation.navigate("SportUsers", sport);
+    navigation.navigate("Players", sport);
   };
   return (
     <ScrollView>

@@ -7,7 +7,7 @@ import Ball from "./Sports/Ball";
 import Cycling from "./Sports/Cycling";
 import Entertainments from "./Sports/Entertainments";
 import Fitness from "./Sports/Fitness";
-import SportUsers from "./Sports/SportUsers";
+import Players from "./Sports/Players";
 import Water from "./Sports/Water";
 import Winter from "./Sports/Winter";
 
@@ -53,8 +53,8 @@ const StackNavigator = () => {
       />
       <Stack.Screen
         options={{ headerTitle: "Players", headerTitleAlign: "center" }}
-        name="SportUsers"
-        component={SportUsers}
+        name="Players"
+        component={Players}
       />
     </Stack.Navigator>
   );

@@ -154,9 +154,10 @@ export const global = StyleSheet.create({
   // Players Page
   playerCard: {
     margin: 20,
-    backgroundColor: "#ddd",
     borderRadius: 20,
-    padding: 10,
+    flexDirection: "row",
+    borderBottomColor: "#ddd",
+    borderBottomWidth: 1,
   },
 
   // Profile Screen

@@ -26,7 +26,9 @@ const PlayerProfile = ({ route }) => {
         <TouchableOpacity
           style={{ ...global.PlayerProfileButton, backgroundColor: "#FF4D00" }}
         >
-          <Text style={global.registerText}>ADD FRIEND</Text>
+          <Text style={{ ...global.registerText, fontSize: 18 }}>
+            ADD FRIEND
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
@@ -34,7 +36,7 @@ const PlayerProfile = ({ route }) => {
             backgroundColor: "#2C75E2",
           }}
         >
-          <Text style={global.registerText}>CHAT</Text>
+          <Text style={{ ...global.registerText, fontSize: 18 }}>CHAT</Text>
         </TouchableOpacity>
       </View>
       <Text style={global.about}>About</Text>

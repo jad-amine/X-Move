@@ -12,9 +12,11 @@ import * as ImagePicker from "expo-image-picker";
 import { global } from "../../styles/globalStyles";
 import * as SecureStore from "expo-secure-store";
 import UploadProfilePic from "../../components/UploadProfilePic";
+import About from "../../components/About";
 
 const Profile = () => {
   const { user, setUser } = useContext(UserContext);
+  const [edit, setEdit] = useState(false);
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -87,37 +89,16 @@ const Profile = () => {
         </View>
       </View>
       <View style={{ padding: 20 }}>
-        <Text style={global.about}>About</Text>
-        <Text
-          style={{
-            fontSize: 18,
-          }}
-        >
-          I like doing Parkour and Freerunning
-        </Text>
-        <Text
-          style={{
-            textDecorationLine: "underline",
-            color: "gray",
-            fontSize: 20,
-            marginVertical: 20,
-          }}
-        >
-          Favorite Sports
-        </Text>
-        <View style={{ flexWrap: "wrap", flexDirection: "row" }}>
-          {user.info.sports.map((sport, index) => (
-            <Text
-              key={index}
-              style={{
-                margin: 8,
-                fontSize: 18,
-              }}
-            >
-              {sport + "  "} /
-            </Text>
-          ))}
+        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+          <Text onPress={() => setEdit(false)} style={{ ...global.about }}>
+            About
+          </Text>
+          <Text onPress={() => setEdit(true)} style={global.about}>
+            Edit profile
+          </Text>
         </View>
+        {!edit && <About user={user} />}
+        {edit && <Text>Edit profile</Text>}
 
         <Button
           title="Sign Out"

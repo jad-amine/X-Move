@@ -87,16 +87,7 @@ const Profile = () => {
         </View>
       </View>
       <View style={{ padding: 20 }}>
-        <Text
-          style={{
-            textDecorationLine: "underline",
-            color: "gray",
-            fontSize: 20,
-            marginVertical: 20,
-          }}
-        >
-          About
-        </Text>
+        <Text style={global.about}>About</Text>
         <Text
           style={{
             fontSize: 18,

@@ -178,6 +178,16 @@ export const global = StyleSheet.create({
     marginLeft: 7,
   },
 
+  // Player Profile
+  PlayerProfileButton: {
+    width: 150,
+    paddingVertical: 15,
+    alignItems: "center",
+    borderRadius: 10,
+  },
+  // backgroundColor: "#FF4D00",
+  // backgroundColor: "#2C75E2",
+
   // Profile Screen
   profilePic: {
     height: 100,
@@ -191,6 +201,12 @@ export const global = StyleSheet.create({
   profileHeader: {
     flexDirection: "row",
     alignItems: "center",
+  },
+  about: {
+    textDecorationLine: "underline",
+    color: "gray",
+    fontSize: 20,
+    marginVertical: 20,
   },
   // Favorite Sports Drawer Screen
   sportSection: {

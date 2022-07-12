@@ -10,6 +10,7 @@ import Fitness from "./Sports/Fitness";
 import Players from "./Sports/Players";
 import Water from "./Sports/Water";
 import Winter from "./Sports/Winter";
+import PlayerProfile from "./Sports/PlayerProfile";
 
 const Stack = createNativeStackNavigator();
 
@@ -55,6 +56,11 @@ const StackNavigator = () => {
         options={{ headerTitle: "Players", headerTitleAlign: "center" }}
         name="Players"
         component={Players}
+      />
+      <Stack.Screen
+        options={{ headerTitle: "Player Profile", headerTitleAlign: "center" }}
+        name="PlayerProfile"
+        component={PlayerProfile}
       />
     </Stack.Navigator>
   );

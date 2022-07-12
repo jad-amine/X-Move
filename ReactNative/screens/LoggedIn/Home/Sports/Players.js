@@ -2,10 +2,12 @@ import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../../contexts/UserContext";
 import { global } from "../../../../styles/globalStyles";
+import { useNavigation } from "@react-navigation/native";
 
 const Players = ({ route }) => {
   const [users, setUsers] = useState(null);
   const { user } = useContext(UserContext);
+  const navigation = useNavigation();
   const sport = route.params;
 
   useEffect(() => {
@@ -51,7 +53,10 @@ const Players = ({ route }) => {
                     Chat
                   </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={global.viewProfileButton}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("PlayerProfile", user)}
+                  style={global.viewProfileButton}
+                >
                   <Text style={{ color: "white", fontWeight: "bold" }}>
                     View Profile
                   </Text>

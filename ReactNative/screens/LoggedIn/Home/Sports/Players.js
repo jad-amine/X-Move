@@ -33,25 +33,30 @@ const Players = ({ route }) => {
       {users &&
         users.map((user, index) => (
           <View key={index} style={global.playerCard}>
-            <Image
-              source={{ uri: `data:image/gif;base64,${user.picture}` }}
-              style={{ height: 150, width: 150, borderRadius: 20 }}
-            />
+            {user.picture ? (
+              <Image
+                source={{ uri: `data:image/gif;base64,${user.picture}` }}
+                style={{ height: 150, width: 150, borderRadius: 20 }}
+              />
+            ) : (
+              <Text> No profile picture</Text>
+            )}
             <View style={{ marginLeft: 40 }}>
               <Text style={{ fontSize: 30 }}>{user.name}</Text>
               <Text style={{ color: "gray" }}>{user.email}</Text>
-              <TouchableOpacity
-                style={{
-                  alignContent: "center",
-                  marginTop: 20,
-                  backgroundColor: "#2C75E2",
-                  paddingHorizontal: 30,
-                  paddingVertical: 10,
-                  borderRadius: 6,
-                }}
-              >
-                <Text style={{ color: "white", fontWeight: "bold" }}>Chat</Text>
-              </TouchableOpacity>
+
+              <View style={{ flexDirection: "row" }}>
+                <TouchableOpacity style={global.chatButton}>
+                  <Text style={{ color: "white", fontWeight: "bold" }}>
+                    Chat
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={global.viewProfileButton}>
+                  <Text style={{ color: "white", fontWeight: "bold" }}>
+                    View Profile
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
         ))}

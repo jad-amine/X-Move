@@ -159,6 +159,24 @@ export const global = StyleSheet.create({
     borderBottomColor: "#ddd",
     borderBottomWidth: 1,
   },
+  chatButton: {
+    alignItems: "center",
+    marginTop: 20,
+    backgroundColor: "#2C75E2",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 6,
+    marginRight: 7,
+  },
+  viewProfileButton: {
+    alignItems: "center",
+    marginTop: 20,
+    backgroundColor: "tomato",
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    borderRadius: 6,
+    marginLeft: 7,
+  },
 
   // Profile Screen
   profilePic: {

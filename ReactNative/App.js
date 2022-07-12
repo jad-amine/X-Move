@@ -6,6 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { UserContext } from "./contexts/UserContext";
 import { useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // import firebase from "firebase/compat/app";
 // import "firebase/compat/firestore";
@@ -60,6 +61,11 @@ export default function App() {
           setUser(null);
           return;
         } else {
+          const value = await AsyncStorage.getItem("picture");
+          if (value !== null) {
+            setUser({ info: { ...json.user, picture: value }, token: token });
+            return;
+          }
           setUser({ info: json.user, token: token });
           return;
         }

@@ -36,7 +36,9 @@ const Login = ({ navigation }) => {
         return;
       }
       await SecureStore.setItemAsync("token", json.token);
-      await AsyncStorage.setItem("picture", json.user.picture);
+      json.user.picture
+        ? await AsyncStorage.setItem("picture", json.user.picture)
+        : await AsyncStorage.removeItem("picture");
       console.log(json.user.picture);
       await setUser({ info: json.user, token: json.token });
       navigation.navigate("Landing Page");

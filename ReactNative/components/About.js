@@ -22,17 +22,18 @@ const About = ({ user }) => {
         Favorite Sports
       </Text>
       <View style={{ flexWrap: "wrap", flexDirection: "row" }}>
-        {user.info.sports.map((sport, index) => (
-          <Text
-            key={index}
-            style={{
-              margin: 8,
-              fontSize: 18,
-            }}
-          >
-            {sport + "  "} /
-          </Text>
-        ))}
+        {user.info.sports &&
+          user.info.sports.map((sport, index) => (
+            <Text
+              key={index}
+              style={{
+                margin: 8,
+                fontSize: 18,
+              }}
+            >
+              {sport + "  "} /
+            </Text>
+          ))}
       </View>
     </View>
   );

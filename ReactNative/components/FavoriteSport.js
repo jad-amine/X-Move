@@ -14,7 +14,7 @@ import { UserContext } from "../contexts/UserContext";
 const FavoriteSport = ({ name, iconName, iconLibrary, image }) => {
   const { user, setUser } = useContext(UserContext);
   const sports = user.info.sports;
-  const [liked, setLiked] = useState(sports.includes(name));
+  const [liked, setLiked] = useState(sports ? sports.includes(name) : null);
 
   const handlePress = async () => {
     try {

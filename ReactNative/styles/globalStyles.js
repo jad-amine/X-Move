@@ -234,4 +234,11 @@ export const global = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
+
+  // Play Section
+  headerTab: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    marginTop: 20,
+  },
 });

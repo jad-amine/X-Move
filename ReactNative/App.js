@@ -10,14 +10,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // import firebase from "firebase/compat/app";
 // import "firebase/compat/firestore";
-// const firebaseConfig = {
-//   apiKey: "AIzaSyC1CIAIahLTzoimn_8-MaVlp1prtTaZG5Q",
-//   authDomain: "x-move.firebaseapp.com",
-//   projectId: "x-move",
-//   storageBucket: "x-move.appspot.com",
-//   messagingSenderId: "651870681509",
-//   appId: "1:651870681509:web:c125c5416d21ec4117104c",
-// };
 
 // if (firebase.apps.length === 0) {
 //   firebase.initializeApp(firebaseConfig);

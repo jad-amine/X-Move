@@ -8,6 +8,7 @@ import Map from "../Map";
 import Profile from "../Profile";
 import Messages from "../Messages";
 import StackNavigator from "./StackNavigator";
+import Play from "../Play";
 
 const Tab = createBottomTabNavigator();
 
@@ -20,7 +21,7 @@ const BottomTab = () => {
         headerStyle: { backgroundColor: "#FF4D00" },
         tabBarStyle: { position: "absolute" },
         tabBarActiveBackgroundColor: "#eee",
-        // tabBarShowLabel: false,
+        tabBarShowLabel: false,
         headerTitle: "X-move",
         tabBarActiveTintColor: "#FF4D00",
         tabBarInactiveTintColor: "gray",
@@ -35,13 +36,21 @@ const BottomTab = () => {
           } else if (route.name === "Profile") {
             iconName = "user";
             return <AntDesign name={iconName} size={30} color={color} />;
+          } else if (route.name === "Play") {
+            iconName = "play";
+            return <AntDesign name={iconName} size={43} color={"#FF4D00"} />;
           }
           return <Entypo name={iconName} size={30} color={color} />;
         },
       })}
     >
-      <Tab.Screen name="StackNavigator" component={StackNavigator} />
+      <Tab.Screen
+        options={{ title: "Home" }}
+        name="StackNavigator"
+        component={StackNavigator}
+      />
       <Tab.Screen name="Map" component={Map} />
+      <Tab.Screen name="Play" component={Play} />
       <Tab.Screen name="Messages" component={Messages} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>

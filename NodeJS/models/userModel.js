@@ -35,6 +35,12 @@ const userSchema = new mongoose.Schema(
     },
     location: {
       type: [Number],
+      // lattitude: {
+      //   type: Number,
+      // },
+      // longitude: {
+      //   type: Number
+      // }
     },
     friends: [
       {

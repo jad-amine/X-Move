@@ -121,11 +121,10 @@ const addSport = async (req, res) => {
     return res.status(401).json({ message: "Please select a sport" });
   }
   const sport = req.body.sport;
-  console.log(req.user._id);
   if (!mongoose.Types.ObjectId.isValid(req.user._id)) {
     return res.status(404).json({ error: "Not a user" });
   }
-  const user = await User.findByIdAndUpdate(req.user._id, {
+  await User.findByIdAndUpdate(req.user._id, {
     $push: { sports: sport },
   });
   console.log(req.user.name);
@@ -137,7 +136,7 @@ const addProfilePicture = async (req, res) => {
   try {
     const buffer = Buffer.from(req.body.base64);
     fs.writeFileSync(`profilePictures/${req.user.email}.txt`, buffer);
-    const user = await User.findByIdAndUpdate(req.user._id, {
+    await User.findByIdAndUpdate(req.user._id, {
       pictureURL: `profilePictures/${req.user.email}.txt`,
     });
     res.json("saved");
@@ -156,7 +155,7 @@ const removeSport = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.user._id)) {
     return res.status(404).json({ error: "Not a user" });
   }
-  const user = await User.findByIdAndUpdate(req.user._id, {
+  await User.findByIdAndUpdate(req.user._id, {
     $pull: { sports: sport },
   });
   console.log(req.user.name);

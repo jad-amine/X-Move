@@ -236,9 +236,4 @@ export const global = StyleSheet.create({
   },
 
   // Play Section
-  headerTab: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    marginTop: 20,
-  },
 });

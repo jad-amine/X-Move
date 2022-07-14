@@ -1,25 +1,12 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React, { useState } from "react";
+import { Picker } from "@react-native-picker/picker";
 
 const RentField = () => {
+  const [field, setField] = useState(true);
+
   return (
     <View>
-      <Text>RentField</Text>
-    </View>
-  );
-};
-
-export default RentField;
-
-/* 
-      <View style={global.headerTab}>
-        <TouchableOpacity style={{ backgroundColor: "#ddd", padding: 30 }}>
-          <Text>Field Rent</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={{ backgroundColor: "#ddd", padding: 30 }}>
-          <Text>Equipments Rent</Text>
-        </TouchableOpacity>
-      </View>
       <Picker
         style={{
           color: "white",
@@ -35,4 +22,9 @@ export default RentField;
         <Picker.Item label="Football" value="Football" />
         <Picker.Item label="Basketball" value="Basketball" />
         <Picker.Item label="Tennis" value="Tennis" />
-      </Picker> */
+      </Picker>
+    </View>
+  );
+};
+
+export default RentField;

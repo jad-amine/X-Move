@@ -8,16 +8,6 @@ import { UserContext } from "./contexts/UserContext";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-// import firebase from "firebase/compat/app";
-// import "firebase/compat/firestore";
-
-// if (firebase.apps.length === 0) {
-//   firebase.initializeApp(firebaseConfig);
-// }
-// // Initialize Firebase
-// const db = firebase.firestore();
-// const chatsRef = db.collection("chats");
-
 // Screens
 import Login from "./screens/NotLoggedIN/Login";
 import LandingPage from "./screens/NotLoggedIN/LandingPage";

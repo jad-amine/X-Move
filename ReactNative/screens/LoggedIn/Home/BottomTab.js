@@ -9,10 +9,18 @@ import Profile from "../Profile";
 import Messages from "../Messages/Messages";
 import StackNavigator from "./StackNavigator";
 import Play from "../Play";
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 
 const Tab = createBottomTabNavigator();
 
 const BottomTab = () => {
+  const getTabBarVisibility = (route) => {
+    const routeName = getFocusedRouteNameFromRoute(route);
+    if (routeName === "Chat") {
+      return "none";
+    }
+    return "flex";
+  };
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -52,7 +60,9 @@ const BottomTab = () => {
       <Tab.Screen name="Map" component={Map} />
       <Tab.Screen name="Play" component={Play} />
       <Tab.Screen
-        options={{ tabBarStyle: { display: "none" } }}
+        options={({ route }) => ({
+          tabBarStyle: { display: getTabBarVisibility(route) },
+        })}
         name="Messages"
         component={Messages}
       />

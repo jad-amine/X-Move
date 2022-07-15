@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 // Screens
 import Map from "../Map";
 import Profile from "../Profile";
-import Messages from "../Messages";
+import Messages from "../Messages/Messages";
 import StackNavigator from "./StackNavigator";
 import Play from "../Play";
 
@@ -51,7 +51,11 @@ const BottomTab = () => {
       />
       <Tab.Screen name="Map" component={Map} />
       <Tab.Screen name="Play" component={Play} />
-      <Tab.Screen name="Messages" component={Messages} />
+      <Tab.Screen
+        options={{ tabBarStyle: { display: "none" } }}
+        name="Messages"
+        component={Messages}
+      />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );

@@ -2,32 +2,40 @@ import React, { useState, useCallback, useEffect, useContext } from "react";
 import { GiftedChat } from "react-native-gifted-chat";
 import { MessagesContext } from "../../../contexts/MessagesContext";
 import { UserContext } from "../../../contexts/UserContext";
-import { addDoc } from "firebase/firestore";
+import { addDoc, onSnapshot, orderBy, query } from "firebase/firestore";
+import { colRef } from "../../../firebase";
 
 const Chat = () => {
   const { user } = useContext(UserContext);
   const [messages, setMessages] = useState([]);
-  // const { allMessages, setAllMessages, colRef } = useContext(MessagesContext);
 
   useEffect(() => {
-    // console.log(allMessages);
-    console.log(user.info._id);
-    // setMessages(allMessages);
+    const q = query(colRef, orderBy("createdAt", "desc"));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      setMessages(
+        querySnapshot.docs.map((doc) => ({
+          _id: doc.data()._id,
+          createdAt: doc.data().createdAt.toDate(),
+          text: doc.data().text,
+          user: doc.data().user,
+        }))
+      );
+    });
+    console.log(messages);
   }, []);
 
   const onSend = useCallback((messages = []) => {
-    // addDoc(colRef, {
-    //   // text: messages,
-    //   // createdAt: new Date(),
-    //   _id: user.info._id,
-    //   // user: {
-    //   //   _id: "2",
-    //   //   name: "Sam",
-    //   // },
-    // }).then(() => console.log("response"));
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, messages)
     );
+    const { _id, createdAt, text, user } = messages[0];
+    addDoc(colRef, {
+      _id,
+      createdAt,
+      text,
+      user,
+    }).then(() => console.log("response"));
+    console.log(messages);
   }, []);
 
   return (
@@ -35,25 +43,11 @@ const Chat = () => {
       messages={messages}
       onSend={(messages) => onSend(messages)}
       user={{
-        _id: 1,
+        _id: user.info._id,
+        // receiverID: 1,
+        // name: user.info.name,
       }}
     />
   );
 };
 export default Chat;
-
-// ============ DB Linking =============
-// import React, { useContext } from "react";
-// import { Text, View } from "react-native";
-// import { MessagesContext } from "../../../contexts/MessagesContext";
-
-// const Messages = () => {
-//   const { messages, setMessages } = useContext(MessagesContext);
-//   return (
-//     <View>
-//       <Text>{JSON.stringify(messages)}</Text>
-//     </View>
-//   );
-// };
-
-// export default Messages;

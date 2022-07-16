@@ -7,24 +7,24 @@ import { addDoc } from "firebase/firestore";
 const Chat = () => {
   const { user } = useContext(UserContext);
   const [messages, setMessages] = useState([]);
-  const { allMessages, setAllMessages, colRef } = useContext(MessagesContext);
+  // const { allMessages, setAllMessages, colRef } = useContext(MessagesContext);
 
   useEffect(() => {
-    console.log(allMessages);
+    // console.log(allMessages);
     console.log(user.info._id);
-    setMessages(allMessages);
+    // setMessages(allMessages);
   }, []);
 
   const onSend = useCallback((messages = []) => {
-    addDoc(colRef, {
-      // text: messages,
-      // createdAt: new Date(),
-      _id: user.info._id,
-      // user: {
-      //   _id: "2",
-      //   name: "Sam",
-      // },
-    }).then(() => console.log("response"));
+    // addDoc(colRef, {
+    //   // text: messages,
+    //   // createdAt: new Date(),
+    //   _id: user.info._id,
+    //   // user: {
+    //   //   _id: "2",
+    //   //   name: "Sam",
+    //   // },
+    // }).then(() => console.log("response"));
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, messages)
     );

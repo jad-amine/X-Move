@@ -1,25 +1,30 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useContext } from "react";
 import { GiftedChat } from "react-native-gifted-chat";
+import { MessagesContext } from "../../../contexts/MessagesContext";
+import { UserContext } from "../../../contexts/UserContext";
+import { addDoc } from "firebase/firestore";
 
 const Chat = () => {
+  const { user } = useContext(UserContext);
   const [messages, setMessages] = useState([]);
+  const { allMessages, setAllMessages, colRef } = useContext(MessagesContext);
 
   useEffect(() => {
-    setMessages([
-      {
-        _id: 1,
-        text: "Hello developer",
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: "React Native",
-          avatar: "https://placeimg.com/140/140/any",
-        },
-      },
-    ]);
+    console.log(allMessages);
+    console.log(user.info._id);
+    setMessages(allMessages);
   }, []);
 
   const onSend = useCallback((messages = []) => {
+    addDoc(colRef, {
+      // text: messages,
+      // createdAt: new Date(),
+      _id: user.info._id,
+      // user: {
+      //   _id: "2",
+      //   name: "Sam",
+      // },
+    }).then(() => console.log("response"));
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, messages)
     );

@@ -2,6 +2,7 @@ import { View, Text, Button } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import messages from "../../../firebase";
 import { UserContext } from "../../../contexts/UserContext";
+import { ScrollView } from "react-native-gesture-handler";
 
 const Conversations = ({ navigation }) => {
   const { user } = useContext(UserContext);
@@ -11,7 +12,7 @@ const Conversations = ({ navigation }) => {
   }, [messages]);
 
   return (
-    <View>
+    <ScrollView>
       <Text>Conversations</Text>
 
       {/* {messages.map((message, index) => (
@@ -25,7 +26,7 @@ const Conversations = ({ navigation }) => {
       ))} */}
       <Text>{JSON.stringify(messages)}</Text>
       <Button title="Chat" onPress={() => navigation.navigate("Chat")} />
-    </View>
+    </ScrollView>
   );
 };
 

@@ -48,7 +48,15 @@ const Players = ({ route }) => {
               <Text style={{ color: "gray" }}>{user.email}</Text>
 
               <View style={{ flexDirection: "row" }}>
-                <TouchableOpacity style={global.chatButton}>
+                <TouchableOpacity
+                  style={global.chatButton}
+                  onPress={() =>
+                    navigation.navigate("Messages", {
+                      screen: "Chat",
+                      params: { user: user.email },
+                    })
+                  }
+                >
                   <Text style={{ color: "white", fontWeight: "bold" }}>
                     Chat
                   </Text>

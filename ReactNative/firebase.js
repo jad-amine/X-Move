@@ -4,7 +4,6 @@ import {
   getFirestore,
   collection,
   onSnapshot,
-  initializeFirestore,
   setDoc,
   doc,
   addDoc,
@@ -34,7 +33,7 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 
 // init firestore service (connect to db)
-const db = getFirestore();
+export const db = getFirestore();
 
 // collection ref
 export const colRef = collection(db, "messages");

@@ -2,14 +2,25 @@ import React, { useState, useCallback, useEffect, useContext } from "react";
 import { GiftedChat } from "react-native-gifted-chat";
 import { MessagesContext } from "../../../contexts/MessagesContext";
 import { UserContext } from "../../../contexts/UserContext";
-import { addDoc, onSnapshot, orderBy, query } from "firebase/firestore";
-import { colRef } from "../../../firebase";
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
+import { colRef, db } from "../../../firebase";
+import { useRoute } from "@react-navigation/native";
 
 const Chat = () => {
   const { user } = useContext(UserContext);
   const [messages, setMessages] = useState([]);
+  const route = useRoute();
+  console.log(route);
 
   useEffect(() => {
+    const userB = route.params;
+    const roomQuery = query(collection(db, "rooms"));
     const q = query(colRef, orderBy("createdAt", "desc"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       setMessages(
@@ -21,7 +32,6 @@ const Chat = () => {
         }))
       );
     });
-    console.log(messages);
   }, []);
 
   const onSend = useCallback((messages = []) => {
@@ -44,8 +54,8 @@ const Chat = () => {
       onSend={(messages) => onSend(messages)}
       user={{
         _id: user.info._id,
-        // receiverID: 1,
         // name: user.info.name,
+        // avatar: user.info.picture,
       }}
     />
   );

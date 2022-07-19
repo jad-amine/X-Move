@@ -10,41 +10,30 @@ import {
   orderBy,
   query,
   setDoc,
+  updateDoc,
 } from "firebase/firestore";
 import { colRef, db } from "../../../firebase";
 import { useRoute } from "@react-navigation/native";
 
 const Chat = () => {
   const { user } = useContext(UserContext);
-  const { rooms } = useContext(MessagesContext);
+  const { rooms, setRooms } = useContext(MessagesContext);
   const [messages, setMessages] = useState([]);
   const route = useRoute();
+  const [roomId, setRoomId] = useState(null);
 
   useEffect(() => {
     const userB = route.params;
     const room = rooms.find((room) =>
       room.participantsArray.includes(userB.email)
     );
-    if (room) {
-      const roomRef = doc(db, "rooms", room.id);
-      const roomMessagesRef = collection(db, "rooms", room.id, "messages");
-      const unsubscribe = onSnapshot(roomMessagesRef, (querySnapshot) => {
-        const messagesFirestore = querySnapshot
-          .docChanges()
-          .filter(({ type }) => type == "added")
-          .map(({ doc }) => {
-            const message = doc.data();
-            // return { ...message, createdAt: message.createdAt.toDate() };
-          });
-        // appendMessages(messages);
-      });
-      return () => unsubscribe();
-    } else if (room === undefined) {
-      console.log(room);
+    let randomID;
+    if (!room) {
       async function addRoom() {
         try {
-          const roomId = Math.floor(Math.random() * 100000000);
-          // const roomRef = doc(db, "rooms", roomId);
+          randomID = Math.floor(Math.random() * 100000000).toString();
+          const roomRef = doc(db, "rooms", randomID);
+          setRoomId(randomID);
           const currUserData = {
             displayName: user.info.name,
             email: user.info.email,
@@ -57,31 +46,58 @@ const Chat = () => {
             participants: [currUserData, userBData],
             participantsArray: [user.info.email, userB.email],
           };
-          setDoc(doc(db, "rooms", roomId.toString()), {
-            participants: [currUserData, userBData],
-            participantsArray: [user.info.email, userB.email],
-          }).then((a) => console.log("response", a));
+          setDoc(roomRef, roomData).then((a) =>
+            setRooms([...rooms, { ...roomData, id: randomID }])
+          );
         } catch (error) {
           console.log(error);
         }
       }
       addRoom();
+    } else {
+      setRoomId(room.id);
+      randomID = room.id;
     }
+    const roomMessagesRef = collection(
+      db,
+      "rooms",
+      randomID.toString(),
+      "messages"
+    );
+    const unsubscribe = onSnapshot(roomMessagesRef, (querySnapshot) => {
+      const messagesFirestore = querySnapshot
+        .docChanges()
+        .filter(({ type }) => type == "added")
+        .map(({ doc }) => {
+          const message = doc.data();
+          return { ...message, createdAt: message?.createdAt?.toDate() };
+        });
+      messagesFirestore ? appendMessages(messagesFirestore) : null;
+    });
+    return () => unsubscribe();
   }, []);
 
-  const onSend = useCallback((messages = []) => {
-    setMessages((previousMessages) =>
-      GiftedChat.append(previousMessages, messages)
-    );
-    const { _id, createdAt, text, user } = messages[0];
-    addDoc(colRef, {
-      _id,
-      createdAt,
-      text,
-      user,
-    }).then(() => console.log("response"));
-    console.log(messages);
-  }, []);
+  const appendMessages = useCallback(
+    (messages = []) => {
+      setMessages((previousMessages) =>
+        GiftedChat.append(previousMessages, messages)
+      );
+    },
+    [messages]
+  );
+
+  async function onSend(messages = []) {
+    try {
+      const roomMessagesRef = collection(db, "rooms", roomId, "messages");
+      const roomRef = doc(db, "rooms", roomId.toString());
+      const writes = messages.map((m) => addDoc(roomMessagesRef, m));
+      const lastMessage = messages[messages.length - 1];
+      writes.push(updateDoc(roomRef, { lastMessage }));
+      await Promise.all(writes);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <GiftedChat

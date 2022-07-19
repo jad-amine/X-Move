@@ -35,7 +35,7 @@ const BottomTab = () => {
   useEffect(() => {
     const unsubscribe = onSnapshot(chatsQuery, (querySnapshot) => {
       const parsedChats = querySnapshot.docs
-        .filter((doc) => doc.data().lastMessage)
+        // .filter((doc) => doc.data().lastMessage)
         .map((doc) => ({
           ...doc.data(),
           id: doc.id,
@@ -45,10 +45,11 @@ const BottomTab = () => {
         }));
       setRooms(parsedChats);
     });
+    // return () => unsubscribe();
   }, []);
 
   return (
-    <MessagesContext.Provider value={{ rooms }}>
+    <MessagesContext.Provider value={{ rooms, setRooms }}>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           headerShown: false,

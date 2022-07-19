@@ -1,0 +1,26 @@
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Top Navbar */
+.top-nav {
+  height: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 50px;
+  border-bottom: 1px solid gray;
+}
+
+.top-nav ul {
+  display: flex;
+  list-style: none;
+}
+
+.top-nav ul li {
+  margin-left: 30px;
+}

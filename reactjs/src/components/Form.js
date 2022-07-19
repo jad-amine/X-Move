@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../contexts/UserContext";
 
 function Form() {
+  const { user, setUser } = useContext(UserContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,6 +37,7 @@ function Form() {
           disabled={false}
           onClick={(e) => {
             e.preventDefault();
+            console.log(user);
           }}
         >
           {signUp ? "Sign Up" : "Sign In"}

@@ -1,16 +1,45 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Chat from "./Chat";
 import Conversations from "./Conversations";
+import { db } from "../../../firebase";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { UserContext } from "../../../contexts/UserContext";
+import { MessagesContext } from "../../../contexts/MessagesContext";
 
 const Stack = createNativeStackNavigator();
 
 const Messages = ({ route }) => {
+  const [rooms, setRooms] = useState(null);
+
+  const { user } = useContext(UserContext);
+  const chatsQuery = query(
+    collection(db, "rooms"),
+    where("participantsArray", "array-contains", user.info.email)
+  );
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(chatsQuery, (querySnapshot) => {
+      const parsedChats = querySnapshot.docs
+        // .filter((doc) => doc.data().lastMessage)
+        .map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+          userB: doc
+            .data()
+            .participants.find((p) => p.email !== user.info.email),
+        }));
+      setRooms(parsedChats);
+    });
+    return () => unsubscribe();
+  }, []);
   return (
-    <Stack.Navigator initialRouteName="Conversations">
-      <Stack.Screen name="Conversations" component={Conversations} />
-      <Stack.Screen name="Chat" component={Chat} />
-    </Stack.Navigator>
+    <MessagesContext.Provider value={{ rooms, setRooms }}>
+      <Stack.Navigator initialRouteName="Conversations">
+        <Stack.Screen name="Conversations" component={Conversations} />
+        <Stack.Screen name="Chat" component={Chat} />
+      </Stack.Navigator>
+    </MessagesContext.Provider>
   );
 };
 

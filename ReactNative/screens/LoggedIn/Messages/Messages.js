@@ -19,19 +19,26 @@ const Messages = ({ route }) => {
   );
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(chatsQuery, (querySnapshot) => {
-      const parsedChats = querySnapshot.docs
-        // .filter((doc) => doc.data().lastMessage)
-        .map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-          userB: doc
-            .data()
-            .participants.find((p) => p.email !== user.info.email),
-        }));
-      setRooms(parsedChats);
-    });
-    return () => unsubscribe();
+    const getPreviousChats = async () => {
+      try {
+        const unsubscribe = onSnapshot(chatsQuery, (querySnapshot) => {
+          const parsedChats = querySnapshot.docs
+            .filter((doc) => doc.data().lastMessage)
+            .map((doc) => ({
+              ...doc.data(),
+              id: doc.id,
+              userB: doc
+                .data()
+                .participants.find((p) => p.email !== user.info.email),
+            }));
+          setRooms(parsedChats);
+        });
+        return () => unsubscribe();
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getPreviousChats();
   }, []);
   return (
     <MessagesContext.Provider value={{ rooms, setRooms }}>

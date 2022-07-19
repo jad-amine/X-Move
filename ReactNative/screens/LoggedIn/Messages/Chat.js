@@ -24,9 +24,9 @@ const Chat = () => {
 
   useEffect(() => {
     const userB = route.params;
-    const room = rooms.find((room) =>
-      room.participantsArray.includes(userB.email)
-    );
+    const room = rooms
+      ? rooms.find((room) => room.participantsArray.includes(userB.email))
+      : false;
     let randomID;
     if (!room) {
       async function addRoom() {
@@ -47,7 +47,14 @@ const Chat = () => {
             participantsArray: [user.info.email, userB.email],
           };
           setDoc(roomRef, roomData).then((a) =>
-            setRooms([...rooms, { ...roomData, id: randomID }])
+            setRooms([
+              ...rooms,
+              {
+                ...roomData,
+                id: randomID,
+                userB: { displayName: userB.name, email: userB.email },
+              },
+            ])
           );
         } catch (error) {
           console.log(error);

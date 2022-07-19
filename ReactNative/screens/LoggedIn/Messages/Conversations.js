@@ -3,21 +3,25 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 import { ScrollView } from "react-native-gesture-handler";
 import { MessagesContext } from "../../../contexts/MessagesContext";
+import ChatHeader from "../../../components/ChatHeader";
 
 const Conversations = ({ navigation }) => {
   const { user } = useContext(UserContext);
   const { rooms } = useContext(MessagesContext);
   const [chats, setChats] = useState(null);
   useEffect(() => {
-    setChats(rooms.filter((room) => !room.lastmessage));
-  }, []);
+    setTimeout(() => {
+      console.log(rooms);
+    }, 1000);
+    setChats(rooms ? rooms.filter((room) => !room.lastmessage) : null);
+  }, [rooms]);
   return (
-    // <FlatList
-    <ScrollView>
-      <Text>Conversations</Text>
-      <Text>{JSON.stringify(chats)}</Text>
-      {/* <Button title="Chat" onPress={() => navigation.navigate("Chat")} /> */}
-    </ScrollView>
+    <FlatList
+      style={{ flex: 1, padding: 10 }}
+      data={chats}
+      keyExtractor={(_, i) => i}
+      renderItem={({ item }) => <ChatHeader item={item} />}
+    />
   );
 };
 

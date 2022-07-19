@@ -12,8 +12,10 @@
   align-items: center;
   justify-content: space-between;
   width: 90%;
-  margin: 0 50px;
-  border-bottom: 1px solid gray;
+  margin: 0 auto;
+  border-bottom: 2px solid gray;
+  background-color: black;
+  padding: 0 20px;
 }
 
 .top-nav ul {
@@ -23,4 +25,30 @@
 
 .top-nav ul li {
   margin-left: 30px;
+}
+
+/* Landing Page */
+
+.landing-page {
+  margin-top: 50px;
+  display: flex;
+  margin: 0 auto;
+  padding: 100px 0;
+  background-color: gold;
+  justify-content: space-around;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 5;
+}
+
+.form label {
+  margin-top: 15px;
+}
+
+/* Utilities */
+.container {
+  width: 90%;
 }

@@ -45,11 +45,10 @@ const BottomTab = () => {
         }));
       setRooms(parsedChats);
     });
-    console.log(rooms);
   }, []);
 
   return (
-    <MessagesContext.Provider>
+    <MessagesContext.Provider value={{ rooms }}>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           headerShown: false,

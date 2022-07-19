@@ -53,7 +53,7 @@ const Players = ({ route }) => {
                   onPress={() =>
                     navigation.navigate("Messages", {
                       screen: "Chat",
-                      params: { user: user.email },
+                      params: { email: user.email, name: user.name },
                     })
                   }
                 >

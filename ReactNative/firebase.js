@@ -36,7 +36,7 @@ initializeApp(firebaseConfig);
 export const db = getFirestore();
 
 // collection ref
-export const colRef = collection(db, "messages");
+export const colRef = collection(db, "rooms");
 
 // addDoc(colRef, {
 //   text: messages,

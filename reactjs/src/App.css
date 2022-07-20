@@ -38,6 +38,10 @@
   justify-content: space-around;
 }
 
+.icon {
+  color: #ff4d00;
+}
+
 .form {
   display: flex;
   flex-direction: column;

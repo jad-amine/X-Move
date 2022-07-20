@@ -8,16 +8,17 @@ function Form() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signUp, setSignUp] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
 
   const handleClick = async (e) => {
     e.preventDefault();
+    const user = { name, email, password };
     try {
-      const res = await API.post("register/", { name, email, password });
+      const res = await API.post(signUp ? "register/" : "login/", user);
       localStorage.setItem("token", res.data.token);
       setUser({ token: res.data.token, user: res.data.user });
     } catch (error) {
-      setError(true);
+      setError(signUp ? "User already exists !!" : "Invalid Credentials !!");
       console.log(error, error.message);
     }
   };
@@ -67,7 +68,7 @@ function Form() {
             {signUp ? "Sign In" : "Sign Up"}
           </span>
         </p>
-        <p className="error">{error && "User already exists !!"}</p>
+        <p className="error">{error}</p>
       </form>
     </div>
   );

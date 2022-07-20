@@ -16,6 +16,9 @@ function App() {
       </div>
     );
   } else {
+    setTimeout(() => {
+      console.log(user);
+    }, 2000);
     return <div>Home Page</div>;
   }
 }

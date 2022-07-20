@@ -7,12 +7,12 @@ import { UserContext } from "./contexts/UserContext";
 import LandingPage from "./pages/LandingPage";
 
 function App() {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   if (!user) {
     return (
       <div className="App">
         <Navbar />
-        <LandingPage />
+        <LandingPage setUser={setUser} />
       </div>
     );
   } else {

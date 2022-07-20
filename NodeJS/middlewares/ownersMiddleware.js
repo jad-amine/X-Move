@@ -2,10 +2,11 @@ require("dotenv").config();
 var jwt = require("jsonwebtoken");
 
 // Auth User middleware or App Launcher
-const authUser = (req, res, next) => {
+const authOwner = (req, res, next) => {
   if (!req.headers.authorization) {
     return res.status(401).json({ message: "Unauthenticated user" });
   }
+  console.log("hi");
   const token = req.headers.authorization.split(" ")[1];
   jwt.verify(token, process.env.TOKEN_SECRET, function (err, decoded) {
     if (err) {
@@ -19,4 +20,4 @@ const authUser = (req, res, next) => {
   });
 };
 
-module.exports = { authUser };
+module.exports = { authOwner };

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import API from "../api";
 
-function Form() {
+function UserForm() {
   const { setUser } = useContext(UserContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ function Form() {
     try {
       const res = await API.post(signUp ? "register/" : "login/", user);
       localStorage.setItem("token", res.data.token);
-      setUser({ token: res.data.token, user: res.data.user });
+      setUser({ token: res.data.token, info: res.data.user });
     } catch (error) {
       setError(signUp ? "User already exists !!" : "Invalid Credentials !!");
       console.log(error, error.message);
@@ -74,4 +74,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default UserForm;

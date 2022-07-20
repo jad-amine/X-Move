@@ -4,6 +4,7 @@ import "./App.css";
 // Pages & Components
 import Navbar from "./components/Navbar";
 import { UserContext } from "./contexts/UserContext";
+import Home from "./pages/Home";
 import LandingPage from "./pages/LandingPage";
 
 function App() {
@@ -11,15 +12,16 @@ function App() {
   if (!user) {
     return (
       <div className="App">
-        <Navbar />
         <LandingPage setUser={setUser} />
       </div>
     );
   } else {
-    setTimeout(() => {
-      console.log(user);
-    }, 2000);
-    return <div>Home Page</div>;
+    return (
+      <div className="App">
+        <Navbar />
+        <Home />
+      </div>
+    );
   }
 }
 

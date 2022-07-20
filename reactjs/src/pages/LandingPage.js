@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Form from "../components/Form";
+import UserForm from "../components/UserForm";
 import ReactLoading from "react-loading";
 import Loading from "../components/Loading";
 import API from "../api";
+import Navbar from "../components/Navbar";
 
 function LandingPage({ setUser }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -11,7 +12,7 @@ function LandingPage({ setUser }) {
     if (!token) {
       setTimeout(() => {
         setIsLoading(false);
-      }, 1000);
+      }, 2000);
     } else {
       const authOwner = async () => {
         try {
@@ -25,9 +26,10 @@ function LandingPage({ setUser }) {
             }
           );
           if (data.status === "Verified") {
-            setUser(data.user);
+            setUser({ info: data.user, token: token });
           }
         } catch (error) {
+          setUser(null);
           setIsLoading(false);
           console.log(error.message, error);
         }
@@ -37,15 +39,18 @@ function LandingPage({ setUser }) {
   }, []);
   if (isLoading) {
     return (
-      // <Loading />
-      <ReactLoading type="bubbles" color="tomato" height={400} width={100} />
+      <Loading />
+      // <ReactLoading type="bubbles" color="tomato" height={400} width={100} />
     );
   }
   return (
-    <div className="container landing-page">
-      <div>we are not alone !!</div>
-      <Form />
-    </div>
+    <>
+      <Navbar />
+      <div className="container landing-page">
+        <div>we are not alone !!</div>
+        <UserForm />
+      </div>
+    </>
   );
 }
 

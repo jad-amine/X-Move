@@ -12,6 +12,7 @@ app.use(express.json({ limit: "50mb" }));
 
 // Routes
 const usersRoutes = require("./routes/usersRoutes");
+const ownersRoutes = require("./routes/ownersRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 
 // Connect to db
@@ -26,11 +27,12 @@ mongoose
 
 // APIs
 app.use("/api/users", usersRoutes);
+app.use("/api/owners", ownersRoutes);
 app.use("/api/admin", adminRoutes);
 
-const cluster = require("cluster");
-const os = require("os");
-const cpuCount = os.cpus().length;
+// const cluster = require("cluster");
+// const os = require("os");
+// const cpuCount = os.cpus().length;
 
 // if (cluster.isMaster) {
 //   for (let i = 0; i < cpuCount; i++) {

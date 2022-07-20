@@ -12,11 +12,14 @@ const fieldSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  sports: {
-    type: [String],
-  },
   location: {
     type: [Number],
+  },
+  number: {
+    type: Number,
+  },
+  rentPerHour: {
+    type: Number,
   },
 });
 

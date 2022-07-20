@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const Field = require("../models/fieldModel");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 var jwt = require("jsonwebtoken");
@@ -37,7 +38,9 @@ const register = async (req, res) => {
 
 // Login Owner
 const login = async (req, res) => {
-  const user = await User.findOne({ email: req.body.email });
+  const user = await User.findOne({ email: req.body.email }).populate(
+    "property"
+  );
   if (!user || !req.body.password) {
     return res.status(401).json({ message: "Invalid Credentials" });
   }
@@ -89,4 +92,14 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login };
+// Add property information
+const addProperty = async (req, res) => {
+  const newField = { ...req.body.info, owner: req.user._id };
+  const field = await Field.create(newField);
+  await User.findByIdAndUpdate(req.user._id, {
+    property: field._id,
+  });
+  res.status(200).json({ data: req.body, user: req.user });
+};
+
+module.exports = { register, login, addProperty };

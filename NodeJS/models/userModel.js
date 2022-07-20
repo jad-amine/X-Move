@@ -42,6 +42,10 @@ const userSchema = new mongoose.Schema(
       //   type: Number
       // }
     },
+    property: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Field",
+    },
     friends: [
       {
         type: mongoose.Schema.Types.ObjectId,

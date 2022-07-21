@@ -1,16 +1,18 @@
-import { View, Text } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { Picker } from "@react-native-picker/picker";
+import FieldComponent from "./FieldComponent";
 
 const RentField = () => {
-  const [field, setField] = useState("football");
+  const [sport, setSport] = useState("football");
+  const [fields, setFields] = useState({});
   const { user } = useContext(UserContext);
 
   const getFields = async () => {
     try {
       const response = await fetch(
-        "http://10.0.2.2:4000/api/users/getReservations/" + field,
+        "http://10.0.2.2:4000/api/users/getReservations/" + sport,
         {
           headers: {
             authorization: `Bearer ${user.token}`,
@@ -18,7 +20,7 @@ const RentField = () => {
         }
       );
       const data = await response.json();
-      console.log(data);
+      setFields(data);
     } catch (error) {
       console.log(error.message);
     }
@@ -26,7 +28,7 @@ const RentField = () => {
 
   useEffect(() => {
     getFields();
-  }, []);
+  }, [sport]);
 
   return (
     <View>
@@ -39,13 +41,18 @@ const RentField = () => {
           margin: 40,
           padding: 30,
         }}
-        selectedValue={field}
-        onValueChange={(itemValue) => setField(itemValue)}
+        selectedValue={sport}
+        onValueChange={(itemValue) => setSport(itemValue)}
       >
         <Picker.Item label="Football" value="football" />
         <Picker.Item label="Basketball" value="basketball" />
         <Picker.Item label="Tennis" value="tennis" />
       </Picker>
+      <FlatList
+        data={fields}
+        renderItem={({ item, index }) => <FieldComponent item={item} />}
+        keyExtractor={(i, index) => index}
+      />
     </View>
   );
 };

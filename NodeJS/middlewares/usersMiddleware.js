@@ -3,6 +3,7 @@ var jwt = require("jsonwebtoken");
 
 // Auth User middleware or App Launcher
 const authUser = (req, res, next) => {
+  console.log("received");
   if (!req.headers.authorization) {
     return res.status(401).json({ message: "Unauthenticated user" });
   }

@@ -8,6 +8,7 @@ const {
   register,
   fetchSimilarUsers,
   addProfilePicture,
+  getReservations,
 } = require("../controllers/usersController");
 
 const router = express.Router();
@@ -32,5 +33,8 @@ router.post("/addSport", authUser, addSport);
 
 // Remove Sport
 router.post("/removeSport", authUser, removeSport);
+
+// Get Fields Information
+router.get("/getReservations/:field", authUser, getReservations);
 
 module.exports = router;

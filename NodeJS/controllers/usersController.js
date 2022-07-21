@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const Field = require("../models/fieldModel");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 var jwt = require("jsonwebtoken");
@@ -162,6 +163,17 @@ const removeSport = async (req, res) => {
   res.json("Success Sports Removed: " + sport);
 };
 
+// Get Fields Information
+const getReservations = async (req, res) => {
+  const field = req.params.field;
+  try {
+    const fields = await Field.find({ sport: field });
+    res.status(200).json(fields);
+  } catch (error) {
+    res.status(400).json("Bad Request !!!");
+  }
+};
+
 module.exports = {
   addSport,
   removeSport,
@@ -169,4 +181,5 @@ module.exports = {
   register,
   fetchSimilarUsers,
   addProfilePicture,
+  getReservations,
 };

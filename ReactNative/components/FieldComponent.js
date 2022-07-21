@@ -2,7 +2,6 @@ import React from "react";
 import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 
 export default function FieldComponent({ item }) {
-  console.log(item);
   return (
     <Card onPress={() => console.log("card")}>
       <Card.Cover
@@ -13,7 +12,7 @@ export default function FieldComponent({ item }) {
       <Card.Title
         title="Card Title"
         subtitle="Card Subtitle"
-        // left={LeftContent} add
+        // left={LeftContent} add avatar
       />
       <Card.Content>
         <Title>Card title</Title>

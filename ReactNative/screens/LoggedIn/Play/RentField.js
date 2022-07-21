@@ -1,8 +1,8 @@
 import { View, Text, FlatList } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../contexts/UserContext";
 import { Picker } from "@react-native-picker/picker";
-import FieldComponent from "./FieldComponent";
+import { UserContext } from "../../../contexts/UserContext";
+import FieldComponent from "../../../components/FieldComponent";
 
 const RentField = () => {
   const [sport, setSport] = useState("football");

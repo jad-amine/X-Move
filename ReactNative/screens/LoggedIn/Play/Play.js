@@ -1,6 +1,6 @@
 import React from "react";
-import RentEquipments from "../../components/RentEquipments";
-import RentField from "../../components/RentField";
+import RentEquipments from "./RentEquipments";
+import RentField from "./RentField";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 const Tab = createMaterialTopTabNavigator();
 

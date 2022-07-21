@@ -8,7 +8,7 @@ import Map from "../Map";
 import Profile from "../Profile";
 import Messages from "../Messages/Messages";
 import StackNavigator from "./StackNavigator";
-import Play from "../Play";
+import Play from "../Play/Play";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 
 const Tab = createBottomTabNavigator();

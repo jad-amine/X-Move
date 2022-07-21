@@ -104,4 +104,21 @@ const addProperty = async (req, res) => {
   }
 };
 
-module.exports = { register, login, addProperty };
+// Add Game
+const addGame = async (req, res) => {
+  if (!req.body.propertyID || !req.body.newEvent) {
+    res.status(400).json("Invalid Request !!");
+    return;
+  }
+  try {
+    await Field.findByIdAndUpdate(req.body.propertyID, {
+      $push: { reservations: req.body.newEvent },
+    });
+    res.status(200).json("Reservation Added !!");
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json("Failed to add Reservation !!");
+  }
+};
+
+module.exports = { register, login, addProperty, addGame };

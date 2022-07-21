@@ -34,6 +34,9 @@ const fieldSchema = new mongoose.Schema({
     type: String,
     unique: true,
   },
+  reservations: {
+    type: [Object],
+  },
 });
 
 module.exports = mongoose.model("Field", fieldSchema);

@@ -5,6 +5,7 @@ const {
   login,
   addProperty,
   addGame,
+  getReservations,
 } = require("../controllers/ownersController");
 
 const router = express.Router();
@@ -23,5 +24,8 @@ router.post("/addProperty", authOwner, addProperty);
 
 // Add a Game
 router.post("/addGame", authOwner, addGame);
+
+// Get Reservations
+router.get("/getReservations", authOwner, getReservations);
 
 module.exports = router;

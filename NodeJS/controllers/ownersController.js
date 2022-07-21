@@ -121,4 +121,16 @@ const addGame = async (req, res) => {
   }
 };
 
-module.exports = { register, login, addProperty, addGame };
+// Get Reservations
+const getReservations = async (req, res) => {
+  try {
+    const reservations = await Field.findById(req.user.property._id).select(
+      "reservations"
+    );
+    res.status(200).json(reservations);
+  } catch (error) {
+    res.json("Invalid");
+  }
+};
+
+module.exports = { register, login, addProperty, addGame, getReservations };

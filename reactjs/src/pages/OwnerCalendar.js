@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import format from "date-fns/format";
 import getDay from "date-fns/getDay";
 import parse from "date-fns/parse";
@@ -7,6 +7,8 @@ import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import API from "../api";
+import { UserContext } from "../contexts/UserContext";
 
 const locales = {
   "en-US": require("date-fns/locale/en-US"),
@@ -21,13 +23,35 @@ const localizer = dateFnsLocalizer({
 });
 
 export default function OwnerCalendar() {
-  const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
+  const [newEvent, setNewEvent] = useState({ player: "", start: "", end: "" });
   const [allEvents, setAllEvents] = useState([]);
+  const { user } = useContext(UserContext);
 
-  const handleAddEvent = () => {
-    console.log(newEvent);
-    setAllEvents([...allEvents, newEvent]);
-    setNewEvent({ title: "", start: "", end: "" });
+  const handleAddEvent = async () => {
+    if (
+      newEvent.player === "" ||
+      newEvent.start === "" ||
+      newEvent.player === ""
+    ) {
+      alert("Please Fill all the fields");
+      return;
+    }
+    try {
+      const { data } = await API.post(
+        "addGame/",
+        { newEvent: newEvent, propertyID: user.info.property._id },
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      setAllEvents([...allEvents, newEvent]);
+      setNewEvent({ player: "", start: "", end: "" });
+    } catch (error) {
+      alert("Game couldn't be set");
+      console.log(error);
+    }
   };
   return (
     <div className="calendar-form">
@@ -43,10 +67,10 @@ export default function OwnerCalendar() {
       <div>
         <input
           type="text"
-          placeholder="Title "
+          placeholder="Player "
           style={{ width: "20%", marginRight: "10px" }}
-          value={newEvent.title}
-          onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
+          value={newEvent.player}
+          onChange={(e) => setNewEvent({ ...newEvent, player: e.target.value })}
         />
         <DatePicker
           placeholderText="Start Date"

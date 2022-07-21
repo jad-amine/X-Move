@@ -21,15 +21,52 @@ const localizer = dateFnsLocalizer({
 });
 
 export default function OwnerCalendar() {
+  const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
+  const [allEvents, setAllEvents] = useState([]);
+
+  const handleAddEvent = () => {
+    console.log(newEvent);
+    setAllEvents([...allEvents, newEvent]);
+    setNewEvent({ title: "", start: "", end: "" });
+  };
   return (
-    <div>
+    <div className="calendar-form">
+      <h1>Calendar</h1>
       <Calendar
         localizer={localizer}
         startAccessor="start"
         endAccessor="end"
+        events={allEvents}
         style={{ height: 500, margin: "50px" }}
       />
-      hello
+      <h2>Add New Event</h2>
+      <div>
+        <input
+          type="text"
+          placeholder="Title "
+          style={{ width: "20%", marginRight: "10px" }}
+          value={newEvent.title}
+          onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
+        />
+        <DatePicker
+          placeholderText="Start Date"
+          style={{ marginRight: "10px" }}
+          selected={newEvent.start}
+          showTimeSelect
+          dateFormat="Pp"
+          onChange={(start) => setNewEvent({ ...newEvent, start })}
+        />
+        <DatePicker
+          placeholderText="End Date"
+          selected={newEvent.end}
+          showTimeSelect
+          dateFormat="Pp"
+          onChange={(end) => setNewEvent({ ...newEvent, end })}
+        />
+        <button style={{ marginTop: "10px" }} onClick={handleAddEvent}>
+          Add Event
+        </button>
+      </div>
     </div>
   );
 }

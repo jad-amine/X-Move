@@ -19,12 +19,20 @@ export default function FieldForm({ user, setUser }) {
       ? setInfo({ ...info, number: value })
       : target === "rentPerHour"
       ? setInfo({ ...info, rentPerHour: value })
+      : target === "name"
+      ? setInfo({ ...info, name: value })
       : console.log(info);
   };
 
   const handleClick = async (e) => {
     e.preventDefault();
-    if (!info.property || !info.sport || !info.number || !info.rentPerHour) {
+    if (
+      !info.name ||
+      !info.property ||
+      !info.sport ||
+      !info.number ||
+      !info.rentPerHour
+    ) {
       alert("Please fill all the field !!");
       return;
     }
@@ -47,6 +55,8 @@ export default function FieldForm({ user, setUser }) {
   return (
     <div>
       <form>
+        <label>Property Name: </label>
+        <input type="text" name="name" onChange={handleChange} />
         <select
           name="property"
           defaultValue={"Property type"}
@@ -75,12 +85,14 @@ export default function FieldForm({ user, setUser }) {
             </>
           )}
         </select>
+        <label>Phone Number: </label>
         <input
           type="number"
           name="number"
           placeholder="Number"
           onChange={handleChange}
         />
+        <label>Rent Per Hour price:</label>
         <input
           type="number"
           name="rentPerHour"

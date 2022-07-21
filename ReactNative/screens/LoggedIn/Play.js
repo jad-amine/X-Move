@@ -2,7 +2,6 @@ import React from "react";
 import RentEquipments from "../../components/RentEquipments";
 import RentField from "../../components/RentField";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-
 const Tab = createMaterialTopTabNavigator();
 
 const Play = () => {

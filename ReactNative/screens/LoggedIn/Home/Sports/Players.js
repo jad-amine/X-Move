@@ -13,7 +13,7 @@ const Players = ({ route }) => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const resonse = await fetch(
+        const response = await fetch(
           "http://10.0.2.2:4000/api/users/getSimilarUsers/" + sport,
           {
             headers: {
@@ -21,7 +21,7 @@ const Players = ({ route }) => {
             },
           }
         );
-        const data = await resonse.json();
+        const data = await response.json();
         setUsers(data);
       } catch (err) {
         console.log("Request Error", err);

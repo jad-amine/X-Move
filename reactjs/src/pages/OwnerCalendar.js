@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import format from "date-fns/format";
 import getDay from "date-fns/getDay";
 import parse from "date-fns/parse";
@@ -26,6 +26,30 @@ export default function OwnerCalendar() {
   const [newEvent, setNewEvent] = useState({ player: "", start: "", end: "" });
   const [allEvents, setAllEvents] = useState([]);
   const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    const getReservations = async () => {
+      try {
+        const { data } = await API.get("getReservations/", {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
+        const fetchedEvents = data.reservations.map((event) => {
+          return {
+            ...event,
+            start: new Date(event.start),
+            end: new Date(event.end),
+          };
+        });
+        setAllEvents([...fetchedEvents]);
+      } catch (error) {
+        alert("Reservations couldn't be fetched !!");
+        console.log(error.message);
+      }
+    };
+    getReservations();
+  }, []);
 
   const handleAddEvent = async () => {
     if (

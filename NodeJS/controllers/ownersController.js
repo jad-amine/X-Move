@@ -24,8 +24,6 @@ const register = async (req, res) => {
         name: user.name,
         email: user.email,
         type: user.admin,
-        sports: user.sports,
-        friends: user.friends,
       },
     });
   } catch (err) {
@@ -54,52 +52,56 @@ const login = async (req, res) => {
       name: user.name,
       email: user.email,
       type: user.admin,
-      sports: user.sports,
-      friends: user.friends,
+      property: user.property,
     },
     process.env.TOKEN_SECRET
   );
-  console.log(user, "logged in");
-  if (user.pictureURL) {
-    const profilepic = fs.readFileSync(`${user.pictureURL}`, {
-      encoding: "utf8",
-      flag: "r",
-    });
-    res.status(200).json({
-      token: token,
-      user: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        type: user.admin,
-        sports: user.sports,
-        friends: user.friends,
-        picture: profilepic,
-      },
-    });
-  } else {
-    res.status(200).json({
-      token: token,
-      user: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        type: user.admin,
-        sports: user.sports,
-        friends: user.friends,
-      },
-    });
-  }
+  // if (user.pictureURL) {
+  //   const profilepic = fs.readFileSync(`${user.pictureURL}`, {
+  //     encoding: "utf8",
+  //     flag: "r",
+  //   });
+  //   res.status(200).json({
+  //     token: token,
+  //     user: {
+  //       _id: user._id,
+  //       name: user.name,
+  //       email: user.email,
+  //       type: user.admin,
+  //       property: user.property,
+  //       picture: profilepic,
+  //     },
+  //   });
+  // } else {
+  res.status(200).json({
+    token: token,
+    user: {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      type: user.admin,
+      property: user.property,
+    },
+  });
+  // }
 };
 
 // Add property information
 const addProperty = async (req, res) => {
-  const newField = { ...req.body.info, owner: req.user._id };
-  const field = await Field.create(newField);
-  await User.findByIdAndUpdate(req.user._id, {
-    property: field._id,
-  });
-  res.status(200).json({ data: req.body, user: req.user });
+  const newField = {
+    ...req.body.info,
+    owner: req.user._id,
+    email: req.user.email,
+  };
+  try {
+    const field = await Field.create(newField);
+    await User.findByIdAndUpdate(req.user._id, {
+      property: field._id,
+    });
+    res.status(200).json(field);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
 };
 
 module.exports = { register, login, addProperty };

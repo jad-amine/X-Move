@@ -1,6 +1,14 @@
 const mongoose = require("mongoose");
 
 const fieldSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    unique: true,
+  },
+  property: {
+    type: String,
+    required: true,
+  },
   sport: {
     type: String,
     required: true,
@@ -17,9 +25,14 @@ const fieldSchema = new mongoose.Schema({
   },
   number: {
     type: Number,
+    unique: true,
   },
   rentPerHour: {
     type: Number,
+  },
+  email: {
+    type: String,
+    unique: true,
   },
 });
 

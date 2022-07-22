@@ -2,6 +2,7 @@ import { View, Text } from "react-native";
 import React from "react";
 import { useRoute } from "@react-navigation/native";
 import { Agenda } from "react-native-calendars";
+import Reservation from "./Reservation";
 
 export default function Calendar() {
   const item = useRoute().params;
@@ -34,18 +35,7 @@ export default function Calendar() {
       // Max amount of months allowed to scroll to the future. Default = 50
       futureScrollRange={4}
       renderItem={(item, firstItemInDay) => {
-        return (
-          <View
-            style={{
-              marginTop: 50,
-              paddingVertical: 10,
-              backgroundColor: "red",
-              borderRadius: 10,
-            }}
-          >
-            <Text style={{ color: "white" }}>{item.name}</Text>
-          </View>
-        );
+        return <Reservation item={item} />;
       }}
     />
   );

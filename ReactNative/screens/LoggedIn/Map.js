@@ -7,8 +7,10 @@ export default function App() {
     <View style={styles.container}>
       <MapView
         initialRegion={{
-          latitude: 34.197327989805275,
-          longitude: 35.84649175852537,
+          latitude: parseFloat(34.197327989805275),
+          longitude: parseFloat(35.84649175852537),
+          latitudeDelta: parseFloat(34.197327989805275),
+          longitudeDelta: parseFloat(35.84649175852537),
         }}
         style={styles.map}
         onPress={(e) => console.log(e.nativeEvent)}

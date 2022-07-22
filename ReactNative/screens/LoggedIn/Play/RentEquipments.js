@@ -31,29 +31,29 @@ const RentField = () => {
   }, [sport]);
 
   return (
-    <ScrollView>
-      <Picker
-        style={{
-          color: "white",
-          fontSize: 30,
-          borderBottomWidth: 1,
-          backgroundColor: "tomato",
-          margin: 40,
-          padding: 30,
-        }}
-        selectedValue={sport}
-        onValueChange={(itemValue) => setSport(itemValue)}
-      >
-        <Picker.Item label="Ski" value="ski" />
-        <Picker.Item label="Scuba Diving" value="scubadiving" />
-        <Picker.Item label="Bike" value="bike" />
-      </Picker>
-      <FlatList
-        data={fields}
-        renderItem={({ item, index }) => <FieldComponent item={item} />}
-        keyExtractor={(i, index) => index}
-      />
-    </ScrollView>
+    <FlatList
+      data={fields}
+      renderItem={({ item, index }) => <FieldComponent item={item} />}
+      keyExtractor={(i, index) => index}
+      ListHeaderComponent={() => (
+        <Picker
+          style={{
+            color: "white",
+            fontSize: 30,
+            borderBottomWidth: 1,
+            backgroundColor: "tomato",
+            margin: 40,
+            padding: 30,
+          }}
+          selectedValue={sport}
+          onValueChange={(itemValue) => setSport(itemValue)}
+        >
+          <Picker.Item label="Ski" value="ski" />
+          <Picker.Item label="Scuba Diving" value="scubadiving" />
+          <Picker.Item label="Bike" value="bike" />
+        </Picker>
+      )}
+    />
   );
 };
 

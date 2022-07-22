@@ -1,9 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 
 export default function FieldComponent({ item }) {
+  const navigation = useNavigation();
   return (
-    <Card onPress={() => console.log("card")}>
+    <Card onPress={() => navigation.navigate("Calendar", item)}>
       <Card.Cover
         source={{
           uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTItVo-m1lrra5Ax4G0wh3HdDe0gfcyBDqhwQ&usqp=CAU",

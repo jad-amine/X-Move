@@ -2,6 +2,7 @@ import React from "react";
 import RentEquipments from "./RentEquipments";
 import RentField from "./RentField";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import StackNavigator from "./StackNavigator";
 const Tab = createMaterialTopTabNavigator();
 
 const Play = () => {
@@ -9,8 +10,8 @@ const Play = () => {
     <Tab.Navigator>
       <Tab.Screen
         options={{ title: "Fields" }}
-        name="RentField"
-        component={RentField}
+        name="StackNavigator"
+        component={StackNavigator}
       />
       <Tab.Screen
         options={{ title: "Equipments" }}

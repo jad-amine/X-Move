@@ -4,6 +4,7 @@ import { Text } from "react-native";
 import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 
 export default function FieldComponent({ item }) {
+  console.log(item.pictureURL);
   const navigation = useNavigation();
   const RighContent = (props) => (
     <Text style={{ fontSize: 15 }}>
@@ -17,7 +18,7 @@ export default function FieldComponent({ item }) {
     <Card onPress={() => navigation.navigate("Calendar", item)}>
       <Card.Cover
         source={{
-          uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTItVo-m1lrra5Ax4G0wh3HdDe0gfcyBDqhwQ&usqp=CAU",
+          uri: `http://10.0.2.2:4000/` + item.pictureURL,
         }}
       />
       <Card.Title

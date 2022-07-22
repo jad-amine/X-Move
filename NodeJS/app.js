@@ -26,6 +26,7 @@ mongoose
   .catch((err) => console.log("Failed to connect to MongoDB", err));
 
 // APIs
+app.use(express.static("public"));
 app.use("/api/users", usersRoutes);
 app.use("/api/owners", ownersRoutes);
 app.use("/api/admin", adminRoutes);

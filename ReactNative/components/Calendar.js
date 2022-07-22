@@ -3,23 +3,33 @@ import React from "react";
 import { useRoute } from "@react-navigation/native";
 import { Agenda } from "react-native-calendars";
 
-export default function Calendar({ events }) {
+export default function Calendar() {
   const item = useRoute().params;
-  const time = item.reservations[0].start;
-  const event = { time: [{ name: "jad" }] };
-  console.log(item);
+  let array = item.reservations;
+  let length = array.length;
+  for (let i = 0; i < length; i++) {
+    for (let j = 0; j < length - 1; j++) {
+      if (new Date(array[j].start) > new Date(array[j + 1].start)) {
+        let temp = array[j];
+        array[j] = array[j + 1];
+        array[j + 1] = temp;
+      }
+    }
+  }
+  let events = {};
+  console.log("===========");
+  for (let i = 0; i < array.length; i++) {
+    let date = array[i].start.split("T")[0];
+    if (events[date]) {
+      events[date].push(array[i]);
+    } else {
+      events[date] = [array[i]];
+    }
+  }
+
   return (
     <Agenda
-      items={
-        event
-        //   {
-        //   "2022-07-22": [{ name: "First" }, { name: "First" }, { name: "First" }],
-        //   "2022-07-23": [{ name: "First" }],
-        //   "2022-07-24": [{ name: "First" }],
-        //   "2022-07-25": [{ name: "First" }],
-        //   "2022-07-26": [{ name: "First" }],
-        // }
-      }
+      items={events}
       pastScrollRange={1}
       // Max amount of months allowed to scroll to the future. Default = 50
       futureScrollRange={4}

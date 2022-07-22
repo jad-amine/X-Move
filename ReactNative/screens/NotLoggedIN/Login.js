@@ -12,7 +12,6 @@ import {
   View,
 } from "react-native";
 import * as SecureStore from "expo-secure-store";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { global } from "../../styles/globalStyles";
 import { UserContext } from "../../contexts/UserContext";
 
@@ -36,10 +35,6 @@ const Login = ({ navigation }) => {
         return;
       }
       await SecureStore.setItemAsync("token", json.token);
-      json.user.picture
-        ? await AsyncStorage.setItem("picture", json.user.picture)
-        : await AsyncStorage.removeItem("picture");
-      console.log(json.user.picture);
       await setUser({ info: json.user, token: json.token });
       navigation.navigate("Landing Page");
     } catch (err) {

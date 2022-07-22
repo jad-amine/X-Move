@@ -43,11 +43,6 @@ export default function App() {
           setUser(null);
           return;
         } else {
-          const value = await AsyncStorage.getItem("picture");
-          if (value !== null) {
-            setUser({ info: { ...json.user, picture: value }, token: token });
-            return;
-          }
           setUser({ info: json.user, token: token });
           return;
         }

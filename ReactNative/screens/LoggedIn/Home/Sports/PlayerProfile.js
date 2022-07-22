@@ -8,7 +8,7 @@ const PlayerProfile = ({ route }) => {
     <>
       <View style={{ margin: 10, flexDirection: "row" }}>
         <Image
-          source={{ uri: `data:image/gif;base64,${user.picture}` }}
+          source={{ uri: `http://10.0.2.2:4000/` + user.picture }}
           style={{ height: 150, width: 150 }}
         />
         <View style={{ padding: 40, flex: 1 }}>

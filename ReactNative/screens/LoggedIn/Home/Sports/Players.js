@@ -23,6 +23,7 @@ const Players = ({ route }) => {
         );
         const data = await response.json();
         setUsers(data);
+        console.log(data);
       } catch (err) {
         console.log("Request Error", err);
       }
@@ -35,9 +36,9 @@ const Players = ({ route }) => {
       {users &&
         users.map((user, index) => (
           <View key={index} style={global.playerCard}>
-            {user.picture ? (
+            {user.pictureURL ? (
               <Image
-                source={{ uri: `data:image/gif;base64,${user.picture}` }}
+                source={{ uri: `http://10.0.2.2:4000/` + user.pictureURL }}
                 style={{ height: 150, width: 150, borderRadius: 20 }}
               />
             ) : (

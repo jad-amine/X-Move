@@ -66,10 +66,10 @@ const Profile = () => {
   return (
     <View>
       <View style={global.profileHeader}>
-        {user.info.picture ? (
+        {user.info.pictureURL ? (
           <TouchableOpacity onPress={changeProfilePic}>
             <Image
-              source={{ uri: `data:image/gif;base64,${user.info.picture}` }}
+              source={{ uri: `http://10.0.2.2:4000/` + user.info.pictureURL }}
               style={{ height: 200, width: 200 }}
             />
           </TouchableOpacity>

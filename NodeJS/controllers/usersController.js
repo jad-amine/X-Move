@@ -23,40 +23,16 @@ const login = async (req, res) => {
       type: user.admin,
       sports: user.sports,
       friends: user.friends,
+      pictureURL: user.pictureURL,
     },
     process.env.TOKEN_SECRET
   );
   console.log(user, "logged in");
-  if (user.pictureURL) {
-    const profilepic = fs.readFileSync(`${user.pictureURL}`, {
-      encoding: "utf8",
-      flag: "r",
-    });
-    res.status(200).json({
-      token: token,
-      user: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        type: user.admin,
-        sports: user.sports,
-        friends: user.friends,
-        picture: profilepic,
-      },
-    });
-  } else {
-    res.status(200).json({
-      token: token,
-      user: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        type: user.admin,
-        sports: user.sports,
-        friends: user.friends,
-      },
-    });
-  }
+
+  res.status(200).json({
+    token: token,
+    user: user,
+  });
 };
 
 // Register User
@@ -99,18 +75,7 @@ const fetchSimilarUsers = async (req, res) => {
     if (!users) {
       return res.json("No users found");
     }
-    let finalUsers = [];
-    for (let i = 0; i < users.length; i++) {
-      if (users[i].pictureURL) {
-        const profilepic = fs.readFileSync(`${users[i].pictureURL}`, {
-          encoding: "utf8",
-          flag: "r",
-        });
-        finalUsers.push({ ...users[i]._doc, picture: profilepic });
-      }
-    }
-    console.log(finalUsers[0]);
-    return res.json(finalUsers);
+    return res.json(users);
   } catch (err) {
     console.log("Wrong query", err);
   }
@@ -135,13 +100,21 @@ const addSport = async (req, res) => {
 // Add Profile Picture
 const addProfilePicture = async (req, res) => {
   try {
-    const buffer = Buffer.from(req.body.base64);
-    fs.writeFileSync(`profilePictures/${req.user.email}.txt`, buffer);
+    console.log("helo");
+    require("fs").writeFileSync(
+      `public/Images/ProfilePictures/${req.user.email}.png`,
+      req.body.base64,
+      "base64",
+      function (err) {
+        console.log(err);
+      }
+    );
     await User.findByIdAndUpdate(req.user._id, {
-      pictureURL: `profilePictures/${req.user.email}.txt`,
+      pictureURL: `/Images/ProfilePictures/${req.user.email}.png`,
     });
     res.json("saved");
   } catch (err) {
+    console.log("error");
     res.json("Error: Image not saved !");
   }
 };

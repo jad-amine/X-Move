@@ -88,8 +88,18 @@ const login = async (req, res) => {
 
 // Add property information
 const addProperty = async (req, res) => {
+  const info = req.body.info;
+  require("fs").writeFile(
+    `Images/PropertyImages/${info.name}.png`,
+    info.picture,
+    "base64",
+    function (err) {
+      console.log(err);
+    }
+  );
   const newField = {
-    ...req.body.info,
+    ...info,
+    picture: `Images/PropertyImages/${info.name}.png`,
     owner: req.user._id,
     email: req.user.email,
   };

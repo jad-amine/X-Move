@@ -1,12 +1,40 @@
-import { View, Text } from "react-native";
-import React from "react";
+import * as React from "react";
+import MapView, { Marker } from "react-native-maps";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 
-const Map = () => {
+export default function App() {
   return (
-    <View>
-      <Text>Map</Text>
+    <View style={styles.container}>
+      <MapView
+        initialRegion={{
+          latitude: 34.197327989805275,
+          longitude: 35.84649175852537,
+        }}
+        style={styles.map}
+        onPress={(e) => console.log(e.nativeEvent)}
+      >
+        <Marker
+          coordinate={{
+            latitude: 34.197327989805275,
+            longitude: 35.84649175852537,
+          }}
+        />
+      </MapView>
     </View>
   );
-};
+}
 
-export default Map;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: 90,
+    marginBottom: 282,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  map: {
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+  },
+});

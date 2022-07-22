@@ -1,26 +1,33 @@
 import React, { useContext, useEffect, useState } from "react";
-import format from "date-fns/format";
-import getDay from "date-fns/getDay";
-import parse from "date-fns/parse";
-import startOfWeek from "date-fns/startOfWeek";
-import { Calendar, dateFnsLocalizer } from "react-big-calendar";
+// import format from "date-fns/format";
+// import getDay from "date-fns/getDay";
+// import parse from "date-fns/parse";
+// import startOfWeek from "date-fns/startOfWeek";
+import {
+  Calendar,
+  dateFnsLocalizer,
+  momentLocalizer,
+} from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import API from "../api";
 import { UserContext } from "../contexts/UserContext";
+import moment from "moment";
 
-const locales = {
-  "en-US": require("date-fns/locale/en-US"),
-};
+// const locales = {
+//   "en-US": require("date-fns/locale/en-US"),
+// };
 
-const localizer = dateFnsLocalizer({
-  format,
-  parse,
-  startOfWeek,
-  getDay,
-  locales,
-});
+const localizer = momentLocalizer(moment);
+
+// const localizer = dateFnsLocalizer({
+//   format,
+//   parse,
+//   startOfWeek,
+//   getDay,
+//   locales,
+// });
 
 export default function OwnerCalendar() {
   const [newEvent, setNewEvent] = useState({ player: "", start: "", end: "" });
@@ -35,6 +42,7 @@ export default function OwnerCalendar() {
             Authorization: `Bearer ${user.token}`,
           },
         });
+        if (!data.reservations) return;
         const fetchedEvents = data.reservations.map((event) => {
           return {
             ...event,
@@ -55,7 +63,7 @@ export default function OwnerCalendar() {
     if (
       newEvent.player === "" ||
       newEvent.start === "" ||
-      newEvent.player === ""
+      newEvent.end === ""
     ) {
       alert("Please Fill all the fields");
       return;

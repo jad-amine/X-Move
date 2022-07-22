@@ -12,7 +12,7 @@ export default function FieldForm({ user, setUser }) {
       value === "Field" ? setField(true) : setField(false);
     }
     target === "property"
-      ? setInfo({ property: value })
+      ? setInfo({ ...info, property: value })
       : target === "sport"
       ? setInfo({ ...info, sport: value })
       : target === "number"
@@ -26,12 +26,14 @@ export default function FieldForm({ user, setUser }) {
 
   const handleClick = async (e) => {
     e.preventDefault();
+    console.log(info);
     if (
       !info.name ||
       !info.property ||
       !info.sport ||
       !info.number ||
-      !info.rentPerHour
+      !info.rentPerHour ||
+      !info.picture
     ) {
       alert("Please fill all the field !!");
       return;
@@ -50,6 +52,19 @@ export default function FieldForm({ user, setUser }) {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const imgFilehandler = (event) => {
+    var fileSelected = event.target.files;
+    var fileToLoad = fileSelected[0];
+    var fileReader = new FileReader();
+    var base64;
+    fileReader.onload = function (fileLoadedEvent) {
+      base64 = fileLoadedEvent.target.result;
+      base64 = base64.split(",")[1];
+      setInfo({ ...info, picture: base64 });
+    };
+    fileReader.readAsDataURL(fileToLoad);
   };
 
   return (
@@ -100,6 +115,7 @@ export default function FieldForm({ user, setUser }) {
           min={1}
           onChange={handleChange}
         />
+        <input accept="image/*" type="file" onChange={imgFilehandler} />
         <input type="button" value={"Location"} />
         <button onClick={handleClick}>Submit</button>
       </form>

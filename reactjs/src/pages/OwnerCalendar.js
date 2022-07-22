@@ -1,13 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-// import format from "date-fns/format";
-// import getDay from "date-fns/getDay";
-// import parse from "date-fns/parse";
-// import startOfWeek from "date-fns/startOfWeek";
-import {
-  Calendar,
-  dateFnsLocalizer,
-  momentLocalizer,
-} from "react-big-calendar";
+import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -15,19 +7,7 @@ import API from "../api";
 import { UserContext } from "../contexts/UserContext";
 import moment from "moment";
 
-// const locales = {
-//   "en-US": require("date-fns/locale/en-US"),
-// };
-
 const localizer = momentLocalizer(moment);
-
-// const localizer = dateFnsLocalizer({
-//   format,
-//   parse,
-//   startOfWeek,
-//   getDay,
-//   locales,
-// });
 
 export default function OwnerCalendar() {
   const [newEvent, setNewEvent] = useState({ player: "", start: "", end: "" });
@@ -87,7 +67,7 @@ export default function OwnerCalendar() {
   };
   return (
     <div className="calendar-form">
-      <h1>Calendar</h1>
+      <h1 className="align-center">Calendar</h1>
       <Calendar
         localizer={localizer}
         startAccessor="start"
@@ -95,31 +75,34 @@ export default function OwnerCalendar() {
         events={allEvents}
         style={{ height: 500, margin: "50px" }}
       />
-      <h2>Add New Event</h2>
-      <div>
-        <input
-          type="text"
-          placeholder="Player "
-          style={{ width: "20%", marginRight: "10px" }}
-          value={newEvent.player}
-          onChange={(e) => setNewEvent({ ...newEvent, player: e.target.value })}
-        />
-        <DatePicker
-          placeholderText="Start Date"
-          style={{ marginRight: "10px" }}
-          selected={newEvent.start}
-          showTimeSelect
-          dateFormat="Pp"
-          onChange={(start) => setNewEvent({ ...newEvent, start })}
-        />
-        <DatePicker
-          placeholderText="End Date"
-          selected={newEvent.end}
-          showTimeSelect
-          dateFormat="Pp"
-          onChange={(end) => setNewEvent({ ...newEvent, end })}
-        />
-        <button style={{ marginTop: "10px" }} onClick={handleAddEvent}>
+      <div className="add-event">
+        <h2>Add New Event</h2>
+        <div className="date-picker">
+          <input
+            type="text"
+            placeholder="Player "
+            style={{ width: "20%", marginRight: "10px" }}
+            value={newEvent.player}
+            onChange={(e) =>
+              setNewEvent({ ...newEvent, player: e.target.value })
+            }
+          />
+          <DatePicker
+            placeholderText="Start Date"
+            selected={newEvent.start}
+            showTimeSelect
+            dateFormat="Pp"
+            onChange={(start) => setNewEvent({ ...newEvent, start })}
+          />
+          <DatePicker
+            placeholderText="End Date"
+            selected={newEvent.end}
+            showTimeSelect
+            dateFormat="Pp"
+            onChange={(end) => setNewEvent({ ...newEvent, end })}
+          />
+        </div>
+        <button id="addEvent-button" onClick={handleAddEvent}>
           Add Event
         </button>
       </div>

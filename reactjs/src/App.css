@@ -3,15 +3,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 /* Top Navbar */
 .top-nav {
-  height: 50;
+  height: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 90%;
   margin: 0 auto;
   border-bottom: 2px solid gray;
   background-color: black;
@@ -21,6 +22,7 @@
 .top-nav ul {
   display: flex;
   list-style: none;
+  margin-right: 20px;
 }
 
 .top-nav ul li {
@@ -29,34 +31,93 @@
 
 /* Landing Page */
 
-.landing-page {
-  margin-top: 50px;
+.loading-screen {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(193, 193, 193);
+  height: 100vh;
+}
+
+.landing-page {
+  background-image: url("assets/addidas.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
   margin: 0 auto;
-  padding: 100px 0;
-  /* background-color: gold; */
+  padding: 30.2vh 0;
   justify-content: space-around;
 }
 
+.slogan {
+  font-size: 50px;
+  color: white;
+}
+
+.slogan-text {
+  color: white;
+  font-size: 20px;
+}
+
 .icon {
-  color: #ff4d00;
+  color: #f5520c;
 }
 
 .form {
+  background-color: rgba(115, 115, 115, 0.8);
+  padding: 52.5px 20px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
-  gap: 5;
+  gap: 20px;
+  color: white;
 }
 
-.form label {
-  margin-top: 15px;
+.form input {
+  height: 30px;
+  padding-left: 10px;
+}
+
+.form button {
+  background-color: #ff4d00;
+  border: 0;
+  height: 35px;
+  color: white;
 }
 
 .error {
-  color: red;
+  color: tomato;
+  font-weight: bold;
 }
 
-/* Utilities */
-.container {
-  width: 90%;
+/* Owner Calendar */
+
+.calendar-header {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.add-event {
+  margin-left: 150px;
+}
+
+.date-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#addEvent-button {
+  margin: 10px 0;
+  color: white;
+  background-color: #ff4d00;
+  border: 0;
+  padding: 12px 20px;
+  border-radius: 10px;
 }

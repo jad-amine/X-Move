@@ -12,7 +12,7 @@ function LandingPage({ setUser }) {
     if (!token) {
       setTimeout(() => {
         setIsLoading(false);
-      }, 2000);
+      }, 2500);
     } else {
       const authOwner = async () => {
         try {
@@ -30,7 +30,9 @@ function LandingPage({ setUser }) {
           }
         } catch (error) {
           setUser(null);
-          setIsLoading(false);
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 2500);
           console.log(error.message, error);
         }
       };
@@ -39,15 +41,19 @@ function LandingPage({ setUser }) {
   }, []);
   if (isLoading) {
     return (
-      <Loading />
+      <div className="loading-screen">
+        <Loading />
+      </div>
       // <ReactLoading type="bubbles" color="tomato" height={400} width={100} />
     );
   }
   return (
     <>
-      <Navbar />
-      <div className="container landing-page">
-        <div>we are not alone !!</div>
+      <div className=" landing-page">
+        <div>
+          <p className="slogan">We are not alone !!</p>
+          <p className="slogan-text">The most engaged sports community !</p>
+        </div>
         <UserForm />
       </div>
     </>

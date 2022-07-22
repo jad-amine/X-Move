@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <div>
-      Welcome Back {user.info.name}
+      <p className="calendar-header">Welcome Back {user.info.name}</p>
       <OwnerCalendar />
     </div>
   );

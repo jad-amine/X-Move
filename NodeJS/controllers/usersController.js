@@ -147,6 +147,25 @@ const getReservations = async (req, res) => {
   }
 };
 
+// Update user profile
+const updateProfile = async (req, res) => {
+  try {
+    if (req.body.location) {
+      await User.findByIdAndUpdate(req.user._id, {
+        about: req.body.about,
+        location: req.body.location,
+      });
+    } else {
+      await User.findByIdAndUpdate(req.user._id, {
+        about: req.body.about,
+      });
+    }
+    res.status(200).json("Updated");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   addSport,
   removeSport,
@@ -155,4 +174,5 @@ module.exports = {
   fetchSimilarUsers,
   addProfilePicture,
   getReservations,
+  updateProfile,
 };

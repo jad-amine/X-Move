@@ -22,9 +22,8 @@ const userSchema = new mongoose.Schema(
       type: Number,
       // required: true,
     },
-    gender: {
+    about: {
       type: String,
-      // required: true,
     },
     admin: {
       type: Number,
@@ -34,7 +33,7 @@ const userSchema = new mongoose.Schema(
       type: [String],
     },
     location: {
-      type: [Number],
+      type: Object,
       // lattitude: {
       //   type: Number,
       // },

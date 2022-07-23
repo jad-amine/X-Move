@@ -166,6 +166,38 @@ const updateProfile = async (req, res) => {
   }
 };
 
+// Get Locations
+const getLocations = async (req, res) => {
+  const type = req.params.type;
+  const sport = req.params.sport;
+  try {
+    if (type === "players") {
+      if (sport === "allPlayers") {
+        const players = await User.find();
+        if (!players) {
+          return res.json("No players found");
+        }
+        return res.json(players);
+      } else {
+        const players = await User.find({ sports: sport });
+        if (!players) {
+          return res.json("No players found");
+        }
+        return res.json(players);
+      }
+    } else {
+      const fields = await Field.find({ sport: sport });
+      if (!fields) {
+        return res.json("No fields found");
+      }
+      return res.json(fields);
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json("Server Error !");
+  }
+};
+
 module.exports = {
   addSport,
   removeSport,
@@ -175,4 +207,5 @@ module.exports = {
   addProfilePicture,
   getReservations,
   updateProfile,
+  getLocations,
 };

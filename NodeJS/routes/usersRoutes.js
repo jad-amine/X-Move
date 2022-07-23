@@ -10,6 +10,7 @@ const {
   addProfilePicture,
   getReservations,
   updateProfile,
+  getLocations,
 } = require("../controllers/usersController");
 
 const router = express.Router();
@@ -38,7 +39,10 @@ router.post("/removeSport", authUser, removeSport);
 // Update Profile
 router.post("/updateProfile", authUser, updateProfile);
 
-// Get Fields Information
+// Get Field Information
 router.get("/getReservations/:field", authUser, getReservations);
+
+// Get Locations
+router.get("/getLocations/:type/:sport", authUser, getLocations);
 
 module.exports = router;

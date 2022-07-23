@@ -76,7 +76,11 @@ const Profile = () => {
           setModalVisible(!modalVisible);
         }}
       >
-        <ProfileModal />
+        <ProfileModal
+          user={user}
+          setUser={setUser}
+          setModalVisible={setModalVisible}
+        />
       </Modal>
       <View style={global.profileHeader}>
         {user.info.pictureURL ? (

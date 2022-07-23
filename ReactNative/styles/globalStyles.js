@@ -231,6 +231,16 @@ export const global = StyleSheet.create({
     margin: 10,
   },
 
+  saveAbout: {
+    alignSelf: "center",
+    marginTop: 40,
+    fontSize: 30,
+    backgroundColor: "tomato",
+    paddingVertical: 5,
+    paddingHorizontal: 50,
+    borderRadius: 10,
+  },
+
   addLocation: {
     color: "white",
     fontWeight: "bold",
@@ -240,17 +250,17 @@ export const global = StyleSheet.create({
   // About
   aboutIcon: {
     marginTop: 5,
-    marginBottom: 15,
     flexDirection: "row",
     alignItems: "center",
   },
 
   aboutWord: {
     marginLeft: 10,
-    marginBottom: 5,
     fontSize: 18,
     color: "rgb(88, 89, 88)",
   },
+
+  aboutPlayer: { marginTop: 15, fontSize: 18, marginBottom: 30 },
 
   sportList: {
     flexWrap: "wrap",

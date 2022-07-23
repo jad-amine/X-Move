@@ -12,7 +12,7 @@ const About = ({ user }) => {
         <AntDesign name="infocirlceo" size={24} color="rgb(88, 89, 88)" />
         <Text style={global.aboutWord}>About: </Text>
       </View>
-      <Text>{user.info.about}</Text>
+      <Text style={global.aboutPlayer}>{user.info.about}</Text>
       <View style={global.aboutIcon}>
         <Fontisto name="favorite" size={24} color="rgb(88, 89, 88)" />
         <Text style={global.aboutWord}>Hobbies and interests </Text>

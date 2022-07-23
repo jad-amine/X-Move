@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 import {
   Alert,
-  Button,
   Image,
   ScrollView,
   Text,
   TouchableOpacity,
   View,
+  Modal,
 } from "react-native";
 import { UserContext } from "../../contexts/UserContext";
 import * as ImagePicker from "expo-image-picker";
@@ -14,10 +14,11 @@ import { global } from "../../styles/globalStyles";
 import * as SecureStore from "expo-secure-store";
 import UploadProfilePic from "../../components/UploadProfilePic";
 import About from "../../components/About";
+import { Button } from "react-native-paper";
 
 const Profile = () => {
   const { user, setUser } = useContext(UserContext);
-  const [edit, setEdit] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -66,6 +67,20 @@ const Profile = () => {
 
   return (
     <ScrollView style={{ marginBottom: 40 }}>
+      <Modal
+        animationType="slide"
+        // transparent={true}
+        style={{ backgroundColor: "blue" }}
+        visible={modalVisible}
+        onRequestClose={() => {
+          // Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={{ flex: 1, backgroundColor: "#ddd" }}>
+          <Text>Hello modal</Text>
+        </View>
+      </Modal>
       <View style={global.profileHeader}>
         {user.info.pictureURL ? (
           <TouchableOpacity onPress={changeProfilePic}>
@@ -91,17 +106,18 @@ const Profile = () => {
       </View>
       <View style={{ padding: 20 }}>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <Text onPress={() => setEdit(false)} style={{ ...global.about }}>
-            About
-          </Text>
-          <Text onPress={() => setEdit(true)} style={global.about}>
+          <Button
+            mode="outlined"
+            color="tomato"
+            onPress={() => setModalVisible(!modalVisible)}
+            style={global.about}
+          >
             Edit profile
-          </Text>
+          </Button>
         </View>
-        {!edit && <About user={user} />}
-        {edit && <Text>Edit profile</Text>}
-
+        <About user={user} />
         <Button
+          mode="contained"
           title="Sign Out"
           onPress={() => {
             try {
@@ -111,7 +127,9 @@ const Profile = () => {
               Alert.alert("Unable to logout ");
             }
           }}
-        />
+        >
+          Sign Out
+        </Button>
       </View>
     </ScrollView>
   );

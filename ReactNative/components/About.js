@@ -1,38 +1,28 @@
 import { View, Text } from "react-native";
 import React from "react";
+import { Chip } from "react-native-paper";
+import { AntDesign } from "@expo/vector-icons";
+import { Fontisto } from "@expo/vector-icons";
+import { global } from "../styles/globalStyles";
 
 const About = ({ user }) => {
   return (
     <View>
-      <Text
-        style={{
-          fontSize: 18,
-        }}
-      >
-        I like doing Parkour and Freerunning
-      </Text>
-      <Text
-        style={{
-          textDecorationLine: "underline",
-          color: "gray",
-          fontSize: 20,
-          marginVertical: 20,
-        }}
-      >
-        Favorite Sports
-      </Text>
-      <View style={{ flexWrap: "wrap", flexDirection: "row" }}>
+      <View style={global.aboutIcon}>
+        <AntDesign name="infocirlceo" size={24} color="rgb(88, 89, 88)" />
+        <Text style={global.aboutWord}>About: </Text>
+      </View>
+      <Text>{user.info.about}</Text>
+      <View style={global.aboutIcon}>
+        <Fontisto name="favorite" size={24} color="rgb(88, 89, 88)" />
+        <Text style={global.aboutWord}>Hobbies and interests </Text>
+      </View>
+      <View style={global.sportList}>
         {user.info.sports &&
           user.info.sports.map((sport, index) => (
-            <Text
-              key={index}
-              style={{
-                margin: 8,
-                fontSize: 18,
-              }}
-            >
-              {sport + "  "} /
-            </Text>
+            <Chip style={{ backgroundColor: "#ff4D00", margin: 5 }} key={index}>
+              <Text style={{ color: "white" }}>{sport}</Text>
+            </Chip>
           ))}
       </View>
     </View>

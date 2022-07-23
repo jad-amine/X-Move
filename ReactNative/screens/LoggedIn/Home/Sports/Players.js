@@ -23,7 +23,7 @@ const Players = ({ route }) => {
           }
         );
         const data = await response.json();
-        setUsers(data);
+        setUsers(data.filter((player) => player.email !== user.info.email));
       } catch (err) {
         console.log("Request Error", err);
       }

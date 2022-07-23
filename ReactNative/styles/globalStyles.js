@@ -203,11 +203,33 @@ export const global = StyleSheet.create({
     alignItems: "center",
   },
   about: {
-    textDecorationLine: "underline",
-    color: "gray",
-    fontSize: 20,
+    backgroundColor: "#eee",
+    borderColor: "tomato",
+    borderWidth: 1,
+    borderRadius: 10,
     marginVertical: 20,
   },
+
+  // About
+  aboutIcon: {
+    marginTop: 5,
+    marginBottom: 15,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  aboutWord: {
+    marginLeft: 10,
+    marginBottom: 5,
+    fontSize: 18,
+    color: "rgb(88, 89, 88)",
+  },
+
+  sportList: {
+    flexWrap: "wrap",
+    flexDirection: "row",
+  },
+
   // Favorite Sports Drawer Screen
   sportSection: {
     marginHorizontal: 30,

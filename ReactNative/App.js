@@ -6,7 +6,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { UserContext } from "./contexts/UserContext";
 import { useEffect, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Screens
 import Login from "./screens/NotLoggedIN/Login";

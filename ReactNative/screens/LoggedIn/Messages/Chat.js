@@ -122,6 +122,7 @@ const Chat = () => {
         // name: user.info.name,
         // avatar: user.info.pictureURL,
       }}
+      // placeholder="Type Your Message"
     />
   );
 };

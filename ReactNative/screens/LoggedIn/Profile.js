@@ -15,6 +15,7 @@ import * as SecureStore from "expo-secure-store";
 import UploadProfilePic from "../../components/UploadProfilePic";
 import About from "../../components/About";
 import { Button } from "react-native-paper";
+import ProfileModal from "../../components/ProfileModal";
 
 const Profile = () => {
   const { user, setUser } = useContext(UserContext);
@@ -69,17 +70,13 @@ const Profile = () => {
     <ScrollView style={{ marginBottom: 40 }}>
       <Modal
         animationType="slide"
-        // transparent={true}
-        style={{ backgroundColor: "blue" }}
+        transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          // Alert.alert("Modal has been closed.");
           setModalVisible(!modalVisible);
         }}
       >
-        <View style={{ flex: 1, backgroundColor: "#ddd" }}>
-          <Text>Hello modal</Text>
-        </View>
+        <ProfileModal />
       </Modal>
       <View style={global.profileHeader}>
         {user.info.pictureURL ? (
@@ -124,7 +121,7 @@ const Profile = () => {
               SecureStore.setItemAsync("token", "");
               setUser(null);
             } catch (err) {
-              Alert.alert("Unable to logout ");
+              Alert.alert("Logout Failed");
             }
           }}
         >

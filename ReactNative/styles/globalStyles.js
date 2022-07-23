@@ -210,6 +210,27 @@ export const global = StyleSheet.create({
     marginVertical: 20,
   },
 
+  // Modal
+
+  modal: {
+    flex: 0.6,
+    backgroundColor: "white",
+    marginTop: 100,
+    marginHorizontal: 20,
+  },
+
+  modalHead: { flexDirection: "row", margin: 15 },
+
+  modalTitle: { fontSize: 20, marginLeft: 15 },
+
+  modalInput: {
+    borderBottomColor: "gray",
+    borderBottomWidth: 1,
+    height: 50,
+    fontSize: 20,
+    margin: 10,
+  },
+
   // About
   aboutIcon: {
     marginTop: 5,

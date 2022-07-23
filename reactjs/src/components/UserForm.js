@@ -54,6 +54,7 @@ function UserForm() {
           />
         </>
         <button
+          style={{ borderRadius: 20 }}
           type="submit"
           disabled={
             signUp
@@ -65,8 +66,8 @@ function UserForm() {
           {signUp ? "Sign Up" : "Sign In"}
         </button>
         <p>
-          {signUp ? "Already have an accout?" : "Don't have an account ?"}
-          <span style={{ color: "gray" }} onClick={() => setSignUp(!signUp)}>
+          {signUp ? "Already have an accout?" : "Don't have an account ? "}
+          <span style={{ color: "tomato" }} onClick={() => setSignUp(!signUp)}>
             {signUp ? "Sign In" : "Sign Up"}
           </span>
         </p>

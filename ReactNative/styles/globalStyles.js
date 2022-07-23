@@ -231,6 +231,12 @@ export const global = StyleSheet.create({
     margin: 10,
   },
 
+  addLocation: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+
   // About
   aboutIcon: {
     marginTop: 5,

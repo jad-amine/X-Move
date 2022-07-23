@@ -6,9 +6,31 @@ import MapModal from "../../components/MapModal";
 import { Button } from "react-native-paper";
 
 export default function Map() {
-  const [search, setSearch] = React.useState("players");
+  const [search, setSearch] = React.useState([true, "allPlayers"]);
   const [modalVisible, setModalVisible] = React.useState(false);
   const { user } = React.useContext(UserContext);
+
+  React.useEffect(() => {
+    const fetchLocations = async () => {
+      try {
+        const response = await fetch(
+          `http://10.0.2.2:4000/api/users/getLocations/${
+            search[0] ? "players" : "properties"
+          }/${search[1]}`,
+          {
+            headers: {
+              authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
+        const data = await response.json();
+        console.log(data);
+      } catch (err) {
+        console.log("Request Error", err);
+      }
+    };
+    fetchLocations();
+  }, [search]);
 
   return (
     <View style={styles.container}>
@@ -20,7 +42,7 @@ export default function Map() {
           setModalVisible(!modalVisible);
         }}
       >
-        <MapModal setModalVisible={setModalVisible} />
+        <MapModal setModalVisible={setModalVisible} setSearch={setSearch} />
       </Modal>
       <MapView
         initialRegion={{

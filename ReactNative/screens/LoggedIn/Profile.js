@@ -3,6 +3,7 @@ import {
   Alert,
   Button,
   Image,
+  ScrollView,
   Text,
   TouchableOpacity,
   View,
@@ -64,7 +65,7 @@ const Profile = () => {
   };
 
   return (
-    <View>
+    <ScrollView style={{ marginBottom: 40 }}>
       <View style={global.profileHeader}>
         {user.info.pictureURL ? (
           <TouchableOpacity onPress={changeProfilePic}>
@@ -112,7 +113,7 @@ const Profile = () => {
           }}
         />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

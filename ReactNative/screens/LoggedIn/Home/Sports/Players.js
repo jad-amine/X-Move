@@ -23,7 +23,6 @@ const Players = ({ route }) => {
         );
         const data = await response.json();
         setUsers(data);
-        console.log(data);
       } catch (err) {
         console.log("Request Error", err);
       }
@@ -54,7 +53,11 @@ const Players = ({ route }) => {
                   onPress={() =>
                     navigation.navigate("Messages", {
                       screen: "Chat",
-                      params: { email: user.email, name: user.name },
+                      params: {
+                        email: user.email,
+                        name: user.name,
+                        pictureURL: user.pictureURL,
+                      },
                     })
                   }
                 >

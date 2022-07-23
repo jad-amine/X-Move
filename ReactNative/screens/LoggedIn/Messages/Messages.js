@@ -33,7 +33,7 @@ const Messages = ({ route }) => {
             }));
           setRooms(parsedChats);
         });
-        return () => unsubscribe();
+        // return () => unsubscribe();
       } catch (error) {
         console.log(error);
       }

@@ -10,10 +10,8 @@ const Conversations = ({ navigation }) => {
   const { rooms } = useContext(MessagesContext);
   const [chats, setChats] = useState(null);
   useEffect(() => {
-    setTimeout(() => {
-      console.log(rooms);
-    }, 1000);
-    setChats(rooms ? rooms.filter((room) => !room.lastmessage) : null);
+    const activeChats = rooms?.filter((room) => !room.lastmessage);
+    setChats(activeChats);
   }, [rooms]);
   return (
     <FlatList

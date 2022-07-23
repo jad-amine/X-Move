@@ -41,21 +41,30 @@ const Chat = () => {
           const userBData = {
             displayName: userB.name,
             email: userB.email,
+            pictureURL: userB.pictureURL,
           };
           const roomData = {
             participants: [currUserData, userBData],
             participantsArray: [user.info.email, userB.email],
           };
-          setDoc(roomRef, roomData).then((a) =>
-            setRooms([
-              ...rooms,
-              {
-                ...roomData,
-                id: randomID,
-                userB: { displayName: userB.name, email: userB.email },
-              },
-            ])
-          );
+          setDoc(roomRef, roomData)
+            .then((a) =>
+              setRooms([
+                ...rooms,
+                {
+                  ...roomData,
+                  id: randomID,
+                  userB: {
+                    displayName: userB.name,
+                    email: userB.email,
+                    pictureURL: userB.pictureURL,
+                  },
+                },
+              ])
+            )
+            .catch((err) => {
+              console.log(err, err.message);
+            });
         } catch (error) {
           console.log(error);
         }
@@ -65,11 +74,9 @@ const Chat = () => {
       setRoomId(room.id);
       randomID = room.id;
     }
-    const roomMessagesRef = collection(
-      db,
-      "rooms",
-      randomID.toString(),
-      "messages"
+    const roomMessagesRef = query(
+      collection(db, "rooms", randomID.toString(), "messages"),
+      orderBy("createdAt", "desc")
     );
     const unsubscribe = onSnapshot(roomMessagesRef, (querySnapshot) => {
       const messagesFirestore = querySnapshot
@@ -113,7 +120,7 @@ const Chat = () => {
       user={{
         _id: user.info._id,
         // name: user.info.name,
-        // avatar: user.info.picture,
+        avatar: user.info.pictureURL,
       }}
     />
   );

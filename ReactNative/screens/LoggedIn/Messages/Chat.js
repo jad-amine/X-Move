@@ -120,7 +120,7 @@ const Chat = () => {
       user={{
         _id: user.info._id,
         // name: user.info.name,
-        avatar: user.info.pictureURL,
+        // avatar: user.info.pictureURL,
       }}
     />
   );

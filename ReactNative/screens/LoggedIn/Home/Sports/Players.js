@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../../contexts/UserContext";
 import { global } from "../../../../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
+import { Avatar } from "react-native-paper";
 
 const Players = ({ route }) => {
   const [users, setUsers] = useState(null);
@@ -31,7 +32,7 @@ const Players = ({ route }) => {
   }, []);
 
   return (
-    <ScrollView>
+    <ScrollView style={{ marginBottom: 30 }}>
       {users &&
         users.map((user, index) => (
           <View key={index} style={global.playerCard}>
@@ -41,7 +42,12 @@ const Players = ({ route }) => {
                 style={{ height: 150, width: 150, borderRadius: 20 }}
               />
             ) : (
-              <Text> No profile picture</Text>
+              <Avatar.Icon
+                size={150}
+                icon="account"
+                color="white"
+                style={{ backgroundColor: "#ccc" }}
+              />
             )}
             <View style={{ marginLeft: 40 }}>
               <Text style={{ fontSize: 30 }}>{user.name}</Text>

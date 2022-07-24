@@ -200,15 +200,39 @@ const getLocations = async (req, res) => {
 
 // Add Friend
 const addFriend = async (req, res) => {
-  const id = req.body.id;
-  const user = req.user;
+  const sender = req.user._id;
+  const receiver = req.body.id;
   try {
-    await User.findByIdAndUpdate(id, { pendingFriends: id });
-    await User.findByIdAndUpdate(user._id, { pendingFriends: user._id });
+    // 1) First Check if the receiver has already added the sender
+    const alreadyAdded = await User.findById(receiver).where({
+      friendRequests: sender,
+    });
+    // 2) If true: Remove the requests and add friends
+    if (alreadyAdded) {
+      await User.findByIdAndUpdate(sender, {
+        $pull: { pendingFriendRequests: receiver },
+        $push: { friends: receiver },
+      });
+      const friend = await User.findByIdAndUpdate(receiver, {
+        $pull: { friendRequests: sender },
+        $push: { friends: sender },
+      });
+      res.status(200).json({ friend: friend, message: "Friend Added !" });
+      // 3) If false
+    } else {
+      await User.findByIdAndUpdate(sender, {
+        $push: { friendRequests: receiver },
+      });
+      const friend = await User.findByIdAndUpdate(receiver, {
+        $push: { pendingFriendRequests: sender },
+      });
+      res
+        .status(200)
+        .json({ friend: friend, message: "Friend Request Sent !" });
+    }
   } catch (error) {
     res.status(500).json("Couldn't add friend / Server error");
   }
-  res.status(200).json("Friend Request Sent !");
 };
 
 // delete thisIsObject.Cow

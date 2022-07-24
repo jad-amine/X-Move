@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Dimensions, Modal } from "react-native";
 import { UserContext } from "../../contexts/UserContext";
 import MapModal from "../../components/MapModal";
 import { Button } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Map() {
   const [search, setSearch] = React.useState([true, "allPlayers"]);
@@ -11,6 +12,7 @@ export default function Map() {
   const [resultMessage, setResultMessage] = React.useState("");
   const [players, setPlayers] = React.useState(null);
   const { user } = React.useContext(UserContext);
+  const navigation = useNavigation();
 
   React.useEffect(() => {
     const fetchLocations = async () => {
@@ -64,14 +66,16 @@ export default function Map() {
             (player) =>
               player.location && (
                 <Marker
+                  onCalloutPress={() =>
+                    navigation.navigate("StackNavigator", {
+                      screen: "PlayerProfile",
+                      params: { ...player },
+                    })
+                  }
                   key={player._id}
                   title={player.name}
                   description={player.email}
-                  image={player.pictureURL}
-                  coordinate={{
-                    latitude: 34.197327989805275,
-                    longitude: 35.84649175852537,
-                  }}
+                  coordinate={player.location}
                 />
               )
           )}

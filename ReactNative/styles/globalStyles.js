@@ -210,7 +210,7 @@ export const global = StyleSheet.create({
     marginVertical: 20,
   },
 
-  // Modal
+  // Profile Information Modal
 
   modal: {
     flex: 0.6,
@@ -245,6 +245,20 @@ export const global = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 16,
+  },
+
+  // Friends Modal
+
+  friendModal: {
+    backgroundColor: "white",
+  },
+
+  friendModalHeaders: {
+    fontSize: 25,
+    color: "gray",
+    alignSelf: "center",
+    borderBottomWidth: 1,
+    borderBottomColor: "gray",
   },
 
   // About

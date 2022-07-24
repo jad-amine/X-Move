@@ -198,6 +198,21 @@ const getLocations = async (req, res) => {
   }
 };
 
+// Add Friend
+const addFriend = async (req, res) => {
+  const id = req.body.id;
+  const user = req.user;
+  try {
+    await User.findByIdAndUpdate(id, { pendingFriends: id });
+    await User.findByIdAndUpdate(user._id, { pendingFriends: user._id });
+  } catch (error) {
+    res.status(500).json("Couldn't add friend / Server error");
+  }
+  res.status(200).json("Friend Request Sent !");
+};
+
+// delete thisIsObject.Cow
+
 module.exports = {
   addSport,
   removeSport,
@@ -208,4 +223,5 @@ module.exports = {
   getReservations,
   updateProfile,
   getLocations,
+  addFriend,
 };

@@ -11,6 +11,7 @@ const {
   getReservations,
   updateProfile,
   getLocations,
+  addFriend,
 } = require("../controllers/usersController");
 
 const router = express.Router();
@@ -44,5 +45,8 @@ router.get("/getReservations/:field", authUser, getReservations);
 
 // Get Locations
 router.get("/getLocations/:type/:sport", authUser, getLocations);
+
+// Add Friend
+router.post("/addFriend", authUser, addFriend);
 
 module.exports = router;

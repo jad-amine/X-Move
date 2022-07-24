@@ -45,12 +45,14 @@ const userSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Field",
     },
-    friends: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-      },
-    ],
+    friends: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: "User",
+    },
+    pendingFriends: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: "User",
+    },
   },
   { timestamps: true }
 );

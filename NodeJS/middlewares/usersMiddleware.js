@@ -13,7 +13,10 @@ const authUser = (req, res, next) => {
       res.status(401).json({ error: err, message: "Unauthenticated user" });
     } else {
       try {
-        const user = await User.findById(decoded._id);
+        const user = await User.findById(decoded._id)
+          .populate("friends")
+          .populate("pendingFriendRequests")
+          .populate("friendRequests");
         req.user = decoded;
         req.body.mission
           ? res.json({

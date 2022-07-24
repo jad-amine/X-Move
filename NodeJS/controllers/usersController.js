@@ -7,7 +7,10 @@ const fs = require("fs");
 
 // Login User
 const login = async (req, res) => {
-  const user = await User.findOne({ email: req.body.email });
+  const user = await User.findOne({ email: req.body.email })
+    .populate("friends")
+    .populate("pendingFriendRequests")
+    .populate("friendRequests");
   if (!user || !req.body.password) {
     return res.status(401).json({ message: "Invalid Credentials" });
   }
@@ -27,7 +30,7 @@ const login = async (req, res) => {
     },
     process.env.TOKEN_SECRET
   );
-  console.log(user, "logged in");
+  console.log(user.name, "logged in");
 
   res.status(200).json({
     token: token,
@@ -203,17 +206,16 @@ const addFriend = async (req, res) => {
   const sender = req.user._id;
   const receiver = req.body.id;
   const isFriend = req.body.isFriend;
-  console.log(isFriend, receiver, sender);
   try {
     if (isFriend) {
-      await User.findByIdAndUpdate(sender, {
+      const updatedUser = await User.findByIdAndUpdate(sender, {
         $pull: { friends: receiver },
       });
       await User.findByIdAndUpdate(receiver, {
         $pull: { friends: sender },
       });
-      console.log("Friend Removed");
-      return res.status(200).json("Friend Removed");
+      console.log("Removed");
+      return res.status(200).json("Removed");
     }
     // 1) First Check if the receiver has already added the sender
     const alreadyAdded = await User.findById(receiver).where({
@@ -229,7 +231,7 @@ const addFriend = async (req, res) => {
         $pull: { friendRequests: sender },
         $push: { friends: sender },
       });
-      res.status(200).json({ friend: friend, message: "Friend Added !" });
+      res.status(200).json({ friend: friend, message: "Added" });
       // 3) If false
     } else {
       await User.findByIdAndUpdate(sender, {

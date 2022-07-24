@@ -1,49 +1,66 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { global } from "../../../../styles/globalStyles";
 import { UserContext } from "../../../../contexts/UserContext";
 
 const PlayerProfile = ({ route }) => {
   const { user, setUser } = useContext(UserContext);
   const player = route.params;
-  console.log(user);
+  const [isFriend, setIsFriend] = useState(
+    user.info.friends.includes(player._id)
+  );
   const handlePress = async () => {
     try {
+      console.log("pressed");
       const response = await fetch("http://10.0.2.2:4000/api/users/addFriend", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${user.token}`,
         },
-        body: JSON.stringify({ id: player._id }),
+        body: JSON.stringify({ id: player._id, isFriend }),
       });
       const json = await response.json();
-      let updatedUser;
       if (json.message === "Friend Added !") {
-        updatedUser = {
+        let updatedUser = {
           token: user.token,
           info: {
             ...user.info,
-            friends: user.info.friends.push(player._id),
+            friends: [...user.info.friends, player._id],
             pendingFriendRequests: user.info.pendingFriendRequests.filter(
               (request) => request !== player._id
             ),
           },
         };
-        console.log(user, "added");
-      } else {
-        updatedUser = {
+        console.log("Friend Added");
+        setIsFriend(!isFriend);
+        setUser(updatedUser);
+      } else if (json.message === "Friend Request Sent !") {
+        let updatedUser = {
           token: user.token,
           info: {
             ...user.info,
-            friendRequests: user.info.friendRequests.push(player._id),
+            friendRequests: [...user.info.friendRequests, player._id],
           },
         };
-        console.log(user, "friend request");
+        console.log("Friend request sent !");
+        setUser(updatedUser);
+      } else {
+        let updatedUser = {
+          token: user.token,
+          info: {
+            ...user.info,
+            friends: user.info.friends.filter(
+              (friend) => player._id !== friend
+            ),
+          },
+        };
+        console.log("Friend Removed !");
+        setIsFriend(!isFriend);
+        setUser(updatedUser);
       }
-      setUser(updatedUser);
     } catch (err) {
-      console.log(err);
+      console.log(err.message);
     }
   };
   return (
@@ -71,7 +88,7 @@ const PlayerProfile = ({ route }) => {
           disabled={user.info.friendRequests.includes(player._id)}
         >
           <Text style={{ ...global.registerText, fontSize: 18 }}>
-            {user.info.friends.includes(player._id)
+            {isFriend
               ? "REMOVE FRIEND"
               : user.info.friendRequests.includes(player._id)
               ? "Request Sent"

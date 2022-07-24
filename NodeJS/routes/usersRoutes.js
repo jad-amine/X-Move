@@ -47,6 +47,6 @@ router.get("/getReservations/:field", authUser, getReservations);
 router.get("/getLocations/:type/:sport", authUser, getLocations);
 
 // Add Friend
-router.post("/addFriend", authUser, addFriend);
+router.post("/addFriend/", authUser, addFriend);
 
 module.exports = router;

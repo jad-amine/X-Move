@@ -198,11 +198,23 @@ const getLocations = async (req, res) => {
   }
 };
 
-// Add Friend
+// Add/Remove Friend
 const addFriend = async (req, res) => {
   const sender = req.user._id;
   const receiver = req.body.id;
+  const isFriend = req.body.isFriend;
+  console.log(isFriend, receiver, sender);
   try {
+    if (isFriend) {
+      await User.findByIdAndUpdate(sender, {
+        $pull: { friends: receiver },
+      });
+      await User.findByIdAndUpdate(receiver, {
+        $pull: { friends: sender },
+      });
+      console.log("Friend Removed");
+      return res.status(200).json("Friend Removed");
+    }
     // 1) First Check if the receiver has already added the sender
     const alreadyAdded = await User.findById(receiver).where({
       friendRequests: sender,

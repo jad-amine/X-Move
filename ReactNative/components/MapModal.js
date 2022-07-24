@@ -62,12 +62,13 @@ export default function MapModal({ setModalVisible, setSearch }) {
               onValueChange={(itemValue) => setSport(itemValue)}
             >
               <Picker.Item label="All Players" value="allPlayers" />
-              <Picker.Item label="Football" value="football" />
-              <Picker.Item label="Basketball" value="basketball" />
-              <Picker.Item label="Volleyball" value="volleyball" />
-              <Picker.Item label="Ski" value="ski" />
-              <Picker.Item label="Bike" value="bike" />
-              <Picker.Item label="Surfing" value="surfing" />
+              <Picker.Item label="Football" value="Football" />
+              <Picker.Item label="Basketball" value="Basketball" />
+              <Picker.Item label="Volleyball" value="Volleyball" />
+              <Picker.Item label="Ski" value="Ski" />
+              <Picker.Item label="Bike" value="Bike" />
+              <Picker.Item label="Surf" value="Surf" />
+              <Picker.Item label="Gym" value="Gym" />
             </Picker>
           )}
           {!showPlayers && (
@@ -80,12 +81,12 @@ export default function MapModal({ setModalVisible, setSearch }) {
               onValueChange={(itemValue) => setProperty(itemValue)}
             >
               <Picker.Item label="All Properties" value="allProperties" />
-              <Picker.Item label="Football fields" value="football" />
-              <Picker.Item label="Basketball fields" value="basketball" />
-              <Picker.Item label="Volleyball fields" value="volleyball" />
-              <Picker.Item label="Ski Rental" value="ski" />
-              <Picker.Item label="Bike Rental" value="bike" />
-              <Picker.Item label="Surfing Rental" value="surfing" />
+              <Picker.Item label="Football fields" value="Football" />
+              <Picker.Item label="Basketball fields" value="Basketball" />
+              <Picker.Item label="Volleyball fields" value="Volleyball" />
+              <Picker.Item label="Ski Rental" value="Ski" />
+              <Picker.Item label="Bike Rental" value="Bike" />
+              <Picker.Item label="Surfing Rental" value="Surfing" />
             </Picker>
           )}
         </View>

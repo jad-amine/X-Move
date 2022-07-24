@@ -8,6 +8,8 @@ import { Button } from "react-native-paper";
 export default function Map() {
   const [search, setSearch] = React.useState([true, "allPlayers"]);
   const [modalVisible, setModalVisible] = React.useState(false);
+  const [resultMessage, setResultMessage] = React.useState("");
+  const [players, setPlayers] = React.useState(null);
   const { user } = React.useContext(UserContext);
 
   React.useEffect(() => {
@@ -24,7 +26,10 @@ export default function Map() {
           }
         );
         const data = await response.json();
-        console.log(data);
+        !data.length
+          ? setResultMessage("No results found!!")
+          : setResultMessage(``);
+        setPlayers(data);
       } catch (err) {
         console.log("Request Error", err);
       }
@@ -54,12 +59,22 @@ export default function Map() {
         style={styles.map}
         onPress={(e) => console.log(e.nativeEvent)}
       >
-        <Marker
-          coordinate={{
-            latitude: 34.197327989805275,
-            longitude: 35.84649175852537,
-          }}
-        />
+        {players &&
+          players.map(
+            (player) =>
+              player.location && (
+                <Marker
+                  key={player._id}
+                  title={player.name}
+                  description={player.email}
+                  image={player.pictureURL}
+                  coordinate={{
+                    latitude: 34.197327989805275,
+                    longitude: 35.84649175852537,
+                  }}
+                />
+              )
+          )}
       </MapView>
       <Button
         onPress={() => setModalVisible(true)}
@@ -68,6 +83,17 @@ export default function Map() {
       >
         Search
       </Button>
+      <Text
+        style={{
+          width: 300,
+          position: "absolute",
+          top: 60,
+          color: "red",
+          textAlign: "center",
+        }}
+      >
+        {resultMessage}
+      </Text>
     </View>
   );
 }

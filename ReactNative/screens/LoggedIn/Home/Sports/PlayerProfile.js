@@ -4,9 +4,9 @@ import { global } from "../../../../styles/globalStyles";
 import { UserContext } from "../../../../contexts/UserContext";
 
 const PlayerProfile = ({ route }) => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const player = route.params;
-
+  console.log(user);
   const handlePress = async () => {
     try {
       const response = await fetch("http://10.0.2.2:4000/api/users/addFriend", {
@@ -18,7 +18,30 @@ const PlayerProfile = ({ route }) => {
         body: JSON.stringify({ id: player._id }),
       });
       const json = await response.json();
-      console.log(json.message);
+      let updatedUser;
+      if (json.message === "Friend Added !") {
+        updatedUser = {
+          token: user.token,
+          info: {
+            ...user.info,
+            friends: user.info.friends.push(player._id),
+            pendingFriendRequests: user.info.pendingFriendRequests.filter(
+              (request) => request !== player._id
+            ),
+          },
+        };
+        console.log(user, "added");
+      } else {
+        updatedUser = {
+          token: user.token,
+          info: {
+            ...user.info,
+            friendRequests: user.info.friendRequests.push(player._id),
+          },
+        };
+        console.log(user, "friend request");
+      }
+      setUser(updatedUser);
     } catch (err) {
       console.log(err);
     }
@@ -45,9 +68,14 @@ const PlayerProfile = ({ route }) => {
         <TouchableOpacity
           onPress={handlePress}
           style={{ ...global.PlayerProfileButton, backgroundColor: "#FF4D00" }}
+          disabled={user.info.friendRequests.includes(player._id)}
         >
           <Text style={{ ...global.registerText, fontSize: 18 }}>
-            ADD FRIEND
+            {user.info.friends.includes(player._id)
+              ? "REMOVE FRIEND"
+              : user.info.friendRequests.includes(player._id)
+              ? "Request Sent"
+              : "ADD FRIEND"}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const User = require("../models/userModel");
+const Field = require("../models/fieldModel");
 const bcrypt = require("bcrypt");
 var jwt = require("jsonwebtoken");
 
@@ -44,4 +45,10 @@ const getAllUsers = async (req, res) => {
   res.status(200).json(users);
 };
 
-module.exports = { getAllUsers, login };
+// Get all properties
+const getProperties = async (req, res) => {
+  const fields = await Field.find().populate("owner");
+  res.status(200).json(fields);
+};
+
+module.exports = { getAllUsers, login, getProperties };

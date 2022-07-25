@@ -10,11 +10,7 @@ import LandingPage from "./pages/LandingPage";
 function App() {
   const { user, setUser } = useContext(UserContext);
   if (!user) {
-    return (
-      <div className="App">
-        <LandingPage setUser={setUser} />
-      </div>
-    );
+    return <LandingPage setUser={setUser} />;
   } else {
     return (
       <div className="App">

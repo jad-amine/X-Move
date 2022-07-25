@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import API from "../api";
+import ReactLoading from "react-loading";
 
 function UserForm() {
   const { setUser } = useContext(UserContext);
@@ -8,17 +9,26 @@ function UserForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signUp, setSignUp] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
   const handleClick = async (e) => {
     e.preventDefault();
+    setError("");
+    setIsLoading(true);
     const user = { name, email, password };
     try {
       const res = await API.post(signUp ? "register/" : "login/", user);
       localStorage.setItem("token", res.data.token);
-      setUser({ token: res.data.token, info: res.data.user });
+      setTimeout(() => {
+        setIsLoading(false);
+        setUser({ token: res.data.token, info: res.data.user });
+      }, 2000);
     } catch (error) {
-      setError(signUp ? "User already exists !!" : "Invalid Credentials !!");
+      setTimeout(() => {
+        setError(signUp ? "User already exists !!" : "Invalid Credentials !!");
+        setIsLoading(false);
+      }, 2000);
       console.log(error, error.message);
     }
   };
@@ -66,11 +76,22 @@ function UserForm() {
           {signUp ? "Sign Up" : "Sign In"}
         </button>
         <p>
-          {signUp ? "Already have an accout?" : "Don't have an account ? "}
-          <span style={{ color: "tomato" }} onClick={() => setSignUp(!signUp)}>
+          {signUp ? "Already have an account?  " : "Don't have an account ?  "}
+          <span
+            style={{ color: "tomato" }}
+            onClick={() => {
+              setError("");
+              setSignUp(!signUp);
+            }}
+          >
             {signUp ? "Sign In" : "Sign Up"}
           </span>
         </p>
+        <div className="loading">
+          {isLoading && (
+            <ReactLoading type="bars" color="white" height={40} width={60} />
+          )}
+        </div>
         <p className="error">{error}</p>
       </form>
     </div>

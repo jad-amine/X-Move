@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import UserForm from "../components/UserForm";
-import ReactLoading from "react-loading";
 import Loading from "../components/Loading";
 import API from "../api";
-import Navbar from "../components/Navbar";
 
 function LandingPage({ setUser }) {
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -39,24 +38,19 @@ function LandingPage({ setUser }) {
       authOwner();
     }
   }, []);
+
   if (isLoading) {
-    return (
-      <div className="loading-screen">
-        <Loading />
-      </div>
-      // <ReactLoading type="bubbles" color="tomato" height={400} width={100} />
-    );
+    return <Loading />;
   }
+
   return (
-    <>
-      <div className=" landing-page">
-        <div>
-          <p className="slogan">We are not alone !!</p>
-          <p className="slogan-text">The most engaged sports community !</p>
-        </div>
-        <UserForm />
+    <div className=" landing-page">
+      <div>
+        <p className="slogan">We are not alone !!</p>
+        <p className="slogan-text">The most engaged sports community !</p>
       </div>
-    </>
+      <UserForm />
+    </div>
   );
 }
 

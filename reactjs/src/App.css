@@ -67,7 +67,7 @@
 
 .form {
   background-color: rgba(115, 115, 115, 0.8);
-  padding: 52.5px 20px;
+  padding: 40px 20px 0px 20px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -84,12 +84,32 @@
   background-color: #ff4d00;
   border: 0;
   height: 35px;
+  font-size: 16px;
   color: white;
+  cursor: pointer;
+}
+
+.form button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.form button:hover {
+  background-color: #f2713a;
+}
+
+.loading {
+  margin-top: -5;
+  display: flex;
+  justify-content: center;
 }
 
 .error {
-  color: tomato;
-  font-weight: bold;
+  color: #ff4d00;
+  /* font-weight: bold; */
+  text-align: center;
 }
 
 /* Owner Calendar */

@@ -16,10 +16,12 @@ import UploadProfilePic from "../../components/UploadProfilePic";
 import About from "../../components/About";
 import { Button } from "react-native-paper";
 import ProfileModal from "../../components/ProfileModal";
+import FriendsModal from "../../components/ProfileComponents/FriendsModal";
 
 const Profile = () => {
   const { user, setUser } = useContext(UserContext);
   const [modalVisible, setModalVisible] = useState(false);
+  const [friendsModalVisible, setFriendsModalVisible] = useState(false);
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -82,6 +84,22 @@ const Profile = () => {
           setModalVisible={setModalVisible}
         />
       </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={friendsModalVisible}
+        onRequestClose={() => {
+          setModalVisible(!friendsModalVisible);
+        }}
+      >
+        <FriendsModal
+          user={user}
+          setUser={setUser}
+          setFriendsModalVisible={setFriendsModalVisible}
+        />
+      </Modal>
+
       <View style={global.profileHeader}>
         {user.info.pictureURL ? (
           <TouchableOpacity onPress={changeProfilePic}>
@@ -114,6 +132,14 @@ const Profile = () => {
             style={global.about}
           >
             Edit profile
+          </Button>
+          <Button
+            mode="outlined"
+            color="tomato"
+            onPress={() => setFriendsModalVisible(!friendsModalVisible)}
+            style={global.about}
+          >
+            View Friends
           </Button>
         </View>
         <About user={user} />

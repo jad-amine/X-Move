@@ -39,5 +39,5 @@ export default function Loading() {
     }, 300);
     return () => clearTimeout(myTimeout);
   });
-  return <div>{icon}</div>;
+  return <div className="loading-screen">{icon}</div>;
 }

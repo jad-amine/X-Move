@@ -6,7 +6,13 @@ import { useEffect } from "react";
 
 const PlayerProfile = ({ route }) => {
   const { user, setUser } = useContext(UserContext);
-  const player = route.params;
+  var player;
+  if (route.params.user) {
+    player = route.params.user;
+  } else {
+    player = route.params;
+  }
+  console.log(player);
   // const [isFriend, setIsFriend] = useState(
   //   user.info.friends.includes(player._id)
   // );

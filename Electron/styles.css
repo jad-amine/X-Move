@@ -152,3 +152,35 @@
   display: flex;
   justify-content: space-around;
 }
+
+/* Users Page */
+#users-container {
+  margin-top: 30px;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  margin: 40px;
+  padding: 30px;
+  background-color: #eee;
+  min-width: 500px;
+}
+
+#users-container h1 {
+  text-align: center;
+}
+
+.user-img {
+  height: 150px;
+  width: 150px;
+  /* border-radius: 100px; */
+  margin-right: 100px;
+}
+
+#users {
+}
+
+#owners {
+}

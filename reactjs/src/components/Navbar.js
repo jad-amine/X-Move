@@ -5,7 +5,7 @@ import { FiMenu } from "react-icons/fi";
 import { UserContext } from "../contexts/UserContext";
 
 function Navbar() {
-  const { user, setUser, setShowDrawer, showDrawer } = useContext(UserContext);
+  const { user, setShowDrawer, showDrawer } = useContext(UserContext);
   return (
     <div className="top-nav">
       <img
@@ -16,15 +16,15 @@ function Navbar() {
         alt="logo"
       />
       <ul>
-        <p style={{ color: "white" }}>{user && user.info.name}</p>
+        {/* <p style={{ color: "white" }}>{user && user.info.name}</p> */}
         <li>
-          <FaFacebookSquare size={25} color="darkblue" />
+          <FaFacebookSquare size={25} color="white" />
         </li>
         <li>
-          <FaInstagram size={25} color="tomato" />
+          <FaInstagram size={25} color="white" />
         </li>
         <li>
-          <FaTwitter size={25} color="blue" />
+          <FaTwitter size={25} color="white" />
         </li>
         <li>
           <FiMenu

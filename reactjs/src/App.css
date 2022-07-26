@@ -109,10 +109,48 @@ button[disabled] {
 
 .error {
   color: #ff4d00;
-  /* font-weight: bold; */
   text-align: center;
 }
 
+/* Property Page */
+.property-container {
+  padding: 20px 0;
+  background-color: #ddd;
+}
+
+.property-form-header {
+  background-color: #ff4d00;
+  height: 60px;
+  padding-top: 15px;
+  font-size: 1.5em;
+  text-align: center;
+  width: 600px;
+  margin: 0 auto;
+  color: white;
+  border-radius: 10px 10px 0 0;
+}
+.property-form {
+  display: flex;
+  padding: 20px 40px 40px 40px;
+  flex-direction: column;
+  width: 600px;
+  margin: 0px auto;
+  gap: 20px;
+  border-radius: 0 0 10px 10px;
+  border: 3px solid #ff4d00;
+  background-color: white;
+}
+
+.property-form select {
+  width: 200px;
+}
+
+/* Map Component */
+.map-container {
+  height: 700px;
+  width: 1000px;
+  margin: 50px auto;
+}
 /* Owner Calendar */
 
 .calendar-header {

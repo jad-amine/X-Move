@@ -100,7 +100,7 @@ export default function Property({ user, setUser }) {
             Submit
           </button>
         </form>
-        <Map />
+        <Map location={location} setLocation={setLocation} />
       </div>
     </>
   );

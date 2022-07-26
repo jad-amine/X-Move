@@ -36,7 +36,7 @@ export default function TemporaryDrawer() {
                 <ListItem key={text} disablePadding>
                   <ListItemButton
                     onClick={() =>
-                      navigate(index % 2 === 0 ? "propertyInfo" : "calendar")
+                      navigate(index % 2 === 0 ? "propertyInfo" : "/")
                     }
                   >
                     <ListItemIcon>

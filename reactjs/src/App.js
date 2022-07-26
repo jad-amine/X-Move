@@ -12,6 +12,7 @@ import OwnerCalendar from "./pages/OwnerCalendar";
 
 function App() {
   const { user, setUser } = useContext(UserContext);
+  console.log(user);
   if (!user) {
     return <LandingPage setUser={setUser} />;
   } else {
@@ -19,7 +20,7 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route path="/calendar" element={<OwnerCalendar />}></Route>
+          <Route path="/" element={<OwnerCalendar />}></Route>
           <Route
             path="/propertyInfo"
             element={<Property user={user} setUser={setUser} />}

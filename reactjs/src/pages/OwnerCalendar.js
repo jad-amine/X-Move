@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
+import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
+import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-datepicker/dist/react-datepicker.css";
 import API from "../api";
@@ -9,6 +11,7 @@ import CalendarDialog from "../components/CalendarDialog";
 import { v4 as uuidv4 } from "uuid";
 import EventDialog from "../components/EventDialog";
 
+const DragAndDropCalendar = withDragAndDrop(Calendar);
 const localizer = momentLocalizer(moment);
 
 export default function OwnerCalendar() {
@@ -16,7 +19,9 @@ export default function OwnerCalendar() {
   const [allEvents, setAllEvents] = useState([]);
   const [showDialog, setShowDialog] = useState(false);
   const [showEventDialog, setShowEventDialog] = useState(false);
-  const [eventToDelete, setEventToDelete] = useState();
+  const [reschedule, setReschedule] = useState(false);
+  const [rescheduledEvent, setRescheduledEvent] = useState(false);
+  const [eventToDelete, setEventToDelete] = useState(false);
   const { user } = useContext(UserContext);
 
   useEffect(() => {
@@ -63,10 +68,6 @@ export default function OwnerCalendar() {
 
   const handleAddEvent = async () => {
     setShowDialog(false);
-    if (newEvent.player === "") {
-      alert("Please Fill all the fields");
-      return;
-    }
     try {
       await API.post(
         "addGame/",
@@ -84,10 +85,17 @@ export default function OwnerCalendar() {
       console.log(error);
     }
   };
+
+  const handleEventChange = (e) => {
+    setShowEventDialog(true);
+    setReschedule(true);
+    setRescheduledEvent(e);
+  };
+
   return (
     <div className="calendar-form">
       <h1 className="align-center">Calendar</h1>
-      <Calendar
+      <DragAndDropCalendar
         popup={true}
         onSelectSlot={handleSelect}
         selectable={true}
@@ -97,6 +105,8 @@ export default function OwnerCalendar() {
         events={allEvents}
         style={{ height: 500, margin: "50px" }}
         onSelectEvent={handleEventSelect}
+        onEventDrop={handleEventChange}
+        onEventResize={handleEventChange}
       />
       <CalendarDialog
         setShowDialog={setShowDialog}
@@ -109,9 +119,12 @@ export default function OwnerCalendar() {
         showEventDialog={showEventDialog}
         setShowEventDialog={setShowEventDialog}
         eventToDelete={eventToDelete}
+        setEventToDelete={setEventToDelete}
         user={user}
         setAllEvents={setAllEvents}
         allEvents={allEvents}
+        reschedule={reschedule}
+        rescheduledEvent={rescheduledEvent}
       />
     </div>
   );

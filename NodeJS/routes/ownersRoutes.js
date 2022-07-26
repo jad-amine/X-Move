@@ -6,6 +6,7 @@ const {
   addProperty,
   addGame,
   getReservations,
+  deleteReservation,
 } = require("../controllers/ownersController");
 
 const router = express.Router();
@@ -27,5 +28,8 @@ router.post("/addGame", authOwner, addGame);
 
 // Get Reservations
 router.get("/getReservations", authOwner, getReservations);
+
+// Delete Reservations
+router.get("/deleteReservation/:id", authOwner, deleteReservation);
 
 module.exports = router;

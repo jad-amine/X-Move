@@ -143,4 +143,26 @@ const getReservations = async (req, res) => {
   }
 };
 
-module.exports = { register, login, addProperty, addGame, getReservations };
+// Delete Reservation
+const deleteReservation = async (req, res) => {
+  try {
+    await Field.findByIdAndUpdate(
+      req.user.property._id,
+      { $pull: { reservations: { id: req.params.id } } },
+      { safe: true, multi: false }
+    );
+    res.status(200).json("Removed");
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json("Server Error");
+  }
+};
+
+module.exports = {
+  register,
+  login,
+  addProperty,
+  addGame,
+  getReservations,
+  deleteReservation,
+};

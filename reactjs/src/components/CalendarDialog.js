@@ -15,7 +15,6 @@ export default function CalendarDialog({
   setNewEvent,
 }) {
   const handleClose = () => {
-    // console.log(newEvent);
     setShowDialog(false);
   };
 
@@ -32,9 +31,9 @@ export default function CalendarDialog({
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <h4>From:</h4> {newEvent.start.toString().slice(0, 21)}
+            <p>From:</p> {newEvent.start.toString().slice(0, 21)}
             <p style={{ margin: 20 }}></p>
-            <h4>Till:</h4> {newEvent.end.toString().slice(0, 21)}
+            <p>Till:</p> {newEvent.end.toString().slice(0, 21)}
           </DialogContentText>
           <TextField
             autoFocus

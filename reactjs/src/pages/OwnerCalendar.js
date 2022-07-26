@@ -6,6 +6,8 @@ import API from "../api";
 import { UserContext } from "../contexts/UserContext";
 import moment from "moment";
 import CalendarDialog from "../components/CalendarDialog";
+import { v4 as uuidv4 } from "uuid";
+import EventDialog from "../components/EventDialog";
 
 const localizer = momentLocalizer(moment);
 
@@ -13,6 +15,8 @@ export default function OwnerCalendar() {
   const [newEvent, setNewEvent] = useState({ player: "", start: "", end: "" });
   const [allEvents, setAllEvents] = useState([]);
   const [showDialog, setShowDialog] = useState(false);
+  const [showEventDialog, setShowEventDialog] = useState(false);
+  const [eventToDelete, setEventToDelete] = useState();
   const { user } = useContext(UserContext);
 
   useEffect(() => {
@@ -47,8 +51,14 @@ export default function OwnerCalendar() {
       ...newEvent,
       start: e.start,
       end: e.end,
+      id: uuidv4(),
     });
     setShowDialog(true);
+  };
+
+  const handleEventSelect = (e) => {
+    setEventToDelete(e);
+    setShowEventDialog(true);
   };
 
   const handleAddEvent = async () => {
@@ -86,6 +96,7 @@ export default function OwnerCalendar() {
         endAccessor="end"
         events={allEvents}
         style={{ height: 500, margin: "50px" }}
+        onSelectEvent={handleEventSelect}
       />
       <CalendarDialog
         setShowDialog={setShowDialog}
@@ -93,6 +104,14 @@ export default function OwnerCalendar() {
         newEvent={newEvent}
         setNewEvent={setNewEvent}
         handleAddEvent={handleAddEvent}
+      />
+      <EventDialog
+        showEventDialog={showEventDialog}
+        setShowEventDialog={setShowEventDialog}
+        eventToDelete={eventToDelete}
+        user={user}
+        setAllEvents={setAllEvents}
+        allEvents={allEvents}
       />
     </div>
   );

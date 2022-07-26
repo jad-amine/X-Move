@@ -92,6 +92,9 @@ export default function OwnerCalendar() {
     setRescheduledEvent(e);
   };
 
+  if (!user.info.property)
+    return <h1 className="no-property">Please enter your property INFO</h1>;
+
   return (
     <div className="calendar-form">
       <h1 className="calendar-header">Calendar</h1>

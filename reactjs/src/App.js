@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import "./App.css";
 import Drawer from "./components/Drawer";
-import FieldForm from "./components/FieldForm";
+import Property from "./pages/Property";
 import { Route, Routes } from "react-router-dom";
 
 // Pages & Components
@@ -22,7 +22,7 @@ function App() {
           <Route path="/calendar" element={<OwnerCalendar />}></Route>
           <Route
             path="/propertyInfo"
-            element={<FieldForm user={user} setUser={setUser} />}
+            element={<Property user={user} setUser={setUser} />}
           ></Route>
         </Routes>
         <Drawer />

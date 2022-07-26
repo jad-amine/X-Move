@@ -21,7 +21,7 @@ const fieldSchema = new mongoose.Schema({
     ref: "User",
   },
   location: {
-    type: [Number],
+    type: Object,
   },
   number: {
     type: Number,

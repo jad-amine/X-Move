@@ -88,10 +88,10 @@ const login = async (req, res) => {
 
 // Add property information
 const addProperty = async (req, res) => {
-  const info = req.body.info;
+  const info = req.body;
   require("fs").writeFileSync(
     `public/Images/PropertyImages/${info.name}.png`,
-    info.picture,
+    info.pictureURL,
     "base64",
     function (err) {
       console.log(err);
@@ -111,6 +111,22 @@ const addProperty = async (req, res) => {
     res.status(200).json(field);
   } catch (error) {
     res.status(400).json(error.message);
+  }
+};
+
+// Update Property Information
+const updatePropertyInfo = async (req, res) => {
+  try {
+    await Field.findByIdAndUpdate(req.user.property._id, {
+      number: req.body.number,
+      location: req.body.location,
+      rentPerHour: req.body.rentPerHour,
+      pictureURL: req.body.pictureURL,
+    });
+    res.status(200).json("Updated");
+  } catch (error) {
+    console.log(error, error.message);
+    res.status(500).json("Server Error");
   }
 };
 
@@ -190,4 +206,5 @@ module.exports = {
   getReservations,
   deleteReservation,
   rescheduleReservation,
+  updatePropertyInfo,
 };

@@ -158,6 +158,30 @@ const deleteReservation = async (req, res) => {
   }
 };
 
+// Reschedule Reservation
+const rescheduleReservation = async (req, res) => {
+  try {
+    await Field.findByIdAndUpdate(
+      req.user.property._id,
+      { $pull: { reservations: { id: req.params.id } } },
+      { safe: true, multi: false }
+    );
+    await Field.findByIdAndUpdate(req.user.property._id, {
+      $push: {
+        reservations: {
+          ...req.body.rescheduledEvent.event,
+          start: req.body.rescheduledEvent.start,
+          end: req.body.rescheduledEvent.end,
+        },
+      },
+    });
+    res.status(200).json("Reservation Rescheduled !!");
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json("Server Error");
+  }
+};
+
 module.exports = {
   register,
   login,
@@ -165,4 +189,5 @@ module.exports = {
   addGame,
   getReservations,
   deleteReservation,
+  rescheduleReservation,
 };

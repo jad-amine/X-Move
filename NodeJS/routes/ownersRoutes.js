@@ -7,6 +7,7 @@ const {
   addGame,
   getReservations,
   deleteReservation,
+  rescheduleReservation,
 } = require("../controllers/ownersController");
 
 const router = express.Router();
@@ -28,6 +29,9 @@ router.post("/addGame", authOwner, addGame);
 
 // Get Reservations
 router.get("/getReservations", authOwner, getReservations);
+
+// Reschedule Reservations
+router.post("/rescheduleReservation/:id", authOwner, rescheduleReservation);
 
 // Delete Reservations
 router.get("/deleteReservation/:id", authOwner, deleteReservation);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   MapContainer,
   Marker,
@@ -8,6 +8,7 @@ import {
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import { UserContext } from "../contexts/UserContext";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -17,14 +18,16 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
 
-export default function Map({ location, setLocation }) {
-  const [propertyLocation, setPropertyLocation] = useState();
+export default function Map({ setLocation }) {
+  const { user } = useContext(UserContext);
+  const [propertyLocation, setPropertyLocation] = useState(
+    user.info.property?.location
+  );
   const LocationFinderDummy = () => {
     useMapEvents({
       click(e) {
-        console.log(e.latlng);
+        setLocation(e.latlng);
         setPropertyLocation(e.latlng);
-        // setLocation(e.latlng);
       },
     });
     return null;
@@ -44,9 +47,7 @@ export default function Map({ location, setLocation }) {
       <LocationFinderDummy />
       {propertyLocation && (
         <Marker position={propertyLocation}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
+          <Popup>{user.info.property.name} Location</Popup>
         </Marker>
       )}
     </MapContainer>

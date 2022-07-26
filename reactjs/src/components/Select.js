@@ -38,9 +38,10 @@ export default function BasicSelect({ text, value, setValue }) {
           {text === "Type" ? "Type" : "Sport"}
         </InputLabel>
         <Select
+          required
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          // value={value}
+          value={value}
           label="Age"
           onChange={handleChange}
         >

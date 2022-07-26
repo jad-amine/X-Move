@@ -4,41 +4,57 @@ import Map from "../components/Map";
 import BasicSelect from "../components/Select";
 
 export default function Property({ user, setUser }) {
-  const [field, setField] = useState(true);
-  const [info, setInfo] = useState({});
   const [name, setName] = useState(null);
-  const [type, setType] = useState(" ");
-  const [sport, setSport] = useState(" ");
-  const [number, setNumber] = useState(null);
-  const [rentPerHour, setRentPerHour] = useState(null);
-  const [location, setLocation] = useState(null);
-  const [picture, setPicture] = useState(null);
+  const [property, setProperty] = useState("");
+  const [sport, setSport] = useState("");
+  const [number, setNumber] = useState(user.info.property?.number);
+  const [location, setLocation] = useState(user.info.property?.location);
+  const [pictureURL, setPictureURL] = useState(user.info.property?.pictureURL);
+  const [rentPerHour, setRentPerHour] = useState(
+    user.info.property?.rentPerHour
+  );
+  const update = user.info.property ? true : false;
+  const [updated, setUpdated] = useState();
 
   const handleClick = async (e) => {
     e.preventDefault();
-    console.log(info);
     if (
-      !info.name ||
-      !info.property ||
-      !info.sport ||
-      !info.number ||
-      !info.rentPerHour ||
-      !info.picture
+      (!name ||
+        !property ||
+        !sport ||
+        !number ||
+        !rentPerHour ||
+        !pictureURL) &&
+      !update
     ) {
       alert("Please fill all the field !!");
       return;
     }
     try {
+      const fieldInfo = {
+        name,
+        property,
+        sport,
+        number,
+        rentPerHour,
+        location,
+        pictureURL,
+      };
       const { data } = await API.post(
-        "addProperty/",
-        { info: info },
+        update ? "updatePropertyInfo/" : "addProperty/",
+        fieldInfo,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
         }
       );
-      setUser({ info: { ...user.info, property: data }, token: user.token });
+      console.log(data);
+      setUpdated(true);
+      // setUser({
+      //   info: { ...user.info, property: fieldInfo },
+      //   token: user.token,
+      // });
     } catch (error) {
       console.log(error);
     }
@@ -52,7 +68,7 @@ export default function Property({ user, setUser }) {
     fileReader.onload = function (fileLoadedEvent) {
       base64 = fileLoadedEvent.target.result;
       base64 = base64.split(",")[1];
-      setPicture(base64);
+      setPictureURL(base64);
     };
     fileReader.readAsDataURL(fileToLoad);
   };
@@ -62,28 +78,55 @@ export default function Property({ user, setUser }) {
       <div className="property-container">
         <div className="property-form-header">Property Information</div>
         <form className="property-form">
-          <p>Property Name: </p>
-          <input type="text" onChange={(e) => setName(e.target.value)} />
-          <hr />
-          <BasicSelect text={"Type"} value={type} setValue={setType} />
-          {type === "Field" ? (
-            <BasicSelect text={"Sport"} value={sport} setValue={setSport} />
+          <p>Name: </p>
+          {user.info.property?.name ? (
+            <>
+              <h1>{user.info.property.name}</h1>
+              <hr />
+              <p>Type: </p>
+              <h1>{user.info.property.property}</h1>
+              <hr />
+              <p>Sport: </p>
+              <h1>
+                {user.info.property.sport.charAt(0).toUpperCase() +
+                  user.info.property.sport.slice(1)}
+              </h1>
+            </>
           ) : (
-            <BasicSelect text={type} value={sport} setValue={setSport} />
+            <>
+              <input type="text" onChange={(e) => setName(e.target.value)} />
+              <hr />
+              <BasicSelect
+                text={"Type"}
+                value={property}
+                setValue={setProperty}
+              />
+              {property === "Field" ? (
+                <BasicSelect text={"Sport"} value={sport} setValue={setSport} />
+              ) : (
+                <BasicSelect
+                  text={property}
+                  value={sport}
+                  setValue={setSport}
+                />
+              )}
+            </>
           )}
           <hr />
           <div>
             <label>Phone Number: </label>
             <input
-              type="number"
+              value={number}
+              property="number"
               placeholder="Number"
               onChange={(e) => setNumber(e.target.value)}
             />
           </div>
           <div>
-            <label>Rent Per Hour price:</label>
+            <label>Rent ($) : </label>
             <input
-              type="number"
+              value={rentPerHour}
+              property="number"
               placeholder="Rent/Hour"
               min={1}
               onChange={(e) => setRentPerHour(e.target.value)}
@@ -91,16 +134,10 @@ export default function Property({ user, setUser }) {
           </div>
           <input accept="image/*" type="file" onChange={imgFilehandler} />
           <input type="button" value={"Location"} />
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              console.log(type, sport);
-            }}
-          >
-            Submit
-          </button>
+          <button onClick={handleClick}>{update ? "Update" : "Submit"}</button>
+          {updated && <p>Updated</p>}
         </form>
-        <Map location={location} setLocation={setLocation} />
+        <Map setLocation={setLocation} location={location} />
       </div>
     </>
   );

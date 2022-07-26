@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import logo from "../assets/logo.png";
 import { FaInstagram, FaFacebookSquare, FaTwitter } from "react-icons/fa";
-import { AiOutlineLogout } from "react-icons/ai";
+import { FiMenu } from "react-icons/fi";
 import { UserContext } from "../contexts/UserContext";
 
 function Navbar() {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser, setShowDrawer, showDrawer } = useContext(UserContext);
   return (
     <div className="top-nav">
       <img
@@ -27,13 +27,15 @@ function Navbar() {
           <FaTwitter size={25} color="blue" />
         </li>
         <li>
-          <AiOutlineLogout
+          <FiMenu
             cursor="pointer"
-            size={25}
-            color="red"
+            size={30}
+            color="white"
             onClick={() => {
-              localStorage.clear();
-              setUser(null);
+              setShowDrawer(true);
+              console.log(showDrawer);
+              // localStorage.clear();
+              // setUser(null);
             }}
           />
         </li>

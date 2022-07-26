@@ -1,11 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "./App.css";
+import Drawer from "./components/Drawer";
+import FieldForm from "./components/FieldForm";
+import { Route, Routes } from "react-router-dom";
 
 // Pages & Components
 import Navbar from "./components/Navbar";
 import { UserContext } from "./contexts/UserContext";
-import Home from "./pages/Home";
 import LandingPage from "./pages/LandingPage";
+import OwnerCalendar from "./pages/OwnerCalendar";
 
 function App() {
   const { user, setUser } = useContext(UserContext);
@@ -15,7 +18,14 @@ function App() {
     return (
       <div className="App">
         <Navbar />
-        <Home />
+        <Routes>
+          <Route path="/calendar" element={<OwnerCalendar />}></Route>
+          <Route
+            path="/propertyInfo"
+            element={<FieldForm user={user} setUser={setUser} />}
+          ></Route>
+        </Routes>
+        <Drawer />
       </div>
     );
   }

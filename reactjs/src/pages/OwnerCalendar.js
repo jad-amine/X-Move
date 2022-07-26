@@ -94,7 +94,7 @@ export default function OwnerCalendar() {
 
   return (
     <div className="calendar-form">
-      <h1 className="align-center">Calendar</h1>
+      <h1 className="calendar-header">Calendar</h1>
       <DragAndDropCalendar
         popup={true}
         onSelectSlot={handleSelect}

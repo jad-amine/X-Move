@@ -16,7 +16,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { TextInput } from "react-native-paper";
 import uuid from "react-native-uuid";
 
-export default function AddPost({ user, setShowModal }) {
+export default function AddPost({ user, setShowModal, setPosts, posts }) {
   const [picture, setPicture] = useState();
   const [caption, setCaption] = useState();
   const id = uuid.v4();
@@ -63,6 +63,14 @@ export default function AddPost({ user, setShowModal }) {
         { cancelable: true }
       );
     } else {
+      const post = {
+        picture: picture.base64,
+        caption,
+        id,
+        createdAt: new Date(),
+        name: user.info.name,
+        playerPic: user.info.pictureURL,
+      };
       try {
         const response = await fetch("http://10.0.2.2:4000/api/users/addPost", {
           method: "POST",
@@ -70,11 +78,13 @@ export default function AddPost({ user, setShowModal }) {
             "Content-Type": "application/json",
             authorization: `Bearer ${user.token}`,
           },
-          body: JSON.stringify({ picture: picture.base64, caption, id }),
+          body: JSON.stringify({ ...post }),
         });
         const data = await response.json();
-        console.log(data);
         if (data === "Saved") {
+          const newList = [...posts];
+          newList.unshift({ ...post, picture: `/Images/Posts/${id}.png` });
+          setPosts(newList);
           setShowModal(false);
         }
       } catch (error) {

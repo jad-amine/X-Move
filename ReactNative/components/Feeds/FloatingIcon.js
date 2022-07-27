@@ -1,10 +1,8 @@
 import { TouchableOpacity } from "react-native";
 import React from "react";
 import { Feather } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
 
 export default function FloatingIcon({ setShowModal }) {
-  const navigation = useNavigation();
   return (
     <TouchableOpacity
       onPress={() => setShowModal(true)}

@@ -34,12 +34,6 @@ const userSchema = new mongoose.Schema(
     },
     location: {
       type: Object,
-      // lattitude: {
-      //   type: Number,
-      // },
-      // longitude: {
-      //   type: Number
-      // }
     },
     property: {
       type: mongoose.Schema.Types.ObjectId,
@@ -56,6 +50,9 @@ const userSchema = new mongoose.Schema(
     friendRequests: {
       type: [mongoose.Schema.Types.ObjectId],
       ref: "User",
+    },
+    posts: {
+      type: [Object],
     },
   },
   { timestamps: true }

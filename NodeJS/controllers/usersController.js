@@ -103,7 +103,6 @@ const addSport = async (req, res) => {
 // Add Profile Picture
 const addProfilePicture = async (req, res) => {
   try {
-    console.log("helo");
     require("fs").writeFileSync(
       `public/Images/ProfilePictures/${req.user.email}.png`,
       req.body.base64,
@@ -249,7 +248,35 @@ const addFriend = async (req, res) => {
   }
 };
 
-// delete thisIsObject.Cow
+// Add Post
+const addPost = async (req, res) => {
+  try {
+    require("fs").writeFileSync(
+      `public/Images/Posts/${req.body.id}.png`,
+      req.body.picture,
+      "base64",
+      function (err) {
+        console.log(err);
+      }
+    );
+    await User.findByIdAndUpdate(req.user._id, {
+      $push: {
+        posts: {
+          picture: `/Images/Posts/${req.body.id}.png`,
+          id: req.body.id,
+          caption: req.body.caption,
+          createdAt: new Date(),
+        },
+      },
+    });
+    res.json("Saved");
+  } catch (err) {
+    console.log(err);
+    res.json("Error: Image not saved !");
+  }
+};
+
+// delete user.password   ##### as soon as possible // dont send pass
 
 module.exports = {
   addSport,
@@ -262,4 +289,5 @@ module.exports = {
   updateProfile,
   getLocations,
   addFriend,
+  addPost,
 };

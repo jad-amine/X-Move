@@ -12,6 +12,7 @@ const {
   updateProfile,
   getLocations,
   addFriend,
+  addPost,
 } = require("../controllers/usersController");
 
 const router = express.Router();
@@ -48,5 +49,8 @@ router.get("/getLocations/:type/:sport", authUser, getLocations);
 
 // Add Friend
 router.post("/addFriend/", authUser, addFriend);
+
+// Add Post
+router.post("/addPost/", authUser, addPost);
 
 module.exports = router;

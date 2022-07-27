@@ -7,6 +7,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import BottomTab from "./Home/BottomTab";
 import FavoriteSports from "./FavoriteSports";
 import Feeds from "./Feeds";
+import CustomDrawer from "../../components/CustomDrawer";
 
 const Drawer = createDrawerNavigator();
 
@@ -33,6 +34,7 @@ const DrawerNavigator = () => {
         headerTintColor: "white",
         headerTitleStyle: { fontSize: 30 },
       }}
+      drawerContent={(props) => <CustomDrawer {...props} />}
     >
       <Drawer.Screen name="BottomTab" component={BottomTab} />
       <Drawer.Screen name="Favorite Sports" component={FavoriteSports} />

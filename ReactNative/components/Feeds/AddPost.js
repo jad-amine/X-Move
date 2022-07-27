@@ -49,6 +49,40 @@ export default function AddPost({ user, setShowModal }) {
     );
   };
 
+  const handlePress = async () => {
+    if (!picture || !caption) {
+      Alert.alert(
+        `Please add a ${!picture ? "picture !" : "caption !"}`,
+        ``,
+        [
+          {
+            text: "Cancel",
+            onPress: () => {},
+          },
+        ],
+        { cancelable: true }
+      );
+    } else {
+      try {
+        const response = await fetch("http://10.0.2.2:4000/api/users/addPost", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${user.token}`,
+          },
+          body: JSON.stringify({ picture: picture.base64, caption, id }),
+        });
+        const data = await response.json();
+        console.log(data);
+        if (data === "Saved") {
+          setShowModal(false);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ScrollView style={global.feedModal}>

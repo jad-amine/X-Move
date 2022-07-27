@@ -17,12 +17,10 @@ export default function FloatingIcon({ setShowModal }) {
         height: 60,
         alignItems: "center",
         justifyContent: "center",
-        borderColor: "tomato",
-        backgroundColor: "tomato",
-        borderWidth: 2,
+        backgroundColor: "#FF4D00",
       }}
     >
-      <Feather name="plus" size={50} color="white" />
+      <Feather name="plus" size={55} color="white" />
     </TouchableOpacity>
   );
 }

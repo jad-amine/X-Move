@@ -1,13 +1,18 @@
-import { View, Text, ScrollView, Modal } from "react-native";
+import { View, Text, ScrollView, Modal, RefreshControl } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import FloatingIcon from "../../components/Feeds/FloatingIcon";
 import AddPost from "../../components/Feeds/AddPost";
 import PostCard from "../../components/Feeds/PostCard";
 
+const wait = (timeout) => {
+  return new Promise((resolve) => setTimeout(resolve, timeout));
+};
+
 export default function Feeds() {
   const { user, setUser } = useContext(UserContext);
   const [showModal, setShowModal] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -19,11 +24,44 @@ export default function Feeds() {
       console.log([...user.info.posts]);
     }
     setPosts([...user.info.posts, ...friendsPosts]);
+  }, [user]);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    const authUser = async () => {
+      try {
+        const response = await fetch(
+          "http://10.0.2.2:4000/api/users/getUserData",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              authorization: `Bearer ${user.token}`,
+            },
+            body: JSON.stringify({ mission: "Auth User" }),
+          }
+        );
+        const json = await response.json();
+        if (json.status == "Verified") {
+          setTimeout(() => {
+            setRefreshing(false);
+          }, 1000);
+          setUser({ info: json.user, token: user.token });
+        }
+      } catch (err) {
+        console.log(err.message, "Fix the request");
+      }
+    };
+    authUser();
   }, []);
 
   return (
     <View style={{ flex: 1 }}>
-      <ScrollView>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
         <Text style={{ flex: 1 }}>Feeds</Text>
         {posts.length === 0 && <Text>Add some friends to receive Feeds</Text>}
         {posts.map((post, index) => (

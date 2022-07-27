@@ -1,13 +1,23 @@
 import React, { useContext } from "react";
-import { View, Text, Image, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  ImageBackground,
+  TouchableOpacity,
+} from "react-native";
 import {
   DrawerContentScrollView,
   DrawerItemList,
 } from "@react-navigation/drawer";
 import { UserContext } from "../contexts/UserContext";
+import { Ionicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
+import * as SecureStore from "expo-secure-store";
 
 export default function CustomDrawer(props) {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   return (
     <View style={{ flex: 1 }}>
       <DrawerContentScrollView
@@ -27,29 +37,52 @@ export default function CustomDrawer(props) {
             }}
             source={{ uri: `http://10.0.2.2:4000/` + user.info.pictureURL }}
           />
-          <Text
-            style={{
-              color: "white",
-              fontSize: 18,
-              fontFamily: "Roboto-Medium",
-              marginBottom: 5,
-            }}
-          >
-            {user.info.name}
-          </Text>
-          <Text
-            style={{
-              color: "white",
-              fontFamily: "Roboto-Regular",
-            }}
-          >
-            {user.info.email}
-          </Text>
+          <View style={{ marginLeft: 10 }}>
+            <Text
+              style={{
+                color: "white",
+                fontSize: 18,
+                // fontFamily: "Roboto-Medium",
+                marginBottom: 5,
+              }}
+            >
+              {user.info.name}{" "}
+              <Ionicons name="logo-capacitor" size={24} color="white" />
+            </Text>
+            <Text
+              style={{
+                color: "white",
+                // fontFamily: "Roboto-Regular",
+                marginBottom: 5,
+              }}
+            >
+              {user.info.email}
+            </Text>
+          </View>
         </ImageBackground>
-        <DrawerItemList {...props} />
+        <View style={{ flex: 1, backgroundColor: "white", paddingTop: 20 }}>
+          <DrawerItemList {...props} />
+        </View>
       </DrawerContentScrollView>
-      <View>
-        <Text>Our Custom Text</Text>
+      <View style={{ padding: 20, borderTopWidth: 1, borderTopColor: "#ccc" }}>
+        <TouchableOpacity onPress={() => {}} style={{ paddingVertical: 15 }}>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <AntDesign name="sharealt" size={26} color="#666" />
+            <Text style={{ fontSize: 15, marginLeft: 20 }}>Tell a Friend</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            SecureStore.setItemAsync("token", "");
+            setUser(null);
+          }}
+          style={{ paddingVertical: 15 }}
+        >
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <MaterialIcons name="logout" size={26} color="red" />
+            <Text style={{ fontSize: 15, marginLeft: 15 }}>Sign Out</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );

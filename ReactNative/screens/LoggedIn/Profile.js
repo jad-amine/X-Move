@@ -11,7 +11,6 @@ import {
 import { UserContext } from "../../contexts/UserContext";
 import * as ImagePicker from "expo-image-picker";
 import { global } from "../../styles/globalStyles";
-import * as SecureStore from "expo-secure-store";
 import UploadProfilePic from "../../components/UploadProfilePic";
 import About from "../../components/About";
 import { Button } from "react-native-paper";
@@ -143,20 +142,6 @@ const Profile = () => {
           </Button>
         </View>
         <About user={user} />
-        <Button
-          mode="contained"
-          title="Sign Out"
-          onPress={() => {
-            try {
-              SecureStore.setItemAsync("token", "");
-              setUser(null);
-            } catch (err) {
-              Alert.alert("Logout Failed");
-            }
-          }}
-        >
-          Sign Out
-        </Button>
       </View>
     </ScrollView>
   );

@@ -1,10 +1,10 @@
 import { View, Text } from "react-native";
 import React from "react";
-import { Chip } from "react-native-paper";
+import { Chip, Divider } from "react-native-paper";
 import { AntDesign } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
 import { global } from "../styles/globalStyles";
-
+import PostCard from "./Feeds/PostCard";
 const About = ({ user }) => {
   return (
     <View>
@@ -13,16 +13,28 @@ const About = ({ user }) => {
         <Text style={global.aboutWord}>About: </Text>
       </View>
       <Text style={global.aboutPlayer}>{user.info.about}</Text>
+      <Divider style={global.divider} />
       <View style={global.aboutIcon}>
         <Fontisto name="favorite" size={24} color="rgb(88, 89, 88)" />
         <Text style={global.aboutWord}>Hobbies and interests </Text>
       </View>
-      <View style={global.sportList}>
+      <View style={global.sportsList}>
         {user.info.sports &&
           user.info.sports.map((sport, index) => (
             <Chip style={{ backgroundColor: "#ff4D00", margin: 5 }} key={index}>
               <Text style={{ color: "white" }}>{sport}</Text>
             </Chip>
+          ))}
+      </View>
+      <Divider style={global.divider} />
+      <View style={global.postSection}>
+        <Fontisto name="favorite" size={24} color="rgb(88, 89, 88)" />
+        <Text style={global.aboutWord}>Posts </Text>
+      </View>
+      <View>
+        {user.info.posts &&
+          user.info.posts.map((post, index) => (
+            <PostCard key={index} post={post} />
           ))}
       </View>
     </View>

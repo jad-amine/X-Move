@@ -58,7 +58,7 @@ const BottomTab = () => {
         name="StackNavigator"
         component={StackNavigator}
       />
-      <Tab.Screen name="Map" component={Map} />
+      <Tab.Screen name="Map" component={Map} options={{ headerShown: false }} />
       <Tab.Screen name="Play" component={Play} />
       <Tab.Screen
         options={({ route }) => ({

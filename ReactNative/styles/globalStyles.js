@@ -263,7 +263,7 @@ export const global = StyleSheet.create({
 
   // About
   aboutIcon: {
-    marginTop: 5,
+    marginVertical: 5,
     flexDirection: "row",
     alignItems: "center",
   },
@@ -274,11 +274,29 @@ export const global = StyleSheet.create({
     color: "rgb(88, 89, 88)",
   },
 
-  aboutPlayer: { marginTop: 15, fontSize: 18, marginBottom: 30 },
+  divider: {
+    borderWidth: 1,
+    borderColor: "#aaa",
+    marginVertical: 15,
+  },
 
-  sportList: {
+  aboutPlayer: {
+    marginTop: 10,
+    marginLeft: 10,
+    fontSize: 20,
+    color: "#333",
+  },
+
+  sportsList: {
+    paddingTop: 5,
     flexWrap: "wrap",
     flexDirection: "row",
+  },
+
+  postSection: {
+    marginTop: 20,
+    flexDirection: "row",
+    alignItems: "center",
   },
 
   // Favorite Sports Drawer Screen

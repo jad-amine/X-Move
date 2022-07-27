@@ -6,6 +6,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 // Screens
 import BottomTab from "./Home/BottomTab";
 import FavoriteSports from "./FavoriteSports";
+import Feeds from "./Feeds";
 
 const Drawer = createDrawerNavigator();
 
@@ -35,6 +36,7 @@ const DrawerNavigator = () => {
     >
       <Drawer.Screen name="BottomTab" component={BottomTab} />
       <Drawer.Screen name="Favorite Sports" component={FavoriteSports} />
+      <Drawer.Screen name="Feeds" component={Feeds} />
     </Drawer.Navigator>
   );
 };

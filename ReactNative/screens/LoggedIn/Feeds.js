@@ -2,12 +2,12 @@ import { View, Text, ScrollView, Modal } from "react-native";
 import React, { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import FloatingIcon from "../../components/Feeds/FloatingIcon";
-import AddFeedModal from "../../components/Feeds/AddFeedModal";
+import AddPost from "../../components/Feeds/AddPost";
 
 export default function Feeds() {
   const { user, setUser } = useContext(UserContext);
   const [showModal, setShowModal] = useState(false);
-  console.log(user.info.friends);
+
   return (
     <View style={{ flex: 1 }}>
       <ScrollView>
@@ -28,11 +28,7 @@ export default function Feeds() {
           setShowModal(!false);
         }}
       >
-        <AddFeedModal
-          user={user}
-          setUser={setUser}
-          setShowModal={setShowModal}
-        />
+        <AddPost user={user} setUser={setUser} setShowModal={setShowModal} />
       </Modal>
     </View>
   );

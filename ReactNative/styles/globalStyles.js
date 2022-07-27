@@ -308,5 +308,33 @@ export const global = StyleSheet.create({
     justifyContent: "space-between",
   },
 
+  // Feeds Screen
+  feedModal: {
+    flex: 1,
+    backgroundColor: "white",
+  },
+
+  pictureInput: { alignItems: "center" },
+
+  picture: {
+    marginVertical: 30,
+  },
+
+  post: {
+    alignSelf: "center",
+    marginTop: 30,
+    borderRadius: 10,
+    borderColor: "#FF4D00",
+    borderWidth: 1,
+    paddingVertical: 10,
+    paddingHorizontal: 40,
+    backgroundColor: "#FF4D00",
+    color: "white",
+  },
+
+  postText: {
+    color: "white",
+    fontSize: 20,
+  },
   // Play Section
 });

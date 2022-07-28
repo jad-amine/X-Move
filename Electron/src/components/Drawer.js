@@ -8,8 +8,6 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import LogoutIcon from "@mui/icons-material/Logout";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import SportsVolleyballIcon from "@mui/icons-material/SportsVolleyball";
 import { useNavigate } from "react-router-dom";
 import { GiAmericanFootballPlayer } from "react-icons/gi";
 import { ApplicationContext } from "../contexts/ApplicationContext";
@@ -27,42 +25,52 @@ export default function TemporaryDrawer() {
       <React.Fragment>
         <Drawer anchor={"left"} open={showDrawer} onClose={toggleDrawer}>
           <Box
+            style={{ backgroundColor: "#FF4D00" }}
             sx={{ width: 300 }}
             role="presentation"
             onClick={toggleDrawer}
             onKeyDown={toggleDrawer}
           >
             <List>
-              {["Players", "Fields", "Equipment"].map((text, index) => (
-                <ListItem key={text} disablePadding>
-                  <ListItemButton
-                    onClick={() =>
-                      navigate(
-                        text === "Players"
-                          ? "/"
-                          : text === "Fields"
-                          ? "fields"
-                          : "equipment"
-                      )
-                    }
+              {["Dashboard", "Players", "Fields", "Equipment"].map(
+                (text, index) => (
+                  <ListItem
+                    className="drawer-tab"
+                    style={{ marginTop: 10 }}
+                    key={text}
+                    disablePadding
                   >
-                    <ListItemIcon>
-                      {text === "Players" ? (
-                        <GiAmericanFootballPlayer />
-                      ) : text === "Fields" ? (
-                        <GiAmericanFootballPlayer />
-                      ) : (
-                        <GiAmericanFootballPlayer />
-                      )}
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
+                    <ListItemButton
+                      onClick={() =>
+                        navigate(
+                          text === "Players"
+                            ? "players"
+                            : text === "Fields"
+                            ? "fields"
+                            : text === "Equipment"
+                            ? "equipment"
+                            : "/"
+                        )
+                      }
+                    >
+                      <ListItemIcon>
+                        {text === "Players" ? (
+                          <GiAmericanFootballPlayer color="white" />
+                        ) : text === "Fields" ? (
+                          <GiAmericanFootballPlayer color="white" />
+                        ) : (
+                          <GiAmericanFootballPlayer color="white" />
+                        )}
+                      </ListItemIcon>
+                      <ListItemText className="drawer-text" primary={text} />
+                    </ListItemButton>
+                  </ListItem>
+                )
+              )}
             </List>
-            <Divider />
+            <Divider style={{ marginTop: 367 }} />
             <List>
-              <ListItem disablePadding>
+              <ListItem className="drawer-tab" disablePadding>
                 <ListItemButton
                   onClick={() => {
                     localStorage.clear();
@@ -72,7 +80,7 @@ export default function TemporaryDrawer() {
                   <ListItemIcon>
                     <LogoutIcon color="error" />
                   </ListItemIcon>
-                  <ListItemText primary={"Sign Out"} />
+                  <ListItemText className="drawer-text" primary={"Sign Out"} />
                 </ListItemButton>
               </ListItem>
             </List>

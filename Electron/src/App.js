@@ -51,9 +51,9 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      {/* <Dashboard /> */}
       <Routes>
-        <Route path="/" element={<Players />}></Route>
+        <Route path="/" element={<Dashboard />}></Route>
+        <Route path="/players" element={<Players />}></Route>
         <Route path="/equipment" element={<Equipment />}></Route>
         <Route path="/fields" element={<Fields />}></Route>
       </Routes>

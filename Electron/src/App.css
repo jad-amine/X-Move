@@ -70,7 +70,7 @@
 
 /* Top Navbar */
 .top-nav {
-  height: 70px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -78,7 +78,7 @@
   border-bottom: 2px solid gray;
   background-color: white;
   padding: 0 20px;
-  box-shadow: 0px 0px 5px 10px gainsboro;
+  box-shadow: 0px 0px 10px 8px gray;
 }
 
 .hamburger-menu {
@@ -111,4 +111,19 @@
   gap: 50px;
   flex-wrap: wrap;
   padding: 0 60px;
+}
+
+/* Drawer */
+.drawer-tab:hover {
+  background-color: white;
+  transition: 0.5s;
+}
+
+.drawer-text {
+  color: white;
+  font-size: 20;
+}
+
+.drawer-text:hover {
+  color: #ff4d00;
 }

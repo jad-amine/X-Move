@@ -39,16 +39,4 @@ const login = async (req, res) => {
   }
 };
 
-// Get all users
-const getAllUsers = async (req, res) => {
-  const users = await User.find();
-  res.status(200).json(users);
-};
-
-// Get all properties
-const getProperties = async (req, res) => {
-  const fields = await Field.find().populate("owner");
-  res.status(200).json(fields);
-};
-
 module.exports = { getAllUsers, login, getProperties };

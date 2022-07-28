@@ -11,6 +11,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import SportsVolleyballIcon from "@mui/icons-material/SportsVolleyball";
 import { useNavigate } from "react-router-dom";
+import { GiAmericanFootballPlayer } from "react-icons/gi";
 
 export default function TemporaryDrawer({
   showDrawer,
@@ -34,18 +35,26 @@ export default function TemporaryDrawer({
             onKeyDown={toggleDrawer}
           >
             <List>
-              {["Property", "Calendar"].map((text, index) => (
+              {["Players", "Fields", "Equipment"].map((text, index) => (
                 <ListItem key={text} disablePadding>
                   <ListItemButton
                     onClick={() =>
-                      navigate(index % 2 === 0 ? "propertyInfo" : "/")
+                      navigate(
+                        text === "Players"
+                          ? "/"
+                          : text === "Fields"
+                          ? "fields"
+                          : "equipment"
+                      )
                     }
                   >
                     <ListItemIcon>
-                      {index % 2 === 0 ? (
-                        <SportsVolleyballIcon color="success" />
+                      {text === "Players" ? (
+                        <GiAmericanFootballPlayer />
+                      ) : text === "Fields" ? (
+                        <GiAmericanFootballPlayer />
                       ) : (
-                        <CalendarMonthIcon color="primary" />
+                        <GiAmericanFootballPlayer />
                       )}
                     </ListItemIcon>
                     <ListItemText primary={text} />

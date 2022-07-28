@@ -2,14 +2,20 @@
 import API from "./api";
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
 
 // Windows
 import LandingPage from "./windows/LandingPage";
 import Drawer from "./components/Drawer";
+import Navbar from "./components/Navbar";
+import Dashboard from "./components/Dashboard";
+import Equipment from "./windows/Equipment";
+import Fields from "./windows/Fields";
+import Players from "./windows/Players";
 
 function App() {
   const [applicationData, setApplicationData] = useState(null);
-  const [showDrawer, setShowDrawer] = useState(true);
+  const [showDrawer, setShowDrawer] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -42,6 +48,13 @@ function App() {
     return <LandingPage setApplicationData={setApplicationData} />;
   return (
     <div className="App">
+      <Navbar setShowDrawer={setShowDrawer} />
+      {/* <Dashboard /> */}
+      <Routes>
+        <Route path="/" element={<Players />}></Route>
+        <Route path="/equipment" element={<Equipment />}></Route>
+        <Route path="/fields" element={<Fields />}></Route>
+      </Routes>
       <Drawer
         setShowDrawer={setShowDrawer}
         showDrawer={showDrawer}

@@ -12,7 +12,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import SportsVolleyballIcon from "@mui/icons-material/SportsVolleyball";
 import { useNavigate } from "react-router-dom";
 import { GiAmericanFootballPlayer } from "react-icons/gi";
-import { ApplicationContext } from "../contexts/applicationContext";
+import { ApplicationContext } from "../contexts/ApplicationContext";
 
 export default function TemporaryDrawer() {
   const navigate = useNavigate();

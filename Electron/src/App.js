@@ -12,9 +12,11 @@ import Dashboard from "./components/Dashboard";
 import Equipment from "./windows/Equipment";
 import Fields from "./windows/Fields";
 import Players from "./windows/Players";
+import { ApplicationContext } from "./contexts/ApplicationContext";
 
 function App() {
-  const { applicationData, setApplicationData } = useContext(second);
+  const { applicationData, setApplicationData } =
+    useContext(ApplicationContext);
   const [showDrawer, setShowDrawer] = useState(false);
 
   useEffect(() => {

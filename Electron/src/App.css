@@ -104,3 +104,11 @@
   height: 100vh;
   /* background-color: red; */
 }
+
+/* Players Window */
+.players-window {
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+  padding: 0 60px;
+}

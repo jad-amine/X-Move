@@ -4,7 +4,7 @@ import API from "./api";
 import "./App.css";
 
 function App() {
-  const [applicationData, setApplicationData] = useState();
+  const [applicationData, setApplicationData] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -35,7 +35,7 @@ function App() {
 
   if (!applicationData)
     return <LandingPage setApplicationData={setApplicationData} />;
-  return <div className="App"></div>;
+  return <div className="App">hi</div>;
 }
 
 export default App;

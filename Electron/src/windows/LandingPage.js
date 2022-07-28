@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaUserAlt } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
+import API from "../api";
 
 export default function LandingPage({ setApplicationData }) {
   const [email, setEmail] = useState("");
@@ -8,7 +9,23 @@ export default function LandingPage({ setApplicationData }) {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    console.log(email, password);
+    const admin = { email, password };
+    try {
+      const { data } = await API.post("login/", admin);
+      console.log(data);
+      localStorage.setItem("token", data.token);
+      setApplicationData({ player: data.players, fields: data.fields });
+      // setTimeout(() => {
+      //   setIsLoading(false);
+      //   setUser({ token: res.data.token, info: res.data.user });
+      // }, 2000);
+    } catch (error) {
+      // setTimeout(() => {
+      //   setError(signUp ? "User already exists !!" : "Invalid Credentials !!");
+      //   setIsLoading(false);
+      // }, 2000);
+      console.log(error, error.message);
+    }
   };
 
   return (

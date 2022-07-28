@@ -18,6 +18,8 @@ const login = async (req, res) => {
     if (!validPassword) {
       return res.status(401).json({ message: "Invalid Credentials" });
     }
+    const fields = await Field.find();
+    const players = await User.find();
     var token = jwt.sign(
       {
         _id: user._id,
@@ -29,10 +31,8 @@ const login = async (req, res) => {
     );
     res.status(200).json({
       token: token,
-      user: {
-        _id: user._id,
-        name: user.name,
-      },
+      players,
+      fields,
     });
   } catch (error) {
     res.status(500).json("Server Error");

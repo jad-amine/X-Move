@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LandingPage from "./windows/LandingPage";
 import API from "./api";
+import "./App.css";
 
 function App() {
   const [applicationData, setApplicationData] = useState();
@@ -32,7 +33,8 @@ function App() {
     }
   }, []);
 
-  if (!applicationData) return <LandingPage />;
+  if (!applicationData)
+    return <LandingPage setApplicationData={setApplicationData} />;
   return <div className="App"></div>;
 }
 

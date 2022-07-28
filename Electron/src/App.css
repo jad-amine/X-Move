@@ -67,3 +67,9 @@
   font-size: 18px;
   border-radius: 10px;
 }
+
+/* Home */
+.App {
+  height: 100vh;
+  background-color: red;
+}

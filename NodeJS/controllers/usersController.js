@@ -265,7 +265,9 @@ const addPost = async (req, res) => {
           picture: `/Images/Posts/${req.body.id}.png`,
           id: req.body.id,
           caption: req.body.caption,
-          createdAt: new Date(),
+          createdAt: req.body.createdAt,
+          playerPic: req.body.playerPic,
+          name: req.user.name,
         },
       },
     });

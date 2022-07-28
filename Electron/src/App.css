@@ -68,8 +68,39 @@
   border-radius: 10px;
 }
 
+/* Top Navbar */
+.top-nav {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  border-bottom: 2px solid gray;
+  background-color: white;
+  padding: 0 20px;
+  box-shadow: 0px 0px 5px 10px gainsboro;
+}
+
+.hamburger-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px;
+}
+
+.top-nav ul {
+  display: flex;
+  list-style: none;
+  margin-right: 20px;
+  align-items: center;
+}
+
+.top-nav ul li {
+  margin-left: 30px;
+}
+
 /* Home */
 .App {
   height: 100vh;
-  background-color: red;
+  /* background-color: red; */
 }

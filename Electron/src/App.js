@@ -1,6 +1,6 @@
 // Utilities
 import API from "./api";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
@@ -14,7 +14,7 @@ import Fields from "./windows/Fields";
 import Players from "./windows/Players";
 
 function App() {
-  const [applicationData, setApplicationData] = useState(null);
+  const { applicationData, setApplicationData } = useContext(second);
   const [showDrawer, setShowDrawer] = useState(false);
 
   useEffect(() => {
@@ -48,18 +48,14 @@ function App() {
     return <LandingPage setApplicationData={setApplicationData} />;
   return (
     <div className="App">
-      <Navbar setShowDrawer={setShowDrawer} />
+      <Navbar />
       {/* <Dashboard /> */}
       <Routes>
         <Route path="/" element={<Players />}></Route>
         <Route path="/equipment" element={<Equipment />}></Route>
         <Route path="/fields" element={<Fields />}></Route>
       </Routes>
-      <Drawer
-        setShowDrawer={setShowDrawer}
-        showDrawer={showDrawer}
-        setApplicationData={setApplicationData}
-      />
+      <Drawer />
       Hello
     </div>
   );

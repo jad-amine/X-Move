@@ -12,14 +12,12 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import SportsVolleyballIcon from "@mui/icons-material/SportsVolleyball";
 import { useNavigate } from "react-router-dom";
 import { GiAmericanFootballPlayer } from "react-icons/gi";
+import { ApplicationContext } from "../contexts/applicationContext";
 
-export default function TemporaryDrawer({
-  showDrawer,
-  setShowDrawer,
-  setApplicationData,
-}) {
+export default function TemporaryDrawer() {
   const navigate = useNavigate();
-
+  const { showDrawer, setShowDrawer, setApplicationData } =
+    React.useContext(ApplicationContext);
   const toggleDrawer = () => {
     setShowDrawer(false);
   };

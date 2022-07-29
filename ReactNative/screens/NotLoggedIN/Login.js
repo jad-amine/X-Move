@@ -1,6 +1,6 @@
 // Utilities
 import React, { useContext, useState } from "react";
-import loginImage from "../../assets/loginImage.png";
+import loginImage from "../../assets/signUP.png";
 import {
   Alert,
   ImageBackground,

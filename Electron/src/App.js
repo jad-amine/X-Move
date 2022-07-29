@@ -48,6 +48,7 @@ function App() {
 
   if (!applicationData)
     return <LandingPage setApplicationData={setApplicationData} />;
+
   return (
     <div className="App">
       <Navbar />
@@ -58,7 +59,6 @@ function App() {
         <Route path="/fields" element={<Fields />}></Route>
       </Routes>
       <Drawer />
-      Hello
     </div>
   );
 }

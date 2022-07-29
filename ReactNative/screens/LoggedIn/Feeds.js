@@ -62,7 +62,6 @@ export default function Feeds() {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
       >
-        <Text style={{ flex: 1 }}>Feeds</Text>
         {posts.length === 0 && <Text>Add some friends to receive Feeds</Text>}
         {posts.map((post, index) => (
           <PostCard key={index} post={post} setPosts={setPosts} />

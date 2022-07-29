@@ -2,7 +2,7 @@
 import React from "react";
 import { ImageBackground, Text, TouchableOpacity, View } from "react-native";
 import { global } from "../../styles/globalStyles";
-import landingPageImage from "../../assets/signUp.png";
+import landingPageImage from "../../assets/figma.png";
 import { useFonts, Fondamento_400Regular } from "@expo-google-fonts/fondamento";
 
 const LandingPage = ({ navigation }) => {

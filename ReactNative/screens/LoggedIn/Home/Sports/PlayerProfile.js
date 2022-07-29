@@ -1,8 +1,12 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import React, { useContext, useState } from "react";
 import { global } from "../../../../styles/globalStyles";
 import { UserContext } from "../../../../contexts/UserContext";
 import { useEffect } from "react";
+import { Chip, Divider } from "react-native-paper";
+import { AntDesign } from "@expo/vector-icons";
+import { Fontisto } from "@expo/vector-icons";
+import PostCard from "../../../../components/Feeds/PostCard";
 
 const PlayerProfile = ({ route }) => {
   const { user, setUser } = useContext(UserContext);
@@ -92,7 +96,7 @@ const PlayerProfile = ({ route }) => {
     }
   };
   return (
-    <>
+    <ScrollView>
       <View style={{ margin: 10, flexDirection: "row" }}>
         <Image
           source={{ uri: `http://10.0.2.2:4000/` + player.pictureURL }}
@@ -133,9 +137,44 @@ const PlayerProfile = ({ route }) => {
           <Text style={{ ...global.registerText, fontSize: 18 }}>CHAT</Text>
         </TouchableOpacity>
       </View>
-      <Text style={global.about}>About</Text>
-      <Text>{player.about}</Text>
-    </>
+      {/* <Text style={global.about}>About</Text> */}
+
+      {/* <Text>{player.about}</Text> */}
+      <View>
+        <View style={global.aboutIcon}>
+          <AntDesign name="infocirlceo" size={24} color="rgb(88, 89, 88)" />
+          <Text style={global.aboutWord}>About: </Text>
+        </View>
+        <Text style={global.aboutPlayer}>{player.about}</Text>
+        <Divider style={global.divider} />
+        <View style={global.aboutIcon}>
+          <Fontisto name="favorite" size={24} color="rgb(88, 89, 88)" />
+          <Text style={global.aboutWord}>Hobbies and interests </Text>
+        </View>
+        <View style={global.sportsList}>
+          {player.sports &&
+            player.sports.map((sport, index) => (
+              <Chip
+                style={{ backgroundColor: "#ff4D00", margin: 5 }}
+                key={index}
+              >
+                <Text style={{ color: "white" }}>{sport}</Text>
+              </Chip>
+            ))}
+        </View>
+        <Divider style={global.divider} />
+        <View style={global.postSection}>
+          <Fontisto name="favorite" size={24} color="rgb(88, 89, 88)" />
+          <Text style={global.aboutWord}>Posts </Text>
+        </View>
+        <View>
+          {player.posts &&
+            player.posts.map((post, index) => (
+              <PostCard key={index} post={post} />
+            ))}
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 

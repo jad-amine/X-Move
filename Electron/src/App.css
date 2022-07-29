@@ -12,26 +12,29 @@
   background-color: #eee;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 170px;
 }
 
 .mobile-app {
   height: 300px;
   width: 300px;
-  border: 1px solid black;
+  margin-bottom: 230px;
+  padding-left: 30px;
 }
 
 .login-form {
-  border-radius: 20px;
+  padding-top: 30px;
+  border-radius: 10px;
   background-color: white;
-  height: 300px;
+  height: 350px;
   width: 300px;
-  border: 1px solid black;
+  border: 1px solid #bbb;
 }
 
 .login-form p {
-  margin-bottom: 50px;
-  color: #444;
+  margin-bottom: 40px;
+  color: #666;
   font-size: 30px;
 }
 
@@ -59,13 +62,18 @@
 }
 
 #login-bttn {
-  width: 150px;
+  width: 200px;
+  cursor: pointer;
   height: 35px;
-  background-color: #ff4d00;
+  background-color: #ff5c16;
   border: 0;
   color: white;
   font-size: 18px;
   border-radius: 10px;
+}
+
+#login-bttn:hover {
+  background-color: #ff4d00;
 }
 
 /* Top Navbar */

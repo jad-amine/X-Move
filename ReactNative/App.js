@@ -6,7 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { UserContext } from "./contexts/UserContext";
 import { useEffect, useState } from "react";
-
+console.disableYellowBox = true;
 // Screens
 import Login from "./screens/NotLoggedIN/Login";
 import LandingPage from "./screens/NotLoggedIN/LandingPage";

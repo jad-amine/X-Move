@@ -39,4 +39,4 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, login, getProperties };
+module.exports = { login };

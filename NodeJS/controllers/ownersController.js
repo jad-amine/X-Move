@@ -117,11 +117,19 @@ const addProperty = async (req, res) => {
 // Update Property Information
 const updatePropertyInfo = async (req, res) => {
   try {
+    require("fs").writeFileSync(
+      `public/Images/PropertyImages/${req.user.property.name}.png`,
+      req.body.pictureURL,
+      "base64",
+      function (err) {
+        console.log(err);
+      }
+    );
     await Field.findByIdAndUpdate(req.user.property._id, {
       number: req.body.number,
       location: req.body.location,
       rentPerHour: req.body.rentPerHour,
-      pictureURL: req.body.pictureURL,
+      pictureURL: `Images/PropertyImages/${req.user.property.name}.png`,
     });
     res.status(200).json("Updated");
   } catch (error) {

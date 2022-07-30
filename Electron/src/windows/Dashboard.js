@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { ApplicationContext } from "../contexts/ApplicationContext";
-import LineChart from "./LineChart";
+import LineChart from "../components/LineChart";
 
 export default function Dashboard() {
   const { applicationData } = useContext(ApplicationContext);

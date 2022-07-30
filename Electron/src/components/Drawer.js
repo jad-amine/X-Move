@@ -25,7 +25,13 @@ export default function TemporaryDrawer() {
       <React.Fragment>
         <Drawer anchor={"left"} open={showDrawer} onClose={toggleDrawer}>
           <Box
-            style={{ backgroundColor: "#FF4D00" }}
+            style={{
+              backgroundColor: "#FF4D00",
+              display: "flex",
+              flex: 1,
+              justifyContent: "space-between",
+              flexDirection: "column",
+            }}
             sx={{ width: 300 }}
             role="presentation"
             onClick={toggleDrawer}
@@ -68,13 +74,13 @@ export default function TemporaryDrawer() {
                 )
               )}
             </List>
-            <Divider style={{ marginTop: 367 }} />
             <List>
+              <Divider style={{ backgroundColor: "white", borderWidth: 1.5 }} />
               <ListItem className="drawer-tab" disablePadding>
                 <ListItemButton
                   onClick={() => {
                     localStorage.clear();
-                    setApplicationData(null);
+                    setApplicationData();
                   }}
                 >
                   <ListItemIcon>

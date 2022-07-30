@@ -21,8 +21,8 @@ function Navbar() {
         <img
           className="to-nav-img"
           src={logo}
-          height={60}
-          width={90}
+          height={80}
+          width={120}
           alt="logo"
         />
       </div>

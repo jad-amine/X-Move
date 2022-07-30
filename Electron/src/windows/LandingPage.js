@@ -14,7 +14,7 @@ export default function LandingPage({ setApplicationData }) {
       const { data } = await API.post("login/", admin);
       console.log(data);
       localStorage.setItem("token", data.token);
-      setApplicationData({ player: data.players, fields: data.fields });
+      setApplicationData({ players: data.players, fields: data.fields });
       // setTimeout(() => {
       //   setIsLoading(false);
       //   setUser({ token: res.data.token, info: res.data.user });
@@ -30,7 +30,9 @@ export default function LandingPage({ setApplicationData }) {
 
   return (
     <div className="landing-page">
-      <div className="mobile-app"></div>
+      <div className="mobile-app">
+        <img src={require("../assets/Group22.png")} height={550} alt="" />
+      </div>
       <div className="login-form">
         <form>
           <p>Admin Log in</p>

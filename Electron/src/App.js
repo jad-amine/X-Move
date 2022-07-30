@@ -8,7 +8,7 @@ import { Route, Routes } from "react-router-dom";
 import LandingPage from "./windows/LandingPage";
 import Drawer from "./components/Drawer";
 import Navbar from "./components/Navbar";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./windows/Dashboard";
 import Equipment from "./windows/Equipment";
 import Fields from "./windows/Fields";
 import Players from "./windows/Players";

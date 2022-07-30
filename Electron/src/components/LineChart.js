@@ -21,19 +21,6 @@ ChartJS.register(
 );
 
 export default function LineChart() {
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top",
-      },
-      title: {
-        display: true,
-        text: "X-Move players flow",
-      },
-    },
-  };
-
   const labels = [
     "Jan",
     "Feb",
@@ -51,9 +38,9 @@ export default function LineChart() {
 
   return (
     <div className="lineChart">
+      <h1 className="dashboard-header">Players Flow</h1>
       <Line
         datasetIdKey="id"
-        options={options}
         data={{
           labels,
           datasets: [

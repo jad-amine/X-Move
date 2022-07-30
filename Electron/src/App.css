@@ -137,17 +137,25 @@
 }
 
 /* Dashboard */
+
+.dashboard-header {
+  margin: 30px auto;
+  color: rgb(139, 139, 139);
+  text-align: center;
+}
+
 .app-stats {
   display: flex;
   justify-content: space-around;
   margin: 80px auto;
   width: 80%;
   height: 150px;
+  color: rgb(113, 113, 113);
 }
 
 .app-stats div {
   padding: 15px 20px;
-  border: 1.5px solid gainsboro;
+  border: 2px solid gainsboro;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -156,6 +164,8 @@
   gap: 28px;
 }
 
-.line-chart {
-  height: 100px;
+.lineChart {
+  height: 1000px;
+  width: 90%;
+  margin: 120px auto;
 }

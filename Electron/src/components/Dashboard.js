@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { ApplicationContext } from "../contexts/ApplicationContext";
+import LineChart from "./LineChart";
 
 export default function Dashboard() {
   const { applicationData } = useContext(ApplicationContext);
-  console.log(applicationData);
+
   return (
     <div>
+      <h1 className="dashboard-header">Application Stats</h1>
       <div className="app-stats">
         <div>
           <img src={require("../assets/Figpie-2.png")} alt="" />
@@ -34,6 +36,7 @@ export default function Dashboard() {
           </span>
         </div>
       </div>
+      <LineChart />
     </div>
   );
 }

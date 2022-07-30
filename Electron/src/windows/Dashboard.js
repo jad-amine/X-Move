@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { ApplicationContext } from "../contexts/ApplicationContext";
 import LineChart from "../components/LineChart";
+import BarChart from "../components/BarChart";
 
 export default function Dashboard() {
   const { applicationData } = useContext(ApplicationContext);
@@ -37,6 +38,7 @@ export default function Dashboard() {
         </div>
       </div>
       <LineChart />
+      <BarChart />
     </div>
   );
 }

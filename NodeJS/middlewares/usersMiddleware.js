@@ -14,9 +14,10 @@ const authUser = (req, res, next) => {
     } else {
       try {
         const user = await User.findById(decoded._id)
-          .populate("friends")
+          .populate({ path: "friends", populate: { path: "posts" } })
           .populate("pendingFriendRequests")
-          .populate("friendRequests");
+          .populate("friendRequests")
+          .populate("posts");
         req.user = decoded;
         req.body.mission
           ? res.json({

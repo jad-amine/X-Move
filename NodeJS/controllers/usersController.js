@@ -1,5 +1,6 @@
 const User = require("../models/userModel");
 const Field = require("../models/fieldModel");
+const Post = require("../models/postModel");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 var jwt = require("jsonwebtoken");
@@ -8,9 +9,10 @@ const fs = require("fs");
 // Login User
 const login = async (req, res) => {
   const user = await User.findOne({ email: req.body.email })
-    .populate("friends")
+    .populate({ path: "friends", populate: { path: "posts" } })
     .populate("pendingFriendRequests")
-    .populate("friendRequests");
+    .populate("friendRequests")
+    .populate("posts");
   if (!user || !req.body.password) {
     return res.status(401).json({ message: "Invalid Credentials" });
   }
@@ -259,19 +261,18 @@ const addPost = async (req, res) => {
         console.log(err);
       }
     );
+    const newPost = {
+      ...req.body,
+      picture: `/Images/Posts/${req.body.id}.png`,
+      user: req.user._id,
+    };
+    const post = await Post.create(newPost);
     await User.findByIdAndUpdate(req.user._id, {
       $push: {
-        posts: {
-          picture: `/Images/Posts/${req.body.id}.png`,
-          id: req.body.id,
-          caption: req.body.caption,
-          createdAt: req.body.createdAt,
-          playerPic: req.body.playerPic,
-          name: req.user.name,
-        },
+        posts: post._id,
       },
     });
-    res.json("Saved");
+    res.json({ message: "Saved", post: post });
   } catch (err) {
     console.log(err);
     res.json("Error: Image not saved !");

@@ -13,6 +13,7 @@ const {
   getLocations,
   addFriend,
   addPost,
+  likePost,
 } = require("../controllers/usersController");
 
 const router = express.Router();
@@ -48,9 +49,12 @@ router.get("/getReservations/:field", authUser, getReservations);
 router.get("/getLocations/:type/:sport", authUser, getLocations);
 
 // Add Friend
-router.post("/addFriend/", authUser, addFriend);
+router.post("/addFriend", authUser, addFriend);
 
 // Add Post
-router.post("/addPost/", authUser, addPost);
+router.post("/addPost", authUser, addPost);
+
+// Like/Unlike Post
+router.get("/likePost/:like/:id", authUser, likePost);
 
 module.exports = router;

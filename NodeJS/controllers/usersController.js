@@ -279,6 +279,23 @@ const addPost = async (req, res) => {
   }
 };
 
+// Like/Unlike post
+const likePost = async (req, res) => {
+  const id = req.params.id;
+  const like = req.params.like;
+  try {
+    if (like === "like") {
+      await Post.findByIdAndUpdate(id, { $push: { likes: req.user._id } });
+    } else {
+      await Post.findByIdAndUpdate(id, { $pull: { likes: req.user._id } });
+    }
+    res.status(200).json("Success");
+  } catch (error) {
+    console.log(error);
+    res.json("Failed to update !");
+  }
+};
+
 // delete user.password   ##### as soon as possible // dont send pass
 
 module.exports = {
@@ -293,4 +310,5 @@ module.exports = {
   getLocations,
   addFriend,
   addPost,
+  likePost,
 };

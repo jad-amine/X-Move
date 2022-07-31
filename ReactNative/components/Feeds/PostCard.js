@@ -3,6 +3,7 @@ import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 import { AntDesign } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { TextInput } from "react-native-paper";
+import { formatDistance } from "date-fns";
 
 const PostCard = ({ post }) => {
   const [addComment, setAddComment] = React.useState(false);
@@ -39,7 +40,9 @@ const PostCard = ({ post }) => {
       </Card.Actions>
       <Card.Content>
         <Title>{post.caption}</Title>
-        <Paragraph>{post.createdAt.toString()}</Paragraph>
+        <Paragraph>
+          {formatDistance(new Date(post.createdAt), new Date())}
+        </Paragraph>
         {addComment && (
           <TextInput
             style={{ margin: 5, height: 45 }}

@@ -81,9 +81,9 @@ export default function AddPost({ user, setShowModal, setPosts, posts }) {
           body: JSON.stringify({ ...post }),
         });
         const data = await response.json();
-        if (data === "Saved") {
+        if (data.message === "Saved") {
           const newList = [...posts];
-          newList.unshift({ ...post, picture: `/Images/Posts/${id}.png` });
+          newList.unshift(data.post);
           setPosts(newList);
           setShowModal(false);
         }

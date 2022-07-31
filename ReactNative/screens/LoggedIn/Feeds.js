@@ -5,10 +5,6 @@ import FloatingIcon from "../../components/Feeds/FloatingIcon";
 import AddPost from "../../components/Feeds/AddPost";
 import PostCard from "../../components/Feeds/PostCard";
 
-const wait = (timeout) => {
-  return new Promise((resolve) => setTimeout(resolve, timeout));
-};
-
 export default function Feeds() {
   const { user, setUser } = useContext(UserContext);
   const [showModal, setShowModal] = useState(false);
@@ -17,13 +13,16 @@ export default function Feeds() {
 
   useEffect(() => {
     let friendsPosts = [];
-    if (user.info.friends.length !== 0) {
+    if (user.info?.friends.length !== 0) {
       user.info.friends.forEach((friend) => {
-        friendsPosts = [...friendsPosts, ...friend.posts];
+        friendsPosts = [...friendsPosts, ...friend?.posts];
       });
-      console.log([...user.info.posts]);
     }
-    setPosts([...user.info.posts, ...friendsPosts]);
+    const unorderedPosts = [...user.info?.posts, ...friendsPosts];
+    unorderedPosts.sort((a, b) => {
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    });
+    setPosts(unorderedPosts);
   }, [user]);
 
   const onRefresh = React.useCallback(() => {
@@ -62,7 +61,11 @@ export default function Feeds() {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
       >
-        {posts.length === 0 && <Text>Add some friends to receive Feeds</Text>}
+        {posts?.length === 0 && (
+          <Text style={{ fontSize: 20, alignItems: "center", margin: 30 }}>
+            No Feeds.
+          </Text>
+        )}
         {posts.map((post, index) => (
           <PostCard key={index} post={post} setPosts={setPosts} />
         ))}

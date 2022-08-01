@@ -121,8 +121,8 @@ export const global = StyleSheet.create({
   },
   // Sports Screens
   sportLayout: {
-    marginLeft: 30,
-    marginTop: 50,
+    alignSelf: "center",
+    marginTop: 45,
     width: 300,
     height: 50,
     borderRadius: 10,
@@ -275,9 +275,10 @@ export const global = StyleSheet.create({
   },
 
   divider: {
+    marginHorizontal: 30,
     borderWidth: 1,
-    borderColor: "#aaa",
-    marginVertical: 15,
+    borderColor: "#bbb",
+    marginVertical: 30,
   },
 
   aboutPlayer: {

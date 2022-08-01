@@ -78,7 +78,10 @@ const PostCard = ({ post }) => {
   return (
     <Card style={{ marginVertical: 15, paddingVertical: 5 }}>
       <Card.Title title={post.name} left={LeftContent} />
-      <Card.Cover source={{ uri: `http://10.0.2.2:4000/` + post.picture }} />
+      <Card.Cover
+        source={{ uri: `http://10.0.2.2:4000/` + post.picture }}
+        style={{ height: 300 }}
+      />
       <Card.Actions style={{ marginBottom: -15 }}>
         <Button onPress={handlePress}>
           <AntDesign

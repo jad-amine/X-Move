@@ -96,7 +96,7 @@ const PlayerProfile = ({ route }) => {
     }
   };
   return (
-    <ScrollView>
+    <ScrollView style={{ padding: 10 }}>
       <View style={{ margin: 10, flexDirection: "row" }}>
         <Image
           source={{ uri: `http://10.0.2.2:4000/` + player.pictureURL }}
@@ -137,9 +137,6 @@ const PlayerProfile = ({ route }) => {
           <Text style={{ ...global.registerText, fontSize: 18 }}>CHAT</Text>
         </TouchableOpacity>
       </View>
-      {/* <Text style={global.about}>About</Text> */}
-
-      {/* <Text>{player.about}</Text> */}
       <View>
         <View style={global.aboutIcon}>
           <AntDesign name="infocirlceo" size={24} color="rgb(88, 89, 88)" />
@@ -167,7 +164,7 @@ const PlayerProfile = ({ route }) => {
           <Fontisto name="favorite" size={24} color="rgb(88, 89, 88)" />
           <Text style={global.aboutWord}>Posts </Text>
         </View>
-        <View>
+        <View style={{ marginBottom: 25 }}>
           {player.posts &&
             player.posts.map((post, index) => (
               <PostCard key={index} post={post} />

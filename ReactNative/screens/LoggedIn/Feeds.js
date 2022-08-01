@@ -1,4 +1,11 @@
-import { View, Text, ScrollView, Modal, RefreshControl } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Modal,
+  RefreshControl,
+  Keyboard,
+} from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import FloatingIcon from "../../components/Feeds/FloatingIcon";
@@ -8,10 +15,13 @@ import PostCard from "../../components/Feeds/PostCard";
 export default function Feeds() {
   const { user, setUser } = useContext(UserContext);
   const [showModal, setShowModal] = useState(false);
+  const [showIcon, setShowIcon] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
+    Keyboard.addListener("keyboardDidShow", () => setShowIcon(false));
+    Keyboard.addListener("keyboardDidHide", () => setShowIcon(true));
     let friendsPosts = [];
     if (user.info?.friends.length !== 0) {
       user.info.friends.forEach((friend) => {
@@ -70,7 +80,7 @@ export default function Feeds() {
           <PostCard key={index} post={post} setPosts={setPosts} />
         ))}
       </ScrollView>
-      <FloatingIcon setShowModal={setShowModal} />
+      {showIcon && <FloatingIcon setShowModal={setShowModal} />}
       <Modal
         animationType="slide"
         transparent={true}

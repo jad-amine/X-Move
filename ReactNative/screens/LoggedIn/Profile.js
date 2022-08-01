@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Alert,
   Image,
@@ -16,14 +16,19 @@ import About from "../../components/About";
 import { Button } from "react-native-paper";
 import ProfileModal from "../../components/ProfileModal";
 import FriendsModal from "../../components/ProfileComponents/FriendsModal";
+import uuid from "react-native-uuid";
 
 const Profile = () => {
+  const id = uuid.v4();
   const { user, setUser } = useContext(UserContext);
+  // const [changingImage, setChangingImage] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [friendsModalVisible, setFriendsModalVisible] = useState(false);
+  useEffect(() => {}, [user]);
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
+    // setChangingImage(true);
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
@@ -32,14 +37,8 @@ const Profile = () => {
       base64: true,
     });
     if (result.cancelled) return;
-    setUser({
-      info: {
-        ...user.info,
-        picture: result.base64,
-      },
-      token: user.token,
-    });
     try {
+      const date = new Date();
       const response = await fetch(
         "http://10.0.2.2:4000/api/users/addProfilePicture",
         {
@@ -48,10 +47,20 @@ const Profile = () => {
             "Content-type": "application/json",
             authorization: `Bearer ${user.token}`,
           },
-          body: JSON.stringify({ base64: result.base64 }),
+          body: JSON.stringify({ base64: result.base64, id }),
         }
       );
       const data = await response.json();
+      if (data === "saved") {
+        // setChangingImage(false);
+        setUser({
+          info: {
+            ...user.info,
+            pictureURL: `/Images/ProfilePictures/${user.info.email + id}.png`,
+          },
+          token: user.token,
+        });
+      }
     } catch (err) {
       console.log("request error ==>", err);
     }
@@ -103,6 +112,7 @@ const Profile = () => {
         {user.info.pictureURL ? (
           <TouchableOpacity onPress={changeProfilePic}>
             <Image
+              key={id}
               source={{ uri: `http://10.0.2.2:4000/` + user.info.pictureURL }}
               style={{ height: 200, width: 200 }}
             />

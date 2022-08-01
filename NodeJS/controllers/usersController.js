@@ -76,7 +76,7 @@ const fetchSimilarUsers = async (req, res) => {
   // res.json({ sport: sport, name: req.user.name });
   try {
     const sport = req.params.sport;
-    const users = await User.find({ sports: sport });
+    const users = await User.find({ sports: sport }).populate("posts");
     if (!users) {
       return res.json("No users found");
     }
@@ -106,7 +106,7 @@ const addSport = async (req, res) => {
 const addProfilePicture = async (req, res) => {
   try {
     require("fs").writeFileSync(
-      `public/Images/ProfilePictures/${req.user.email}.png`,
+      `public/Images/ProfilePictures/${req.user.email + req.body.id}.png`,
       req.body.base64,
       "base64",
       function (err) {
@@ -114,7 +114,7 @@ const addProfilePicture = async (req, res) => {
       }
     );
     await User.findByIdAndUpdate(req.user._id, {
-      pictureURL: `/Images/ProfilePictures/${req.user.email}.png`,
+      pictureURL: `/Images/ProfilePictures/${req.user.email + req.body.id}.png`,
     });
     res.json("saved");
   } catch (err) {

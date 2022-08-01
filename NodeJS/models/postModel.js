@@ -13,7 +13,7 @@ const postSchema = new mongoose.Schema({
     required: true,
   },
   comments: {
-    type: [String],
+    type: [Object],
   },
   likes: {
     type: [mongoose.Schema.Types.ObjectId],

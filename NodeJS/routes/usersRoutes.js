@@ -14,6 +14,7 @@ const {
   addFriend,
   addPost,
   likePost,
+  addComment,
 } = require("../controllers/usersController");
 
 const router = express.Router();
@@ -53,6 +54,9 @@ router.post("/addFriend", authUser, addFriend);
 
 // Add Post
 router.post("/addPost", authUser, addPost);
+
+// Add comment to Post
+router.post("/addComment/:id", authUser, addComment);
 
 // Like/Unlike Post
 router.get("/likePost/:like/:id", authUser, likePost);

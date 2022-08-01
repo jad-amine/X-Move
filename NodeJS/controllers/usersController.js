@@ -296,6 +296,18 @@ const likePost = async (req, res) => {
   }
 };
 
+// Add Comment
+const addComment = async (req, res) => {
+  const id = req.params.id;
+  try {
+    await Post.findByIdAndUpdate(id, { $push: { comments: req.body } });
+    res.status(200).json("Added");
+  } catch (error) {
+    console.log(error);
+    res.status(500).json("Failed");
+  }
+};
+
 // delete user.password   ##### as soon as possible // dont send pass
 
 module.exports = {
@@ -311,4 +323,5 @@ module.exports = {
   addFriend,
   addPost,
   likePost,
+  addComment,
 };

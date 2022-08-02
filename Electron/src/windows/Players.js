@@ -26,7 +26,7 @@ export default function Players() {
                   alt="green iguana"
                   height="250"
                   // image={"asdlj"}
-                  src={`http://localhost:4000` + player.pictureURL}
+                  src={`http://192.168.1.3:4000` + player.pictureURL}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">

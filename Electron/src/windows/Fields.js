@@ -26,7 +26,7 @@ export default function Players() {
                 component="img"
                 alt="green iguana"
                 height="250"
-                src={`http://localhost:4000/` + field.pictureURL}
+                src={`http://192.168.1.3:4000/` + field.pictureURL}
               />
               <CardContent>
                 <Typography

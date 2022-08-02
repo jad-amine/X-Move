@@ -3,7 +3,6 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-// console.log(process.env.S3_BUCKET);
 
 // Expres app
 const app = express();
@@ -19,7 +18,7 @@ const adminRoutes = require("./routes/adminRoutes");
 mongoose
   .connect(process.env.DB_CONNECT)
   .then(() => {
-    app.listen(process.env.PORT, () => {
+    app.listen(process.env.PORT, "192.168.1.3", () => {
       console.log("Connected to db & listening to port " + process.env.PORT);
     });
   })

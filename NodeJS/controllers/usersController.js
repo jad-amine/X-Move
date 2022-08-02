@@ -10,8 +10,8 @@ const fs = require("fs");
 const login = async (req, res) => {
   const user = await User.findOne({ email: req.body.email })
     .populate({ path: "friends", populate: { path: "posts" } })
-    .populate("pendingFriendRequests")
-    .populate("friendRequests")
+    .populate({ path: "pendingFriendRequests", populate: { path: "posts" } })
+    .populate({ path: "friendRequests", populate: { path: "posts" } })
     .populate("posts");
   if (!user || !req.body.password) {
     return res.status(401).json({ message: "Invalid Credentials" });
@@ -177,13 +177,13 @@ const getLocations = async (req, res) => {
   try {
     if (type === "players") {
       if (sport === "allPlayers") {
-        const players = await User.find();
+        const players = await User.find().populate("posts");
         if (!players) {
           return res.json("No players found");
         }
         return res.json(players);
       } else {
-        const players = await User.find({ sports: sport });
+        const players = await User.find({ sports: sport }).populate("posts");
         if (!players) {
           return res.json("No players found");
         }

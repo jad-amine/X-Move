@@ -4,6 +4,7 @@ const User = require("../models/userModel");
 
 // Auth User middleware or App Launcher
 const authUser = (req, res, next) => {
+  console.log("received");
   if (!req.headers.authorization) {
     return res.status(401).json({ message: "Unauthenticated user" });
   }
@@ -15,8 +16,11 @@ const authUser = (req, res, next) => {
       try {
         const user = await User.findById(decoded._id)
           .populate({ path: "friends", populate: { path: "posts" } })
-          .populate("pendingFriendRequests")
-          .populate("friendRequests")
+          .populate({
+            path: "pendingFriendRequests",
+            populate: { path: "posts" },
+          })
+          .populate({ path: "friendRequests", populate: { path: "posts" } })
           .populate("posts");
         req.user = decoded;
         req.body.mission

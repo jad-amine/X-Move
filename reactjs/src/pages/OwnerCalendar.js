@@ -10,6 +10,7 @@ import moment from "moment";
 import CalendarDialog from "../components/CalendarDialog";
 import { v4 as uuidv4 } from "uuid";
 import EventDialog from "../components/EventDialog";
+import { useNavigate } from "react-router-dom";
 
 const DragAndDropCalendar = withDragAndDrop(Calendar);
 const localizer = momentLocalizer(moment);
@@ -23,6 +24,7 @@ export default function OwnerCalendar() {
   const [rescheduledEvent, setRescheduledEvent] = useState(false);
   const [eventToDelete, setEventToDelete] = useState(false);
   const { user } = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getReservations = async () => {
@@ -92,8 +94,9 @@ export default function OwnerCalendar() {
     setRescheduledEvent(e);
   };
 
-  if (!user.info.property)
-    return <h1 className="no-property">Please enter your property INFO</h1>;
+  if (!user.info.property) {
+    navigate("../propertyInfo");
+  }
 
   return (
     <div className="calendar-form">

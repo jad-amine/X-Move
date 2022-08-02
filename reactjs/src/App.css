@@ -36,7 +36,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(193, 193, 193);
+  background-color: #eee;
   height: 100vh;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .icon {
-  color: #f5520c;
+  color: #ff4d00;
 }
 
 .form {

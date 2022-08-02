@@ -47,7 +47,7 @@ export default function Map({ setLocation }) {
       <LocationFinderDummy />
       {propertyLocation && (
         <Marker position={propertyLocation}>
-          <Popup>{user.info.property.name} Location</Popup>
+          <Popup>{user.info.property?.name} Location</Popup>
         </Marker>
       )}
     </MapContainer>

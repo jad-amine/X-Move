@@ -11,7 +11,7 @@ function LandingPage({ setUser }) {
     if (!token) {
       setTimeout(() => {
         setIsLoading(false);
-      }, 2500);
+      }, 3000);
     } else {
       const authOwner = async () => {
         try {

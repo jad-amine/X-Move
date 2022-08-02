@@ -15,6 +15,7 @@ import * as ImagePicker from "expo-image-picker";
 import { Ionicons } from "@expo/vector-icons";
 import { TextInput } from "react-native-paper";
 import uuid from "react-native-uuid";
+import API from "../../api";
 
 export default function AddPost({ user, setShowModal, setPosts, posts }) {
   const [picture, setPicture] = useState();
@@ -72,15 +73,17 @@ export default function AddPost({ user, setShowModal, setPosts, posts }) {
         playerPic: user.info.pictureURL,
       };
       try {
-        const response = await fetch("http://10.0.2.2:4000/api/users/addPost", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${user.token}`,
-          },
-          body: JSON.stringify({ ...post }),
-        });
-        const data = await response.json();
+        const { data } = await API.post(
+          `addPost`,
+          { ...post },
+          {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
+
+        // const data = await response.json();
         if (data.message === "Saved") {
           const newList = [...posts];
           newList.unshift(data.post);

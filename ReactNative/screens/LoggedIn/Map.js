@@ -5,6 +5,7 @@ import { UserContext } from "../../contexts/UserContext";
 import MapModal from "../../components/MapModal";
 import { Button } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
+import API from "../../api";
 
 export default function Map() {
   const [search, setSearch] = React.useState([true, "allPlayers"]);
@@ -17,17 +18,14 @@ export default function Map() {
   React.useEffect(() => {
     const fetchLocations = async () => {
       try {
-        const response = await fetch(
-          `http://10.0.2.2:4000/api/users/getLocations/${
-            search[0] ? "players" : "properties"
-          }/${search[1]}`,
+        const { data } = await API.get(
+          `getLocations/${search[0] ? "players" : "properties"}/${search[1]}`,
           {
             headers: {
-              authorization: `Bearer ${user.token}`,
+              Authorization: `Bearer ${user.token}`,
             },
           }
         );
-        const data = await response.json();
         !data.length
           ? setResultMessage("No results found!!")
           : setResultMessage(``);

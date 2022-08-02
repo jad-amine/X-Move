@@ -11,6 +11,7 @@ import { UserContext } from "../../contexts/UserContext";
 import FloatingIcon from "../../components/Feeds/FloatingIcon";
 import AddPost from "../../components/Feeds/AddPost";
 import PostCard from "../../components/Feeds/PostCard";
+import API from "../../api";
 
 export default function Feeds() {
   const { user, setUser } = useContext(UserContext);
@@ -39,23 +40,20 @@ export default function Feeds() {
     setRefreshing(true);
     const authUser = async () => {
       try {
-        const response = await fetch(
-          "http://10.0.2.2:4000/api/users/getUserData",
+        const { data } = await API.post(
+          "getUserData",
+          { mission: "Auth User" },
           {
-            method: "POST",
             headers: {
-              "Content-Type": "application/json",
-              authorization: `Bearer ${user.token}`,
+              Authorization: `Bearer ${user.token}`,
             },
-            body: JSON.stringify({ mission: "Auth User" }),
           }
         );
-        const json = await response.json();
-        if (json.status == "Verified") {
+        if (data.status == "Verified") {
           setTimeout(() => {
             setRefreshing(false);
           }, 1000);
-          setUser({ info: json.user, token: user.token });
+          setUser({ info: data.user, token: user.token });
         }
       } catch (err) {
         console.log(err.message, "Fix the request");

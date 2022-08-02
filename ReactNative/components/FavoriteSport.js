@@ -10,6 +10,7 @@ import PingPong from "../assets/PingPong.png";
 import Tennis from "../assets/Tennis.png";
 import diving from "../assets/Diving.png";
 import { UserContext } from "../contexts/UserContext";
+import API from "../api";
 
 const FavoriteSport = ({ name, iconName, iconLibrary, image }) => {
   const { user, setUser } = useContext(UserContext);
@@ -18,18 +19,16 @@ const FavoriteSport = ({ name, iconName, iconLibrary, image }) => {
 
   const handlePress = async () => {
     try {
-      const response = await fetch(
-        "http://10.0.2.2:4000/api/users/" +
-          (liked ? "removeSport" : "addSport"),
+      await API.post(
+        liked ? "removeSport" : "addSport",
+        { sport: name },
         {
-          method: "POST",
           headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${user.token}`,
+            Authorization: `Bearer ${user.token}`,
           },
-          body: JSON.stringify({ sport: name }),
         }
       );
+
       if (liked) {
         setUser({
           info: {
@@ -45,8 +44,6 @@ const FavoriteSport = ({ name, iconName, iconLibrary, image }) => {
         });
       }
       setLiked(!liked);
-      const data = await response.json();
-      console.log(data);
     } catch (err) {
       console.log("Request error", err);
     }

@@ -6,6 +6,7 @@ import { TextInput } from "react-native-paper";
 import { formatDistance } from "date-fns";
 import { UserContext } from "../../contexts/UserContext";
 import { Text, View } from "react-native";
+import API from "../../api";
 
 const PostCard = ({ post }) => {
   const { user } = React.useContext(UserContext);
@@ -20,7 +21,7 @@ const PostCard = ({ post }) => {
       <Avatar.Image
         style={{ marginLeft: -10 }}
         size={55}
-        source={{ uri: `http://10.0.2.2:4000/` + post.playerPic }}
+        source={{ uri: `http://192.168.1.3:4000/` + post.playerPic }}
       />
     ) : (
       <Avatar.Icon
@@ -34,15 +35,11 @@ const PostCard = ({ post }) => {
   const handlePress = async () => {
     try {
       const mission = isLiked ? "unlike" : "like";
-      const response = await fetch(
-        `http://10.0.2.2:4000/api/users/likePost/${mission}/${post._id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        }
-      );
-      const data = await response.json();
+      const { data } = await API.get(`likePost/${mission}/${post._id}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
       data === "Success" ? setIsLiked(!isLiked) : alert("Operation Failed");
     } catch (error) {
       console.log(error);
@@ -53,18 +50,16 @@ const PostCard = ({ post }) => {
     try {
       const newComment = { comment, name: user.info.name, date: new Date() };
       if (comment === "") return;
-      const response = await fetch(
-        `http://10.0.2.2:4000/api/users/addComment/${post._id}`,
+      const { data } = await API.post(
+        `addComment/${post._id}`,
+        { ...newComment },
         {
-          method: "POST",
           headers: {
-            "Content-Type": "application/json",
             Authorization: `Bearer ${user.token}`,
           },
-          body: JSON.stringify({ ...newComment }),
         }
       );
-      const data = await response.json();
+
       if (data === "Added") {
         setComments([...comments, newComment]);
         setAddComment(false);
@@ -79,7 +74,7 @@ const PostCard = ({ post }) => {
     <Card style={{ marginVertical: 15, paddingVertical: 5 }}>
       <Card.Title title={post.name} left={LeftContent} />
       <Card.Cover
-        source={{ uri: `http://10.0.2.2:4000/` + post.picture }}
+        source={{ uri: `http://192.168.1.3:4000/` + post.picture }}
         style={{ height: 300 }}
       />
       <Card.Actions style={{ marginBottom: -15 }}>

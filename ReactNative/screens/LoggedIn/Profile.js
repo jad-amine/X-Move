@@ -17,18 +17,17 @@ import { Button } from "react-native-paper";
 import ProfileModal from "../../components/ProfileModal";
 import FriendsModal from "../../components/ProfileComponents/FriendsModal";
 import uuid from "react-native-uuid";
+import API from "../../api";
 
 const Profile = () => {
   const id = uuid.v4();
   const { user, setUser } = useContext(UserContext);
-  // const [changingImage, setChangingImage] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [friendsModalVisible, setFriendsModalVisible] = useState(false);
   useEffect(() => {}, [user]);
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
-    // setChangingImage(true);
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
@@ -38,21 +37,16 @@ const Profile = () => {
     });
     if (result.cancelled) return;
     try {
-      const date = new Date();
-      const response = await fetch(
-        "http://10.0.2.2:4000/api/users/addProfilePicture",
+      const { data } = await API.post(
+        "addProfilePicture",
+        { base64: result.base64, id },
         {
-          method: "POST",
           headers: {
-            "Content-type": "application/json",
-            authorization: `Bearer ${user.token}`,
+            Authorization: `Bearer ${user.token}`,
           },
-          body: JSON.stringify({ base64: result.base64, id }),
         }
       );
-      const data = await response.json();
       if (data === "saved") {
-        // setChangingImage(false);
         setUser({
           info: {
             ...user.info,
@@ -113,7 +107,9 @@ const Profile = () => {
           <TouchableOpacity onPress={changeProfilePic}>
             <Image
               key={id}
-              source={{ uri: `http://10.0.2.2:4000/` + user.info.pictureURL }}
+              source={{
+                uri: `http://192.168.1.3:4000/` + user.info.pictureURL,
+              }}
               style={{ height: 200, width: 200 }}
             />
           </TouchableOpacity>

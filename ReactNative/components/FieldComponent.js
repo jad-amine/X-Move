@@ -18,7 +18,7 @@ export default function FieldComponent({ item }) {
     <Card onPress={() => navigation.navigate("Calendar", item)}>
       <Card.Cover
         source={{
-          uri: `http://10.0.2.2:4000/` + item.pictureURL,
+          uri: `http://192.168.1.3:4000/` + item.pictureURL,
         }}
       />
       <Card.Title

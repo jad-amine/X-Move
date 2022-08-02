@@ -14,6 +14,7 @@ import {
 import * as SecureStore from "expo-secure-store";
 import { global } from "../../styles/globalStyles";
 import { UserContext } from "../../contexts/UserContext";
+import API from "../../api";
 
 const Register = ({ navigation }) => {
   const { setUser } = useContext(UserContext);
@@ -27,21 +28,13 @@ const Register = ({ navigation }) => {
         Alert.alert("Please add all fields !");
         return;
       }
-      const response = await fetch("http://10.0.2.2:4000/api/users/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name: name, email: email, password: password }),
-      });
-      const json = await response.json();
-      if (json.message === "User already exists !") {
-        Alert.alert(json.message, "Choose another email address !");
+      const { data } = await API.post("register", { name, email, password });
+      if (data.message === "User already exists !") {
+        Alert.alert(data.message, "Choose another email address !");
         return;
       }
-      await SecureStore.setItemAsync("token", json.token);
-      await setUser({ info: json.user, token: json.token });
-      // navigation.navigate("Landing Page");
+      await SecureStore.setItemAsync("token", data.token);
+      await setUser({ info: data.user, token: data.token });
     } catch (err) {
       console.log(err.message, "Something wrong with the request");
     }

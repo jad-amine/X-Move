@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Picker } from "@react-native-picker/picker";
 import { UserContext } from "../../../contexts/UserContext";
 import FieldComponent from "../../../components/FieldComponent";
+import API from "../../../api";
 
 const RentField = () => {
   const [sport, setSport] = useState("football");
@@ -11,15 +12,12 @@ const RentField = () => {
 
   const getFields = async () => {
     try {
-      const response = await fetch(
-        "http://10.0.2.2:4000/api/users/getReservations/" + sport,
-        {
-          headers: {
-            authorization: `Bearer ${user.token}`,
-          },
-        }
-      );
-      const data = await response.json();
+      const { data } = await API.get(`getReservations/${sport}`, {
+        headers: {
+          authorization: `Bearer ${user.token}`,
+        },
+      });
+      console.log(data);
       setFields(data);
     } catch (error) {
       console.log(error.message);

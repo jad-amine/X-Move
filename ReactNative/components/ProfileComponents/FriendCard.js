@@ -11,7 +11,7 @@ export default function FriendCard({ friend }) {
       <Avatar.Image
         style={{ marginLeft: -10 }}
         size={55}
-        source={{ uri: `http://10.0.2.2:4000/` + friend.pictureURL }}
+        source={{ uri: `http://192.168.1.3:4000/` + friend.pictureURL }}
       />
     ) : (
       <Avatar.Icon

@@ -2,18 +2,27 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
+import { formatDistance } from "date-fns";
+import { global } from "../styles/globalStyles";
 
 export default function ChatHeader({ item }) {
   const navigation = useNavigation();
   const RighContent = (props) => (
-    <Text style={{ color: "gray" }}>
-      {item.lastMessage && item.lastMessage.createdAt.toDate().toDateString()}
+    <Text style={global.lastMessage}>
+      {item.lastMessage &&
+        formatDistance(
+          new Date(item.lastMessage.createdAt.toDate()),
+          new Date(),
+          {
+            addSuffix: true,
+          }
+        )}
     </Text>
   );
   const LeftContent = (props) =>
     item.userB.pictureURL ? (
       <Avatar.Image
-        style={{ marginLeft: -10 }}
+        style={global.userBPic}
         size={55}
         source={{ uri: `http://10.0.2.2:4000/` + item.userB.pictureURL }}
       />
@@ -22,12 +31,12 @@ export default function ChatHeader({ item }) {
         size={55}
         icon="account"
         color="white"
-        style={{ backgroundColor: "#ccc", marginLeft: -10 }}
+        style={global.userBAvatar}
       />
     );
   return (
     <TouchableOpacity
-      style={{ marginVertical: 10 }}
+      style={global.chats}
       onPress={() =>
         navigation.navigate("Chat", {
           email: item.userB.email,
@@ -36,13 +45,13 @@ export default function ChatHeader({ item }) {
         })
       }
     >
-      <Card style={{ paddingLeft: 10 }}>
+      <Card style={global.chatCard}>
         <Card.Title
           title={item.userB.displayName && item.userB.displayName}
           subtitle={item.lastMessage && item.lastMessage.text}
           left={LeftContent}
           right={RighContent}
-          style={{ paddingRight: 30 }}
+          style={global.chatTitle}
         />
       </Card>
     </TouchableOpacity>

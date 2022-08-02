@@ -355,5 +355,16 @@ export const global = StyleSheet.create({
     color: "white",
     fontSize: 20,
   },
-  // Play Section
+
+  // Chat Header
+  lastMessage: {
+    color: "#555",
+  },
+  userBPic: {
+    marginLeft: -10,
+  },
+  userBAvatar: { backgroundColor: "#ccc", marginLeft: -10 },
+  chats: { marginVertical: 10 },
+  chatCard: { paddingLeft: 10 },
+  chatTitle: { paddingRight: 30 },
 });

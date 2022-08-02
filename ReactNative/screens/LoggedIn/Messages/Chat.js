@@ -37,6 +37,7 @@ const Chat = () => {
           const currUserData = {
             displayName: user.info.name,
             email: user.info.email,
+            pictureURL: user.info.pictureURL,
           };
           const userBData = {
             displayName: userB.name,

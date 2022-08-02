@@ -2,10 +2,15 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { global } from "../../styles/globalStyles";
+import { useNavigation } from "@react-navigation/native";
 
 export default function FloatingMsgIcon() {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={() => {}} style={global.floatingIcon}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("Friends")}
+      style={global.floatingIcon}
+    >
       <MaterialIcons name="message" size={30} color="white" />
     </TouchableOpacity>
   );

@@ -378,4 +378,5 @@ export const global = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#FF4D00",
   },
+  friends: { height: 80 },
 });

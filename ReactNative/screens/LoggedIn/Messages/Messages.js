@@ -6,6 +6,7 @@ import { db } from "../../../firebase";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { UserContext } from "../../../contexts/UserContext";
 import { MessagesContext } from "../../../contexts/MessagesContext";
+import Friends from "./Friends";
 
 const Stack = createNativeStackNavigator();
 
@@ -45,6 +46,7 @@ const Messages = ({ route }) => {
       <Stack.Navigator initialRouteName="Conversations">
         <Stack.Screen name="Conversations" component={Conversations} />
         <Stack.Screen name="Chat" component={Chat} />
+        <Stack.Screen name="Friends" component={Friends} />
       </Stack.Navigator>
     </MessagesContext.Provider>
   );

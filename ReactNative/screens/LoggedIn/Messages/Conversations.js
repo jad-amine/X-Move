@@ -3,7 +3,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 import { ScrollView } from "react-native-gesture-handler";
 import { MessagesContext } from "../../../contexts/MessagesContext";
-import ChatHeader from "../../../components/ChatHeader";
+import ChatHeader from "../../../components/Messages/ChatHeader";
+import FloatingMsgIcon from "../../../components/Messages/FloatingMsgIcon";
 
 const Conversations = ({ navigation }) => {
   const { user } = useContext(UserContext);
@@ -14,12 +15,15 @@ const Conversations = ({ navigation }) => {
     setChats(activeChats);
   }, [rooms]);
   return (
-    <FlatList
-      style={{ flex: 1, padding: 10 }}
-      data={chats}
-      keyExtractor={(_, i) => i}
-      renderItem={({ item }) => <ChatHeader item={item} />}
-    />
+    <>
+      <FlatList
+        style={{ flex: 1, padding: 10 }}
+        data={chats}
+        keyExtractor={(_, i) => i}
+        renderItem={({ item }) => <ChatHeader item={item} />}
+      />
+      <FloatingMsgIcon />
+    </>
   );
 };
 

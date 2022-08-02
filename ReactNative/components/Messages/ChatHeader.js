@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 import { formatDistance } from "date-fns";
-import { global } from "../styles/globalStyles";
+import { global } from "../../styles/globalStyles";
 
 export default function ChatHeader({ item }) {
   const navigation = useNavigation();

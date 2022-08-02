@@ -367,4 +367,15 @@ export const global = StyleSheet.create({
   chats: { marginVertical: 10 },
   chatCard: { paddingLeft: 10 },
   chatTitle: { paddingRight: 30 },
+  floatingIcon: {
+    position: "absolute",
+    right: 40,
+    bottom: 40,
+    borderRadius: 60,
+    width: 60,
+    height: 60,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#FF4D00",
+  },
 });

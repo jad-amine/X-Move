@@ -24,7 +24,7 @@ export default function ChatHeader({ item }) {
       <Avatar.Image
         style={global.userBPic}
         size={55}
-        source={{ uri: `http://10.0.2.2:4000/` + item.userB.pictureURL }}
+        source={{ uri: `http://192.168.1.3:4000/` + item.userB.pictureURL }}
       />
     ) : (
       <Avatar.Icon

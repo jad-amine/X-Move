@@ -35,7 +35,7 @@ export default function CustomDrawer(props) {
               borderRadius: 40,
               marginBottom: 10,
             }}
-            source={{ uri: `http://10.0.2.2:4000/` + user.info.pictureURL }}
+            source={{ uri: `http://192.168.1.3:4000/` + user.info.pictureURL }}
           />
           <View style={{ marginLeft: 10 }}>
             <Text

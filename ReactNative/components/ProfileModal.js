@@ -7,6 +7,7 @@ import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import ViewLocation from "./ViewLocation";
 import { Button } from "react-native-paper";
+import API from "../api";
 
 export default function ProfileModal({ user, setUser, setModalVisible }) {
   const [about, setAbout] = useState(user.info.about);
@@ -21,18 +22,16 @@ export default function ProfileModal({ user, setUser, setModalVisible }) {
       return;
     }
     try {
-      const response = await fetch(
-        "http://10.0.2.2:4000/api/users/updateProfile",
+      await API.post(
+        "updateProfile",
+        { about: about, location: location },
         {
-          method: "POST",
           headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${user.token}`,
+            Authorization: `Bearer ${user.token}`,
           },
-          body: JSON.stringify({ about: about, location: location }),
         }
       );
-      const data = await response.json();
+
       location
         ? setUser({
             info: { ...user.info, location: location, about: about },

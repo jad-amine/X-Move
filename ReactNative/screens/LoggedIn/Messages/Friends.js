@@ -21,7 +21,7 @@ export default function Friends() {
             <Avatar.Image
               style={global.userBPic}
               size={55}
-              source={{ uri: `http://10.0.2.2:4000/` + item.pictureURL }}
+              source={{ uri: `http://192.168.1.3:4000/` + item.pictureURL }}
             />
           ) : (
             <Avatar.Icon

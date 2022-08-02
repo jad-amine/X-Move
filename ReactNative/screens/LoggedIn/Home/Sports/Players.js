@@ -4,6 +4,7 @@ import { UserContext } from "../../../../contexts/UserContext";
 import { global } from "../../../../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
 import { Avatar } from "react-native-paper";
+import API from "../../../../api";
 
 const Players = ({ route }) => {
   const [users, setUsers] = useState(null);
@@ -14,15 +15,12 @@ const Players = ({ route }) => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch(
-          "http://10.0.2.2:4000/api/users/getSimilarUsers/" + sport,
-          {
-            headers: {
-              authorization: `Bearer ${user.token}`,
-            },
-          }
-        );
-        const data = await response.json();
+        const { data } = await API.get("getSimilarUsers/" + sport, {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
+
         setUsers(data.filter((player) => player.email !== user.info.email));
       } catch (err) {
         console.log("Request Error", err);
@@ -38,7 +36,7 @@ const Players = ({ route }) => {
           <View key={index} style={global.playerCard}>
             {user.pictureURL ? (
               <Image
-                source={{ uri: `http://10.0.2.2:4000/` + user.pictureURL }}
+                source={{ uri: `http://192.168.1.3:4000/` + user.pictureURL }}
                 style={{ height: 150, width: 150, borderRadius: 20 }}
               />
             ) : (

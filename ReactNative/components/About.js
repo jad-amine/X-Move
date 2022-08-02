@@ -5,6 +5,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
 import { global } from "../styles/globalStyles";
 import PostCard from "./Feeds/PostCard";
+
 const About = ({ user }) => {
   return (
     <View>

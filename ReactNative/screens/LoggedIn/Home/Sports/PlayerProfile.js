@@ -7,6 +7,7 @@ import { Chip, Divider } from "react-native-paper";
 import { AntDesign } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
 import PostCard from "../../../../components/Feeds/PostCard";
+import API from "../../../../api";
 
 const PlayerProfile = ({ route }) => {
   const { user, setUser } = useContext(UserContext);
@@ -16,10 +17,6 @@ const PlayerProfile = ({ route }) => {
   } else {
     player = route.params;
   }
-  console.log(player);
-  // const [isFriend, setIsFriend] = useState(
-  //   user.info.friends.includes(player._id)
-  // );
   let isFriend = false;
   user.info.friends.forEach((friend) => {
     if (friend._id === player._id) {
@@ -32,25 +29,20 @@ const PlayerProfile = ({ route }) => {
       isAdded = true;
     }
   });
-  useEffect(() => {
-    console.log(
-      user.info.friends.length,
-      user.info.pendingFriendRequests.length,
-      user.info.friendRequests.length
-    );
-  }, [user]);
+  useEffect(() => {}, [user]);
 
   const handlePress = async () => {
     try {
-      const response = await fetch("http://10.0.2.2:4000/api/users/addFriend", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `Bearer ${user.token}`,
-        },
-        body: JSON.stringify({ id: player._id, isFriend }),
-      });
-      const data = await response.json();
+      const { data } = await API.post(
+        "addFriend",
+        { id: player._id, isFriend },
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+
       if (data.message === "Added") {
         let updatedUser = {
           token: user.token,
@@ -64,7 +56,6 @@ const PlayerProfile = ({ route }) => {
             ],
           },
         };
-        console.log("Friend Added");
         setUser(updatedUser);
       } else if (data.message === "Friend Request Sent !") {
         let updatedUser = {
@@ -74,7 +65,6 @@ const PlayerProfile = ({ route }) => {
             friendRequests: [...user.info.friendRequests, player],
           },
         };
-        console.log("Friend request sent !");
         setUser(updatedUser);
       } else if (data === "Removed") {
         let updatedUser = {
@@ -88,7 +78,6 @@ const PlayerProfile = ({ route }) => {
             ],
           },
         };
-        console.log("Friend Removed !");
         setUser(updatedUser);
       }
     } catch (err) {
@@ -99,7 +88,7 @@ const PlayerProfile = ({ route }) => {
     <ScrollView style={{ padding: 10 }}>
       <View style={{ margin: 10, flexDirection: "row" }}>
         <Image
-          source={{ uri: `http://10.0.2.2:4000/` + player.pictureURL }}
+          source={{ uri: `http://192.168.1.3:4000/` + player.pictureURL }}
           style={{ height: 150, width: 150 }}
         />
         <View style={{ padding: 40, flex: 1 }}>

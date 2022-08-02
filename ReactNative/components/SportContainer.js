@@ -4,9 +4,9 @@ import { global } from "../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
 import Fitness from "../assets/Fitness-Background.png";
 import Cycling from "../assets/Cycling-Background.png";
-import Water from "../assets/Water-Background.png";
-import Winter from "../assets/Winter-Background.png";
-import Entertainment from "../assets/Entertainment-Background.png";
+import Water from "../assets/water.png";
+import Winter from "../assets/winter.png";
+import Entertainment from "../assets/EntertainmentPic.png";
 import Ball from "../assets/Ball-Background.png";
 
 const SportContainer = ({ name }) => {

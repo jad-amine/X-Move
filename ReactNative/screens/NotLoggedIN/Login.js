@@ -14,6 +14,7 @@ import {
 import * as SecureStore from "expo-secure-store";
 import { global } from "../../styles/globalStyles";
 import { UserContext } from "../../contexts/UserContext";
+import API from "../../api";
 
 const Login = ({ navigation }) => {
   const { setUser } = useContext(UserContext);
@@ -22,22 +23,19 @@ const Login = ({ navigation }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("http://10.0.2.2:4000/api/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: email, password: password }),
+      const { data } = await API.post("login/", {
+        email: email,
+        password: password,
       });
-      const json = await response.json();
-      if (json.message === "Invalid Credentials") {
-        Alert.alert(json.message, "Incorrect email or password !");
+      if (data.message === "Invalid Credentials") {
+        Alert.alert(data.message, "Incorrect email or password !");
         return;
       }
-      await SecureStore.setItemAsync("token", json.token);
-      await setUser({ info: json.user, token: json.token });
+      await SecureStore.setItemAsync("token", data.token);
+      await setUser({ info: data.user, token: data.token });
       navigation.navigate("Landing Page");
     } catch (err) {
+      Alert.alert("Incorrect email or password !");
       console.log(err.message, "Something wrong with the request");
     }
   };

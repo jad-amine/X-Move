@@ -7,6 +7,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { UserContext } from "./contexts/UserContext";
 import { useEffect, useState } from "react";
 console.disableYellowBox = true;
+import API from "./api";
+
 // Screens
 import Login from "./screens/NotLoggedIN/Login";
 import LandingPage from "./screens/NotLoggedIN/LandingPage";
@@ -26,23 +28,20 @@ export default function App() {
         if (!token) {
           return;
         }
-        const response = await fetch(
-          "http://10.0.2.2:4000/api/users/getUserData",
+        const { data } = await API.post(
+          "getUserData",
+          { mission: "Auth User" },
           {
-            method: "POST",
             headers: {
-              "Content-Type": "application/json",
-              authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${token}`,
             },
-            body: JSON.stringify({ mission: "Auth User" }),
           }
         );
-        const json = await response.json();
-        if (json.status !== "Verified") {
+        if (data.status !== "Verified") {
           setUser(null);
           return;
         } else {
-          setUser({ info: json.user, token: token });
+          setUser({ info: data.user, token: token });
           return;
         }
       } catch (err) {

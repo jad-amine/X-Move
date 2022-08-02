@@ -10,6 +10,9 @@ import ListItemText from "@mui/material/ListItemText";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
 import { GiAmericanFootballPlayer } from "react-icons/gi";
+import { FaChartLine } from "react-icons/fa";
+import { MdSportsCricket } from "react-icons/md";
+import { TbSoccerField } from "react-icons/tb";
 import { ApplicationContext } from "../contexts/ApplicationContext";
 
 export default function TemporaryDrawer() {
@@ -61,14 +64,19 @@ export default function TemporaryDrawer() {
                     >
                       <ListItemIcon>
                         {text === "Players" ? (
-                          <GiAmericanFootballPlayer color="white" />
+                          <GiAmericanFootballPlayer
+                            className="icon"
+                            size={25}
+                          />
                         ) : text === "Fields" ? (
-                          <GiAmericanFootballPlayer color="white" />
+                          <TbSoccerField className="icon" size={25} />
+                        ) : text === "Dashboard" ? (
+                          <FaChartLine className="icon" size={25} />
                         ) : (
-                          <GiAmericanFootballPlayer color="white" />
+                          <MdSportsCricket className="icon" size={25} />
                         )}
                       </ListItemIcon>
-                      <ListItemText className="drawer-text" primary={text} />
+                      <ListItemText primary={text} />
                     </ListItemButton>
                   </ListItem>
                 )
@@ -86,7 +94,7 @@ export default function TemporaryDrawer() {
                   <ListItemIcon>
                     <LogoutIcon color="error" />
                   </ListItemIcon>
-                  <ListItemText className="drawer-text" primary={"Sign Out"} />
+                  <ListItemText primary={"Sign Out"} />
                 </ListItemButton>
               </ListItem>
             </List>

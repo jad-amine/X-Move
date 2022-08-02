@@ -125,14 +125,18 @@
 .drawer-tab:hover {
   background-color: white;
   transition: 0.5s;
+  color: #ff4d00 !important;
 }
 
-.drawer-text {
+.drawer-tab {
   color: white;
-  font-size: 20;
 }
 
-.drawer-text:hover {
+.icon {
+  color: white;
+}
+
+.icon:hover {
   color: #ff4d00;
 }
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import API from "../api";
 import Map from "../components/Map";
 import BasicSelect from "../components/Select";
+import { useNavigate } from "react-router-dom";
 
 export default function Property({ user, setUser }) {
   const [name, setName] = useState(null);
@@ -15,6 +16,7 @@ export default function Property({ user, setUser }) {
   );
   const update = user.info.property ? true : false;
   const [updated, setUpdated] = useState();
+  const navigate = useNavigate();
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -40,7 +42,7 @@ export default function Property({ user, setUser }) {
         location,
         pictureURL,
       };
-      const { data } = await API.post(
+      await API.post(
         update ? "updatePropertyInfo/" : "addProperty/",
         fieldInfo,
         {
@@ -49,12 +51,8 @@ export default function Property({ user, setUser }) {
           },
         }
       );
-      console.log(data);
       setUpdated(true);
-      // setUser({
-      //   info: { ...user.info, property: fieldInfo },
-      //   token: user.token,
-      // });
+      navigate("/");
     } catch (error) {
       console.log(error);
     }

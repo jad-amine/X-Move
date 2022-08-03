@@ -4,13 +4,13 @@
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.
 
-**[PROJECT PHILOSOPHY](https://github.com/julescript/well_app#-project-philosophy) • [WIREFRAMES](https://github.com/julescript/well_app#-wireframes) • [TECH STACK](https://github.com/julescript/well_app#-tech-stack) • [IMPLEMENTATION](https://github.com/julescript/well_app#-impplementation) • [HOW TO RUN?](https://github.com/julescript/well_app#-how-to-run)**
+**[PROJECT PHILOSOPHY](#philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#stack) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#run)**
 
 </div>
 
 <br><br>
 
-<img src="./readme/title2.svg"/>
+<img id="philosophy" src="./readme/title2.svg"/>
 
 > X-Move is about building the most engaged X-treme Sports Community by connecting athletes to activitiy partners and owners of playgrounds and sports equipment renting stores. It consist of three types of users: Players use a mobile app, Owners use a web app and Admins use a desktop app.
 
@@ -40,7 +40,7 @@
 
 <br><br>
 
-<img src="./readme/title3.svg"/>
+<img id="wireframes" src="./readme/title3.svg"/>
 <br><br>
 > This design was planned before on paper, then moved to Figma app for the fine details.
 <br><br>
@@ -51,11 +51,11 @@
 
 | Players                       | Player Profile                | Feeds                       |
 | ----------------------------- | ----------------------------- | --------------------------- |
-| ![](readme/figma/players.svg) | ![](readme/figma/Profile.svg) | ![](readme/figma/feeds.svg) |
+| ![](readme/figma/players.svg) | ![](readme/figma/profile.svg) | ![](readme/figma/feeds.svg) |
 
 <br><br>
 
-<img src="./readme/title4.svg"/>
+<img id="stack" src="./readme/title4.svg"/>
 
 Here's a brief high-level overview of the tech stack the Well app uses:
 
@@ -67,71 +67,71 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 - For persistent storage (database), the app uses [MongoDB](https://www.mongodb.com/). MongoDB is a document database providing scalability and flexibility whilst provisioning the querying and indexing needed for this type of social apps.
 
 <br><br>
-<img src="./readme/title5.svg"/>
+<img id="implementation" src="./readme/title5.svg"/>
 
 > Uing the above mentioned tech stacks and the wireframes build with figma from the user stories we have, the implementation of the app is shown as below, these are screenshots from the real app
 
-| Landing Page                   | Login                        |
-| ------------------------------ | ---------------------------- |
-| ![](readme/mobile/landing.png) | ![](readme/mobile/login.png) |
+| Landing Page                                                    | Login                                                         |
+| --------------------------------------------------------------- | ------------------------------------------------------------- |
+| <div style="height: 500px">![](readme/mobile/landing.png)</div> | <div style="height: 500px">![](readme/mobile/login.png)</div> |
 
 <br><br>
 
 | Navigation  
 | ------------------------------
-| ![](readme/videos/kapwing.gif)
+| <div style="height: 500px">![](readme/videos/kapwing.gif)</div>
 
 <br><br>
 
-| Home                         | Sports                        |
-| ---------------------------- | ----------------------------- |
-| ![](readme/mobile/home1.png) | ![](readme/mobile/Sports.png) |
+| Home                                                          | Sports                                                         |
+| ------------------------------------------------------------- | -------------------------------------------------------------- |
+| <div style="height: 500px">![](readme/mobile/home1.png)</div> | <div style="height: 500px">![](readme/mobile/Sports.png)</div> |
 
 <br><br>
 
-| Players                        | Player Profile                       |
-| ------------------------------ | ------------------------------------ |
-| ![](readme/mobile/Players.png) | ![](readme/mobile/playerprofile.png) |
+| Players                                                         | Player Profile                                                        |
+| --------------------------------------------------------------- | --------------------------------------------------------------------- |
+| <div style="height: 500px">![](readme/mobile/Players.png)</div> | <div style="height: 500px">![](readme/mobile/playerprofile.png)</div> |
 
 <br><br>
 <br><br>
 
-| Map                        | Fields                        |
-| -------------------------- | ----------------------------- |
-| ![](readme/mobile/map.png) | ![](readme/mobile/fields.png) |
+| Map                                                         | Fields                                                         |
+| ----------------------------------------------------------- | -------------------------------------------------------------- |
+| <div style="height: 500px">![](readme/mobile/map.png)</div> | <div style="height: 500px">![](readme/mobile/fields.png)</div> |
 
 <br><br>
 
-| Equipment                        | Calendar                        |
-| -------------------------------- | ------------------------------- |
-| ![](readme/mobile/equipment.png) | ![](readme/mobile/calendar.png) |
+| Equipment                                                         | Calendar                                                         |
+| ----------------------------------------------------------------- | ---------------------------------------------------------------- |
+| <div style="height: 500px">![](readme/mobile/equipment.png)</div> | <div style="height: 500px">![](readme/mobile/calendar.png)</div> |
 
 <br><br>
 
-| Chats                        | Profile                        |
-| ---------------------------- | ------------------------------ |
-| ![](readme/mobile/chats.png) | ![](readme/mobile/profile.png) |
+| Chats                                                         | Profile                                                         |
+| ------------------------------------------------------------- | --------------------------------------------------------------- |
+| <div style="height: 500px">![](readme/mobile/chats.png)</div> | <div style="height: 500px">![](readme/mobile/profile.png)</div> |
 
 <br><br>
 
-| Friends                        | Navigation                    |
-| ------------------------------ | ----------------------------- |
-| ![](readme/mobile/friends.png) | ![](readme/mobile/Drawer.png) |
+| Friends                                                         | Navigation                                                     |
+| --------------------------------------------------------------- | -------------------------------------------------------------- |
+| <div style="height: 500px">![](readme/mobile/friends.png)</div> | <div style="height: 500px">![](readme/mobile/Drawer.png)</div> |
 
 <br><br>
 
-| Favorite Sports                  | Favorite Sports                  |
-| -------------------------------- | -------------------------------- |
-| ![](readme/mobile/Favorite2.png) | ![](readme/mobile/Favorite1.png) |
+| Favorite Sports                                                   | Favorite Sports                                                   |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| <div style="height: 500px">![](readme/mobile/Favorite2.png)</div> | <div style="height: 500px">![](readme/mobile/Favorite1.png)</div> |
 
 <br><br>
 
-| Feeds                           | Posts                        |
-| ------------------------------- | ---------------------------- |
-| ![](readme/mobile/bestshot.png) | ![](readme/mobile/feeds.png) |
+| Feeds                                                            | Posts                                                         |
+| ---------------------------------------------------------------- | ------------------------------------------------------------- |
+| <div style="height: 500px">![](readme/mobile/bestshot.png)</div> | <div style="height: 500px">![](readme/mobile/feeds.png)</div> |
 
 <br><br>
-<img src="./readme/title6.svg"/>
+<img id="run" src="./readme/title6.svg"/>
 
 > This is an example of how you may give instructions on setting up your project locally.
 > To get a local copy up and running follow these simple example steps.

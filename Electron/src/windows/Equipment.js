@@ -16,7 +16,7 @@ export default function Players() {
 
   return (
     <>
-      <h1 style={{ textAlign: "center", margin: 50 }}>Equipment</h1>
+      <h1 className="dashboard-header">Equipment</h1>
       <div className="players-window">
         {applicationData.fields
           .filter((field) => field.property === "Equipments")

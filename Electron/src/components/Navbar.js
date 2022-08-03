@@ -28,13 +28,13 @@ function Navbar() {
       </div>
       <ul>
         <li>
-          <FaFacebookSquare size={25} color="black" />
+          <FaFacebookSquare size={30} color="#444" />
         </li>
         <li>
-          <FaInstagram size={25} color="black" />
+          <FaInstagram size={30} color="#444" />
         </li>
         <li>
-          <FaTwitter size={25} color="black" />
+          <FaTwitter size={30} color="#444" />
         </li>
         <li></li>
       </ul>

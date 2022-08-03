@@ -389,8 +389,6 @@ export const global = StyleSheet.create({
   map: {
     flex: 0.999,
     marginBottom: 45,
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
   },
   mapSearch: {
     width: 300,

@@ -1,6 +1,6 @@
 import * as React from "react";
 import MapView, { Marker } from "react-native-maps";
-import { Text, View, Modal } from "react-native";
+import { Text, View, Modal, Dimensions } from "react-native";
 import { UserContext } from "../../contexts/UserContext";
 import MapModal from "../../components/MapModal";
 import { Button } from "react-native-paper";
@@ -57,7 +57,11 @@ export default function Map() {
           latitudeDelta: 1,
           longitudeDelta: 1,
         }}
-        style={global.map}
+        style={{
+          ...global.map,
+          width: Dimensions.get("window").width,
+          height: Dimensions.get("window").height,
+        }}
         onPress={(e) => console.log(e.nativeEvent)}
       >
         {players &&

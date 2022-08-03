@@ -49,6 +49,10 @@ export const global = StyleSheet.create({
     color: "white",
     fontSize: 20,
   },
+
+  color: {
+    color: "#FF4D00",
+  },
   styledX: {
     fontSize: 70,
     color: "#FF4D00",
@@ -185,8 +189,15 @@ export const global = StyleSheet.create({
     alignItems: "center",
     borderRadius: 10,
   },
-  // backgroundColor: "#FF4D00",
-  // backgroundColor: "#2C75E2",
+
+  ScrollView: {
+    marginBottom: 40,
+  },
+
+  profilePicture: {
+    height: 200,
+    width: 200,
+  },
 
   // Profile Screen
   profilePic: {

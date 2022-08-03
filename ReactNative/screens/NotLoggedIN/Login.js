@@ -77,7 +77,7 @@ const Login = ({ navigation }) => {
               onPress={() => {
                 navigation.navigate("Register");
               }}
-              style={{ color: "#FF4D00" }}
+              style={global.color}
             >
               {"  "}
               Sign Up

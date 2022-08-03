@@ -84,7 +84,7 @@ const Register = ({ navigation }) => {
               onPress={() => {
                 navigation.navigate("Login");
               }}
-              style={{ color: "#FF4D00" }}
+              style={global.color}
             >
               {"  "}
               Sign In

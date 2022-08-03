@@ -71,7 +71,7 @@ const Profile = () => {
   };
 
   return (
-    <ScrollView style={{ marginBottom: 40 }}>
+    <ScrollView style={global.ScrollView}>
       <Modal
         animationType="slide"
         transparent={true}
@@ -110,7 +110,7 @@ const Profile = () => {
               source={{
                 uri: `http://192.168.1.3:4000/` + user.info.pictureURL,
               }}
-              style={{ height: 200, width: 200 }}
+              style={global.profilePicture}
             />
           </TouchableOpacity>
         ) : (

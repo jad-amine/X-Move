@@ -386,6 +386,12 @@ export const global = StyleSheet.create({
   friends: { height: 80 },
 
   // Map Screen
+  map: {
+    flex: 0.999,
+    marginBottom: 45,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+  },
   mapSearch: {
     width: 300,
     position: "absolute",
@@ -399,5 +405,12 @@ export const global = StyleSheet.create({
     top: 40,
     color: "red",
     textAlign: "center",
+  },
+
+  mapContainer: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

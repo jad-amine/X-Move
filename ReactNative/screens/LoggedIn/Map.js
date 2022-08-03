@@ -1,6 +1,6 @@
 import * as React from "react";
 import MapView, { Marker } from "react-native-maps";
-import { StyleSheet, Text, View, Dimensions, Modal } from "react-native";
+import { Text, View, Modal } from "react-native";
 import { UserContext } from "../../contexts/UserContext";
 import MapModal from "../../components/MapModal";
 import { Button } from "react-native-paper";
@@ -39,7 +39,7 @@ export default function Map() {
   }, [search]);
 
   return (
-    <View style={styles.container}>
+    <View style={global.mapContainer}>
       <Modal
         animationType="slide"
         transparent={true}
@@ -57,7 +57,7 @@ export default function Map() {
           latitudeDelta: 1,
           longitudeDelta: 1,
         }}
-        style={styles.map}
+        style={global.map}
         onPress={(e) => console.log(e.nativeEvent)}
       >
         {players &&
@@ -90,18 +90,3 @@ export default function Map() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  map: {
-    flex: 0.999,
-    marginBottom: 45,
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
-  },
-});

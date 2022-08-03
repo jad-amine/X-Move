@@ -259,6 +259,8 @@ export const global = StyleSheet.create({
     alignSelf: "center",
     borderBottomWidth: 1,
     borderBottomColor: "gray",
+    marginBottom: 5,
+    marginTop: 10,
   },
 
   // About
@@ -360,9 +362,11 @@ export const global = StyleSheet.create({
   lastMessage: {
     color: "#555",
   },
+
   userBPic: {
     marginLeft: -10,
   },
+
   userBAvatar: { backgroundColor: "#ccc", marginLeft: -10 },
   chats: { marginVertical: 10 },
   chatCard: { paddingLeft: 10 },
@@ -378,5 +382,22 @@ export const global = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#FF4D00",
   },
+
   friends: { height: 80 },
+
+  // Map Screen
+  mapSearch: {
+    width: 300,
+    position: "absolute",
+    bottom: 70,
+    backgroundColor: "#ff4d00",
+  },
+
+  mapError: {
+    width: 300,
+    position: "absolute",
+    top: 40,
+    color: "red",
+    textAlign: "center",
+  },
 });

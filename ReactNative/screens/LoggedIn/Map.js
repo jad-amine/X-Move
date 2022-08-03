@@ -6,6 +6,7 @@ import MapModal from "../../components/MapModal";
 import { Button } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import API from "../../api";
+import { global } from "../../styles/globalStyles";
 
 export default function Map() {
   const [search, setSearch] = React.useState([true, "allPlayers"]);
@@ -80,22 +81,12 @@ export default function Map() {
       </MapView>
       <Button
         onPress={() => setModalVisible(true)}
-        style={{ width: 300, position: "absolute", top: 15 }}
+        style={global.mapSearch}
         mode="contained"
       >
         Search
       </Button>
-      <Text
-        style={{
-          width: 300,
-          position: "absolute",
-          top: 60,
-          color: "red",
-          textAlign: "center",
-        }}
-      >
-        {resultMessage}
-      </Text>
+      <Text style={global.mapError}>{resultMessage}</Text>
     </View>
   );
 }

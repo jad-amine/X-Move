@@ -221,6 +221,29 @@ export const global = StyleSheet.create({
     marginVertical: 20,
   },
 
+  editProfile: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
+
+  profileSection: {
+    padding: 20,
+  },
+
+  userEmail: {
+    color: "gray",
+    fontSize: 20,
+  },
+
+  userName: {
+    fontSize: 40,
+    marginBottom: 15,
+  },
+
+  userInfo: {
+    flexDirection: "column",
+    marginLeft: 40,
+  },
   // Profile Information Modal
 
   modal: {

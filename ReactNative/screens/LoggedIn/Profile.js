@@ -116,20 +116,13 @@ const Profile = () => {
         ) : (
           <UploadProfilePic pickImage={pickImage} />
         )}
-        <View
-          style={{
-            flexDirection: "column",
-            marginLeft: 40,
-          }}
-        >
-          <Text style={{ fontSize: 40, marginBottom: 15 }}>
-            {user.info.name}
-          </Text>
-          <Text style={{ color: "gray", fontSize: 20 }}>{user.info.email}</Text>
+        <View style={global.userInfo}>
+          <Text style={global.userName}>{user.info.name}</Text>
+          <Text style={global.userEmail}>{user.info.email}</Text>
         </View>
       </View>
-      <View style={{ padding: 20 }}>
-        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+      <View style={global.profileSection}>
+        <View style={global.editProfile}>
           <Button
             mode="outlined"
             color="tomato"

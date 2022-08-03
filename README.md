@@ -35,7 +35,10 @@ As an admin, I want to be able to manage players, fields and equipment renting s
 ![](ReactNative/readme/title3.png)
 
 This design was planned before on paper, then moved to Figma app for the fine details.
-![](ReactNative/readme/mobile/LandingPage.png)![](ReactNative/readme/mobile/Login.png)![](ReactNative/readme/mobile/Posts.png)![](ReactNative/readme/mobile/Drawer.png)![](ReactNative/readme/mobile/Friends.png)![](ReactNative/readme/mobile/Calendar.png)![](ReactNative/readme/mobile/Feeds.png)![](ReactNative/readme/mobile/Messages.png)
+
+![](ReactNative/readme/new/LandingPage.png) ![](ReactNative/readme/new/Home.png)
+
+![](ReactNative/readme/new/Calendar.png)![](ReactNative/readme/new/Drawer.png)
 Here's a brief high-level overview of the tech stack used to build X-Move:
 
 This project uses the React Native Framework. React Native is a framework used for building cross-platform native mobile apps. It can be used to develop applications that target anything from Android, iOS devices to Windows systems.

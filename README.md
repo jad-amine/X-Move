@@ -77,6 +77,12 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br><br>
 
+| Navigation  
+| ------------------------------
+| ![](readme/videos/kapwing.gif)
+
+<br><br>
+
 | Home                         | Sports                        |
 | ---------------------------- | ----------------------------- |
 | ![](readme/mobile/home1.png) | ![](readme/mobile/Sports.png) |

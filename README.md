@@ -114,15 +114,19 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | <img src="readme/videos/Calendar.gif" width="250" height="500" /> |
 
 <br><br>
+
+| Live Messaging                                                             | Chat                                                                   | Friends Messaging                                                                 |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| <img src="readme/mobile/Messages/Messages.png" width="250" height="500" /> | <img src="readme/mobile/Messages/Chat.png" width="250" height="500" /> | <img src="readme/mobile/Messages/FriendsMessages.gif" width="250" height="500" /> |
+
+| Direct Messaging                                                                   |
+| ---------------------------------------------------------------------------------- |
+| <img src="readme/mobile/Messages/PlayersMessaging.gif" width="250" height="500" /> |
+
+<br><br>
 | Players | Player Profile |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | <img src="readme/mobile/Players.png" width="250" height="500" /> | <img src="readme/mobile/playerprofile.png" width="250" height="500" /> |
-
-<br><br>
-
-| Equipment                                                          | Calendar                                                          |
-| ------------------------------------------------------------------ | ----------------------------------------------------------------- |
-| <img src="readme/mobile/equipment.png" width="250" height="500" /> | <img src="readme/mobile/calendar.png" width="250" height="500" /> |
 
 <br><br>
 

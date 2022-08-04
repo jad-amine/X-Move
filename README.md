@@ -45,13 +45,13 @@
 > This design was planned before on paper, then moved to Figma app for the fine details.
 <br><br>
 
-| Landing Page                 | Resgister  | Categories                    |
-| ---------------------------- | ---------- | ----------------------------- | ---------- | ------------------------------- | ---------- |
-| ![](readme/figma/landing.svg | width=100) | ![](readme/figma/register.svg | width=100) | ![](readme/figma/categories.svg | width=100) |
+| Landing Page                                                    | Resgister                      | Categories                       |
+| --------------------------------------------------------------- | ------------------------------ | -------------------------------- |
+| <img src="readme/figma/landing.svg" width="300" height="600" /> | ![](readme/figma/register.svg) | ![](readme/figma/categories.svg) |
 
-| Players                      | Player Profile | Feeds                        |
-| ---------------------------- | -------------- | ---------------------------- | ---------- | -------------------------- | ---------- |
-| ![](readme/figma/players.svg | width=100)     | ![](readme/figma/profile.svg | width=100) | ![](readme/figma/feeds.svg | width=100) |
+| Players                       | Player Profile                | Feeds                       |
+| ----------------------------- | ----------------------------- | --------------------------- |
+| ![](readme/figma/players.svg) | ![](readme/figma/profile.svg) | ![](readme/figma/feeds.svg) |
 
 <br><br>
 
@@ -71,21 +71,21 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 > Uing the above mentioned tech stacks and the wireframes build with figma from the user stories we have, the implementation of the app is shown as below, these are screenshots from the real app
 
-| Landing Page                                             | Login            |
-| -------------------------------------------------------- | ---------------- | ------------------------------------------------------ | ---------------- |
-| <div style="height: 500px">![](readme/mobile/landing.png | width=100)</div> | <div style="height: 500px">![](readme/mobile/login.png | width=100)</div> |
+| Landing Page                                                    | Login                                                         |
+| --------------------------------------------------------------- | ------------------------------------------------------------- |
+| <div style="height: 500px">![](readme/mobile/landing.png)</div> | <div style="height: 500px">![](readme/mobile/login.png)</div> |
 
 <br><br>
 
 | Navigation  
 | ------------------------------
-| <div style="height: 500px">![](readme/videos/kapwing.gif | width=100)</div>
+| <img src="readme/videos/kapwing.gif" width="300" height="600" />
 
 <br><br>
 
-| Home                                                          | Sports                                                         |
-| ------------------------------------------------------------- | -------------------------------------------------------------- |
-| <div style="height: 500px">![](readme/mobile/home1.png)</div> | <div style="height: 500px">![](readme/mobile/Sports.png)</div> |
+| Home                                                           | Sports                                                         |
+| -------------------------------------------------------------- | -------------------------------------------------------------- |
+| <img src="readme/mobile/home1.png" width="300" height="600" /> | <div style="height: 500px">![](readme/mobile/Sports.png)</div> |
 
 <br><br>
 

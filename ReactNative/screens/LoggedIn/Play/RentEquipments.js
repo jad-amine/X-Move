@@ -45,9 +45,21 @@ const RentField = () => {
           selectedValue={sport}
           onValueChange={(itemValue) => setSport(itemValue)}
         >
-          <Picker.Item label="Ski" value="ski" />
-          <Picker.Item label="Scuba Diving" value="scubadiving" />
-          <Picker.Item label="Bike" value="bike" />
+          <Picker.Item style={{ fontSize: 20 }} label="Bike" value="bike" />
+          <Picker.Item style={{ fontSize: 20 }} label="Ski" value="ski" />
+          <Picker.Item
+            style={{ fontSize: 20 }}
+            label="Scuba Diving"
+            value="scubadiving"
+          />
+          <Picker.Item
+            style={{ fontSize: 20 }}
+            label="Kitesurf"
+            value="kitesurf"
+          />
+          <Picker.Item style={{ fontSize: 20 }} label="Sail" value="sail" />
+          <Picker.Item style={{ fontSize: 20 }} label="Kayak" value="kayak" />
+          <Picker.Item style={{ fontSize: 20 }} label="Ski-Do" value="skido" />
         </Picker>
       )}
     />

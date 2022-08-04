@@ -37,18 +37,35 @@ const RentField = () => {
         <Picker
           style={{
             color: "white",
-            fontSize: 30,
-            borderBottomWidth: 1,
-            backgroundColor: "tomato",
+            backgroundColor: "#ff4d00",
             margin: 40,
             padding: 30,
           }}
           selectedValue={sport}
           onValueChange={(itemValue) => setSport(itemValue)}
         >
-          <Picker.Item label="Football" value="football" />
-          <Picker.Item label="Basketball" value="basketball" />
-          <Picker.Item label="Tennis" value="tennis" />
+          <Picker.Item
+            style={{ fontSize: 20 }}
+            label="Football"
+            value="football"
+          />
+          <Picker.Item
+            style={{ fontSize: 20 }}
+            label="Basketball"
+            value="basketball"
+          />
+          <Picker.Item style={{ fontSize: 20 }} label="Tennis" value="tennis" />
+          <Picker.Item
+            style={{ fontSize: 20 }}
+            label="Volleyball"
+            value="volleyball"
+          />
+          <Picker.Item style={{ fontSize: 20 }} label="Rugby" value="rugby" />
+          <Picker.Item
+            style={{ fontSize: 20 }}
+            label="Bowling"
+            value="bowling"
+          />
         </Picker>
       )}
     />

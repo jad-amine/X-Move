@@ -76,7 +76,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 | Landing Page                                                     | Login                                                          | Choosing a partner                                            |
 | ---------------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------- |
-| <img src="readme/mobile/landing.png" width="270" height="550" /> | <img src="readme/mobile/login.png" width="270" height="550" /> | <img src="readme/videos/home.gif" width="270" height="550" /> |
+| <img src="readme/mobile/landing.png" width="250" height="500" /> | <img src="readme/mobile/login.png" width="250" height="500" /> | <img src="readme/videos/home.gif" width="250" height="500" /> |
 
 <br><br>
 
@@ -179,15 +179,28 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br>
 
-| <h2>Fully fledged calendar</h2>         |
+| <h2>Fully fledged calendar</h2> |
+| ------------------------------- |
+| ![](readme/Web/Calendar.gif)    |
+
+<br>
+
+| <h2>Dynamic reservations</h2>           |
 | --------------------------------------- |
 | ![](readme/Web/InteractiveCalendar.gif) |
 
 <br>
 
-| <h2>Interactive Calendar to dynamically manage reservations</h2> |
-| ---------------------------------------------------------------- |
-| ![](readme/Web/InteractiveCalendar.gif)                          |
+| ------------------------------- |
+| ![](readme/Web/WeekMonth.gif) |
+
+<br>
+
+| <h2>Change Property info</h2> |
+| ----------------------------- |
+| ![](readme/Web/Property.png)  |
+
+<br>
 
 <img id="run" src="./readme/title6.svg"/>
 

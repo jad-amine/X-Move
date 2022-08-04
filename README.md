@@ -99,11 +99,16 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | ------------------------------------------------------------ | ------------------------------------------------------------------ | --------------------------------------------------------------- |
 | <img src="readme/mobile/map.png" width="250" height="500" /> | <img src="readme/mobile/mapSearch.png" width="250" height="500" /> | <img src="readme/videos/mapGif.gif" width="250" height="500" /> |
 
-| Map                                                          |
-| ------------------------------------------------------------ |
-| <img src="readme/mobile/map.png" width="250" height="500" /> |
+| Search Properties for rent                                         |
+| ------------------------------------------------------------------ |
+| <img src="readme/mobile/mapFields.png" width="250" height="500" /> |
 
 <br><br>
+
+| Fields Tab                                                      | Search Modal                                                       | Search Players                                                  |
+| --------------------------------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------- |
+| <img src="readme/mobile/fields.png" width="250" height="500" /> | <img src="readme/mobile/mapSearch.png" width="250" height="500" /> | <img src="readme/videos/mapGif.gif" width="250" height="500" /> |
+
 <br><br>
 | Players | Player Profile |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------------- |

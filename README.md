@@ -72,6 +72,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 > Uing the above mentioned tech stacks and the wireframes build with figma from the user stories we have, the implementation of the app is shown as below, these are screenshots from the real app
 
 <h1>Players Mobile App</h1>
+<hr>
 
 | Landing Page                                                     | Login                                                          | Choosing a partner                                            |
 | ---------------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------- |
@@ -79,7 +80,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br><br>
 
-<h3>Find activity partners</h3>
+<h2>Find activity partners</h2>
 
 | Categories                                                         | Ball Sports                                                     | Water Sports                                                         |
 | ------------------------------------------------------------------ | --------------------------------------------------------------- | -------------------------------------------------------------------- |
@@ -99,7 +100,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br><br>
 
-<h3>Search the map for players and properties for rent</h3>
+<h2>Search the map for players and properties for rent</h2>
 
 | Map                                                          | Search Modal                                                       | Search Players                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------------ | --------------------------------------------------------------- |
@@ -111,7 +112,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br><br>
 
-<h3>Search properties by category and check live calendar for availability</h3>
+<h2>Search properties by category and check live calendar for availability</h2>
 
 | Search Fields for rent                                               | Search Equipments for rent                                           | Rent Properties                                                  |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------- |
@@ -123,7 +124,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br><br>
 
-<h3>Live chatting system</h3>
+<h2>Live chatting system</h2>
 
 | Live Messaging                                                             | Chat                                                                   | Friends Messaging                                                                 |
 | -------------------------------------------------------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
@@ -135,7 +136,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br><br>
 
-<h3>Friends feeds/posts</h3>
+<h2>Friends feeds/posts</h2>
 
 | Drawer Navigation                                               | Feeds                                                                   | Friends Posts                                                           |
 | --------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
@@ -147,7 +148,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br><br>
 
-<h3>Adding favorite sports so other players can find me</h3>
+<h2>Adding favorite sports so other players can find me</h2>
 
 | Favorite Sports                                                                       | Add Favorite Sports                                                                    |
 | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
@@ -155,13 +156,39 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br><br>
 
-<h3>Managing profile info / Location / Friend Requests</h3>
+<h2>Managing profile info / Location / Friend Requests</h2>
 
 | Profile                                                          | Add Friends                                                                   |
 | ---------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | <img src="readme/mobile/profile.png" width="250" height="500" /> | <img src="readme/mobile/Profile/AddFriendGif.gif" width="250" height="500" /> |
 
 <br><br>
+
+<h1>Owners Web App</h1>
+<hr>
+
+| <h2>Landing page</h2>        |
+| ---------------------------- |
+| ![](readme/Web/WebLogin.gif) |
+
+<br>
+
+| <h2>Login</h2>              |
+| --------------------------- |
+| ![](readme/Web/Landing.png) |
+
+<br>
+
+| <h2>Fully fledged calendar</h2>         |
+| --------------------------------------- |
+| ![](readme/Web/InteractiveCalendar.gif) |
+
+<br>
+
+| <h2>Interactive Calendar to dynamically manage reservations</h2> |
+| ---------------------------------------------------------------- |
+| ![](readme/Web/InteractiveCalendar.gif)                          |
+
 <img id="run" src="./readme/title6.svg"/>
 
 > This is an example of how you may give instructions on setting up your project locally.

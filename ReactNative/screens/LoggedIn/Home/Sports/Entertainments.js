@@ -56,7 +56,14 @@ const Entertainments = () => {
         onPress={() => navigateToSport("Domino")}
         style={global.sportLayout}
       >
-        <MaterialCommunityIcons name="roller-skate" size={30} color="black" />
+        <FontAwesome5 name="asterisk" size={30} color="black" />
+        <Text style={global.iconGap}>Risk</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigateToSport("Domino")}
+        style={global.sportLayout}
+      >
+        <MaterialCommunityIcons name="card" size={30} color="black" />
         <Text style={global.iconGap}>Domino</Text>
       </TouchableOpacity>
     </ScrollView>

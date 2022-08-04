@@ -45,13 +45,13 @@
 > This design was planned before on paper, then moved to Figma app for the fine details.
 <br><br>
 
-| Landing Page                  | Resgister                      | Categories                       |
-| ----------------------------- | ------------------------------ | -------------------------------- |
-| ![](readme/figma/landing.svg) | ![](readme/figma/register.svg) | ![](readme/figma/categories.svg) |
+| Landing Page                 | Resgister  | Categories                    |
+| ---------------------------- | ---------- | ----------------------------- | ---------- | ------------------------------- | ---------- |
+| ![](readme/figma/landing.svg | width=100) | ![](readme/figma/register.svg | width=100) | ![](readme/figma/categories.svg | width=100) |
 
-| Players                       | Player Profile                | Feeds                       |
-| ----------------------------- | ----------------------------- | --------------------------- |
-| ![](readme/figma/players.svg) | ![](readme/figma/profile.svg) | ![](readme/figma/feeds.svg) |
+| Players                      | Player Profile | Feeds                        |
+| ---------------------------- | -------------- | ---------------------------- | ---------- | -------------------------- | ---------- |
+| ![](readme/figma/players.svg | width=100)     | ![](readme/figma/profile.svg | width=100) | ![](readme/figma/feeds.svg | width=100) |
 
 <br><br>
 
@@ -71,15 +71,15 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 > Uing the above mentioned tech stacks and the wireframes build with figma from the user stories we have, the implementation of the app is shown as below, these are screenshots from the real app
 
-| Landing Page                                                    | Login                                                         |
-| --------------------------------------------------------------- | ------------------------------------------------------------- |
-| <div style="height: 500px">![](readme/mobile/landing.png)</div> | <div style="height: 500px">![](readme/mobile/login.png)</div> |
+| Landing Page                                             | Login            |
+| -------------------------------------------------------- | ---------------- | ------------------------------------------------------ | ---------------- |
+| <div style="height: 500px">![](readme/mobile/landing.png | width=100)</div> | <div style="height: 500px">![](readme/mobile/login.png | width=100)</div> |
 
 <br><br>
 
 | Navigation  
 | ------------------------------
-| <div style="height: 500px">![](readme/videos/kapwing.gif)</div>
+| <div style="height: 500px">![](readme/videos/kapwing.gif | width=100)</div>
 
 <br><br>
 
@@ -162,3 +162,4 @@ _Below is an example of how you can instruct your audience on installing and set
    ```js
    const API_KEY = "ENTER YOUR API";
    ```
+   ![](readme/electron/ezgif.com-gif-maker.gif)

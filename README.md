@@ -45,13 +45,13 @@
 > This design was planned before on paper, then moved to Figma app for the fine details.
 <br><br>
 
-| Landing Page                                                    | Resgister                      | Categories                       |
-| --------------------------------------------------------------- | ------------------------------ | -------------------------------- |
-| <img src="readme/figma/landing.svg" width="300" height="600" /> | ![](readme/figma/register.svg) | ![](readme/figma/categories.svg) |
+| Landing Page                                                    | Resgister                                                        | Categories                                                         |
+| --------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------ |
+| <img src="readme/figma/landing.svg" width="400" height="800" /> | <img src="readme/figma/register.svg" width="400" height="800" /> | <img src="readme/figma/categories.svg" width="400" height="800" /> |
 
-| Players                       | Player Profile                | Feeds                       |
-| ----------------------------- | ----------------------------- | --------------------------- |
-| ![](readme/figma/players.svg) | ![](readme/figma/profile.svg) | ![](readme/figma/feeds.svg) |
+| Players                                                         | Player Profile                                                  | Feeds                                                         |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------- |
+| <img src="readme/figma/players.svg" width="400" height="800" /> | <img src="readme/figma/profile.svg" width="400" height="800" /> | <img src="readme/figma/feeds.svg" width="400" height="800" /> |
 
 <br><br>
 
@@ -71,64 +71,64 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 > Uing the above mentioned tech stacks and the wireframes build with figma from the user stories we have, the implementation of the app is shown as below, these are screenshots from the real app
 
-| Landing Page                                                    | Login                                                         |
-| --------------------------------------------------------------- | ------------------------------------------------------------- |
-| <div style="height: 500px">![](readme/mobile/landing.png)</div> | <div style="height: 500px">![](readme/mobile/login.png)</div> |
+| Landing Page                                                     | Login                                                          |
+| ---------------------------------------------------------------- | -------------------------------------------------------------- |
+| <img src="readme/mobile/landing.png" width="400" height="800" /> | <img src="readme/mobile/login.png" width="400" height="800" /> |
 
 <br><br>
 
 | Navigation  
 | ------------------------------
-| <img src="readme/videos/kapwing.gif" width="300" height="600" />
+| <img src="readme/videos/kapwing.gif" width="400" height="800" />
 
 <br><br>
 
-| Home                                                           | Sports                                                         |
-| -------------------------------------------------------------- | -------------------------------------------------------------- |
-| <img src="readme/mobile/home1.png" width="300" height="600" /> | <div style="height: 500px">![](readme/mobile/Sports.png)</div> |
+| Home                                                           | Sports                                                          |
+| -------------------------------------------------------------- | --------------------------------------------------------------- |
+| <img src="readme/mobile/home1.png" width="400" height="800" /> | <img src="readme/mobile/Sports.png" width="400" height="800" /> |
 
 <br><br>
 
-| Players                                                         | Player Profile                                                        |
-| --------------------------------------------------------------- | --------------------------------------------------------------------- |
-| <div style="height: 500px">![](readme/mobile/Players.png)</div> | <div style="height: 500px">![](readme/mobile/playerprofile.png)</div> |
+| Players                                                          | Player Profile                                                         |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| <img src="readme/mobile/Players.png" width="400" height="800" /> | <img src="readme/mobile/playerprofile.png" width="400" height="800" /> |
 
 <br><br>
 <br><br>
 
-| Map                                                         | Fields                                                         |
-| ----------------------------------------------------------- | -------------------------------------------------------------- |
-| <div style="height: 500px">![](readme/mobile/map.png)</div> | <div style="height: 500px">![](readme/mobile/fields.png)</div> |
+| Map                                                          | Fields                                                          |
+| ------------------------------------------------------------ | --------------------------------------------------------------- |
+| <img src="readme/mobile/map.png" width="400" height="800" /> | <img src="readme/mobile/fields.png" width="400" height="800" /> |
 
 <br><br>
 
-| Equipment                                                         | Calendar                                                         |
-| ----------------------------------------------------------------- | ---------------------------------------------------------------- |
-| <div style="height: 500px">![](readme/mobile/equipment.png)</div> | <div style="height: 500px">![](readme/mobile/calendar.png)</div> |
+| Equipment                                                          | Calendar                                                          |
+| ------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| <img src="readme/mobile/equipment.png" width="400" height="800" /> | <img src="readme/mobile/calendar.png" width="400" height="800" /> |
 
 <br><br>
 
-| Chats                                                         | Profile                                                         |
-| ------------------------------------------------------------- | --------------------------------------------------------------- |
-| <div style="height: 500px">![](readme/mobile/chats.png)</div> | <div style="height: 500px">![](readme/mobile/profile.png)</div> |
+| Chats                                                          | Profile                                                          |
+| -------------------------------------------------------------- | ---------------------------------------------------------------- |
+| <img src="readme/mobile/chats.png" width="400" height="800" /> | <img src="readme/mobile/profile.png" width="400" height="800" /> |
 
 <br><br>
 
-| Friends                                                         | Navigation                                                     |
-| --------------------------------------------------------------- | -------------------------------------------------------------- |
-| <div style="height: 500px">![](readme/mobile/friends.png)</div> | <div style="height: 500px">![](readme/mobile/Drawer.png)</div> |
+| Friends                                                          | Navigation                                                      |
+| ---------------------------------------------------------------- | --------------------------------------------------------------- |
+| <img src="readme/mobile/friends.png" width="400" height="800" /> | <img src="readme/mobile/Drawer.png" width="400" height="800" /> |
 
 <br><br>
 
-| Favorite Sports                                                   | Favorite Sports                                                   |
-| ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| <div style="height: 500px">![](readme/mobile/Favorite2.png)</div> | <div style="height: 500px">![](readme/mobile/Favorite1.png)</div> |
+| Favorite Sports                                                    | Favorite Sports                                                    |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| <img src="readme/mobile/Favorite2.png" width="400" height="800" /> | <img src="readme/mobile/Favorite1.png" width="400" height="800" /> |
 
 <br><br>
 
-| Feeds                                                            | Posts                                                         |
-| ---------------------------------------------------------------- | ------------------------------------------------------------- |
-| <div style="height: 500px">![](readme/mobile/bestshot.png)</div> | <div style="height: 500px">![](readme/mobile/feeds.png)</div> |
+| Feeds                                                             | Posts                                                          |
+| ----------------------------------------------------------------- | -------------------------------------------------------------- |
+| <img src="readme/mobile/bestshot.png" width="400" height="800" /> | <img src="readme/mobile/feeds.png" width="400" height="800" /> |
 
 <br><br>
 <img id="run" src="./readme/title6.svg"/>

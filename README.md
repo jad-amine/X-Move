@@ -77,9 +77,21 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br><br>
 
-| Home                                                               | Ball Sports                                                    | Entertainments                                                  |
-| ------------------------------------------------------------------ | -------------------------------------------------------------- | --------------------------------------------------------------- |
-| <img src="readme/mobile/1stSports.png" width="250" height="500" /> | <img src="readme/mobile/home1.png" width="250" height="500" /> | <img src="readme/mobile/Sports.png" width="250" height="500" /> |
+| Categories                                                         | Ball Sports                                                     | Water Sports                                                         |
+| ------------------------------------------------------------------ | --------------------------------------------------------------- | -------------------------------------------------------------------- |
+| <img src="readme/mobile/1stSports.png" width="250" height="500" /> | <img src="readme/mobile/Sports.png" width="250" height="500" /> | <img src="readme/mobile/waterSports.png" width="250" height="500" /> |
+
+<br><br>
+
+| Cycling Sports                                                   | Categories                                                     | Fitness Sports                                                         |
+| ---------------------------------------------------------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| <img src="readme/mobile/cycling.png" width="250" height="500" /> | <img src="readme/mobile/home1.png" width="250" height="500" /> | <img src="readme/mobile/FitnessSports.png" width="250" height="500" /> |
+
+<br><br>
+
+| Winter Sports                                                         | Entertainments                                                         | Players                                                          |
+| --------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| <img src="readme/mobile/WinterSports.png" width="250" height="500" /> | <img src="readme/mobile/entertainment.png" width="250" height="500" /> | <img src="readme/mobile/Players.png" width="250" height="500" /> |
 
 <br><br>
 

@@ -134,6 +134,12 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | <img src="readme/mobile/Feeds/AddPost.gif" width="250" height="500" /> |
 
 <br><br>
+
+| Add Favorite Sports                                                                   | Feeds                                                                                  |
+| ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| <img src="readme/mobile/FavoriteSports/FavoritePhoto.png" width="250" height="500" /> | <img src="readme/mobile/FavoriteSports/FavoriteSports.gif" width="250" height="500" /> |
+
+<br><br>
 | Players | Player Profile |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | <img src="readme/mobile/Players.png" width="250" height="500" /> | <img src="readme/mobile/playerprofile.png" width="250" height="500" /> |

@@ -124,6 +124,16 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | <img src="readme/mobile/Messages/PlayersMessaging.gif" width="250" height="500" /> |
 
 <br><br>
+
+| Drawer Navigation                                               | Feeds                                                                   | Friends Posts                                                           |
+| --------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| <img src="readme/mobile/Drawer.png" width="250" height="500" /> | <img src="readme/mobile/Feeds/BikePost.png" width="250" height="500" /> | <img src="readme/mobile/Feeds/FeedsGif.gif" width="250" height="500" /> |
+
+| Add Posts                                                              |
+| ---------------------------------------------------------------------- |
+| <img src="readme/mobile/Feeds/AddPost.gif" width="250" height="500" /> |
+
+<br><br>
 | Players | Player Profile |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | <img src="readme/mobile/Players.png" width="250" height="500" /> | <img src="readme/mobile/playerprofile.png" width="250" height="500" /> |

@@ -129,44 +129,21 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | --------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | <img src="readme/mobile/Drawer.png" width="250" height="500" /> | <img src="readme/mobile/Feeds/BikePost.png" width="250" height="500" /> | <img src="readme/mobile/Feeds/FeedsGif.gif" width="250" height="500" /> |
 
-| Add Posts                                                              |
-| ---------------------------------------------------------------------- |
-| <img src="readme/mobile/Feeds/AddPost.gif" width="250" height="500" /> |
+| Add Posts                                                              | Post                                                           |
+| ---------------------------------------------------------------------- | -------------------------------------------------------------- |
+| <img src="readme/mobile/Feeds/AddPost.gif" width="250" height="500" /> | <img src="readme/mobile/feeds.png" width="250" height="500" /> |
 
 <br><br>
 
-| Add Favorite Sports                                                                   | Feeds                                                                                  |
+| Favorite Sports                                                                       | Add Favorite Sports                                                                    |
 | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | <img src="readme/mobile/FavoriteSports/FavoritePhoto.png" width="250" height="500" /> | <img src="readme/mobile/FavoriteSports/FavoriteSports.gif" width="250" height="500" /> |
 
 <br><br>
-| Players | Player Profile |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| <img src="readme/mobile/Players.png" width="250" height="500" /> | <img src="readme/mobile/playerprofile.png" width="250" height="500" /> |
 
-<br><br>
-
-| Chats                                                          | Profile                                                          |
-| -------------------------------------------------------------- | ---------------------------------------------------------------- |
-| <img src="readme/mobile/chats.png" width="250" height="500" /> | <img src="readme/mobile/profile.png" width="250" height="500" /> |
-
-<br><br>
-
-| Friends                                                          | Navigation                                                      |
-| ---------------------------------------------------------------- | --------------------------------------------------------------- |
-| <img src="readme/mobile/friends.png" width="250" height="500" /> | <img src="readme/mobile/Drawer.png" width="250" height="500" /> |
-
-<br><br>
-
-| Favorite Sports                                                    | Favorite Sports                                                    |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| <img src="readme/mobile/Favorite2.png" width="250" height="500" /> | <img src="readme/mobile/Favorite1.png" width="250" height="500" /> |
-
-<br><br>
-
-| Feeds                                                             | Posts                                                          |
-| ----------------------------------------------------------------- | -------------------------------------------------------------- |
-| <img src="readme/mobile/bestshot.png" width="250" height="500" /> | <img src="readme/mobile/feeds.png" width="250" height="500" /> |
+| Profile                                                          | Add Friends                                                                   |
+| ---------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| <img src="readme/mobile/profile.png" width="250" height="500" /> | <img src="readme/mobile/Profile/AddFriendGif.gif" width="250" height="500" /> |
 
 <br><br>
 <img id="run" src="./readme/title6.svg"/>

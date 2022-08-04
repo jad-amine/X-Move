@@ -105,9 +105,13 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br><br>
 
-| Fields Tab                                                      | Search Modal                                                       | Search Players                                                  |
-| --------------------------------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------- |
-| <img src="readme/mobile/fields.png" width="250" height="500" /> | <img src="readme/mobile/mapSearch.png" width="250" height="500" /> | <img src="readme/videos/mapGif.gif" width="250" height="500" /> |
+| Search Fields for rent                                               | Search Equipments for rent                                           | Rent Properties                                                  |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| <img src="readme/mobile/fields/Play.png" width="250" height="500" /> | <img src="readme/mobile/fields/Bike.png" width="250" height="500" /> | <img src="readme/videos/PlayGif.gif" width="250" height="500" /> |
+
+| Check property availability                                       |
+| ----------------------------------------------------------------- |
+| <img src="readme/videos/Calendar.gif" width="250" height="500" /> |
 
 <br><br>
 | Players | Player Profile |

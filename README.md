@@ -71,64 +71,58 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 > Uing the above mentioned tech stacks and the wireframes build with figma from the user stories we have, the implementation of the app is shown as below, these are screenshots from the real app
 
-| Landing Page                                                     | Login                                                          |
-| ---------------------------------------------------------------- | -------------------------------------------------------------- |
-| <img src="readme/mobile/landing.png" width="300" height="600" /> | <img src="readme/mobile/login.png" width="300" height="600" /> |
+| Landing Page                                                     | Login                                                          | Choosing a partner                                            |
+| ---------------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------- |
+| <img src="readme/mobile/landing.png" width="270" height="550" /> | <img src="readme/mobile/login.png" width="270" height="550" /> | <img src="readme/videos/home.gif" width="270" height="550" /> |
 
 <br><br>
 
-| Navigation  
-| ------------------------------
-| <img src="readme/videos/kapwing.gif" width="300" height="600" />
-
-<br><br>
-
-| Home                                                           | Sports                                                          |
-| -------------------------------------------------------------- | --------------------------------------------------------------- |
-| <img src="readme/mobile/home1.png" width="300" height="600" /> | <img src="readme/mobile/Sports.png" width="300" height="600" /> |
+| Home                                                               | Ball Sports                                                    | Entertainments                                                  |
+| ------------------------------------------------------------------ | -------------------------------------------------------------- | --------------------------------------------------------------- |
+| <img src="readme/mobile/1stSports.png" width="250" height="500" /> | <img src="readme/mobile/home1.png" width="250" height="500" /> | <img src="readme/mobile/Sports.png" width="250" height="500" /> |
 
 <br><br>
 
 | Players                                                          | Player Profile                                                         |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| <img src="readme/mobile/Players.png" width="300" height="600" /> | <img src="readme/mobile/playerprofile.png" width="300" height="600" /> |
+| <img src="readme/mobile/Players.png" width="250" height="500" /> | <img src="readme/mobile/playerprofile.png" width="250" height="500" /> |
 
 <br><br>
 <br><br>
 
 | Map                                                          | Fields                                                          |
 | ------------------------------------------------------------ | --------------------------------------------------------------- |
-| <img src="readme/mobile/map.png" width="300" height="600" /> | <img src="readme/mobile/fields.png" width="300" height="600" /> |
+| <img src="readme/mobile/map.png" width="250" height="500" /> | <img src="readme/mobile/fields.png" width="250" height="500" /> |
 
 <br><br>
 
 | Equipment                                                          | Calendar                                                          |
 | ------------------------------------------------------------------ | ----------------------------------------------------------------- |
-| <img src="readme/mobile/equipment.png" width="300" height="600" /> | <img src="readme/mobile/calendar.png" width="300" height="600" /> |
+| <img src="readme/mobile/equipment.png" width="250" height="500" /> | <img src="readme/mobile/calendar.png" width="250" height="500" /> |
 
 <br><br>
 
 | Chats                                                          | Profile                                                          |
 | -------------------------------------------------------------- | ---------------------------------------------------------------- |
-| <img src="readme/mobile/chats.png" width="300" height="600" /> | <img src="readme/mobile/profile.png" width="300" height="600" /> |
+| <img src="readme/mobile/chats.png" width="250" height="500" /> | <img src="readme/mobile/profile.png" width="250" height="500" /> |
 
 <br><br>
 
 | Friends                                                          | Navigation                                                      |
 | ---------------------------------------------------------------- | --------------------------------------------------------------- |
-| <img src="readme/mobile/friends.png" width="300" height="600" /> | <img src="readme/mobile/Drawer.png" width="300" height="600" /> |
+| <img src="readme/mobile/friends.png" width="250" height="500" /> | <img src="readme/mobile/Drawer.png" width="250" height="500" /> |
 
 <br><br>
 
 | Favorite Sports                                                    | Favorite Sports                                                    |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| <img src="readme/mobile/Favorite2.png" width="300" height="600" /> | <img src="readme/mobile/Favorite1.png" width="300" height="600" /> |
+| <img src="readme/mobile/Favorite2.png" width="250" height="500" /> | <img src="readme/mobile/Favorite1.png" width="250" height="500" /> |
 
 <br><br>
 
 | Feeds                                                             | Posts                                                          |
 | ----------------------------------------------------------------- | -------------------------------------------------------------- |
-| <img src="readme/mobile/bestshot.png" width="300" height="600" /> | <img src="readme/mobile/feeds.png" width="300" height="600" /> |
+| <img src="readme/mobile/bestshot.png" width="250" height="500" /> | <img src="readme/mobile/feeds.png" width="250" height="500" /> |
 
 <br><br>
 <img id="run" src="./readme/title6.svg"/>

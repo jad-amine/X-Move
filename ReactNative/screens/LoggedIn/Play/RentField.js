@@ -37,7 +37,7 @@ const RentField = () => {
         <Picker
           style={{
             color: "white",
-            backgroundColor: "#ff4d00",
+            backgroundColor: "tomato",
             margin: 40,
             padding: 30,
           }}

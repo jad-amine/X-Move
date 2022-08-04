@@ -89,7 +89,7 @@ const PlayerProfile = ({ route }) => {
       <View style={{ margin: 10, flexDirection: "row" }}>
         <Image
           source={{ uri: `http://192.168.1.3:4000/` + player.pictureURL }}
-          style={{ height: 150, width: 150 }}
+          style={{ height: 150, width: 150, borderRadius: 10 }}
         />
         <View style={{ padding: 40, flex: 1 }}>
           <Text style={{ fontSize: 35 }}>{player.name}</Text>

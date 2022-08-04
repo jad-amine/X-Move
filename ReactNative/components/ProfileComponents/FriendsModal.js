@@ -16,17 +16,13 @@ export default function FriendsModal({ user, setFriendsModalVisible }) {
         />
         {/* <Text style={global.modalTitle}>Friends </Text> */}
       </View>
-      {user.info.pendingFriendRequests.lenght && (
-        <Text style={[global.friendModalHeaders, { marginTop: 50 }]}>
-          Friend Requests
-        </Text>
+      {user.info.pendingFriendRequests.length && (
+        <Text style={[global.friendModalHeaders]}>Friend Requests</Text>
       )}
       {user.info.pendingFriendRequests.map((friend, index) => (
         <FriendCard key={index} friend={friend} />
       ))}
-      <Text style={[global.friendModalHeaders, { marginTop: 50 }]}>
-        Friends
-      </Text>
+      <Text style={[global.friendModalHeaders]}>Friends</Text>
       {user.info.friends.map((friend, index) => (
         <FriendCard key={index} friend={friend} />
       ))}

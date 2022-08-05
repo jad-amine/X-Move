@@ -204,16 +204,30 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 <br><br>
 
 <h1>Admin Desktop App</h1>
-<hr>
-| <h2>Change Property info</h2> |
-| ----------------------------- |
-|  ![](readme/electron/PlayerFlow.gif) |
+
+| <h2>Landing Window</h2>          |
+| -------------------------------- |
+| ![](readme/electron/Landing.png) |
 
 <br>
 
-| <h2>Change Property info</h2>        |
-| ------------------------------------ |
-| ![](readme/electron/PlayersFlow.gif) |
+| <h2>Home</h2>                 |
+| ----------------------------- |
+| ![](readme/electron/Home.png) |
+
+<br>
+Data analysis 
+<hr>
+
+| <h2>Players Joining/Leaving the app per month</h2> |
+| -------------------------------------------------- |
+| ![](readme/electron/PlayerFlow.gif)                |
+
+<br>
+
+| <h2>Check Reservations per month</h2> |
+| ------------------------------------- |
+| ![](readme/electron/PropertyRes.gif)  |
 
 <img id="run" src="./readme/title6.svg"/>
 

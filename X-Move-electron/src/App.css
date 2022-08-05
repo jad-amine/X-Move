@@ -76,6 +76,12 @@
   background-color: #ff4d00;
 }
 
+.login-form span {
+  color: #aaa;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
 /* Top Navbar */
 .top-nav {
   height: 100px;

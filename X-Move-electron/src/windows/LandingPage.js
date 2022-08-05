@@ -1,30 +1,23 @@
+// Utilities
+import API from "../api";
 import React, { useState } from "react";
 import { FaUserAlt } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
-import API from "../api";
 
 export default function LandingPage({ setApplicationData }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleClick = async (e) => {
     e.preventDefault();
     const admin = { email, password };
     try {
       const { data } = await API.post("login/", admin);
-      console.log(data);
       localStorage.setItem("token", data.token);
       setApplicationData({ players: data.players, fields: data.fields });
-      // setTimeout(() => {
-      //   setIsLoading(false);
-      //   setUser({ token: res.data.token, info: res.data.user });
-      // }, 2000);
     } catch (error) {
-      // setTimeout(() => {
-      //   setError(signUp ? "User already exists !!" : "Invalid Credentials !!");
-      //   setIsLoading(false);
-      // }, 2000);
-      console.log(error, error.message);
+      setError("Wrong email or password !");
     }
   };
 
@@ -61,6 +54,7 @@ export default function LandingPage({ setApplicationData }) {
           >
             Log in
           </button>
+          <span>{error}</span>
         </form>
       </div>
     </div>

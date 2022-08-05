@@ -47,11 +47,11 @@
 
 | Landing Page                                                    | Resgister                                                        | Categories                                                         |
 | --------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------ |
-| <img src="readme/figma/landing.svg" width="400" height="800" /> | <img src="readme/figma/register.svg" width="400" height="800" /> | <img src="readme/figma/categories.svg" width="400" height="800" /> |
+| <img src="readme/figma/landing.svg" width="250" height="500" /> | <img src="readme/figma/register.svg" width="250" height="500" /> | <img src="readme/figma/categories.svg" width="250" height="500" /> |
 
 | Players                                                         | Player Profile                                                  | Feeds                                                         |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------- |
-| <img src="readme/figma/players.svg" width="400" height="800" /> | <img src="readme/figma/profile.svg" width="400" height="800" /> | <img src="readme/figma/feeds.svg" width="400" height="800" /> |
+| <img src="readme/figma/players.svg" width="250" height="500" /> | <img src="readme/figma/profile.svg" width="250" height="500" /> | <img src="readme/figma/feeds.svg" width="250" height="500" /> |
 
 <br><br>
 
@@ -211,9 +211,9 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br>
 
-| <h2>Home</h2>                 |
-| ----------------------------- |
-| ![](readme/electron/Home.png) |
+| <h2>Application Lifecycle / Statistics</h2> |
+| ------------------------------------------- |
+| ![](readme/electron/Home.png)               |
 
 <br>
 <h2>Data analysis</h2>
@@ -225,15 +225,37 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br>
 
-| <h2>Check Reservations per month</h2> |
-| ------------------------------------- |
-| ![](readme/electron/PropertyRes.gif)  |
+| <h2>Reservations per month for fields & equipments</h2> |
+| ------------------------------------------------------- |
+| ![](readme/electron/PropertyRes.gif)                    |
+
+<br>
+
+<hr>
+
+![](readme/electron/Drawer.png)
+
+<hr>
 
 <br>
 
 | <h2>Players</h2>                 |
 | -------------------------------- |
 | ![](readme/electron/players.gif) |
+
+<br>
+
+| <h2>Fields</h2>                 |
+| ------------------------------- |
+| ![](readme/electron/Fields.gif) |
+
+<br>
+
+| <h2>Equipment</h2>                 |
+| ---------------------------------- |
+| ![](readme/electron/Equipment.gif) |
+
+<br> <br>
 
 <img id="run" src="./readme/title6.svg"/>
 

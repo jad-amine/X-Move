@@ -1,9 +1,12 @@
-import { View, Text, FlatList, ScrollView } from "react-native";
-import React, { useContext, useEffect, useState } from "react";
-import { Picker } from "@react-native-picker/picker";
-import { UserContext } from "../../../contexts/UserContext";
-import FieldComponent from "../../../components/FieldComponent";
+// Utilities
 import API from "../../../api";
+import { Picker } from "@react-native-picker/picker";
+import { Alert, FlatList, StyleSheet } from "react-native";
+import React, { useContext, useEffect, useState } from "react";
+import { UserContext } from "../../../contexts/UserContext";
+
+// Components
+import FieldComponent from "../../../components/FieldComponent";
 
 const RentField = () => {
   const [sport, setSport] = useState("ski");
@@ -19,7 +22,7 @@ const RentField = () => {
       });
       setFields(data);
     } catch (error) {
-      console.log(error.message);
+      Alert.alert("Network Error !");
     }
   };
 
@@ -34,32 +37,25 @@ const RentField = () => {
       keyExtractor={(i, index) => index}
       ListHeaderComponent={() => (
         <Picker
-          style={{
-            color: "white",
-            fontSize: 30,
-            borderBottomWidth: 1,
-            backgroundColor: "tomato",
-            margin: 40,
-            padding: 30,
-          }}
+          style={styles.headerPicker}
           selectedValue={sport}
           onValueChange={(itemValue) => setSport(itemValue)}
         >
-          <Picker.Item style={{ fontSize: 20 }} label="Bike" value="bike" />
-          <Picker.Item style={{ fontSize: 20 }} label="Ski" value="ski" />
+          <Picker.Item style={styles.pickerItem} label="Bike" value="bike" />
+          <Picker.Item style={styles.pickerItem} label="Ski" value="ski" />
           <Picker.Item
-            style={{ fontSize: 20 }}
+            style={styles.pickerItem}
             label="Scuba Diving"
             value="scubadiving"
           />
           <Picker.Item
-            style={{ fontSize: 20 }}
+            style={styles.pickerItem}
             label="Kitesurf"
             value="kitesurf"
           />
-          <Picker.Item style={{ fontSize: 20 }} label="Sail" value="sail" />
-          <Picker.Item style={{ fontSize: 20 }} label="Kayak" value="kayak" />
-          <Picker.Item style={{ fontSize: 20 }} label="Ski-Do" value="skido" />
+          <Picker.Item style={styles.pickerItem} label="Sail" value="sail" />
+          <Picker.Item style={styles.pickerItem} label="Kayak" value="kayak" />
+          <Picker.Item style={styles.pickerItem} label="Ski-Do" value="skido" />
         </Picker>
       )}
     />
@@ -67,3 +63,15 @@ const RentField = () => {
 };
 
 export default RentField;
+
+const styles = StyleSheet.create({
+  headerPicker: {
+    color: "white",
+    backgroundColor: "tomato",
+    margin: 40,
+    padding: 30,
+  },
+  pickerItem: {
+    fontSize: 20,
+  },
+});

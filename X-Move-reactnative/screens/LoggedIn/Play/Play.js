@@ -1,8 +1,11 @@
+// Utilities
 import React from "react";
-import RentEquipments from "./RentEquipments";
-import RentField from "./RentField";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+
+// Screens
 import StackNavigator from "./StackNavigator";
+import RentEquipments from "./RentEquipments";
+
 const Tab = createMaterialTopTabNavigator();
 
 const Play = () => {

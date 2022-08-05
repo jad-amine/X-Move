@@ -1,3 +1,8 @@
+// Utilities
+import API from "../../api";
+import { global } from "../../styles/globalStyles";
+import { UserContext } from "../../contexts/UserContext";
+import React, { useContext, useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -6,12 +11,11 @@ import {
   RefreshControl,
   Keyboard,
 } from "react-native";
-import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../contexts/UserContext";
-import FloatingIcon from "../../components/Feeds/FloatingIcon";
+
+// Components
 import AddPost from "../../components/Feeds/AddPost";
 import PostCard from "../../components/Feeds/PostCard";
-import API from "../../api";
+import FloatingIcon from "../../components/Feeds/FloatingIcon";
 
 export default function Feeds() {
   const { user, setUser } = useContext(UserContext);
@@ -21,8 +25,11 @@ export default function Feeds() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
+    // Hide add post Floating icon when adding comments
     Keyboard.addListener("keyboardDidShow", () => setShowIcon(false));
     Keyboard.addListener("keyboardDidHide", () => setShowIcon(true));
+
+    // Merge all posts to display in one array
     let friendsPosts = [];
     if (user.info?.friends.length !== 0) {
       user.info.friends.forEach((friend) => {
@@ -36,6 +43,7 @@ export default function Feeds() {
     setPosts(unorderedPosts);
   }, [user]);
 
+  // Fetch new friends posts on screen pull down
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
     const authUser = async () => {
@@ -56,24 +64,20 @@ export default function Feeds() {
           setUser({ info: data.user, token: user.token });
         }
       } catch (err) {
-        console.log(err.message, "Fix the request");
+        return;
       }
     };
     authUser();
   }, []);
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={global.feeds}>
       <ScrollView
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
       >
-        {posts?.length === 0 && (
-          <Text style={{ fontSize: 20, alignItems: "center", margin: 30 }}>
-            No Feeds.
-          </Text>
-        )}
+        {posts?.length === 0 && <Text style={global.noFeeds}>No Feeds.</Text>}
         {posts.map((post, index) => (
           <PostCard key={index} post={post} setPosts={setPosts} />
         ))}

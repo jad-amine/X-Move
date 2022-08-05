@@ -376,6 +376,14 @@ export const global = StyleSheet.create({
   },
 
   // Feeds Screen
+  feeds: {
+    flex: 1,
+  },
+  noFeeds: {
+    fontSize: 20,
+    alignItems: "center",
+    margin: 30,
+  },
   feedModal: {
     flex: 1,
     backgroundColor: "white",

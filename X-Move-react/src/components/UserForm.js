@@ -1,10 +1,12 @@
-import React, { useContext, useState } from "react";
-import { UserContext } from "../contexts/UserContext";
+// Utilities
 import API from "../api";
+import { UserContext } from "../contexts/UserContext";
+import React, { useContext, useState } from "react";
 import ReactLoading from "react-loading";
 
 function UserForm() {
   const { setUser } = useContext(UserContext);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,6 +14,7 @@ function UserForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // Sign In/Up function
   const handleClick = async (e) => {
     e.preventDefault();
     setError("");
@@ -29,7 +32,6 @@ function UserForm() {
         setError(signUp ? "User already exists !!" : "Invalid Credentials !!");
         setIsLoading(false);
       }, 2000);
-      console.log(error, error.message);
     }
   };
 
@@ -65,7 +67,7 @@ function UserForm() {
           />
         </>
         <button
-          style={{ borderRadius: 20 }}
+          className="login-button"
           type="submit"
           disabled={
             signUp

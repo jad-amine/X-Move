@@ -90,6 +90,12 @@
   cursor: pointer;
 }
 
+.login-button {
+  border-radius: 8px;
+  width: 230px;
+  margin: 0 auto;
+}
+
 .form button:disabled,
 button[disabled] {
   border: 1px solid #999999;

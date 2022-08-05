@@ -1,14 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
-import UserForm from "../components/UserForm";
-import Loading from "../components/Loading";
+// Utilities
 import API from "../api";
 import { UserContext } from "../contexts/UserContext";
+import React, { useContext, useEffect, useState } from "react";
+
+// Components
+import Loading from "../components/Loading";
+import UserForm from "../components/UserForm";
 
 function LandingPage() {
   const [isLoading, setIsLoading] = useState(true);
   const { setUser } = useContext(UserContext);
 
   useEffect(() => {
+    // Check if the owner hasn't logged out from the last session
     const token = localStorage.getItem("token");
     if (!token) {
       setTimeout(() => {
@@ -34,7 +38,6 @@ function LandingPage() {
           setTimeout(() => {
             setIsLoading(false);
           }, 2500);
-          console.log(error.message, error);
         }
       };
       authOwner();

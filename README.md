@@ -12,7 +12,7 @@
 
 <img id="philosophy" src="./readme/title2.svg"/>
 
-> X-Move is about building the most engaged X-treme Sports Community by connecting athletes to activitiy partners and owners of playgrounds and sports equipment renting stores. It consist of three types of users: Players use a mobile app, Owners use a web app and Admins use a desktop app.
+> X-Move is not about building a company but a community, the most engaged X-treme Sports Community by connecting athletes to activitiy partners and owners of playgrounds and sports equipments renting stores. It consist of three types of users: Players use a mobile app, Owners use a web app and Admins use a desktop app.
 
 ### User Stories
 
@@ -34,7 +34,7 @@
 
 ### Admin Stories
 
-- As an admin, I want to be able to check my application statstics and lifecycle by interacting with a compelling dashboard showing the application data analysis visualization.
+- As an admin, I want to be able to check my application statstics and lifecycle by interacting with a compelling dashboard showing the application data analysis visualizations.
 
 - As an admin, I want to be able to manage players, fields and equipment renting stores.
 
@@ -156,7 +156,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br><br>
 
-<h2>Managing profile info / Location / Friend Requests</h2>
+<h2>Managing Profile Info / Location / Friend Requests</h2>
 
 | Profile                                                          | Add Friends                                                                   |
 | ---------------------------------------------------------------- | ----------------------------------------------------------------------------- |
@@ -211,9 +211,9 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br>
 
-| <h2>Application Lifecycle / Statistics</h2> |
-| ------------------------------------------- |
-| ![](readme/electron/Home.png)               |
+| <h2>Application Lifecycle / Statistics Dashboard</h2> |
+| ----------------------------------------------------- |
+| ![](readme/electron/Home.png)                         |
 
 <br>
 <h2>Data analysis</h2>
@@ -241,7 +241,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 | <h2>Players</h2>                 |
 | -------------------------------- |
-| ![](readme/electron/players.gif) |
+| ![](readme/electron/Players.gif) |
 
 <br>
 
@@ -264,27 +264,43 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+To run this project, you will need the following installed on your system:
 
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
+- Node.js & npm
+- MongoDB
+- Git
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+1. Clone this repository
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = "ENTER YOUR API";
-   ```
+```sh
+git clone https://github.com/jad-amine/X-Move.git
+```
+
+2. Navigate into the frontend folder named <span style="color:#ff4d00">"Client"</span> , to install NPM packages for the client:
+
+```sh
+npm install
+```
+
+3. Navigate into the frontend folder named <span style="color:#ff4d00">"Client"</span> , to install NPM packages for the client:
+
+```sh
+npm install
+```
+
+4. Replace the DB connection string with one of your own in the .env file
+5. To run the server, navigate to the root of the repository then run:
+
+```sh
+npm run dev
+```
+
+6. To run the client, navigate to the <span style="color:#ff4d00">"Client"</span> folder then run:
+
+```sh
+npm start
+```
+
+7. If you don't have access to the test DB exported data, you will need to register and upload your own data from scratch

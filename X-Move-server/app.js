@@ -18,7 +18,7 @@ const adminRoutes = require("./routes/adminRoutes");
 mongoose
   .connect(process.env.DB_CONNECT)
   .then(() => {
-    app.listen(process.env.PORT, "192.168.43.248", () => {
+    app.listen(process.env.PORT, "192.168.1.3", () => {
       console.log("Connected to db & listening to port " + process.env.PORT);
     });
   })

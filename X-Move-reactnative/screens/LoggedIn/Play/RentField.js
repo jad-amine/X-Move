@@ -1,14 +1,17 @@
-import { View, Text, FlatList } from "react-native";
-import React, { useContext, useEffect, useState } from "react";
-import { Picker } from "@react-native-picker/picker";
-import { UserContext } from "../../../contexts/UserContext";
-import FieldComponent from "../../../components/FieldComponent";
+// Utilities
 import API from "../../../api";
+import { Alert, FlatList, StyleSheet } from "react-native";
+import { Picker } from "@react-native-picker/picker";
+import React, { useContext, useEffect, useState } from "react";
+import { UserContext } from "../../../contexts/UserContext";
+
+// Components
+import FieldComponent from "../../../components/FieldComponent";
 
 const RentField = () => {
-  const [sport, setSport] = useState("football");
-  const [fields, setFields] = useState({});
   const { user } = useContext(UserContext);
+  const [fields, setFields] = useState({});
+  const [sport, setSport] = useState("football");
 
   const getFields = async () => {
     try {
@@ -17,13 +20,13 @@ const RentField = () => {
           authorization: `Bearer ${user.token}`,
         },
       });
-      console.log(data);
       setFields(data);
     } catch (error) {
-      console.log(error.message);
+      Alert.alert("Network Error !");
     }
   };
 
+  // Fetch fields data on component load
   useEffect(() => {
     getFields();
   }, [sport]);
@@ -35,34 +38,33 @@ const RentField = () => {
       keyExtractor={(i, index) => index}
       ListHeaderComponent={() => (
         <Picker
-          style={{
-            color: "white",
-            backgroundColor: "tomato",
-            margin: 40,
-            padding: 30,
-          }}
+          style={styles.headerPicker}
           selectedValue={sport}
           onValueChange={(itemValue) => setSport(itemValue)}
         >
           <Picker.Item
-            style={{ fontSize: 20 }}
+            style={styles.pickerItem}
             label="Football"
             value="football"
           />
           <Picker.Item
-            style={{ fontSize: 20 }}
+            style={styles.pickerItem}
             label="Basketball"
             value="basketball"
           />
-          <Picker.Item style={{ fontSize: 20 }} label="Tennis" value="tennis" />
           <Picker.Item
-            style={{ fontSize: 20 }}
+            style={styles.pickerItem}
+            label="Tennis"
+            value="tennis"
+          />
+          <Picker.Item
+            style={styles.pickerItem}
             label="Volleyball"
             value="volleyball"
           />
-          <Picker.Item style={{ fontSize: 20 }} label="Rugby" value="rugby" />
+          <Picker.Item style={styles.pickerItem} label="Rugby" value="rugby" />
           <Picker.Item
-            style={{ fontSize: 20 }}
+            style={styles.pickerItem}
             label="Bowling"
             value="bowling"
           />
@@ -73,3 +75,15 @@ const RentField = () => {
 };
 
 export default RentField;
+
+const styles = StyleSheet.create({
+  headerPicker: {
+    color: "white",
+    backgroundColor: "tomato",
+    margin: 40,
+    padding: 30,
+  },
+  pickerItem: {
+    fontSize: 20,
+  },
+});

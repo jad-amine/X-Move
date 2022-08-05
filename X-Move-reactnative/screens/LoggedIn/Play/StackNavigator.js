@@ -1,5 +1,8 @@
+// Utilities
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+// Screens and components
 import RentField from "./RentField";
 import Calendar from "../../../components/Calendar";
 
@@ -7,7 +10,11 @@ const Stack = createNativeStackNavigator();
 
 export default function StackNavigator() {
   return (
-    <Stack.Navigator screenOptions={{ headerBackTitleVisible: false }}>
+    <Stack.Navigator
+      screenOptions={{
+        headerBackTitleVisible: false,
+      }}
+    >
       <Stack.Screen
         options={{ headerShown: false }}
         name="RentField"

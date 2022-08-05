@@ -354,6 +354,15 @@ export const global = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 22,
   },
+  drawerImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 20,
+    marginRight: 10,
+  },
+  drawerBackground: {
+    height: 60,
+  },
   sportTab: {
     marginLeft: 30,
     marginTop: 8,

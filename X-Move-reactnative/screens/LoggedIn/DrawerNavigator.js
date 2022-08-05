@@ -2,15 +2,16 @@
 import React from "react";
 import { Image } from "react-native";
 import logo from "../../assets/logo.png";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
+import { global } from "../../styles/globalStyles";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
-// Screens
+// Screens and components
+import Feeds from "./Feeds";
 import BottomTab from "./Home/BottomTab";
 import FavoriteSports from "./FavoriteSports";
-import Feeds from "./Feeds";
 import CustomDrawer from "../../components/CustomDrawer";
 
 const Drawer = createDrawerNavigator();
@@ -30,24 +31,13 @@ const DrawerNavigator = () => {
         drawerType: "back",
         headerTitle: "X-Move",
         headerTitleAlign: "center",
-        headerRight: () => (
-          <Image
-            source={logo}
-            style={{
-              width: 50,
-              height: 50,
-              borderRadius: 20,
-              marginRight: 10,
-            }}
-          />
-        ),
+        headerRight: () => <Image source={logo} style={global.drawerImage} />,
         headerBackground: () => (
           <Image
             source={require("../../assets/Drawer.jpg")}
-            style={{ height: 60 }}
+            style={global.drawerBackground}
           />
         ),
-        // headerStyle: { height: 70, backgroundColor: "#FF4D00" },
         headerTintColor: "white",
         headerTitleStyle: { fontSize: 30 },
       }}

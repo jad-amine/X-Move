@@ -38,49 +38,44 @@ export default function TemporaryDrawer() {
             onKeyDown={toggleDrawer}
           >
             <List>
-              {["Dashboard", "Players", "Fields", "Equipment"].map(
-                (text, index) => (
-                  <ListItem
-                    className="drawer-tab"
-                    style={{ marginTop: 10 }}
-                    key={text}
-                    disablePadding
+              {["Dashboard", "Players", "Fields", "Equipment"].map((text) => (
+                <ListItem
+                  className="drawer-tab"
+                  style={{ marginTop: 10 }}
+                  key={text}
+                  disablePadding
+                >
+                  <ListItemButton
+                    onClick={() =>
+                      navigate(
+                        text === "Players"
+                          ? "players"
+                          : text === "Fields"
+                          ? "fields"
+                          : text === "Equipment"
+                          ? "equipment"
+                          : "/"
+                      )
+                    }
                   >
-                    <ListItemButton
-                      onClick={() =>
-                        navigate(
-                          text === "Players"
-                            ? "players"
-                            : text === "Fields"
-                            ? "fields"
-                            : text === "Equipment"
-                            ? "equipment"
-                            : "/"
-                        )
-                      }
-                    >
-                      <ListItemIcon>
-                        {text === "Players" ? (
-                          <GiAmericanFootballPlayer
-                            className="icon"
-                            size={25}
-                          />
-                        ) : text === "Fields" ? (
-                          <TbSoccerField className="icon" size={25} />
-                        ) : text === "Dashboard" ? (
-                          <FaChartLine className="icon" size={25} />
-                        ) : (
-                          <MdSportsCricket className="icon" size={25} />
-                        )}
-                      </ListItemIcon>
-                      <ListItemText primary={text} />
-                    </ListItemButton>
-                  </ListItem>
-                )
-              )}
+                    <ListItemIcon>
+                      {text === "Players" ? (
+                        <GiAmericanFootballPlayer className="icon" size={25} />
+                      ) : text === "Fields" ? (
+                        <TbSoccerField className="icon" size={25} />
+                      ) : text === "Dashboard" ? (
+                        <FaChartLine className="icon" size={25} />
+                      ) : (
+                        <MdSportsCricket className="icon" size={25} />
+                      )}
+                    </ListItemIcon>
+                    <ListItemText primary={text} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
             </List>
             <List>
-              <Divider style={{ backgroundColor: "white", borderWidth: 1.5 }} />
+              <Divider className="divider" style={{ borderWidth: 1.5 }} />
               <ListItem className="drawer-tab" disablePadding>
                 <ListItemButton
                   onClick={() => {

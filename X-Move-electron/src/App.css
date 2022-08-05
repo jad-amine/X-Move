@@ -160,6 +160,11 @@
   color: #ff4d00;
 }
 
+.divider {
+  background-color: white;
+  border-width: 2em;
+}
+
 /* Dashboard */
 
 .dashboard-header {

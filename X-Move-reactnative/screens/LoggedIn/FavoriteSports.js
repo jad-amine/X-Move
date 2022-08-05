@@ -1,14 +1,13 @@
-import React, { useContext, useState } from "react";
-import { Text, ScrollView, TouchableOpacity, Image, View } from "react-native";
+// Utilities
+import React, { useState } from "react";
 import { global } from "../../styles/globalStyles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Text, ScrollView, TouchableOpacity } from "react-native";
 
-import { UserContext } from "../../contexts/UserContext";
+// Com
 import FavoriteSport from "../../components/FavoriteSport";
 
 const FavoriteSports = () => {
-  const { user, setUser } = useContext(UserContext);
-  const sports = user.info.sports;
   const [fitness, setFitness] = useState(true);
   const [ball, setBall] = useState(false);
   const [water, setWater] = useState(false);

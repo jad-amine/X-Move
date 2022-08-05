@@ -1,6 +1,10 @@
 // Utilities
-import React, { useContext, useState } from "react";
+import API from "../../api";
 import loginImage from "../../assets/signUP.png";
+import * as SecureStore from "expo-secure-store";
+import { global } from "../../styles/globalStyles";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../../contexts/UserContext";
 import {
   Alert,
   ImageBackground,
@@ -11,10 +15,6 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import * as SecureStore from "expo-secure-store";
-import { global } from "../../styles/globalStyles";
-import { UserContext } from "../../contexts/UserContext";
-import API from "../../api";
 
 const Register = ({ navigation }) => {
   const { setUser } = useContext(UserContext);
@@ -36,7 +36,7 @@ const Register = ({ navigation }) => {
       await SecureStore.setItemAsync("token", data.token);
       await setUser({ info: data.user, token: data.token });
     } catch (err) {
-      console.log(err.message, "Something wrong with the request");
+      Alert.alert("Network error !");
     }
   };
 

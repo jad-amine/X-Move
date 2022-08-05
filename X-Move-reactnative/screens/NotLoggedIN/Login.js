@@ -1,5 +1,9 @@
 // Utilities
+import API from "../../api";
+import * as SecureStore from "expo-secure-store";
+import { global } from "../../styles/globalStyles";
 import React, { useContext, useState } from "react";
+import { UserContext } from "../../contexts/UserContext";
 import loginImage from "../../assets/signUP.png";
 import {
   Alert,
@@ -11,10 +15,6 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import * as SecureStore from "expo-secure-store";
-import { global } from "../../styles/globalStyles";
-import { UserContext } from "../../contexts/UserContext";
-import API from "../../api";
 
 const Login = ({ navigation }) => {
   const { setUser } = useContext(UserContext);
@@ -36,7 +36,6 @@ const Login = ({ navigation }) => {
       navigation.navigate("Landing Page");
     } catch (err) {
       Alert.alert("Incorrect email or password !");
-      console.log(err.message, "Something wrong with the request");
     }
   };
 
@@ -69,7 +68,7 @@ const Login = ({ navigation }) => {
             style={global.loginInput}
           />
           <TouchableOpacity onPress={handleLogin} style={global.login}>
-            <Text style={[global.loginText, { color: "white" }]}>LOG IN</Text>
+            <Text style={[global.loginText, global.white]}>LOG IN</Text>
           </TouchableOpacity>
           <Text style={global.alreadyUser}>
             Don't have an account?

@@ -44,6 +44,9 @@ export const global = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
   },
+  white: {
+    color: "white",
+  },
   registerText: {
     fontWeight: "bold",
     color: "white",

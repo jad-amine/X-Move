@@ -1,13 +1,13 @@
 // @refresh reset
 // Utilities
-import { StatusBar } from "expo-status-bar";
+import API from "./api";
 import * as SecureStore from "expo-secure-store";
+import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { UserContext } from "./contexts/UserContext";
 import { useEffect, useState } from "react";
 console.disableYellowBox = true;
-import API from "./api";
 
 // Screens
 import Login from "./screens/NotLoggedIN/Login";
@@ -20,7 +20,7 @@ const stack = createNativeStackNavigator();
 export default function App() {
   const [user, setUser] = useState(null);
 
-  // Check if the user is Logged IN
+  // Check if the user didn't logout the last session
   useEffect(() => {
     const authUser = async () => {
       try {
@@ -45,7 +45,7 @@ export default function App() {
           return;
         }
       } catch (err) {
-        console.log(err.message, "Fix the request");
+        return;
       }
     };
     authUser();
@@ -78,6 +78,7 @@ export default function App() {
       </UserContext.Provider>
     );
   } else {
+    // If the user is still logged in
     return (
       <UserContext.Provider value={{ user, setUser }}>
         <NavigationContainer>

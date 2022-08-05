@@ -1,11 +1,12 @@
+// Utilities
 import React from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import TextField from "@mui/material/TextField";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContentText from "@mui/material/DialogContentText";
 
 export default function CalendarDialog({
   showDialog,
@@ -32,7 +33,7 @@ export default function CalendarDialog({
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             <p>From:</p> {newEvent.start.toString().slice(0, 21)}
-            <p style={{ margin: 20 }}></p>
+            <p className="divider"></p>
             <p>Till:</p> {newEvent.end.toString().slice(0, 21)}
           </DialogContentText>
           <TextField

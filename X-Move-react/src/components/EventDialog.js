@@ -1,11 +1,12 @@
+// Utilities
+import API from "../api";
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
+import Button from "@mui/material/Button";
+import DialogTitle from "@mui/material/DialogTitle";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import API from "../api";
 
 export default function EventDialog({
   showEventDialog,
@@ -23,6 +24,7 @@ export default function EventDialog({
     setShowEventDialog(false);
   };
 
+  // Delete reservation
   const handleDelete = async () => {
     try {
       const { data } = await API.get("deleteReservation/" + eventToDelete.id, {
@@ -37,10 +39,11 @@ export default function EventDialog({
         );
       }
     } catch (error) {
-      console.log(error, error.message);
+      alert("Couldn't delete reservation !");
     }
   };
 
+  // Reschedule reservation
   const handleReschedule = async () => {
     try {
       const { data } = await API.post(
@@ -65,7 +68,7 @@ export default function EventDialog({
         setShowEventDialog(false);
       }
     } catch (error) {
-      console.log(error, error.message);
+      alert("Couldn't reschedule reservation");
     }
   };
 
@@ -77,7 +80,7 @@ export default function EventDialog({
           <DialogContent>
             <DialogContentText>
               <p>From:</p> {eventToDelete.start.toString().slice(0, 21)}
-              <p style={{ margin: 20 }}></p>
+              <p className="divider"></p>
               <p>Till:</p> {eventToDelete.end.toString().slice(0, 21)}
             </DialogContentText>
           </DialogContent>
@@ -91,6 +94,7 @@ export default function EventDialog({
       </div>
     );
   }
+
   if (reschedule) {
     return (
       <div>
@@ -102,11 +106,11 @@ export default function EventDialog({
             <DialogContentText>
               <p>From:</p>{" "}
               {rescheduledEvent.event.start.toString().slice(0, 21)}
-              <p style={{ margin: 20 }}></p>
+              <p className="divider"></p>
               <p>Till:</p> {rescheduledEvent.event.end.toString().slice(0, 21)}
               <hr />
               <p>From:</p> {rescheduledEvent.start.toString().slice(0, 21)}
-              <p style={{ margin: 20 }}></p>
+              <p className="divider"></p>
               <p>Till:</p> {rescheduledEvent.end.toString().slice(0, 21)}
             </DialogContentText>
           </DialogContent>

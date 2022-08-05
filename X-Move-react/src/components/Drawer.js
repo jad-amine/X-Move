@@ -1,4 +1,9 @@
+// Utilities
 import * as React from "react";
+import { UserContext } from "../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
+
+// Styling
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -7,11 +12,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { UserContext } from "../contexts/UserContext";
 import LogoutIcon from "@mui/icons-material/Logout";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import SportsVolleyballIcon from "@mui/icons-material/SportsVolleyball";
-import { useNavigate } from "react-router-dom";
 
 export default function TemporaryDrawer() {
   const { showDrawer, setShowDrawer, setUser } = React.useContext(UserContext);

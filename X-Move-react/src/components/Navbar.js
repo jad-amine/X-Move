@@ -1,11 +1,13 @@
+// Utilities
 import React, { useContext } from "react";
-import logo from "../assets/logo.png";
-import { FaInstagram, FaFacebookSquare, FaTwitter } from "react-icons/fa";
-import { FiMenu } from "react-icons/fi";
 import { UserContext } from "../contexts/UserContext";
+import logo from "../assets/logo.png";
+import { FiMenu } from "react-icons/fi";
+import { FaInstagram, FaFacebookSquare, FaTwitter } from "react-icons/fa";
 
 function Navbar() {
-  const { user, setShowDrawer, showDrawer } = useContext(UserContext);
+  const { setShowDrawer } = useContext(UserContext);
+
   return (
     <div className="top-nav">
       <img
@@ -16,7 +18,6 @@ function Navbar() {
         alt="logo"
       />
       <ul>
-        {/* <p style={{ color: "white" }}>{user && user.info.name}</p> */}
         <li>
           <FaFacebookSquare size={25} color="white" />
         </li>
@@ -33,9 +34,6 @@ function Navbar() {
             color="white"
             onClick={() => {
               setShowDrawer(true);
-              console.log(showDrawer);
-              // localStorage.clear();
-              // setUser(null);
             }}
           />
         </li>

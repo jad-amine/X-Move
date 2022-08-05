@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+// Utilities
+import React, { useContext } from "react";
 import { ApplicationContext } from "../contexts/ApplicationContext";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -14,7 +15,7 @@ export default function Players() {
 
   return (
     <>
-      <h1 style={{ textAlign: "center", margin: 50 }}>Players</h1>
+      <h1 className="players-header">Players</h1>
       <div className="players-window">
         {applicationData.players &&
           applicationData.players
@@ -25,7 +26,6 @@ export default function Players() {
                   component="img"
                   alt="green iguana"
                   height="250"
-                  // image={"asdlj"}
                   src={`http://192.168.1.3:4000` + player.pictureURL}
                 />
                 <CardContent>
@@ -44,7 +44,6 @@ export default function Players() {
                         direction="row"
                         spacing={1}
                       >
-                        {/* <Chip label={sport} /> */}
                         <Chip label={sport} variant="outlined" />
                       </Stack>
                     ))}

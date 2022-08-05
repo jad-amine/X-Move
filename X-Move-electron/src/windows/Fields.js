@@ -1,3 +1,4 @@
+// Utilities
 import React, { useContext } from "react";
 import { ApplicationContext } from "../contexts/ApplicationContext";
 import Card from "@mui/material/Card";
@@ -8,7 +9,6 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
-import { MdOutlineAttachEmail } from "react-icons/md";
 
 export default function Players() {
   const { applicationData } = useContext(ApplicationContext);
@@ -38,14 +38,10 @@ export default function Players() {
                   {field.name}
                   <Stack direction="row">
                     <Chip label={field.sport} />
-                    {/* <Chip label={field.sport} variant="outlined" /> */}
                   </Stack>
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {/* <div style={{ display: "flex", alignItems: "center", gap: 20}}> */}
-                  {/* <MdOutlineAttachEmail /> */}
                   {field.email}
-                  {/* </div> */}
                   <br />
                   {field.number}
                   <br />

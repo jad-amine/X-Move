@@ -127,6 +127,12 @@
   padding: 0 60px;
 }
 
+.players-header {
+  text-align: center;
+  margin: 50px;
+  color: #666;
+}
+
 /* Drawer */
 .drawer-tab:hover {
   background-color: white;

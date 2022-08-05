@@ -1,3 +1,10 @@
+// Utilities
+import API from "../../api";
+import uuid from "react-native-uuid";
+import { Button } from "react-native-paper";
+import * as ImagePicker from "expo-image-picker";
+import { global } from "../../styles/globalStyles";
+import { UserContext } from "../../contexts/UserContext";
 import React, { useContext, useEffect, useState } from "react";
 import {
   Alert,
@@ -8,16 +15,12 @@ import {
   View,
   Modal,
 } from "react-native";
-import { UserContext } from "../../contexts/UserContext";
-import * as ImagePicker from "expo-image-picker";
-import { global } from "../../styles/globalStyles";
-import UploadProfilePic from "../../components/UploadProfilePic";
-import About from "../../components/About";
-import { Button } from "react-native-paper";
+
+// Components
 import ProfileModal from "../../components/ProfileModal";
 import FriendsModal from "../../components/ProfileComponents/FriendsModal";
-import uuid from "react-native-uuid";
-import API from "../../api";
+import UploadProfilePic from "../../components/UploadProfilePic";
+import About from "../../components/About";
 
 const Profile = () => {
   const id = uuid.v4();
@@ -26,8 +29,8 @@ const Profile = () => {
   const [friendsModalVisible, setFriendsModalVisible] = useState(false);
   useEffect(() => {}, [user]);
 
+  // No permissions request is necessary for launching the image library
   const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
@@ -56,7 +59,7 @@ const Profile = () => {
         });
       }
     } catch (err) {
-      console.log("request error ==>", err);
+      Alert.alert("Network error !");
     }
   };
 
@@ -64,7 +67,9 @@ const Profile = () => {
     Alert.alert("Profile Picture", "Change Profile Picture ?", [
       {
         text: "Cancel",
-        onPress: () => {},
+        onPress: () => {
+          return;
+        },
       },
       { text: "Yes", onPress: pickImage },
     ]);

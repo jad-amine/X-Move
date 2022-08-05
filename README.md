@@ -191,8 +191,9 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br>
 
-| ------------------------------- |
-| ![](readme/Web/WeekMonth.gif) |
+| Adding Reservation for multiple days |
+| ------------------------------------ |
+| ![](readme/Web/WeekMonth.gif)        |
 
 <br>
 
@@ -200,7 +201,19 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | ----------------------------- |
 | ![](readme/Web/Property.png)  |
 
+<br><br>
+
+<h1>Admin Desktop App</h1>
+<hr>
+| <h2>Change Property info</h2> |
+| ----------------------------- |
+|  ![](readme/electron/PlayerFlow.gif) |
+
 <br>
+
+| <h2>Change Property info</h2>        |
+| ------------------------------------ |
+| ![](readme/electron/PlayersFlow.gif) |
 
 <img id="run" src="./readme/title6.svg"/>
 
@@ -233,4 +246,3 @@ _Below is an example of how you can instruct your audience on installing and set
    ```js
    const API_KEY = "ENTER YOUR API";
    ```
-   ![](readme/electron/ezgif.com-gif-maker.gif)

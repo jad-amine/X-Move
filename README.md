@@ -279,12 +279,17 @@ To run this project, you will need the following installed on your system:
 git clone https://github.com/jad-amine/X-Move.git
 ```
 
-2. Navigate into the Desktop application folder named [X-Move-electron]() , to install npm packages:
+2. Navigate into the Desktop application folder named ```diff
+
+- text in red
+
+````
+[X-Move-electron]() , to install npm packages:
 
 ```sh
 cd X-Move-electron
 npm install
-```
+````
 
 3. Navigate into the Web application folder named [X-Move-react]() , to install npm packages:
 

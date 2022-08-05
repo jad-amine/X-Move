@@ -1,25 +1,25 @@
 // Utilities
 import API from "./api";
-import React, { useContext, useEffect, useState } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { ApplicationContext } from "./contexts/ApplicationContext";
 
-// Windows
+// Windows and Components
 import LandingPage from "./windows/LandingPage";
+import Dashboard from "./windows/Dashboard";
+import Players from "./windows/Players";
+import Fields from "./windows/Fields";
+import Equipment from "./windows/Equipment";
 import Drawer from "./components/Drawer";
 import Navbar from "./components/Navbar";
-import Dashboard from "./windows/Dashboard";
-import Equipment from "./windows/Equipment";
-import Fields from "./windows/Fields";
-import Players from "./windows/Players";
-import { ApplicationContext } from "./contexts/ApplicationContext";
 
 function App() {
   const { applicationData, setApplicationData } =
     useContext(ApplicationContext);
-  const [showDrawer, setShowDrawer] = useState(false);
 
   useEffect(() => {
+    // Launch the application automatically if the admin hadn't logged out previously
     const token = localStorage.getItem("token");
     if (!token) return;
     else {
@@ -39,13 +39,13 @@ function App() {
           }
         } catch (error) {
           setApplicationData(null);
-          console.log(error.message, error);
         }
       };
       authAdmin();
     }
   }, []);
 
+  // Log in window
   if (!applicationData)
     return <LandingPage setApplicationData={setApplicationData} />;
 

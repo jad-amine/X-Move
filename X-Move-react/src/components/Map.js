@@ -1,4 +1,8 @@
+// Utilities
 import React, { useContext, useState } from "react";
+import { UserContext } from "../contexts/UserContext";
+
+// Map component
 import {
   MapContainer,
   Marker,
@@ -6,9 +10,8 @@ import {
   TileLayer,
   useMapEvents,
 } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import { UserContext } from "../contexts/UserContext";
+import "leaflet/dist/leaflet.css";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -23,6 +26,8 @@ export default function Map({ setLocation }) {
   const [propertyLocation, setPropertyLocation] = useState(
     user.info.property?.location
   );
+
+  // Get property location
   const LocationFinderDummy = () => {
     useMapEvents({
       click(e) {

@@ -14,7 +14,6 @@
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  border-bottom: 2px solid gray;
   background-color: black;
   padding: 0 20px;
 }
@@ -143,7 +142,7 @@ button[disabled] {
 
 .property-form {
   display: flex;
-  padding: 39px 60px;
+  padding: 32.5px 60px;
   flex-direction: column;
   width: 400px;
   margin: 0px auto;
@@ -154,6 +153,17 @@ button[disabled] {
 
 .property-form select {
   width: 200px;
+}
+
+.property-button {
+  background-color: #ff4d00;
+  border: 0;
+  font-size: large;
+  color: white;
+  width: 200px;
+  height: 40px;
+  align-self: center;
+  border-radius: 10px;
 }
 
 /* Map Component */

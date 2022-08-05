@@ -150,7 +150,7 @@ export default function Property() {
               />
             </div>
             <input accept="image/*" type="file" onChange={imgFilehandler} />
-            <button onClick={handleClick}>
+            <button onClick={handleClick} className="property-button">
               {update ? "Update" : "Submit"}
             </button>
             {updated && <p>Updated</p>}

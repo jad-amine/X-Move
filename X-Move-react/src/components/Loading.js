@@ -1,17 +1,20 @@
+// Utilities
 import React, { useEffect, useState } from "react";
+
+// Sports icons
 import { FaSkiing, FaChessKing, FaVolleyballBall } from "react-icons/fa";
+import { MdSurfing, MdSailing } from "react-icons/md";
+import { BsBicycle } from "react-icons/bs";
+import { RiBilliardsFill } from "react-icons/ri";
+import { BiDumbbell } from "react-icons/bi";
+import { TbScubaMask, TbKayak } from "react-icons/tb";
 import {
+  GiVolleyballBall,
   GiBasketballBall,
   GiAmericanFootballBall,
   GiSoccerBall,
   GiTennisBall,
 } from "react-icons/gi";
-import { MdSurfing, MdSailing } from "react-icons/md";
-import { BsBicycle } from "react-icons/bs";
-import { RiBilliardsFill } from "react-icons/ri";
-import { GiVolleyballBall } from "react-icons/gi";
-import { BiDumbbell } from "react-icons/bi";
-import { TbScubaMask, TbKayak } from "react-icons/tb";
 
 export default function Loading() {
   const [icon, setIcon] = useState(<GiAmericanFootballBall />);
@@ -34,11 +37,13 @@ export default function Loading() {
     <TbKayak className="icon" size="7em" />,
     <TbKayak className="icon" size="7em" />,
   ];
+
   useEffect(() => {
     const myTimeout = setTimeout(() => {
       setIcon(icons[Math.floor(Math.random() * icons.length)]);
     }, 400);
     return () => clearTimeout(myTimeout);
   });
+
   return <div className="loading-screen">{icon}</div>;
 }

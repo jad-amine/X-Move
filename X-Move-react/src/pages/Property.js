@@ -1,9 +1,12 @@
-import React, { useContext, useState } from "react";
+// Utilities
 import API from "../api";
+import { useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../contexts/UserContext";
+
+// Components
 import Map from "../components/Map";
 import BasicSelect from "../components/Select";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../contexts/UserContext";
 
 export default function Property() {
   const { user } = useContext(UserContext);
@@ -20,6 +23,7 @@ export default function Property() {
   const [updated, setUpdated] = useState();
   const navigate = useNavigate();
 
+  // Update property information
   const handleClick = async (e) => {
     e.preventDefault();
     if (
@@ -56,10 +60,11 @@ export default function Property() {
       setUpdated(true);
       navigate("/");
     } catch (error) {
-      console.log(error);
+      alert("Couldn't add info ! Please try again ");
     }
   };
 
+  // Select property picture
   const imgFilehandler = (event) => {
     var fileSelected = event.target.files;
     var fileToLoad = fileSelected[0];
@@ -76,67 +81,81 @@ export default function Property() {
   return (
     <>
       <div className="property-container">
-        <div className="property-form-header">Property Information</div>
-        <form className="property-form">
-          <p>Name: </p>
-          {user.info.property?.name ? (
-            <>
-              <h1>{user.info.property.name}</h1>
-              <hr />
-              <p>Type: </p>
-              <h1>{user.info.property.property}</h1>
-              <hr />
-              <p>Sport: </p>
-              <h1>
-                {user.info.property.sport.charAt(0).toUpperCase() +
-                  user.info.property.sport.slice(1)}
-              </h1>
-            </>
-          ) : (
-            <>
-              <input type="text" onChange={(e) => setName(e.target.value)} />
-              <hr />
-              <BasicSelect
-                text={"Type"}
-                value={property}
-                setValue={setProperty}
-              />
-              {property === "Field" ? (
-                <BasicSelect text={"Sport"} value={sport} setValue={setSport} />
-              ) : (
+        <div>
+          <p className="property-form-header">Property Information</p>
+          <form className="property-form">
+            {user.info.property?.name ? (
+              <>
+                <div>
+                  <p>Name: </p>
+                  <h2>{user.info.property.name}</h2>
+                </div>
+                <hr />
+                <div>
+                  <p>Type: </p>
+                  <h2>{user.info.property.property}</h2>
+                </div>
+                <hr />
+                <div>
+                  <p>Sport: </p>
+                  <h2>
+                    {user.info.property.sport.charAt(0).toUpperCase() +
+                      user.info.property.sport.slice(1)}
+                  </h2>
+                </div>
+              </>
+            ) : (
+              <>
+                <p>Name: </p>
+                <input type="text" onChange={(e) => setName(e.target.value)} />
+                <hr />
                 <BasicSelect
-                  text={property}
-                  value={sport}
-                  setValue={setSport}
+                  text={"Type"}
+                  value={property}
+                  setValue={setProperty}
                 />
-              )}
-            </>
-          )}
-          <hr />
-          <div>
-            <label>Phone Number: </label>
-            <input
-              value={number}
-              property="number"
-              placeholder="Number"
-              onChange={(e) => setNumber(e.target.value)}
-            />
-          </div>
-          <div>
-            <label>Rent ($) : </label>
-            <input
-              value={rentPerHour}
-              property="number"
-              placeholder="Rent/Hour"
-              min={1}
-              onChange={(e) => setRentPerHour(e.target.value)}
-            />
-          </div>
-          <input accept="image/*" type="file" onChange={imgFilehandler} />
-          <input type="button" value={"Location"} />
-          <button onClick={handleClick}>{update ? "Update" : "Submit"}</button>
-          {updated && <p>Updated</p>}
-        </form>
+                {property === "Field" ? (
+                  <BasicSelect
+                    text={"Sport"}
+                    value={sport}
+                    setValue={setSport}
+                  />
+                ) : (
+                  <BasicSelect
+                    text={property}
+                    value={sport}
+                    setValue={setSport}
+                  />
+                )}
+              </>
+            )}
+            <hr />
+            <div>
+              <label>Phone Number: </label>
+              <input
+                value={number}
+                property="number"
+                placeholder="Number"
+                onChange={(e) => setNumber(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>Rent ($) : </label>
+              <input
+                value={rentPerHour}
+                property="number"
+                placeholder="Rent/Hour"
+                min={1}
+                onChange={(e) => setRentPerHour(e.target.value)}
+              />
+            </div>
+            <input accept="image/*" type="file" onChange={imgFilehandler} />
+            <button onClick={handleClick}>
+              {update ? "Update" : "Submit"}
+            </button>
+            {updated && <p>Updated</p>}
+          </form>
+        </div>
         <Map setLocation={setLocation} location={location} />
       </div>
     </>

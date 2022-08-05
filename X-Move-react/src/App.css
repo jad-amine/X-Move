@@ -125,8 +125,9 @@ button[disabled] {
 
 /* Property Page */
 .property-container {
-  padding: 20px 0;
   background-color: #ddd;
+  display: flex;
+  /* gap: 10px; */
 }
 
 .property-form-header {
@@ -135,21 +136,20 @@ button[disabled] {
   padding-top: 15px;
   font-size: 1.5em;
   text-align: center;
-  width: 600px;
+  width: 400px;
   margin: 0 auto;
   color: white;
-  border-radius: 10px 10px 0 0;
 }
+
 .property-form {
   display: flex;
-  padding: 20px 40px 40px 40px;
+  padding: 39px 60px;
   flex-direction: column;
-  width: 600px;
+  width: 400px;
   margin: 0px auto;
-  gap: 20px;
-  border-radius: 0 0 10px 10px;
   border: 3px solid #ff4d00;
   background-color: white;
+  gap: 10px;
 }
 
 .property-form select {
@@ -158,12 +158,11 @@ button[disabled] {
 
 /* Map Component */
 .map-container {
-  height: 700px;
-  width: 1000px;
-  margin: 50px auto;
+  height: 550px;
+  width: 870px;
 }
-/* Owner Calendar */
 
+/* Owner Calendar */
 .calendar {
   margin: 50px;
 }
@@ -185,7 +184,6 @@ button[disabled] {
 .date-picker {
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 
 #addEvent-button {

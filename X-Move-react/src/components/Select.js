@@ -1,15 +1,17 @@
+// Utilities
 import * as React from "react";
 import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
 
 export default function BasicSelect({ text, value, setValue }) {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
 
+  // Properties types
   let list;
   if (text === "Type") {
     list = [
@@ -32,6 +34,7 @@ export default function BasicSelect({ text, value, setValue }) {
       ["kayak", "Kayak"],
     ];
   }
+
   return (
     <Box sx={{ minWidth: 250 }}>
       <FormControl fullWidth>

@@ -1,4 +1,11 @@
+// Utilities
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
+import { GiAmericanFootballPlayer } from "react-icons/gi";
+import { FaChartLine } from "react-icons/fa";
+import { MdSportsCricket } from "react-icons/md";
+import { TbSoccerField } from "react-icons/tb";
+import { ApplicationContext } from "../contexts/ApplicationContext";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -8,17 +15,13 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { useNavigate } from "react-router-dom";
-import { GiAmericanFootballPlayer } from "react-icons/gi";
-import { FaChartLine } from "react-icons/fa";
-import { MdSportsCricket } from "react-icons/md";
-import { TbSoccerField } from "react-icons/tb";
-import { ApplicationContext } from "../contexts/ApplicationContext";
 
 export default function TemporaryDrawer() {
-  const navigate = useNavigate();
   const { showDrawer, setShowDrawer, setApplicationData } =
     React.useContext(ApplicationContext);
+
+  const navigate = useNavigate();
+
   const toggleDrawer = () => {
     setShowDrawer(false);
   };
@@ -28,13 +31,7 @@ export default function TemporaryDrawer() {
       <React.Fragment>
         <Drawer anchor={"left"} open={showDrawer} onClose={toggleDrawer}>
           <Box
-            style={{
-              backgroundColor: "#FF4D00",
-              display: "flex",
-              flex: 1,
-              justifyContent: "space-between",
-              flexDirection: "column",
-            }}
+            className="box"
             sx={{ width: 300 }}
             role="presentation"
             onClick={toggleDrawer}

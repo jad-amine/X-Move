@@ -134,6 +134,14 @@
 }
 
 /* Drawer */
+.box {
+  background-color: #ff4d00;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
 .drawer-tab:hover {
   background-color: white;
   transition: 0.5s;

@@ -1,21 +1,25 @@
-import * as React from "react";
-import MapView, { Marker } from "react-native-maps";
-import { Text, View, Modal, Dimensions } from "react-native";
-import { UserContext } from "../../contexts/UserContext";
-import MapModal from "../../components/MapModal";
-import { Button } from "react-native-paper";
-import { useNavigation } from "@react-navigation/native";
+// Utilities
 import API from "../../api";
+import * as React from "react";
+import { Button } from "react-native-paper";
 import { global } from "../../styles/globalStyles";
+import MapView, { Marker } from "react-native-maps";
+import { UserContext } from "../../contexts/UserContext";
+import { useNavigation } from "@react-navigation/native";
+import { Text, View, Modal, Dimensions, Alert } from "react-native";
+
+// Components
+import MapModal from "../../components/MapModal";
 
 export default function Map() {
+  const navigation = useNavigation();
+  const { user } = React.useContext(UserContext);
+  const [players, setPlayers] = React.useState(null);
+  const [resultMessage, setResultMessage] = React.useState("");
   const [search, setSearch] = React.useState([true, "allPlayers"]);
   const [modalVisible, setModalVisible] = React.useState(false);
-  const [resultMessage, setResultMessage] = React.useState("");
-  const [players, setPlayers] = React.useState(null);
-  const { user } = React.useContext(UserContext);
-  const navigation = useNavigation();
 
+  // Get all subscribed players locations on when the component mount
   React.useEffect(() => {
     const fetchLocations = async () => {
       try {
@@ -32,7 +36,8 @@ export default function Map() {
           : setResultMessage(``);
         setPlayers(data);
       } catch (err) {
-        console.log("Request Error", err);
+        Alert.alert("Network erro !");
+        setResultMessage("No results found!!");
       }
     };
     fetchLocations();

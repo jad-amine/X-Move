@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import UserForm from "../components/UserForm";
 import Loading from "../components/Loading";
 import API from "../api";
+import { UserContext } from "../contexts/UserContext";
 
-function LandingPage({ setUser }) {
+function LandingPage() {
   const [isLoading, setIsLoading] = useState(true);
+  const { setUser } = useContext(UserContext);
 
   useEffect(() => {
     const token = localStorage.getItem("token");

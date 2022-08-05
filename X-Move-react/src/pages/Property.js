@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import API from "../api";
 import Map from "../components/Map";
 import BasicSelect from "../components/Select";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../contexts/UserContext";
 
-export default function Property({ user, setUser }) {
+export default function Property() {
+  const { user } = useContext(UserContext);
   const [name, setName] = useState(null);
   const [property, setProperty] = useState("");
   const [sport, setSport] = useState("");

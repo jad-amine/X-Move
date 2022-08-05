@@ -1,21 +1,26 @@
+// Utilities
+import API from "../api";
+import moment from "moment";
 import React, { useContext, useEffect, useState } from "react";
+import { UserContext } from "../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
+import "react-datepicker/dist/react-datepicker.css";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
+
+// Components
+import CalendarDialog from "../components/CalendarDialog";
+import EventDialog from "../components/EventDialog";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
-import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import "react-datepicker/dist/react-datepicker.css";
-import API from "../api";
-import { UserContext } from "../contexts/UserContext";
-import moment from "moment";
-import CalendarDialog from "../components/CalendarDialog";
-import { v4 as uuidv4 } from "uuid";
-import EventDialog from "../components/EventDialog";
-import { useNavigate } from "react-router-dom";
 
 const DragAndDropCalendar = withDragAndDrop(Calendar);
 const localizer = momentLocalizer(moment);
 
 export default function OwnerCalendar() {
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
   const [newEvent, setNewEvent] = useState({ player: "", start: "", end: "" });
   const [allEvents, setAllEvents] = useState([]);
   const [showDialog, setShowDialog] = useState(false);
@@ -23,10 +28,9 @@ export default function OwnerCalendar() {
   const [reschedule, setReschedule] = useState(false);
   const [rescheduledEvent, setRescheduledEvent] = useState(false);
   const [eventToDelete, setEventToDelete] = useState(false);
-  const { user } = useContext(UserContext);
-  const navigate = useNavigate();
 
   useEffect(() => {
+    // Fetch property reservations
     const getReservations = async () => {
       try {
         const { data } = await API.get("getReservations/", {
@@ -43,16 +47,15 @@ export default function OwnerCalendar() {
             end: new Date(event.end),
           };
         });
-        console.log(fetchedEvents);
         setAllEvents([...fetchedEvents]);
       } catch (error) {
         alert("Reservations couldn't be fetched !!");
-        console.log(error.message);
       }
     };
     getReservations();
   }, []);
 
+  // Add 30 min Reservation
   const handleSelect = (e) => {
     setNewEvent({
       ...newEvent,
@@ -63,11 +66,7 @@ export default function OwnerCalendar() {
     setShowDialog(true);
   };
 
-  const handleEventSelect = (e) => {
-    setEventToDelete(e);
-    setShowEventDialog(true);
-  };
-
+  // Add custom Reservation
   const handleAddEvent = async () => {
     setShowDialog(false);
     try {
@@ -84,10 +83,16 @@ export default function OwnerCalendar() {
       setNewEvent({ player: "", start: "", end: "" });
     } catch (error) {
       alert("Game couldn't be set");
-      console.log(error);
     }
   };
 
+  // Delete Reservation
+  const handleEventSelect = (e) => {
+    setEventToDelete(e);
+    setShowEventDialog(true);
+  };
+
+  // Reschedule Reservation
   const handleEventChange = (e) => {
     setShowEventDialog(true);
     setReschedule(true);
@@ -109,7 +114,8 @@ export default function OwnerCalendar() {
         startAccessor="start"
         endAccessor="end"
         events={allEvents}
-        style={{ height: 500, margin: "50px" }}
+        className="calendar"
+        style={{ height: 500 }}
         onSelectEvent={handleEventSelect}
         onEventDrop={handleEventChange}
         onEventResize={handleEventChange}

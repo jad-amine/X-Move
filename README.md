@@ -216,7 +216,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | ![](readme/electron/Home.png) |
 
 <br>
-Data analysis 
+<h2>Data analysis</h2>
 <hr>
 
 | <h2>Players Joining/Leaving the app per month</h2> |
@@ -228,6 +228,12 @@ Data analysis
 | <h2>Check Reservations per month</h2> |
 | ------------------------------------- |
 | ![](readme/electron/PropertyRes.gif)  |
+
+<br>
+
+| <h2>Players</h2>                 |
+| -------------------------------- |
+| ![](readme/electron/players.gif) |
 
 <img id="run" src="./readme/title6.svg"/>
 

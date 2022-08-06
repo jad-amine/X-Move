@@ -166,6 +166,14 @@ export const global = StyleSheet.create({
     borderBottomWidth: 0,
     justifyContent: "flex-end",
   },
+
+  sportContainerText: {
+    marginLeft: 10,
+    color: "white",
+    fontSize: 27,
+    fontWeight: "bold",
+  },
+
   sportIcon: {
     width: 25,
     height: 25,
@@ -312,6 +320,16 @@ export const global = StyleSheet.create({
     justifyContent: "flex-end",
     margin: 10,
   },
+
+  profileIcon: {
+    alignSelf: "center",
+  },
+
+  cameraIcon: {
+    padding: 5,
+    borderRadius: 20,
+  },
+
   profileHeader: {
     flexDirection: "row",
     alignItems: "center",
@@ -395,6 +413,12 @@ export const global = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 16,
+  },
+
+  mapButton: {
+    position: "absolute",
+    bottom: 20,
+    padding: 10,
   },
 
   // Friends Modal
@@ -750,5 +774,15 @@ export const global = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  // Reservations
+  reservationCard: {
+    marginTop: 40,
+    marginRight: 20,
+  },
+
+  cardTitle: {
+    paddingRight: 20,
   },
 });

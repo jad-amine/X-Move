@@ -1,8 +1,9 @@
+// Utilities
 import * as React from "react";
-import MapView, { Marker } from "react-native-maps";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
 import { Button } from "react-native-paper";
 import { global } from "../styles/globalStyles";
+import MapView, { Marker } from "react-native-maps";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 
 export default function ViewLocation({ setLocation, location, setShowMap }) {
   return (
@@ -20,7 +21,7 @@ export default function ViewLocation({ setLocation, location, setShowMap }) {
         {location && <Marker coordinate={location} />}
       </MapView>
       <Button
-        style={{ position: "absolute", bottom: 20, padding: 10 }}
+        style={global.mapButton}
         icon="pin"
         mode="contained"
         onPress={() =>

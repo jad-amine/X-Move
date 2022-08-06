@@ -1,13 +1,14 @@
+// Utilities
 import React from "react";
-import { Text, TouchableOpacity, ImageBackground } from "react-native";
-import { global } from "../styles/globalStyles";
-import { useNavigation } from "@react-navigation/native";
-import Fitness from "../assets/Fitness-Background.png";
-import Cycling from "../assets/Cycling-Background.png";
 import Water from "../assets/water.png";
 import Winter from "../assets/winter.png";
-import Entertainment from "../assets/EntertainmentPic.png";
+import { global } from "../styles/globalStyles";
 import Ball from "../assets/Ball-Background.png";
+import Fitness from "../assets/Fitness-Background.png";
+import Cycling from "../assets/Cycling-Background.png";
+import { useNavigation } from "@react-navigation/native";
+import Entertainment from "../assets/EntertainmentPic.png";
+import { Text, TouchableOpacity, ImageBackground } from "react-native";
 
 const SportContainer = ({ name }) => {
   const navigation = useNavigation();
@@ -33,16 +34,7 @@ const SportContainer = ({ name }) => {
             : ""
         }
       >
-        <Text
-          style={{
-            marginLeft: 10,
-            color: "white",
-            fontSize: 27,
-            fontWeight: "bold",
-          }}
-        >
-          {name} Sports
-        </Text>
+        <Text style={global.sportContainerText}>{name} Sports</Text>
       </ImageBackground>
     </TouchableOpacity>
   );

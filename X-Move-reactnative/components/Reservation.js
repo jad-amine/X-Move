@@ -1,13 +1,16 @@
-import { View, Text } from "react-native";
+// Utilities
 import React from "react";
-import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
+import { View } from "react-native";
+import { Avatar, Card } from "react-native-paper";
+import { global } from "../styles/globalStyles";
 
 export default function Reservation({ item }) {
   const RighContent = (props) => (
     <Avatar.Text size={40} label={item.player} backgroundColor="tomato" />
   );
+
   return (
-    <View style={{ marginTop: 40, marginRight: 20 }}>
+    <View style={global.reservationCard}>
       <Card>
         <Card.Title
           title={
@@ -17,16 +20,8 @@ export default function Reservation({ item }) {
           }
           subtitle="Friendly Game"
           right={RighContent}
-          style={{ paddingRight: 20 }}
+          style={global.cardTitle}
         />
-        {/* <Card.Content>
-          <Title>
-            {item.start.split("T")[1].slice(0, 5)}
-            {"  "}
-            {item.end.split("T")[1].slice(0, 5)}
-          </Title>
-          <Paragraph></Paragraph>
-        </Card.Content> */}
       </Card>
     </View>
   );

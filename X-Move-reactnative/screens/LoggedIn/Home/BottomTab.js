@@ -1,15 +1,15 @@
 // Utilities
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
+import StackNavigator from "./StackNavigator";
 import { AntDesign, Entypo } from "@expo/vector-icons";
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // Screens
 import Map from "../Map";
+import Play from "../Play/Play";
 import Profile from "../Profile";
 import Messages from "../Messages/Messages";
-import StackNavigator from "./StackNavigator";
-import Play from "../Play/Play";
-import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 
 const Tab = createBottomTabNavigator();
 

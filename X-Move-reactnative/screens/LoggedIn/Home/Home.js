@@ -1,21 +1,16 @@
+// Utilities
 import React from "react";
+import { global } from "../../../styles/globalStyles";
 import { View, ScrollView, Text } from "react-native";
+
+// Component
 import SportContainer from "../../../components/SportContainer";
 
 const Home = () => {
   return (
     <ScrollView>
-      <View style={{ marginBottom: 50 }}>
-        <Text
-          style={{
-            margin: 10,
-            alignSelf: "center",
-            fontSize: 20,
-            color: "gray",
-          }}
-        >
-          Choose your sport category
-        </Text>
+      <View style={global.home}>
+        <Text style={global.homeText}>Choose your sport category</Text>
         <SportContainer name="Ball" />
         <SportContainer name="Water" />
         <SportContainer name="Cycling" />

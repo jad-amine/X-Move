@@ -121,6 +121,17 @@ export const global = StyleSheet.create({
     color: "gray",
   },
   // Welcome Page
+  home: {
+    marginBottom: 50,
+  },
+
+  homeText: {
+    margin: 10,
+    alignSelf: "center",
+    fontSize: 20,
+    color: "gray",
+  },
+
   sportsCategories: {
     height: 160,
     flexDirection: "row",

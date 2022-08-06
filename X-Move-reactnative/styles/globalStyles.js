@@ -475,7 +475,14 @@ export const global = StyleSheet.create({
     backgroundColor: "white",
   },
 
-  pictureInput: { alignItems: "center" },
+  pictureInput: {
+    alignItems: "center",
+  },
+
+  postImage: {
+    height: 400,
+    width: "100%",
+  },
 
   picture: {
     marginVertical: 30,
@@ -491,6 +498,48 @@ export const global = StyleSheet.create({
     paddingHorizontal: 40,
     backgroundColor: "#FF4D00",
     color: "white",
+  },
+
+  postStyle: {
+    marginVertical: 15,
+    paddingVertical: 5,
+  },
+
+  postCover: {
+    height: 300,
+  },
+
+  postActions: {
+    marginBottom: -15,
+  },
+
+  postParagraph: {
+    fontWeight: "bold",
+    fontSize: 15,
+  },
+
+  postComment: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  postPlayerPic: {
+    marginLeft: -10,
+  },
+
+  commentInput: {
+    margin: 5,
+    height: 45,
+    flex: 0.97,
+  },
+
+  addComment: {
+    marginHorizontal: -15,
+  },
+
+  avatarIcon: {
+    backgroundColor: "#ccc",
+    marginLeft: -10,
   },
 
   postText: {

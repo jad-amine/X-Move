@@ -1,3 +1,12 @@
+// Utilities
+import API from "../../api";
+import uuid from "react-native-uuid";
+import React, { useState } from "react";
+import { Ionicons } from "@expo/vector-icons";
+import { TextInput } from "react-native-paper";
+import { AntDesign } from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker";
+import { global } from "../../styles/globalStyles";
 import {
   View,
   TouchableOpacity,
@@ -8,20 +17,13 @@ import {
   ScrollView,
   Text,
 } from "react-native";
-import React, { useState } from "react";
-import { AntDesign } from "@expo/vector-icons";
-import { global } from "../../styles/globalStyles";
-import * as ImagePicker from "expo-image-picker";
-import { Ionicons } from "@expo/vector-icons";
-import { TextInput } from "react-native-paper";
-import uuid from "react-native-uuid";
-import API from "../../api";
 
 export default function AddPost({ user, setShowModal, setPosts, posts }) {
   const [picture, setPicture] = useState();
   const [caption, setCaption] = useState();
   const id = uuid.v4();
 
+  // Select picture
   const pickImage = async () => {
     // No permissions request needed for launching the phone gallery
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -50,6 +52,7 @@ export default function AddPost({ user, setShowModal, setPosts, posts }) {
     );
   };
 
+  // Add post
   const handlePress = async () => {
     if (!picture || !caption) {
       Alert.alert(
@@ -72,6 +75,8 @@ export default function AddPost({ user, setShowModal, setPosts, posts }) {
         name: user.info.name,
         playerPic: user.info.pictureURL,
       };
+
+      // Save post
       try {
         const { data } = await API.post(
           `addPost`,
@@ -82,8 +87,6 @@ export default function AddPost({ user, setShowModal, setPosts, posts }) {
             },
           }
         );
-
-        // const data = await response.json();
         if (data.message === "Saved") {
           const newList = [...posts];
           newList.unshift(data.post);
@@ -91,7 +94,7 @@ export default function AddPost({ user, setShowModal, setPosts, posts }) {
           setShowModal(false);
         }
       } catch (error) {
-        console.log(error);
+        Alert.alert("Network Error !");
       }
     }
   };
@@ -112,7 +115,7 @@ export default function AddPost({ user, setShowModal, setPosts, posts }) {
           {picture ? (
             <Image
               source={{ uri: "data:image/png;base64," + picture.base64 }}
-              style={{ height: 400, width: "100%" }}
+              style={global.postImage}
             />
           ) : (
             <View style={global.pictureInput}>

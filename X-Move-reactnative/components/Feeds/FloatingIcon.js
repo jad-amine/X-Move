@@ -1,6 +1,7 @@
-import { TouchableOpacity } from "react-native";
+// Utilities
 import React from "react";
 import { Feather } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native";
 import { global } from "../../styles/globalStyles";
 
 export default function FloatingIcon({ setShowModal }) {

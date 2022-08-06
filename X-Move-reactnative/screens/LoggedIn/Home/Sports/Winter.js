@@ -1,18 +1,18 @@
 import React from "react";
-import { Text, TouchableOpacity, ScrollView } from "react-native";
-import { global } from "../../../../styles/globalStyles";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { global } from "../../../../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Text, TouchableOpacity, ScrollView } from "react-native";
 
 const Winter = () => {
   const navigation = useNavigation();
-
   const navigateToSport = (sport) => {
     navigation.navigate("Players", sport);
   };
+
   return (
-    <ScrollView style={{ marginBottom: 50 }}>
+    <ScrollView style={global.safeArea}>
       <TouchableOpacity
         onPress={() => navigateToSport("Ski")}
         style={global.sportLayout}

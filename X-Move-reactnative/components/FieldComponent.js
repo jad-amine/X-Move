@@ -1,19 +1,18 @@
-import { useNavigation } from "@react-navigation/native";
+// Utilities
 import React from "react";
 import { Text } from "react-native";
-import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
+import { global } from "../styles/globalStyles";
+import { useNavigation } from "@react-navigation/native";
+import { Button, Card, Paragraph } from "react-native-paper";
 
 export default function FieldComponent({ item }) {
-  console.log(item.pictureURL);
   const navigation = useNavigation();
   const RighContent = (props) => (
-    <Text style={{ fontSize: 15 }}>
-      Rent:{" "}
-      <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-        {item.rentPerHour}$
-      </Text>
+    <Text style={global.fieldInfo}>
+      Rent: <Text style={global.fieldPrice}>{item.rentPerHour}$</Text>
     </Text>
   );
+
   return (
     <Card onPress={() => navigation.navigate("Calendar", item)}>
       <Card.Cover
@@ -23,18 +22,21 @@ export default function FieldComponent({ item }) {
       />
       <Card.Title
         title={item.name}
-        // subtitle={item.number}
-        // left={LeftContent} add avatar
         right={RighContent}
-        style={{ paddingRight: 30 }}
+        style={global.fieldTitle}
       />
       <Card.Content>
-        {/* <Title>Card title</Title> */}
         <Paragraph>{item.number}</Paragraph>
         <Paragraph>{item.email}</Paragraph>
       </Card.Content>
       <Card.Actions>
-        <Button onPress={() => console.log(item)}>Rent</Button>
+        <Button
+          onPress={() => {
+            // Credit cards don't work in Lebanon at the moment
+          }}
+        >
+          Rent
+        </Button>
         <Button>Chat</Button>
       </Card.Actions>
     </Card>

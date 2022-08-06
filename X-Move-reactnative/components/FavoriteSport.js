@@ -1,22 +1,24 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
-import React, { useContext, useState } from "react";
-import { global } from "../styles/globalStyles";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
-import PingPong from "../assets/PingPong.png";
+// Utilities
+import API from "../api";
 import Tennis from "../assets/Tennis.png";
 import diving from "../assets/Diving.png";
+import { Ionicons } from "@expo/vector-icons";
+import PingPong from "../assets/PingPong.png";
+import { AntDesign } from "@expo/vector-icons";
+import { global } from "../styles/globalStyles";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
+import React, { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
-import API from "../api";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { View, Text, TouchableOpacity, Image, Alert } from "react-native";
 
 const FavoriteSport = ({ name, iconName, iconLibrary, image }) => {
   const { user, setUser } = useContext(UserContext);
   const sports = user.info.sports;
   const [liked, setLiked] = useState(sports ? sports.includes(name) : null);
 
+  // Add/Remove user favorite sport
   const handlePress = async () => {
     try {
       await API.post(
@@ -45,7 +47,7 @@ const FavoriteSport = ({ name, iconName, iconLibrary, image }) => {
       }
       setLiked(!liked);
     } catch (err) {
-      console.log("Request error", err);
+      Alert.alert("Network error !");
     }
   };
 

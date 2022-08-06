@@ -206,6 +206,20 @@ export const global = StyleSheet.create({
     fontWeight: "bold",
   },
 
+  // Field component
+  fieldInfo: {
+    fontSize: 15,
+  },
+
+  fieldPrice: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+
+  fieldTitle: {
+    paddingRight: 30,
+  },
+
   navigationViewProfile: {
     color: "white",
     fontWeight: "bold",

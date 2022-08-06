@@ -431,10 +431,20 @@ export const global = StyleSheet.create({
     marginBottom: 8,
   },
 
+  chatsList: {
+    flex: 1,
+    padding: 10,
+  },
+
+  chatScreen: {
+    flex: 1,
+  },
+
   friendsList: {
     flex: 1,
     padding: 10,
   },
+
   chatCard: {
     paddingLeft: 10,
     height: 80,

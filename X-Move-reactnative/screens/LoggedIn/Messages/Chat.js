@@ -1,7 +1,11 @@
-import React, { useState, useCallback, useEffect, useContext } from "react";
-import { GiftedChat } from "react-native-gifted-chat";
-import { MessagesContext } from "../../../contexts/MessagesContext";
+// Utilities
+import { db } from "../../../firebase";
+import { useRoute } from "@react-navigation/native";
+import { global } from "../../../styles/globalStyles";
+import { Alert, ImageBackground } from "react-native";
 import { UserContext } from "../../../contexts/UserContext";
+import { MessagesContext } from "../../../contexts/MessagesContext";
+import React, { useState, useCallback, useEffect, useContext } from "react";
 import {
   addDoc,
   collection,
@@ -12,16 +16,16 @@ import {
   setDoc,
   updateDoc,
 } from "firebase/firestore";
-import { colRef, db } from "../../../firebase";
-import { useRoute } from "@react-navigation/native";
-import { ImageBackground } from "react-native";
+
+// Component
+import { GiftedChat } from "react-native-gifted-chat";
 
 const Chat = () => {
-  const { user } = useContext(UserContext);
-  const { rooms, setRooms } = useContext(MessagesContext);
-  const [messages, setMessages] = useState([]);
   const route = useRoute();
+  const { user } = useContext(UserContext);
   const [roomId, setRoomId] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const { rooms, setRooms } = useContext(MessagesContext);
 
   useEffect(() => {
     const userB = route.params;
@@ -29,7 +33,10 @@ const Chat = () => {
       ? rooms.find((room) => room.participantsArray.includes(userB.email))
       : false;
     let randomID;
+
+    // Check if firestore db holds any previous rooms between the two users
     if (!room) {
+      // 1. Create a new room and add the users information
       async function addRoom() {
         try {
           randomID = Math.floor(Math.random() * 100000000).toString();
@@ -65,14 +72,15 @@ const Chat = () => {
               ])
             )
             .catch((err) => {
-              console.log(err, err.message);
+              Alert.alert("Network error !");
             });
         } catch (error) {
-          console.log(error);
+          Alert.alert("Network error !");
         }
       }
       addRoom();
     } else {
+      // Otherwise fetch previous chats between those users
       setRoomId(room.id);
       randomID = room.id;
     }
@@ -93,6 +101,7 @@ const Chat = () => {
     return () => unsubscribe();
   }, []);
 
+  // Append messages to chat screen
   const appendMessages = useCallback(
     (messages = []) => {
       setMessages((previousMessages) =>
@@ -102,6 +111,7 @@ const Chat = () => {
     [messages]
   );
 
+  // Add message to firestore collection & update last message to display
   async function onSend(messages = []) {
     try {
       const roomMessagesRef = collection(db, "rooms", roomId, "messages");
@@ -111,14 +121,14 @@ const Chat = () => {
       writes.push(updateDoc(roomRef, { lastMessage }));
       await Promise.all(writes);
     } catch (err) {
-      console.log(err);
+      Alert.alert("Network error !");
     }
   }
 
   return (
     <ImageBackground
       source={require("../../../assets/chatBackground.jpg")}
-      style={{ flex: 1 }}
+      style={global.chatScreen}
     >
       <GiftedChat
         messages={messages}
@@ -128,21 +138,8 @@ const Chat = () => {
           // name: user.info.name,
           // avatar: user.info.pictureURL,
         }}
-        // placeholder="Type Your Message"
       />
     </ImageBackground>
   );
 };
 export default Chat;
-
-// const q = query(colRef, orderBy("createdAt", "desc"));
-// const unsubscribe = onSnapshot(q, (querySnapshot) => {
-//   setMessages(
-//     querySnapshot.docs.map((doc) => ({
-//       _id: doc.data()._id,
-//       createdAt: doc.data().createdAt.toDate(),
-//       text: doc.data().text,
-//       user: doc.data().user,
-//     }))
-//   );
-// });

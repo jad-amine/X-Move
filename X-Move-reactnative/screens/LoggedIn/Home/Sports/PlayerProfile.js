@@ -1,13 +1,22 @@
-import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
-import React, { useContext, useState } from "react";
+// Utilities
+import API from "../../../../api";
+import { Fontisto } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import { Chip, Divider } from "react-native-paper";
+import React, { useContext, useEffect } from "react";
 import { global } from "../../../../styles/globalStyles";
 import { UserContext } from "../../../../contexts/UserContext";
-import { useEffect } from "react";
-import { Chip, Divider } from "react-native-paper";
-import { AntDesign } from "@expo/vector-icons";
-import { Fontisto } from "@expo/vector-icons";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  Alert,
+} from "react-native";
+
+// Component
 import PostCard from "../../../../components/Feeds/PostCard";
-import API from "../../../../api";
 
 const PlayerProfile = ({ route }) => {
   const { user, setUser } = useContext(UserContext);
@@ -17,6 +26,7 @@ const PlayerProfile = ({ route }) => {
   } else {
     player = route.params;
   }
+  // Check if the users are already friends
   let isFriend = false;
   user.info.friends.forEach((friend) => {
     if (friend._id === player._id) {
@@ -31,6 +41,7 @@ const PlayerProfile = ({ route }) => {
   });
   useEffect(() => {}, [user]);
 
+  // Friend Request button
   const handlePress = async () => {
     try {
       const { data } = await API.post(
@@ -44,6 +55,7 @@ const PlayerProfile = ({ route }) => {
       );
 
       if (data.message === "Added") {
+        // Other user already added him
         let updatedUser = {
           token: user.token,
           info: {
@@ -58,6 +70,7 @@ const PlayerProfile = ({ route }) => {
         };
         setUser(updatedUser);
       } else if (data.message === "Friend Request Sent !") {
+        // Friend request sent
         let updatedUser = {
           token: user.token,
           info: {
@@ -67,6 +80,7 @@ const PlayerProfile = ({ route }) => {
         };
         setUser(updatedUser);
       } else if (data === "Removed") {
+        // Removed user from friends list
         let updatedUser = {
           token: user.token,
           info: {
@@ -81,31 +95,26 @@ const PlayerProfile = ({ route }) => {
         setUser(updatedUser);
       }
     } catch (err) {
-      console.log(err);
+      Alert.alert("Network error !");
     }
   };
+
   return (
-    <ScrollView style={{ padding: 10 }}>
-      <View style={{ margin: 10, flexDirection: "row" }}>
+    <ScrollView style={global.profileMargin}>
+      <View style={global.playerProfileHead}>
         <Image
           source={{ uri: `http://192.168.1.3:4000/` + player.pictureURL }}
-          style={{ height: 150, width: 150, borderRadius: 10 }}
+          style={global.playerPicture}
         />
-        <View style={{ padding: 40, flex: 1 }}>
-          <Text style={{ fontSize: 35 }}>{player.name}</Text>
-          <Text style={{ color: "gray" }}>{player.email}</Text>
+        <View style={global.playerInfo}>
+          <Text style={global.playerName}>{player.name}</Text>
+          <Text style={global.playerEmail}>{player.email}</Text>
         </View>
       </View>
-      <View
-        style={{
-          padding: 20,
-          flexDirection: "row",
-          justifyContent: "space-around",
-        }}
-      >
+      <View style={global.playerProfileNavigation}>
         <TouchableOpacity
           onPress={handlePress}
-          style={{ ...global.PlayerProfileButton, backgroundColor: "#FF4D00" }}
+          style={{ ...global.playerProfileButton, backgroundColor: "#FF4D00" }}
           disabled={isAdded}
         >
           <Text style={{ ...global.registerText, fontSize: 18 }}>
@@ -117,9 +126,9 @@ const PlayerProfile = ({ route }) => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => console.log("hi")}
+          onPress={() => {}}
           style={{
-            ...global.PlayerProfileButton,
+            ...global.playerProfileButton,
             backgroundColor: "#2C75E2",
           }}
         >

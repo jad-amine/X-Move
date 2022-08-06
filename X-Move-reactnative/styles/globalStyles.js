@@ -202,11 +202,45 @@ export const global = StyleSheet.create({
   },
 
   // Player Profile
-  PlayerProfileButton: {
+  playerProfileButton: {
     width: 150,
     paddingVertical: 15,
     alignItems: "center",
     borderRadius: 10,
+  },
+
+  playerPicture: {
+    height: 150,
+    width: 150,
+    borderRadius: 10,
+  },
+
+  playerInfo: {
+    padding: 40,
+    flex: 1,
+  },
+
+  playerName: {
+    fontSize: 35,
+  },
+
+  playerEmail: {
+    color: "gray",
+  },
+
+  playerProfileNavigation: {
+    padding: 20,
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
+
+  profileMargin: {
+    padding: 10,
+  },
+
+  playerProfileHead: {
+    margin: 10,
+    flexDirection: "row",
   },
 
   ScrollView: {

@@ -151,6 +151,11 @@ export const global = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "gray",
   },
+
+  safeArea: {
+    marginBottom: 50,
+  },
+
   sportType: {
     fontSize: 18,
   },

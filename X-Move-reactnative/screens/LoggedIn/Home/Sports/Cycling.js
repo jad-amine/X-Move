@@ -1,13 +1,13 @@
+// Utilities
 import React from "react";
-import { Text, TouchableOpacity, ScrollView } from "react-native";
-import { global } from "../../../../styles/globalStyles";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import { global } from "../../../../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Text, TouchableOpacity, ScrollView } from "react-native";
 
 const Cycling = () => {
   const navigation = useNavigation();
-
   const navigateToSport = (sport) => {
     navigation.navigate("Players", sport);
   };

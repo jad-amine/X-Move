@@ -3,8 +3,9 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+// const cluster = require("cluster");
 
-// Expres app
+// Create an Express app
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
@@ -18,6 +19,8 @@ const adminRoutes = require("./routes/adminRoutes");
 mongoose
   .connect(process.env.DB_CONNECT)
   .then(() => {
+    // To be able to test the mobile app on a real mobile device I used my local IPv4 address
+    // as stated in the "How To Run" section in the README.md file
     app.listen(process.env.PORT, "192.168.1.3", () => {
       console.log("Connected to db & listening to port " + process.env.PORT);
     });
@@ -30,7 +33,7 @@ app.use("/api/users", usersRoutes);
 app.use("/api/owners", ownersRoutes);
 app.use("/api/admin", adminRoutes);
 
-// const cluster = require("cluster");
+// Using cluster module to spin several node.js instances on the same device
 // const os = require("os");
 // const cpuCount = os.cpus().length;
 

@@ -56,23 +56,6 @@ const login = async (req, res) => {
     },
     process.env.TOKEN_SECRET
   );
-  // if (user.pictureURL) {
-  //   const profilepic = fs.readFileSync(`${user.pictureURL}`, {
-  //     encoding: "utf8",
-  //     flag: "r",
-  //   });
-  //   res.status(200).json({
-  //     token: token,
-  //     user: {
-  //       _id: user._id,
-  //       name: user.name,
-  //       email: user.email,
-  //       type: user.admin,
-  //       property: user.property,
-  //       picture: profilepic,
-  //     },
-  //   });
-  // } else {
   res.status(200).json({
     token: token,
     user: {
@@ -83,7 +66,6 @@ const login = async (req, res) => {
       property: user.property,
     },
   });
-  // }
 };
 
 // Add property information
@@ -138,7 +120,7 @@ const updatePropertyInfo = async (req, res) => {
   }
 };
 
-// Add Game
+// Add Reservation
 const addGame = async (req, res) => {
   if (!req.body.propertyID || !req.body.newEvent) {
     res.status(400).json("Invalid Request !!");

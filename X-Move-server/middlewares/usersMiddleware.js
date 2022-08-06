@@ -2,7 +2,7 @@ require("dotenv").config();
 var jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 
-// Auth User middleware or App Launcher
+// Auth User
 const authUser = (req, res, next) => {
   console.log("received");
   if (!req.headers.authorization) {
@@ -22,7 +22,8 @@ const authUser = (req, res, next) => {
           })
           .populate({ path: "friendRequests", populate: { path: "posts" } })
           .populate("posts");
-        req.user = decoded;
+        req.user = user;
+        // Check if the application is launching or the user is sending HTTP requests
         req.body.mission
           ? res.json({
               status: "Verified",

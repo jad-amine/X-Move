@@ -28,28 +28,28 @@ router.post("/register", register);
 // Auth user on App Launch
 router.post("/getUserData", authUser);
 
-// Get users with similar sport interest
+// Get users with similar sports interest
 router.get("/getSimilarUsers/:sport", authUser, fetchSimilarUsers);
 
 // Add Profile Picture
 router.post("/addProfilePicture", authUser, addProfilePicture);
 
-// Add Sport
+// Add Favorite Sport
 router.post("/addSport", authUser, addSport);
 
-// Remove Sport
+// Remove Favorite Sport
 router.post("/removeSport", authUser, removeSport);
 
-// Update Profile
+// Update Profile Information
 router.post("/updateProfile", authUser, updateProfile);
 
-// Get Field Information
+// Get Property for rent Information
 router.get("/getReservations/:field", authUser, getReservations);
 
-// Get Locations
+// Get Players/Fields Locations
 router.get("/getLocations/:type/:sport", authUser, getLocations);
 
-// Add Friend
+// Add/Remove Friend
 router.post("/addFriend", authUser, addFriend);
 
 // Add Post

@@ -15,12 +15,15 @@ const authAdmin = (req, res, next) => {
       res.status(401).json({ error: err, message: "Unauthenticated user" });
     } else {
       const user = await User.findById(decoded._id);
+      // Admins have a code of 1
       if (user.admin == 1) {
+        // If the application is launching
         if (req.body.mission === "Auth Admin") {
           const fields = await Field.find();
           const players = await User.find();
           res.status(200).json({ message: "Validated", fields, players });
         }
+        // If the admin is login in
         next();
       } else {
         res.status(403).json({ message: "You are not an admin!! " });

@@ -15,6 +15,7 @@ const authOwner = (req, res, next) => {
       try {
         const user = await User.findById(decoded._id).populate("property");
         req.user = user;
+        // Check if the application is launching or the user is sending HTTP requests
         req.body.mission
           ? res.json({
               status: "Verified",

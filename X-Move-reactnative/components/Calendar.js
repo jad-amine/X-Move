@@ -1,11 +1,15 @@
-import { View, Text } from "react-native";
+// Utilities
 import React from "react";
-import { useRoute } from "@react-navigation/native";
 import { Agenda } from "react-native-calendars";
+import { useRoute } from "@react-navigation/native";
+
+// Component
 import Reservation from "./Reservation";
 
 export default function Calendar() {
   const item = useRoute().params;
+
+  // Organize reservations by date and time
   let array = item.reservations;
   let length = array.length;
   for (let i = 0; i < length; i++) {
@@ -30,12 +34,13 @@ export default function Calendar() {
   return (
     <Agenda
       items={events}
+      // Max amount of months allowed to scroll to the past.
       pastScrollRange={1}
       // Max amount of months allowed to scroll to the future.
+      futureScrollRange={4}
       theme={{
         agendaTodayColor: "#ff4d00",
       }}
-      futureScrollRange={4}
       renderItem={(item, firstItemInDay) => {
         return <Reservation item={item} />;
       }}

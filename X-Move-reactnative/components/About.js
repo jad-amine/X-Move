@@ -1,9 +1,12 @@
-import { View, Text } from "react-native";
+// Utilities
 import React from "react";
-import { Chip, Divider } from "react-native-paper";
-import { AntDesign } from "@expo/vector-icons";
+import { View, Text } from "react-native";
 import { Fontisto } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import { global } from "../styles/globalStyles";
+import { Chip, Divider } from "react-native-paper";
+
+// Component
 import PostCard from "./Feeds/PostCard";
 
 const About = ({ user }) => {
@@ -22,7 +25,7 @@ const About = ({ user }) => {
       <View style={global.sportsList}>
         {user.info.sports &&
           user.info.sports.map((sport, index) => (
-            <Chip style={{ backgroundColor: "#ff4D00", margin: 5 }} key={index}>
+            <Chip style={global.aboutChip} key={index}>
               <Text style={{ color: "white" }}>{sport}</Text>
             </Chip>
           ))}

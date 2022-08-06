@@ -416,6 +416,11 @@ export const global = StyleSheet.create({
     color: "rgb(88, 89, 88)",
   },
 
+  aboutChip: {
+    backgroundColor: "#ff4D00",
+    margin: 5,
+  },
+
   divider: {
     marginHorizontal: 30,
     borderWidth: 1,

@@ -1,7 +1,10 @@
-import { View, Text, ScrollView } from "react-native";
+// Utilities
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { global } from "../../styles/globalStyles";
+import { View, Text, ScrollView } from "react-native";
+
+// Component
 import FriendCard from "./FriendCard";
 
 export default function FriendsModal({ user, setFriendsModalVisible }) {

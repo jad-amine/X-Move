@@ -32,8 +32,6 @@ const login = async (req, res) => {
     },
     process.env.TOKEN_SECRET
   );
-  console.log(user.name, "logged in");
-
   res.status(200).json({
     token: token,
     user: user,
@@ -51,7 +49,6 @@ const register = async (req, res) => {
       { _id: user._id, name: user.name, email: user.email },
       process.env.TOKEN_SECRET
     );
-    console.log(user, "signed up");
     res.status(200).json({
       token: token,
       user: {
@@ -73,7 +70,6 @@ const register = async (req, res) => {
 
 // Fetch Users with similar sport interest
 const fetchSimilarUsers = async (req, res) => {
-  // res.json({ sport: sport, name: req.user.name });
   try {
     const sport = req.params.sport;
     const users = await User.find({ sports: sport }).populate("posts");
@@ -83,6 +79,7 @@ const fetchSimilarUsers = async (req, res) => {
     return res.json(users);
   } catch (err) {
     console.log("Wrong query", err);
+    res.status(500).json("Server Error !");
   }
 };
 
@@ -98,7 +95,6 @@ const addSport = async (req, res) => {
   await User.findByIdAndUpdate(req.user._id, {
     $push: { sports: sport },
   });
-  console.log(req.user.name);
   res.json("Success Sports Added: " + sport);
 };
 
@@ -111,6 +107,7 @@ const addProfilePicture = async (req, res) => {
       "base64",
       function (err) {
         console.log(err);
+        res.status(500).json("Server Error: Image not saved !");
       }
     );
     await User.findByIdAndUpdate(req.user._id, {
@@ -119,7 +116,7 @@ const addProfilePicture = async (req, res) => {
     res.json("saved");
   } catch (err) {
     console.log("error");
-    res.json("Error: Image not saved !");
+    res.status(500).json("Server Error: Image not saved !");
   }
 };
 
@@ -129,14 +126,12 @@ const removeSport = async (req, res) => {
     return res.status(401).json({ message: "Please select a sport" });
   }
   const sport = req.body.sport;
-  console.log(req.user._id);
   if (!mongoose.Types.ObjectId.isValid(req.user._id)) {
     return res.status(404).json({ error: "Not a user" });
   }
   await User.findByIdAndUpdate(req.user._id, {
     $pull: { sports: sport },
   });
-  console.log(req.user.name);
   res.json("Success Sports Removed: " + sport);
 };
 
@@ -167,6 +162,7 @@ const updateProfile = async (req, res) => {
     res.status(200).json("Updated");
   } catch (error) {
     console.log(error);
+    res.status(500).json("Server Error");
   }
 };
 
@@ -215,7 +211,6 @@ const addFriend = async (req, res) => {
       await User.findByIdAndUpdate(receiver, {
         $pull: { friends: sender },
       });
-      console.log("Removed");
       return res.status(200).json("Removed");
     }
     // 1) First Check if the receiver has already added the sender
@@ -259,6 +254,7 @@ const addPost = async (req, res) => {
       "base64",
       function (err) {
         console.log(err);
+        res.status(500).json("Server Error");
       }
     );
     const newPost = {
@@ -275,7 +271,7 @@ const addPost = async (req, res) => {
     res.json({ message: "Saved", post: post });
   } catch (err) {
     console.log(err);
-    res.json("Error: Image not saved !");
+    res.status(500).json("Error: Image not saved !");
   }
 };
 
@@ -292,7 +288,7 @@ const likePost = async (req, res) => {
     res.status(200).json("Success");
   } catch (error) {
     console.log(error);
-    res.json("Failed to update !");
+    res.status(500).json("Failed to update !");
   }
 };
 
@@ -307,8 +303,6 @@ const addComment = async (req, res) => {
     res.status(500).json("Failed");
   }
 };
-
-// delete user.password   ##### as soon as possible // dont send pass
 
 module.exports = {
   addSport,

@@ -1,18 +1,27 @@
-import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
-import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../../../contexts/UserContext";
+// Utilities
+import API from "../../../../api";
+import { Avatar } from "react-native-paper";
 import { global } from "../../../../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
-import { Avatar } from "react-native-paper";
-import API from "../../../../api";
+import { UserContext } from "../../../../contexts/UserContext";
+import React, { useContext, useEffect, useState } from "react";
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 
 const Players = ({ route }) => {
-  const [users, setUsers] = useState(null);
-  const { user } = useContext(UserContext);
-  const navigation = useNavigation();
   const sport = route.params;
+  const navigation = useNavigation();
+  const { user } = useContext(UserContext);
+  const [users, setUsers] = useState(null);
 
   useEffect(() => {
+    // Get users with similar sport interest
     const fetchUsers = async () => {
       try {
         const { data } = await API.get("getSimilarUsers/" + sport, {
@@ -23,21 +32,21 @@ const Players = ({ route }) => {
 
         setUsers(data.filter((player) => player.email !== user.info.email));
       } catch (err) {
-        console.log("Request Error", err);
+        Alert.alert("Network error !");
       }
     };
     fetchUsers();
   }, []);
 
   return (
-    <ScrollView style={{ marginBottom: 30 }}>
+    <ScrollView style={global.playersScreen}>
       {users &&
         users.map((user, index) => (
           <View key={index} style={global.playerCard}>
             {user.pictureURL ? (
               <Image
                 source={{ uri: `http://192.168.1.3:4000/` + user.pictureURL }}
-                style={{ height: 150, width: 150, borderRadius: 20 }}
+                style={global.playerAvatar}
               />
             ) : (
               <Avatar.Icon
@@ -47,11 +56,11 @@ const Players = ({ route }) => {
                 style={{ backgroundColor: "#ccc" }}
               />
             )}
-            <View style={{ marginLeft: 40 }}>
-              <Text style={{ fontSize: 30 }}>{user.name}</Text>
-              <Text style={{ color: "gray" }}>{user.email}</Text>
+            <View style={global.playerInfoSection}>
+              <Text style={global.playerInfoName}>{user.name}</Text>
+              <Text style={global.playerInfoEmail}>{user.email}</Text>
 
-              <View style={{ flexDirection: "row" }}>
+              <View style={global.navigationButtons}>
                 <TouchableOpacity
                   style={global.chatButton}
                   onPress={() =>
@@ -65,17 +74,13 @@ const Players = ({ route }) => {
                     })
                   }
                 >
-                  <Text style={{ color: "white", fontWeight: "bold" }}>
-                    Chat
-                  </Text>
+                  <Text style={global.navigationText}>Chat</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   onPress={() => navigation.navigate("PlayerProfile", user)}
                   style={global.viewProfileButton}
                 >
-                  <Text style={{ color: "white", fontWeight: "bold" }}>
-                    View Profile
-                  </Text>
+                  <Text style={global.navigationViewProfile}>View Profile</Text>
                 </TouchableOpacity>
               </View>
             </View>

@@ -175,6 +175,42 @@ export const global = StyleSheet.create({
     fontSize: 17,
   },
   // Players Page
+  playersScreen: {
+    marginBottom: 30,
+  },
+
+  playerAvatar: {
+    height: 150,
+    width: 150,
+    borderRadius: 20,
+  },
+
+  playerInfoSection: {
+    marginLeft: 40,
+  },
+
+  playerInfoName: {
+    fontSize: 30,
+  },
+
+  playerInfoEmail: {
+    color: "gray",
+  },
+
+  navigationButtons: {
+    flexDirection: "row",
+  },
+
+  navigationText: {
+    color: "white",
+    fontWeight: "bold",
+  },
+
+  navigationViewProfile: {
+    color: "white",
+    fontWeight: "bold",
+  },
+
   playerCard: {
     margin: 20,
     borderRadius: 20,

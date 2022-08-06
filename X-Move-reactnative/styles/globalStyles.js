@@ -471,6 +471,76 @@ export const global = StyleSheet.create({
   drawerBackground: {
     height: 60,
   },
+
+  drawerContainer: {
+    flex: 1,
+  },
+
+  drawerBackgroundImage: {
+    padding: 20,
+  },
+
+  drawerImg: {
+    height: 80,
+    width: 80,
+    borderRadius: 40,
+    marginBottom: 10,
+  },
+
+  drawerText: {
+    color: "white",
+    fontSize: 18,
+    marginBottom: 5,
+  },
+
+  drawerEmail: {
+    color: "white",
+    marginBottom: 5,
+  },
+
+  drawerView: {
+    flex: 1,
+    backgroundColor: "white",
+    paddingTop: 20,
+  },
+
+  drawerBottom: {
+    padding: 20,
+    borderTopWidth: 1,
+    borderTopColor: "#ccc",
+  },
+
+  drawerLogo: {
+    marginLeft: 10,
+  },
+
+  share: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  shareBttn: {
+    paddingVertical: 15,
+  },
+
+  shareText: {
+    fontSize: 15,
+    marginLeft: 20,
+  },
+
+  signOutText: {
+    fontSize: 15,
+    marginLeft: 15,
+  },
+
+  signOutBttn: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  signOutView: {
+    paddingVertical: 15,
+  },
+
   sportTab: {
     marginLeft: 30,
     marginTop: 8,

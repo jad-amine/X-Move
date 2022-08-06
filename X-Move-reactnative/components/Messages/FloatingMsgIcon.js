@@ -1,7 +1,8 @@
-import { View, Text, TouchableOpacity } from "react-native";
+// Utilities
 import React from "react";
-import { MaterialIcons } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native";
 import { global } from "../../styles/globalStyles";
+import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 export default function FloatingMsgIcon() {

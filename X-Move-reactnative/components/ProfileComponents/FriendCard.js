@@ -1,15 +1,18 @@
-import { View, Text, TouchableOpacity } from "react-native";
+// Utilities
 import React from "react";
-import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
+import { TouchableOpacity } from "react-native";
+import { Avatar, Card } from "react-native-paper";
+import { global } from "../../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
 
 export default function FriendCard({ friend }) {
   const navigation = useNavigation();
 
+  // Display friend profile pic at the top-left of the card or icon if no profile pic added
   const LeftContent = (props) =>
     friend.pictureURL ? (
       <Avatar.Image
-        style={{ marginLeft: -10 }}
+        style={global.postPlayerPic}
         size={55}
         source={{ uri: `http://192.168.1.3:4000/` + friend.pictureURL }}
       />
@@ -18,12 +21,13 @@ export default function FriendCard({ friend }) {
         size={55}
         icon="account"
         color="white"
-        style={{ backgroundColor: "#ccc", marginLeft: -10 }}
+        style={global.friendAvatar}
       />
     );
+
   return (
     <TouchableOpacity
-      style={{ marginVertical: 10 }}
+      style={global.friendCard}
       onPress={() =>
         navigation.navigate("StackNavigator", {
           screen: "PlayerProfile",
@@ -31,13 +35,12 @@ export default function FriendCard({ friend }) {
         })
       }
     >
-      <Card style={{ paddingLeft: 10 }}>
+      <Card style={global.friendCardPadding}>
         <Card.Title
           title={friend.name}
           subtitle={friend.email}
           left={LeftContent}
-          // right={RighContent}
-          style={{ paddingRight: 30 }}
+          style={global.friendName}
         />
       </Card>
     </TouchableOpacity>

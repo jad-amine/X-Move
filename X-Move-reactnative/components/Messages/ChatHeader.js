@@ -1,12 +1,15 @@
-import { View, Text, TouchableOpacity } from "react-native";
+// Utilities
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
-import { Avatar, Card, Title, Paragraph } from "react-native-paper";
 import { formatDistance } from "date-fns";
+import { Avatar, Card } from "react-native-paper";
 import { global } from "../../styles/globalStyles";
+import { Text, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 export default function ChatHeader({ item }) {
   const navigation = useNavigation();
+
+  // Display last message time to the right of the card
   const RighContent = (props) => (
     <Text style={global.lastMessage}>
       {item.lastMessage &&
@@ -19,6 +22,8 @@ export default function ChatHeader({ item }) {
         )}
     </Text>
   );
+
+  // Display contact profile picture on the left side
   const LeftContent = (props) =>
     item.userB.pictureURL ? (
       <Avatar.Image
@@ -34,6 +39,7 @@ export default function ChatHeader({ item }) {
         style={global.userBAvatar}
       />
     );
+
   return (
     <TouchableOpacity
       style={global.chats}

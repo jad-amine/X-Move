@@ -376,6 +376,11 @@ export const global = StyleSheet.create({
     backgroundColor: "white",
   },
 
+  friendAvatar: {
+    backgroundColor: "#ccc",
+    marginLeft: -10,
+  },
+
   friendModalHeaders: {
     fontSize: 25,
     color: "gray",
@@ -384,6 +389,18 @@ export const global = StyleSheet.create({
     borderBottomColor: "gray",
     marginBottom: 5,
     marginTop: 10,
+  },
+
+  friendCard: {
+    marginVertical: 10,
+  },
+
+  friendCardPadding: {
+    paddingLeft: 10,
+  },
+
+  friendName: {
+    paddingRight: 30,
   },
 
   // About
@@ -585,9 +602,11 @@ export const global = StyleSheet.create({
     height: 80,
     justifyContent: "center",
   },
+
   chatTitle: {
     paddingRight: 30,
   },
+
   floatingIcon: {
     position: "absolute",
     right: 40,
@@ -600,7 +619,9 @@ export const global = StyleSheet.create({
     backgroundColor: "#FF4D00",
   },
 
-  friends: { height: 80 },
+  friends: {
+    height: 80,
+  },
 
   // Map Screen
   map: {

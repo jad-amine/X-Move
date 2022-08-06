@@ -430,6 +430,11 @@ export const global = StyleSheet.create({
     borderBottomWidth: 0.7,
     marginBottom: 8,
   },
+
+  friendsList: {
+    flex: 1,
+    padding: 10,
+  },
   chatCard: {
     paddingLeft: 10,
     height: 80,

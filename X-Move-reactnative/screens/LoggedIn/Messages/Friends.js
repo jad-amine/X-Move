@@ -1,18 +1,18 @@
-import { FlatList, TouchableOpacity } from "react-native";
-import React from "react";
-import { useContext } from "react";
-import { UserContext } from "../../../contexts/UserContext";
+// Utilities
+import React, { useContext } from "react";
 import { Avatar, Card } from "react-native-paper";
-import { useNavigation } from "@react-navigation/native";
 import { global } from "../../../styles/globalStyles";
+import { useNavigation } from "@react-navigation/native";
+import { FlatList, TouchableOpacity } from "react-native";
+import { UserContext } from "../../../contexts/UserContext";
 
 export default function Friends() {
-  const navigation = useNavigation();
   const { user } = useContext(UserContext);
+  const navigation = useNavigation();
 
   return (
     <FlatList
-      style={{ flex: 1, padding: 10 }}
+      style={global.friendsList}
       data={user.info.friends}
       keyExtractor={(_, i) => i}
       renderItem={({ item }) => {

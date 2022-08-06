@@ -338,6 +338,19 @@ export const global = StyleSheet.create({
     fontSize: 20,
   },
 
+  profileSpace: {
+    marginTop: 50,
+  },
+
+  blur: {
+    height: "100%",
+  },
+
+  saveBttn: {
+    color: "white",
+    fontSize: 16,
+  },
+
   userName: {
     fontSize: 40,
     marginBottom: 15,

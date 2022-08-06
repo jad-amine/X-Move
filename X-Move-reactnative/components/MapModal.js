@@ -1,27 +1,25 @@
-import { View, Text, TextInput } from "react-native";
-import React, { useEffect, useState } from "react";
+// Utilities
 import { BlurView } from "expo-blur";
-import { global } from "../styles/globalStyles";
-import { AntDesign } from "@expo/vector-icons";
+import React, { useState } from "react";
 import { Button } from "react-native-paper";
+import { AntDesign } from "@expo/vector-icons";
+import { global } from "../styles/globalStyles";
 import { Picker } from "@react-native-picker/picker";
+import { View, Text, StyleSheet } from "react-native";
 
 export default function MapModal({ setModalVisible, setSearch }) {
-  const [showPlayers, setShowPlayers] = useState(true);
   const [type, setType] = useState("players");
   const [sport, setSport] = useState("allPlayers");
+  const [showPlayers, setShowPlayers] = useState(true);
   const [property, setProperty] = useState("allProperties");
 
-  useEffect(() => {
-    // console.log(user);
-  });
   const handlePress = async () => {
     setSearch(showPlayers ? [true, sport] : [false, property]);
     setModalVisible(false);
   };
 
   return (
-    <BlurView intensity={110} tint="dark" style={{ height: "100%" }}>
+    <BlurView intensity={110} tint="dark" style={styles.blur}>
       <View style={global.modal}>
         <View style={global.modalHead}>
           <AntDesign
@@ -32,13 +30,9 @@ export default function MapModal({ setModalVisible, setSearch }) {
           />
           <Text style={global.modalTitle}>Search</Text>
         </View>
-        <View style={{ marginLeft: 20 }}>
+        <View style={styles.pickerView}>
           <Picker
-            style={{
-              backgroundColor: "#eee",
-              marginVertical: 40,
-              width: 300,
-            }}
+            style={styles.upperPicker}
             selectedValue={type}
             onValueChange={(itemValue) => {
               itemValue === "players"
@@ -53,11 +47,7 @@ export default function MapModal({ setModalVisible, setSearch }) {
           </Picker>
           {showPlayers && (
             <Picker
-              style={{
-                backgroundColor: "#eee",
-                width: 300,
-                marginBottom: 20,
-              }}
+              style={styles.picker}
               selectedValue={sport}
               onValueChange={(itemValue) => setSport(itemValue)}
             >
@@ -73,10 +63,7 @@ export default function MapModal({ setModalVisible, setSearch }) {
           )}
           {!showPlayers && (
             <Picker
-              style={{
-                backgroundColor: "#eee",
-                width: 300,
-              }}
+              style={styles.playerPicker}
               selectedValue={property}
               onValueChange={(itemValue) => setProperty(itemValue)}
             >
@@ -91,9 +78,41 @@ export default function MapModal({ setModalVisible, setSearch }) {
           )}
         </View>
         <Button style={global.saveAbout} onPress={handlePress}>
-          <Text style={{ color: "white", fontSize: 16 }}>Search</Text>
+          <Text style={styles.searchBttn}>Search</Text>
         </Button>
       </View>
     </BlurView>
   );
 }
+
+const styles = StyleSheet.create({
+  blur: {
+    height: "100%",
+  },
+
+  pickerView: {
+    marginLeft: 20,
+  },
+
+  upperPicker: {
+    backgroundColor: "#eee",
+    marginVertical: 40,
+    width: 300,
+  },
+
+  picker: {
+    backgroundColor: "#eee",
+    width: 300,
+    marginBottom: 20,
+  },
+
+  playerPicker: {
+    backgroundColor: "#eee",
+    width: 300,
+  },
+
+  searchBttn: {
+    color: "white",
+    fontSize: 16,
+  },
+});

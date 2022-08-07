@@ -5,6 +5,7 @@ import { ApplicationContext } from "../contexts/ApplicationContext";
 // Components
 import LineChart from "../components/LineChart";
 import BarChart from "../components/BarChart";
+import { DoughnutChart } from "../components/DoughnutChart";
 
 export default function Dashboard() {
   const { applicationData } = useContext(ApplicationContext);
@@ -42,6 +43,7 @@ export default function Dashboard() {
       </div>
       <LineChart />
       <BarChart />
+      <DoughnutChart />
     </div>
   );
 }

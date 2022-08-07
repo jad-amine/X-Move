@@ -12,7 +12,7 @@
 
 <img id="philosophy" src="./readme/title2.svg"/>
 
-> X-Move is not about building a company but a community, the most engaged X-treme Sports Community by connecting athletes to activitiy partners and owners of playgrounds and sports equipments renting stores. It consist of three types of users: Players use a mobile app, Owners use a web app and Admins use a desktop app.
+> X-Move is not about building a company but a community, the most engaged X-treme Sports Community by connecting athletes to activity partners and owners of playgrounds and sports equipment renting stores. It consist of three types of users: Players use a mobile app, Owners use a web app and Admins use a desktop app.
 
 ### User Stories
 
@@ -114,7 +114,7 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <h2>Search properties by category and check live calendar for availability</h2>
 
-| Search Fields for rent                                               | Search Equipments for rent                                           | Rent Properties                                                  |
+| Search Fields for rent                                               | Search Equipment for rent                                            | Rent Properties                                                  |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | <img src="readme/mobile/fields/Play.png" width="250" height="500" /> | <img src="readme/mobile/fields/Bike.png" width="250" height="500" /> | <img src="readme/videos/PlayGif.gif" width="250" height="500" /> |
 
@@ -225,9 +225,15 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br>
 
-| <h2>Reservations per month for fields & equipments</h2> |
-| ------------------------------------------------------- |
-| ![](readme/electron/PropertyRes.gif)                    |
+| <h2>Reservations per month for fields & equipment</h2> |
+| ------------------------------------------------------ |
+| ![](readme/electron/PropertyRes.gif)                   |
+
+<br>
+
+| <h2>Players favorite sports</h2> |
+| -------------------------------- |
+| ![](readme/electron/Dougnut.png) |
 
 <br>
 
@@ -337,7 +343,7 @@ when Metro finishes building press a to preview on Android device or w on the we
 npm start
 ```
 
-11. To launch the desktop application navigate to the <span style="color:#ff4d00">x-move-electron</span> folder then run:
+12. To launch the desktop application navigate to the <span style="color:#ff4d00">x-move-electron</span> folder then run:
 
 ```sh
 npm run dev

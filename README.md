@@ -100,6 +100,18 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 <br><br>
 
+<h2>Friends feeds/posts</h2>
+
+| Drawer Navigation                                               | Feeds                                                                   | Friends Posts                                                           |
+| --------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| <img src="readme/mobile/Drawer.png" width="250" height="500" /> | <img src="readme/mobile/Feeds/BikePost.png" width="250" height="500" /> | <img src="readme/mobile/Feeds/FeedsGif.gif" width="250" height="500" /> |
+
+| Add Posts                                                              | Post                                                           |
+| ---------------------------------------------------------------------- | -------------------------------------------------------------- |
+| <img src="readme/mobile/Feeds/AddPost.gif" width="250" height="500" /> | <img src="readme/mobile/feeds.png" width="250" height="500" /> |
+
+<br><br>
+
 <h2>Search the map for players and properties for rent</h2>
 
 | Map                                                          | Search Modal                                                       | Search Players                                                  |
@@ -133,18 +145,6 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 | Direct Messaging                                                                   |
 | ---------------------------------------------------------------------------------- |
 | <img src="readme/mobile/Messages/PlayersMessaging.gif" width="250" height="500" /> |
-
-<br><br>
-
-<h2>Friends feeds/posts</h2>
-
-| Drawer Navigation                                               | Feeds                                                                   | Friends Posts                                                           |
-| --------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| <img src="readme/mobile/Drawer.png" width="250" height="500" /> | <img src="readme/mobile/Feeds/BikePost.png" width="250" height="500" /> | <img src="readme/mobile/Feeds/FeedsGif.gif" width="250" height="500" /> |
-
-| Add Posts                                                              | Post                                                           |
-| ---------------------------------------------------------------------- | -------------------------------------------------------------- |
-| <img src="readme/mobile/Feeds/AddPost.gif" width="250" height="500" /> | <img src="readme/mobile/feeds.png" width="250" height="500" /> |
 
 <br><br>
 

@@ -12,7 +12,7 @@
 
 <img id="philosophy" src="./readme/title2.svg"/>
 
-> X-Move is not about building a company but a community, the most engaged X-treme Sports Community by connecting athletes to activity partners and owners of playgrounds and sports equipment renting stores. It consist of three types of users: Players use a mobile app, Owners use a web app and Admins use a desktop app.
+> The Instagram of sports, X-Move is not about building a company but a community, the most engaged X-treme Sports Community by connecting athletes to activity partners and owners of playgrounds and sports equipment renting stores. It consist of three types of users: Players use a mobile app, Owners use a web app and Admins use a desktop app.
 
 ### User Stories
 

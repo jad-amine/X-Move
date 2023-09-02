@@ -45,7 +45,7 @@
 > This design was planned before on paper, then moved to Figma app for the fine details.
 <br><br>
 
-| Landing Page                                                    | Resgister                                                        | Categories                                                         |
+| Landing Page                                                    | Register                                                        | Categories                                                         |
 | --------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------ |
 | <img src="readme/figma/landing.svg" width="250" height="500" /> | <img src="readme/figma/register.svg" width="250" height="500" /> | <img src="readme/figma/categories.svg" width="250" height="500" /> |
 
